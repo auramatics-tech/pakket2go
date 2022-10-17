@@ -1,0 +1,457 @@
+@media only screen and (max-width: 1440px) {
+    .form_pos {
+        position: absolute;
+        width: 83%;
+        left: 8.6%;
+        margin-top: 25px;
+    }
+}
+@media only screen and (max-width: 1366px) {
+    .calculate {
+        padding: 12px 40px;
+    }
+    .form_pos {
+        position: absolute;
+        width: 70%;
+        left: 15%;
+        margin-top: 25px;
+    }
+    .top_div {
+        background-position: 2.7%;
+    }
+}
+@media only screen and (max-width: 1280px) {
+
+    .mobile figure,
+    .footer_list .child1 p {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .top_div {
+        background-position: 3.7%;
+    }
+    .calculate {
+        padding: 12px 20px;
+    }
+    .truck_img {
+        left: 42%;
+        margin-top: -90px;
+    }
+
+    .truck_img img {
+        width: 80%
+    }
+
+    .calculate {
+        margin-left: 1rem;
+    }
+
+    .dflex {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .mobile figure {
+        height: auto;
+    }
+
+    .play_content {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .form_pos {
+        width: 83%;
+        left: 8%;
+    }
+    .info_section_top>.container {
+        max-width: 95%;
+    }
+
+    .step_section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .w-md-80 {
+        width: 80% !important;
+    }
+
+    .wf-35 {
+        width: 100%;
+    }
+
+    .wf-25 {
+        width: 100%;
+    }
+
+    .calculate {
+        margin-left: 0px;
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    .border-right {
+        border-right: 0;
+        border-bottom: 2px solid #D9D9D9;
+    }
+
+    .info_section_top .form-group {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .badge span {
+        white-space: break-spaces;
+    }
+
+    .play_section .badge p {
+        white-space: break-spaces;
+        margin-top: 20px;
+    }
+
+    .appstore_btn figure,
+    .appstore_btn2 figure {
+        width: 20px;
+    }
+
+    .appstore_btn figure img,
+    .appstore_btn2 figure img {
+        width: 100%;
+    }
+
+    .content p {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .width-lg {
+        width: 100%;
+    }
+
+    .info_section_top form b, .info_section_top form .ad_input,
+    .about_section p, .our_values_section p, .play_section p {
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .play_section .badge p, .footer_list .child1 p, .footer_list .child2 ul li a, .footer_list .child3 ul li a, .footer_list .child4 ul li a {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .mobile figure, .footer_list .child1 p {
+        width: 80%;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url(../svg/bar.svg) !important;
+        background-size: 123% !important;
+    }
+
+    .navbar-toggler {
+        border-color: #fff !important;
+        border-width: 2PX !important;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 !important;
+    }
+
+    #menu_items {
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 72px;
+        padding: 2rem 3rem;
+        z-index: 3;
+    }
+
+    ul.navbar-nav {
+        justify-content: left;
+    }
+
+    .nav-item a {
+        color: #000000 !important;
+        font-weight: 400;
+    }
+
+    .nav-item a, .nav-item.active a {
+        text-align: left;
+    }
+
+    .nav-item.active a {
+        color: #01B537 !important;
+        font-size: 20px;
+    }
+
+    #menu_items .nav-item {
+        margin-bottom: 1rem;
+    }
+
+    #menu_items .nav-item:last-child {
+        margin-bottom: 0rem;
+    }
+
+    .nav-item.active .active_dot {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .logo_cls{
+        display: none;
+    }
+    .mobile_build {
+        background-image: url(../img/mobile_build.png);
+        background-repeat: no-repeat;
+        height: 200px;
+        width: 100%;
+        background-size: 100%;
+    }
+
+    .banner-section {
+        padding-bottom: 110px;
+    }
+
+    .truck_img {
+        left: 34%;
+        margin-top: -130px;
+    }
+
+    .data_list {
+        margin-left: 12px;
+    }
+
+    .play_section .badge p {
+        white-space: inherit;
+        margin-top: 0;
+    }
+
+    .flxDirection {
+        flex-direction: column-reverse;
+    }
+
+    .mobile figure {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .play_section .dflex {
+        flex-direction: column;
+        margin-bottom: 1.5rem
+    }
+
+    .badge {
+        width: fit-content;
+        padding-right: 1rem !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mob_align {
+        text-align: center;
+    }
+
+    .footer_bottom p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .navbar-brand figure {
+        width: 141px;
+        height: 40px;
+    }
+
+    .navbar-brand figure img {
+        width: 100%;
+    }
+
+    .navbar-toggler-icon {
+        width: 1em !important;
+    }
+
+    .justify-content-sm-center {
+        justify-content: center !important;
+    }
+
+    #menu_items .nav-item {
+        margin-bottom: 0.50rem;
+    }
+
+    #menu_items .nav-item:last-child {
+        margin-bottom: 0.50rem;
+    }
+
+    .lang_toggle {
+        border: 1px solid #D9D9D9;
+        width: 167px;
+    }
+
+    .content h1 {
+        font-size: 32px;
+        line-height: 45px;
+    }
+
+    .our_values_section h2 {
+        font-size: 30px;
+    }
+
+    #main_footer {
+        padding-top: 100px;
+    }
+    .child1 {
+        margin-bottom: 1rem;
+    }
+    .mobile figure, .footer_list .child1 p {
+        width: 100%;
+    }
+    .our_values_section figure{
+        width: 70px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .our_values_section figure img{
+        width: 100%;
+    }
+    .mob_px{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #sub_header figure img{
+        width: 20px;
+    }
+    #sub_header figure img:first-child{
+        margin-top:-2px;
+    }
+    .form_pos {
+        width: 65%;
+        left: 17.5%;
+    }
+    .top_div {
+        background-position: 5.6%;
+    }
+    
+}
+@media only screen and (max-width: 600px) {
+    .form_pos {
+        width: 80.3%;
+        left: 9.5%;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .form_pos {
+        width: 91%;
+        left: 4.5%;
+    }
+    .top_heading {
+        min-width: auto;
+    }
+    #menu_items {
+        padding: 1rem 0.25rem;
+    }
+
+    .navbar-toggler {
+        padding: 0px 10px;
+    }
+
+    .truck_img {
+        left: 33%;
+        margin-top: -155px;
+    }
+
+    .footer_top {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .footer_top {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .play_section .badge p {
+        font-size: 12px;
+    }
+    .info_section form>div{
+        display: block !important;
+        height: auto;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .info_section form .submit{
+        width: 100%;
+        margin-top: 12px;
+    }
+    #main_footer {
+        padding-top: 180px;
+    }
+    .border-radius-20, .info_section .info{
+        border-radius: 0px !important
+    }
+    .data_list span {
+        font-size: 14px;
+    }
+    .data_icon figure {
+        width: 50px;
+        height: 45px;
+    }
+    .data_icon figure {
+        margin-bottom: 0rem !important;
+    }
+    .mobile_build {
+        background-size: 129%;
+    }
+    .top_div {
+        background-position: 5.8%;
+    }
+    .nav_circle.mx-3{
+        margin-left:0px !important;
+    }
+   
+}
+@media only screen and (max-width: 425px){
+    .top_div {
+        background-position: 6.6%;
+    }
+}
+@media only screen and (max-width: 390px) {
+    .truck_img img {
+        width: 65%;
+    }
+    .banner-section {
+        padding-bottom: 50px;
+    }
+    .pakket_btn.me-3{
+        margin-right: 0.25rem!important
+    }
+    .mobile_build {
+        background-size: 129%;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .pakket_btn.me-3{
+        margin-right: 1rem!important
+    }
+    .play_section .badge p {
+        white-space: break-spaces;
+        text-align: left;
+        margin-top: 20px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .nav_circle {
+        width: 22px;
+        height: 22px;
+    }
+    .nav_circle.mx-3 {
+        margin-right: 0.5rem!important;
+    }
+}

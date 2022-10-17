@@ -1,0 +1,743 @@
+
+.first-section {
+    padding-top: 40px;
+    padding-bottom: 55px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.content-top h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    color: #000000;
+}
+
+.second_section {
+    background: #EEF8F0;
+    border: 1px solid #D9D9D9;
+}
+
+.content-top p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: #01B537;
+}
+
+.fifth_section {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    margin-top: -110px;
+}
+
+
+.truck_imgone {
+    position: absolute;
+    left: 44%;
+    margin-top: -140px;
+}
+
+.below {
+    margin-bottom: 132px;
+}
+
+.center-images {
+
+    background-color: #F8F9FA;
+
+}
+
+.one {
+    margin-left: 260px !important;
+    margin-right: 260px !important;
+    margin-bottom: 124px;
+}
+
+.data_icon figure {
+    margin-left: 187px;
+}
+
+.third-section {
+    padding-bottom: 150px;
+}
+
+.address_info_section {
+    padding-bottom: 20px;
+}
+
+.text_info {
+    text-align: left;
+    margin-top: 120px;
+
+}
+
+.text_info h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    margin-bottom: 0px;
+}
+
+.text_info span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+    color: #777777;
+    left: 259px;
+}
+
+.text_info span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #898989;
+}
+
+.col_images figure {
+    width: 66px;
+    height: 45px
+}
+
+.col_images figure img {
+    width: 100%;
+}
+
+.col_icons {
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.col_icons h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #3A3A3A;
+    margin-bottom: 0px;
+}
+
+.col_icons span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #898989;
+}
+
+.four_section_top {
+    padding-bottom: 20px;
+}
+
+.four_section_top .info,
+.four_section_top .info {
+    background: #EEF8F0;
+    border: 1px solid #D9D9D9;
+    border-radius: 30px;
+    padding: 1.5rem 1rem;
+}
+
+.fifth_section_top .address,
+.fifth_section .address {
+    background: #EEF8F0;
+    border: 1px solid #D9D9D9;
+    border-radius: 30px;
+    padding: 1.5rem 1rem;
+}
+
+.address h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: 0.257966px;
+    color: #25282B;
+}
+
+.address p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.128983px;
+    color: #25282B;
+}
+
+.fifth_section form>div {
+    height: 62px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+}
+
+.fifth_section form .ad_input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #666666;
+}
+
+.fifth_section form .submit {
+    background: #01B537;
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 12px 0px;
+}
+
+.img_icon {
+    padding-left: 187px;
+}
+
+.textual {
+    margin-top: 124px;
+}
+
+/* su_css start */
+.su_flex_align {
+    display: flex;
+    align-items: center;
+}
+
+.su_flex_align h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 43px;
+    margin-bottom: 0px;
+}
+
+.su_flex_align span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 36px;
+    color: #898989;
+}
+
+.su_width {
+    width: 85%;
+}
+
+.su_badge {
+    width: 55px;
+    height: 55px;
+    background: #313131;
+    border-radius: 15px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700 !important;
+    font-size: 22px !important;
+    line-height: 45px !important;
+}
+
+.su_position_right {
+    top: 160px;
+    position: relative;
+    right: 20px;
+}
+
+.su_position_left {
+    top: 160px;
+    position: relative;
+    right: 110px;
+}
+
+.su_flex_end {
+    display: flex;
+    justify-content: end;
+}
+
+.su_details {
+    width: 80%;
+}
+
+.su_row_div_padding {
+    padding: 60px 0px;
+}
+
+.su_Contact_with {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    color: #000000;
+    margin-top: 50px;
+}
+
+.su_green_para {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    color: #01B537;
+    margin-bottom: 50px;
+}
+
+/* .su_accordion_padding {
+    margin-top: 20px;
+    margin-bottom: 200px;
+} */
+.su_form_section_padding{
+    margin-top: 20px;
+    margin-bottom: 200px;
+}
+
+.su_accordion_para {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 185.69%;
+    color: #777777;
+}
+
+.su_accordion_body {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 185.69%;
+    color: #313131;
+}
+
+.su_accordion_button {
+    font-weight: 600 !important;
+    font-size: 25px !important;
+    line-height: 38px !important;
+    color: #000000 !important;
+}
+
+.su_accordion_item {
+    padding: 20px 0px;
+}
+
+.su_accordion_button:not(.collapsed) {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    font-size: 25px !important;
+    line-height: 38px !important;
+    background-color: #fff !important;
+    box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color) !important;
+}
+.accordion{
+    --bs-accordion-border-width: 0px !important;
+}
+.su_accordion_header{
+    border-bottom: 1px solid #C4C4C4;
+}
+.su_red_text_center{
+    font-weight: 600;
+font-size: 22px;
+line-height: 33px;
+text-align: center;
+color: #FC4C00;
+margin: 25px 0px;
+}
+.su_phone_text{
+    font-weight: 500;
+font-size: 21.1765px;
+line-height: 32px;
+color: #1B2C49;
+margin: 0px;
+}
+.su_ml_20{
+    margin-left: 20px;
+}
+.su_flex_center{
+    display: flex;
+    align-items: center;
+    margin: 15px 0px;
+}
+.su_Message{
+    font-weight: 600;
+font-size: 30px;
+line-height: 185.69%;
+color: #01B537;
+}
+.msg_input {
+    display: flex;
+    align-items: center;
+    background: url(../svg/msg.svg);
+    background-repeat: no-repeat;
+    background-position: 2% center;
+    padding: 16px 10px 14px 50px;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    outline: 0;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 26px;
+    color: #989898
+}
+.subject_input {
+    display: flex;
+    align-items: center;
+    background: url(../svg/subject.svg);
+    background-repeat: no-repeat;
+    background-position: 2% center;
+    padding: 16px 10px 14px 50px;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    outline: 0;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 26px;
+    color: #989898
+}
+.su_textarea {
+    display: flex;
+    align-items: center;
+    background: url(../svg/textarea.svg);
+    background-repeat: no-repeat;
+    background-position: 2% center;
+    padding: 16px 10px 14px 50px;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    outline: 0;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 26px;
+    color: #989898
+}
+.msg_input input {
+    border: 0;
+    outline: 0;
+}
+
+.msg_input .code {
+    width: 150px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.msg_input .number {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+    color: #000000;
+    width: 100%;
+}
+.subject_input input {
+    border: 0;
+    outline: 0;
+}
+
+.subject_input .code {
+    width: 70px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.subject_input .number {
+    width: 100%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+    color: #000000;
+}
+.Email_label {
+    position: absolute;
+    margin-top: -25px;
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    color: #313131;
+    background: white;
+}
+.su_Send_width{
+    width: 100%;
+    background: #01B537;
+box-shadow: 2.95869px 2.95869px 14.7935px rgba(0, 0, 0, 0.15);
+border-radius: 7.39673px;
+border: none;
+font-weight: 500;
+font-size: 22.1902px;
+line-height: 33px;
+margin: 30px 0px;
+padding: 20px;
+color: #FFFFFF;
+}
+.su_form_card{
+    background: #FFFFFF;
+    box-shadow: 2px 2px 10px rgb(0 0 0 / 10%);
+    border-radius: 20px;
+    padding: 30px;
+}
+textarea { 
+    border-style: none !important; 
+    border-color: Transparent !important; 
+    overflow: auto !important;        
+    width: 100% !important;
+  }
+  .su_map_frame {
+    width: 100%;
+}
+
+.su_map_frame #map {
+    height: 350px;
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+}
+.accordion-button::after {
+    background: url(../svg/open.svg) !important;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1400px) {
+    .footer_list .child1 p {
+        width: auto;
+    }
+
+    .su_position_right {
+        top: 145px;
+    }
+
+    .su_position_left {
+        top: 150px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .su_position_right {
+        top: 125px;
+    }
+
+    .su_position_left {
+        top: 125px;
+    }
+
+    .truck_imgone img {
+        width: 180px;
+    }
+
+    .truck_imgone {
+        margin-top: -110px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .su_Contact_with {
+        font-size: 31px;
+    }
+    .su_padding_input {
+        padding: 10px 0px;
+    }
+
+    .four_section_top .info,
+    .four_section_top .info {
+        padding: 15px 20px;
+    }
+
+    .su_position_right {
+        top: 92px;
+    }
+
+    .su_position_left {
+        top: 95px;
+        right: 50px;
+    }
+
+    .su_flex_align h2 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .su_flex_align span {
+        color: #898989;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .content-top h1 {
+        font-size: 35px;
+    }
+
+    .first-section {
+        padding-top: 35px;
+        padding-bottom: 40px;
+    }
+
+    .su_badge {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .su_row_div_padding {
+        padding: 0px;
+    }
+
+    .su_row_padding {
+        padding: 40px 0px;
+    }
+
+    .su_position_right {
+        display: none;
+    }
+
+    .su_position_left {
+        display: none;
+    }
+
+    .su_details {
+        width: 100%;
+    }
+
+    .su_width {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .su_Send_width {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .address h5 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .su_Message {
+        font-size: 22px;
+        line-height: 30px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .su_phone_text {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .su_red_text_center {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 22px;
+    }
+    .su_accordion_para {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .su_accordion_body {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .su_accordion_button {
+        font-size: 22px !important;
+        line-height: 30px !important;
+    }
+    .su_accordion_item {
+        padding: 2px 0px;
+    }
+    .su_accordion_button:not(.collapsed) {
+        font-size: 22px !important;
+        line-height: 30px !important;
+    }
+    .su_green_para {
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 30px;
+    }
+    .su_Contact_with {
+        margin-top: 30px;
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .four_section_top {
+        padding: 0px 20px;
+    }
+
+    .fifth_section {
+        padding: 0px 20px;
+    }
+
+    .content-top h1 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .content-top p {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .first-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .truck_imgone img {
+        width: 160px;
+    }
+
+    .truck_imgone {
+        left: 37%;
+        margin-top: -90px;
+    }
+    .su_form_card {
+        padding: 10px;
+    }
+    .su_form_section_padding {
+        margin-bottom: 160px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .truck_imgone img {
+        width: 145px;
+    }
+
+    .truck_imgone {
+        left: 30%;
+        margin-top: -90px;
+    }
+}
+
+/* su_css end */
