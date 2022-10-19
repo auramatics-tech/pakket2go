@@ -1,3 +1,39 @@
+ /* sumit code start   */
+@media screen and (max-width: 1700px) {
+    .su_side_margin {
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .su_inputs_padding {
+        padding: 0px 30px;
+    }
+    .su_side_img {
+        width: 280px;
+    }
+
+    .su_side_img img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+ 
+    .su_side_img {
+        width: 240px;
+    }
+
+    .su_col_padding {
+        padding: 15px 50px 0px 50px;
+    }
+
+    .su_sign_in_form_padding {
+        padding: 0px 100px;
+    }
+}
+/* sumit css end  */
 @media only screen and (max-width: 1440px) {
     .form_pos {
         position: absolute;
@@ -5,6 +41,20 @@
         left: 8.6%;
         margin-top: 25px;
     }
+     /* sumit code start   */
+
+    .footer_list .child1 p {
+        width: auto;
+    }
+
+    .su_position_right {
+        top: 145px;
+    }
+
+    .su_position_left {
+        top: 150px;
+    }
+    /* sumit css end  */
 }
 @media only screen and (max-width: 1366px) {
     .calculate {
@@ -27,6 +77,89 @@
         width: 100%;
     }
 }
+
+ /* sumit code start  */
+@media screen and (max-width: 1300px) {
+    .su_side_margin {
+        margin-left: 10px;
+    }
+
+    .su_register_sidebar {
+        height: 950px;
+    }
+
+    .su_side_img {
+        width: 180px;
+    }
+
+    .su_col_padding {
+        padding: 0px 20px;
+    }
+
+    .su_inputs_padding {
+        padding: 0px 30px;
+    }
+
+    .su_sign_in_form_padding {
+        padding: 0px 60px;
+    }
+}
+
+/* sumit code end  */
+
+@media only screen and (max-width: 1280px) {
+
+    .mobile figure,
+    .footer_list .child1 p {
+        width: 100%;
+    }
+}
+
+ /* sumit code start   */
+
+@media screen and (max-width: 1200px) {
+    .flex_align_end {
+        margin-left: 10px;
+    }
+    .su_courier_white_bg {
+        width: 380px;
+    }
+    .su_position_right {
+        top: 125px;
+    }
+
+    .su_position_left {
+        top: 125px;
+    }
+
+    .truck_imgone img {
+        width: 180px;
+    }
+
+    .truck_imgone {
+        margin-top: -110px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .su_register_sidebar_padding {
+        padding: 50px 15px 50px 15px;
+    }
+
+    .su_side_img {
+        width: 150px;
+    }
+
+    .su_sign_in_form_padding {
+        padding: 0px 25px;
+    }
+
+    .flex_align_end {
+        margin-left: 15px;
+    }
+}
+
+ /* sumit code end  */
 
 @media only screen and (max-width: 1024px) {
     .top_div {
@@ -64,6 +197,74 @@
 }
 
 @media only screen and (max-width: 991px) {
+     /* sumit code start   */
+     .su_courier_white_bg {
+        width: auto;
+    }
+     .su_main_circle img {
+        margin-bottom: 10px;
+    }
+    .data_textarea {
+        width: 100%;
+    }
+
+    .su_side_color {
+        height: auto;
+    }
+
+    .su_side_margin {
+        margin-left: 0px;
+    }
+    .su_Contact_with {
+        font-size: 31px;
+    }
+    .su_padding_input {
+        padding: 10px 0px;
+    }
+
+    .four_section_top .info,
+    .four_section_top .info {
+        padding: 15px 20px;
+    }
+
+    .su_position_right {
+        top: 92px;
+    }
+
+    .su_position_left {
+        top: 95px;
+        right: 50px;
+    }
+
+    .su_flex_align h2 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .su_flex_align span {
+        color: #898989;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .content-top h1 {
+        font-size: 35px;
+    }
+
+    .first-section {
+        padding-top: 35px;
+        padding-bottom: 40px;
+    }
+
+    .su_badge {
+        width: 40px;
+        height: 40px;
+    }
+
+     /* sumit code end  */
+
     .form_pos {
         width: 83%;
         left: 8%;
@@ -203,6 +404,47 @@
         display: none;
     }
 }
+
+ /* sumit code start   */
+@media screen and (max-width: 768px) {
+    .su_side_img {
+        width: 190px;
+        margin: auto;
+    }
+
+    .su_register_sidebar {
+        height: auto;
+    }
+
+    .su_Sign_In {
+        width: 60%;
+    }
+    .su_row_div_padding {
+        padding: 0px;
+    }
+
+    .su_row_padding {
+        padding: 40px 0px;
+    }
+
+    .su_position_right {
+        display: none;
+    }
+
+    .su_position_left {
+        display: none;
+    }
+
+    .su_details {
+        width: 100%;
+    }
+
+    .su_width {
+        width: 100%;
+    }
+}
+
+ /* sumit code end  */
 
 @media only screen and (max-width: 767px) {
     .logo_cls{
@@ -346,6 +588,365 @@
     }
 }
 @media only screen and (max-width: 480px) {
+     /* sumit code start  */
+     .su_Message {
+        font-size: 23.2169px !important;
+        line-height: 31px !important;
+    }
+     .su_phone_text {
+        font-size: 20px !important;
+        line-height: 30px !important;
+    }
+     .su_accordion_body {
+        font-weight: 400 !important;
+        font-size: 16px !important;
+        line-height: 185.69% !important;
+        color: #313131 !important;
+    }
+    
+     .su_Contact_with {
+        margin-top: 30px !important;
+        font-weight: 500 !important;
+        font-size: 20px !important;
+        line-height: 30px !important;
+    }
+    .su_green_para {
+        margin-bottom: 30px !important;
+        font-weight: 400 !important;
+        font-size: 14px !important;
+        line-height: 21px !important;
+    }
+     .su_accordion_item {
+        padding: 0px 0px;
+    }
+     .su_courier_white_bg {
+        width: 300px;
+    }
+     .su_inputs_padding {
+        padding: 0px 15px;
+    }
+     .su_easilest {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 30px;
+    }
+     .su_Your_Best {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 26px;
+    }
+     .su_text_Sign_In {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+     .su_Join_now {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 22px;
+    }
+     .su_Join_now_span {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 22px;
+    }
+     .su_Forgot_password {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 22px;
+    }
+     .su_checkbox_text {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 22px;
+    }
+    
+    
+     .su_sign_btn {
+        padding: 10px 50px;
+    }
+    
+    .su_white_bg_img img{
+        width: 100%;
+        height: 100%;
+    }
+    .su_green_bg_with_col {
+        padding: 45px 0px;
+    }
+    .su_See {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .su_Apply_Now {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .su_become_courier {
+        font-weight: 500 !important;
+        font-size: 20px !important;
+        line-height: 30px !important;
+    }
+    .su_register_sidebar_padding {
+        padding: 15px 15px 15px 20px;
+    }
+    .su_main_logo_become {
+        width: 250px !important;
+    }
+    .su_carousal {
+        padding: 25px 0px;
+    }
+    .su_carousal_img_ste{
+        width: 300px;
+    height: 300px;
+    margin: auto;
+    }
+    .su_Featured_Partners {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .su_white_bg_img {
+        width: 180px;
+        height: 180px;
+    }
+    .su_col_para {
+        font-size: 16px;
+        line-height: 28px;
+    }
+    .su_col_heading {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .about_section {
+        padding-top: 20px;
+        padding-bottom: 25px;
+    }
+
+    .about_section h2 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .su_content_payment {
+        padding: 10px 10px;
+    }
+
+    .data_textarea {
+        width: 100%;
+    }
+
+    .su_col_padding {
+        padding: 20px 0px;
+    }
+
+    .su_side_margin {
+        margin: auto;
+    }
+
+    .su_sign_in_form_padding {
+        padding: 0px 5px;
+    }
+
+    .su_register_card {
+        padding: 20px 15px 20px 15px;
+    }
+
+    .radio_style {
+        padding: 1px;
+    }
+
+    .radio_style label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        padding: 5px 20px;
+    }
+
+    .su_button_padding {
+        padding: 0px 60px;
+    }
+
+    .su_Sign_In {
+        width: 100%;
+        padding: 8px 40px;
+    }
+
+    .su_Quick_Fast {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 400;
+    }
+
+    .su_courier_white_bg {
+        font-size: 14px !important;
+        line-height: 24px !important;
+        font-weight: 400px !important;
+    }
+
+    .content h1 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .become_banner_section {
+        padding-bottom: 40px;
+    }
+
+    .su_main_top_bg {
+        background: transparent;
+        padding-bottom: 15px;
+        padding-top: 30px;
+    }
+
+    .images {
+        background: transparent;
+    }
+
+    .su_Register_btn {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .su_See_Jobs {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .content p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .msg_input {
+        padding: 16px 10px 14px 30px;
+    }
+
+    .subject_input {
+        padding: 16px 10px 14px 30px;
+    }
+
+    .su_textarea {
+        padding: 16px 10px 14px 30px;
+    }
+
+    .su_Send_width {
+        font-size: 22px !important;
+        line-height: 30px !important;
+    }
+
+    .address h5 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .su_Message {
+        font-size: 22px;
+        line-height: 30px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .su_phone_text {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .su_red_text_center {
+        font-weight: 500 !important;
+        font-size: 20px !important;
+        line-height: 30px !important;
+    }
+
+    .su_accordion_para {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .su_accordion_body {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .su_accordion_button {
+        font-size: 22px !important;
+        line-height: 30px !important;
+    }
+
+    .su_accordion_item {
+        padding: 2px 0px !important;
+    }
+
+    .su_accordion_button:not(.collapsed) {
+        font-size: 22px !important;
+        line-height: 30px !important;
+    }
+
+    .su_green_para {
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 30px;
+    }
+
+    .su_Contact_with {
+        margin-top: 30px;
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .four_section_top {
+        padding: 0px 20px;
+    }
+
+    .fifth_section {
+        padding: 0px 20px;
+    }
+
+    .content-top h1 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .content-top p {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .first-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .truck_imgone img {
+        width: 160px;
+    }
+
+    .truck_imgone {
+        left: 37%;
+        margin-top: -90px;
+    }
+
+    .su_form_card {
+        padding: 10px !important;
+    }
+
+    .su_form_section_padding {
+        margin-bottom: 160px !important;
+    }
+
+    /* sumit code end  */
+
     .form_pos {
         width: 91%;
         left: 4.5%;
@@ -421,6 +1022,13 @@
         background-position: 6.6%;
     }
 }
+
+@media only screen and (max-width: 400px){
+    .su_courier_white_bg {
+        width: 280px;
+    }
+}
+
 @media only screen and (max-width: 390px) {
     .truck_img img {
         width: 65%;
@@ -446,7 +1054,25 @@
         margin-top: 20px;
     }
 }
+
+ /* sumit code start   */
+@media screen and (max-width: 370px) {
+    .truck_imgone img {
+        width: 145px;
+    }
+
+    .truck_imgone {
+        left: 30%;
+        margin-top: -90px;
+    }
+}
+
+ /* sumit code end  */
+
 @media only screen and (max-width: 320px) {
+    .su_courier_white_bg {
+        width: 220px;
+    }
     .nav_circle {
         width: 22px;
         height: 22px;

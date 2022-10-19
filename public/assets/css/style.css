@@ -398,6 +398,7 @@ a {
     line-height: 36px;
     text-align: center;
     color: #FFFFFF;
+    margin-bottom: 0px;
 }
 
 .our_values_section h6 {
@@ -1705,13 +1706,14 @@ p.dis_content {
     font-size: 18px;
     line-height: 27px;
     color: #313131;
+    margin-bottom: 0px;
 }
 
 .su_container {
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -1951,7 +1953,7 @@ p.dis_content {
 .su_green_bg_with_col {
     background: #EEF8F0;
     border: 1px solid #D9D9D9;
-    padding: 65px 0px;
+    padding: 50px 0px;
 }
 
 .su_white_bg_img {
@@ -1964,6 +1966,9 @@ p.dis_content {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.su_white_bg_img img{
+    width: 100%;
 }
 
 .su_col_heading {
@@ -1979,6 +1984,7 @@ p.dis_content {
     font-size: 20px;
     line-height: 36px;
     text-align: center;
+    margin-bottom: 0px;
     color: #777777;
 }
 
@@ -2043,6 +2049,7 @@ p.dis_content {
     line-height: 43px !important;
     margin-left: 15px;
     margin-bottom: 0px;
+    width: 470px;
 }
 
 .su_Apply_Now {
@@ -2092,7 +2099,7 @@ p.dis_content {
 }
 
 .become_banner_section {
-    padding-bottom: 150px;
+    padding-bottom: 85px;
 }
 
 .su_main_top_bg {
@@ -2378,5 +2385,15 @@ p.dis_content {
     content: '.';
     width: 70px;
 }
+.su_white_bg_become{
+    width: 55.35px;
+    height: 55.35px;
+    background: #FFFFFF;
+    border-radius: 9.83104px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* sumit dashboard css end */

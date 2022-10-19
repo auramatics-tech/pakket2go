@@ -23,6 +23,9 @@ Route::prefix('{locale}')
             Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
+            Route::get('otp', [AuthenticatedSessionController::class, 'otp'])
+            ->name('otp');
+
             Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
             Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])

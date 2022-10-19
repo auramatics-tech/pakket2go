@@ -20,6 +20,11 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    public function otp()
+    {
+        return view('auth.otp');
+    }
+
     /**
      * Handle an incoming authentication request.
      *

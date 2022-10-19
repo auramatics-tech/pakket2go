@@ -39,9 +39,9 @@
     <section class="about_section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-12 ps-lg-5 text-center text-md-center text-lg-start mt-md-5">
+                <div class="col-lg-6 col-md-12 ps-lg-5 text-center text-md-center text-lg-start">
                     <div class="accordion su_accordion_padding" id="accordionExample">
-                        <h2 class="su_heading_accordion">General Questions</h2>
+                        <h2 class="su_heading_accordion mt-0">General Questions</h2>
                         <div class="accordion-item su_accordion_item">
                             <h2 class="accordion-header su_accordion_header" id="headingOne">
                                 <button class="accordion-button su_accordion_button" type="button"
@@ -53,16 +53,10 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body su_accordion_body">
-                                    <p class="su_accordion_para">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit.
-                                        Faucibus ?</p>
+                                   
                                     This is the first item's accordion body. It is shown by default, until
                                     the collapse plugin adds the appropriate classes that we use to style each element.
                                     These classes control the overall appearance, as well as the showing and hiding via
-                                    CSS
-                                    transitions. You can modify any of this with custom CSS or overriding our default
-                                    variables. It's also worth noting that just about any HTML can go within the
-                                    though the transition does limit overflow.
                                 </div>
                             </div>
                         </div>
@@ -77,13 +71,6 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body su_accordion_body">
-                                    <p class="su_accordion_para">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit.
-                                        Faucibus ?</p>
-                                    It is hidden by default,
-                                    until the collapse plugin adds the appropriate classes that we use to style each
-                                    element. These classes control the overall appearance, as well as the showing and
-                                    hiding
                                     via CSS transitions. You can modify any of this with custom CSS or overriding our
                                     default variables. It's also worth noting that just about any HTML can go within the
                                     though the transition does limit overflow.
@@ -101,15 +88,25 @@
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body su_accordion_body">
-                                    <p class="su_accordion_para">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit.
-                                        Faucibus ?</p>
                                     It is hidden by default, until
-                                    the collapse plugin adds the appropriate classes that we use to style each element.
-                                    These classes control the overall appearance, as well as the showing and hiding via
-                                    CSS
-                                    transitions. You can modify any of this with custom CSS or overriding our default
-                                    variables. It's also worth noting that just about any HTML can go within the
+                                    the collapse worth noting that just about any HTML can go within the
+                                    though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item su_accordion_item">
+                            <h2 class="accordion-header su_accordion_header" id="headingThree">
+                                <button class="su_accordion_button accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false"
+                                    aria-controls="collapse4">
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body su_accordion_body">
+                                    It is hidden by default, until
+                                    the collapse worth noting that just about any HTML can go within the
                                     though the transition does limit overflow.
                                 </div>
                             </div>
@@ -235,9 +232,9 @@
 
                             <div class="">
                                 <div class="d-lg-flex d-md-flex d-block justify-content-between">
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
-                                            <div class="su_white_bg">
+                                            <div class="su_white_bg_become">
                                                 <img src="{{ asset('assets/svg/Quick.svg') }}" alt="">
                                             </div>
                                         </div>
@@ -245,9 +242,9 @@
                                             <p class="su_Quick_Fast">Quick & Fast</p>
                                         </div>
                                     </div>
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
-                                            <div class="su_white_bg">
+                                            <div class="su_white_bg_become">
                                                 <img src="{{ asset('assets/svg/Safe.svg') }}" alt="">
                                             </div>
                                         </div>
@@ -257,9 +254,9 @@
                                     </div>
                                 </div>
                                 <div class="d-lg-flex d-md-flex d-block justify-content-between">
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
-                                            <div class="su_white_bg">
+                                            <div class="su_white_bg_become">
                                                 <img src="{{ asset('assets/svg/Hassle.svg') }}" alt="">
                                             </div>
                                         </div>
@@ -267,9 +264,9 @@
                                             <p class="su_Quick_Fast">Hassle Free</p>
                                         </div>
                                     </div>
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
-                                            <div class="su_white_bg">
+                                            <div class="su_white_bg_become">
                                                 <img src="{{ asset('assets/svg/Support3.svg') }}" alt="">
                                             </div>
                                         </div>
