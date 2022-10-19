@@ -91,7 +91,9 @@
                         <input type="hidden" name="country_code" value="91">
                         <div class="su_inputs_padding">
                             <p class="su_enter_pin_text">Enter the 4-digit PIN code we sent to the number:</p>
-                            <p class="su_phone_no">+31-64****017</p>
+                            <p class="su_phone_no">
+                                +{{ Session::get('country_code') }}-{{ substr(Session::get('phone_number'), 0, 2) }}****{{ substr(Session::get('phone_number'), -3) }}
+                            </p>
                             <form action="">
                                 <div class="d-flex">
                                     <div class="form-group my-4 mx-2">
@@ -110,18 +112,51 @@
                                         <input type="number" name="phone_number" id="" class="su_otp_inputs"
                                             placeholder="0">
                                     </div>
+                                    <div class="form-group my-4 mx-2">
+                                        <input type="number" name="phone_number" id="" class="su_otp_inputs"
+                                            placeholder="0">
+                                    </div>
+                                    <div class="form-group my-4 mx-2">
+                                        <input type="number" name="phone_number" id="" class="su_otp_inputs"
+                                            placeholder="0">
+                                    </div>
                                 </div>
                             </form>
+                            <span style="color: red; display:none;" id="valid_otp">Invalid OTP Number</span>
+                            <div id="recaptcha-container"></div>
                             <div>
-                                <button class="su_sign_btn" type="submit">Submit Code</button>
+                                <button class="su_sign_btn" type="button" onclick="codeverify()">Submit Code</button>
                             </div>
-                            <div class="text-center my-4">
-                                <p class="su_Join_now">Resent PIN in <span class="su_Join_now_span">
-                                        02:39</span></p>
+                            <div class="text-center my-4" id="su_Join_now_span">
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <input type="hidden" value="{{ Session::get('user_id') }}" id="user_id">
+        @php
+            $user = App\Models\User::find(Session::get('user_id'));
+        @endphp
+        <input type="hidden" value="{{ $user->otp_sent_at }}" id="otp_sent_at">
+    @endsection
+
+    @section('script')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.0.1/firebase.js"></script>
+        <script>
+            var phone_number = "{{ $user->country_code . $user->phone_number }}";
+            var first_otp = "{{ date('F d, Y H:i:s', strtotime('+5 mins')) }}"
+
+            var minutesToAdd = 1;
+            var currentDate = new Date();
+            var otp_sent_at = "{{ $user->otp_sent_at }}";
+            @if (!$user->otp_sent_at)
+                // Set the date we're counting down to
+                var countDownDate = new Date(currentDate.getTime() + minutesToAdd * 60000).getTime();
+            @else
+                var countDownDate = "{{ $user->otp_sent_at }}"
+            @endif
+        </script>
+        <script src="{{ asset('assets/js/otp.js') }}"></script>
     @endsection

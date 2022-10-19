@@ -10,6 +10,9 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+Route::post('update-otp', [RegisteredUserController::class, 'update_otp']);
+Route::post('verify-otp', [RegisteredUserController::class, 'verify_otp']);
+
 Route::prefix('{locale}')
     ->where(['locale' => '[a-zA-Z]{2}'])
     ->middleware('setlocale')
@@ -24,7 +27,7 @@ Route::prefix('{locale}')
                 ->name('login');
 
             Route::get('otp', [AuthenticatedSessionController::class, 'otp'])
-            ->name('otp');
+                ->name('otp');
 
             Route::post('login', [AuthenticatedSessionController::class, 'store']);
 

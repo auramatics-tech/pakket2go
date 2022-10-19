@@ -34,10 +34,10 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         // check if phone number is registered but not verified if not verified move to otp screen
-        $check = User::where(['country_code' => $request->country_code, 'phone_number' => $request->phone_number, 'phone_number_verified' => 0])->count();
-        if ($check) {
-            session(['country_code' => $request->country_code, 'phone_number' => $request->phone_number]);
-            return redirect()->route('otp')->with('phone_number', $request->country_code . $request->phone_number);
+        $check = User::where(['country_code' => $request->country_code, 'phone_number' => $request->phone_number, 'phone_number_verified' => 0])->first();
+        if (isset($check->id)) {
+            session(['user_id' => $check->id]);
+            return redirect()->route('otp');
         }
         if (isset($request->user_type) && $request->user_type == 'private') {
             $rules =  [
@@ -88,6 +88,30 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        session(['user_id' => $user->id]);
+
         return redirect()->route('otp')->with('phone_number', $request->country_code . $request->phone_number);
+    }
+
+    public function update_otp(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->otp_sent_at = $request->date;
+        $user->save();
+
+        return response()->json(['status' => 1]);
+    }
+
+
+
+    public function verify_otp(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->phone_number_verified = 1;
+        $user->save();
+
+        Auth::login($user);
+
+        return response()->json(['status' => 1]);
     }
 }
