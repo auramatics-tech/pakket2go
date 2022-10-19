@@ -45,10 +45,10 @@ class AuthController extends BaseController
         // $user->tokens()->delete();
 
         $success['id'] =  $user->id;
-        $success['token'] =  $user->createToken('questmath')->plainTextToken;
+        $success['token'] =  $user->createToken('pakket2go')->plainTextToken;
         $success['data'] =  $user;
 
-        return $this->sendResponse($success, 'Tutor login successfully.');
+        return $this->sendResponse($success, 'Login successfull.');
     }
 
     public function countries()

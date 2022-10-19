@@ -12,6 +12,8 @@ return [
     */
 
     'Home' => 'Home',
+    'How it Works' => 'How it Works',
+    'Become Courier' => 'Become Courier',
     'Login' => 'Login',
     'Your Best Choice in Netherland' => 'Your Best Choice in Netherland',
     'The easilest and most affordable way to transport any parcel regarding size' => 'The easilest and most affordable way to transport any parcel regarding size',

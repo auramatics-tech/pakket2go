@@ -11,8 +11,8 @@
 @section('content')
     <section class="first-section">
         <div class="container content-top text-center">
-            <h1>Learn how this Easy Process Works</h2>
-                <p>Arrange the transport of large items in three easy steps</p>
+            <h1>{{ __('htw.Learn how this Easy Process Works') }}</h2>
+                <p>{{ __('htw.Arrange the transport of large items in three easy steps') }}</p>
         </div>
     </section>
     <section class="second_section">
@@ -21,11 +21,8 @@
                 <div class="row su_row_padding">
                     <div class="col-lg-6 col-md-6 col-12 su_flex_align">
                         <div class="su_width">
-                            <h2>Post your order with Courier Details and
-                                Delivery Information</h2>
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend lacinia quam
-                                malesm orbi potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                                eleifend lacinia quam malesm.</span>
+                            <h2>{{ __('htw.step1_title') }}</h2>
+                            <span>{{ __('htw.step1_desc') }}</span>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
@@ -52,43 +49,16 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12 su_flex_align">
                         <div class="su_width">
-                            <h2>All couriers in the Neighborhood will
-                                see Your Parcel</h2>
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend lacinia quam
-                                malesm orbi potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                                eleifend lacinia quam malesm.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row su_row_padding d-lg-none d-md-none d-block">
-                    <div class="col-lg-6 col-md-6 col-12 su_flex_align">
-                        <div class="su_width">
-                            <h2>All couriers in the Neighborhood will
-                                see Your Parcel</h2>
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend lacinia quam
-                                malesm orbi potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                                eleifend lacinia quam malesm.</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="">
-                            <div class="su_position_left su_flex_end">
-                                <span class="badge su_badge">2</span>
-                            </div>
-                            <figure class="su_details">
-                                <img src="{{ asset('assets/png/location.png') }}" alt="details" style="width:100%">
-                            </figure>
+                            <h2>{{ __('htw.step2_title') }}</h2>
+                            <span>{{ __('htw.step2_desc') }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="row su_row_padding">
                     <div class="col-lg-6 col-md-6 col-12 su_flex_align">
                         <div class="su_width">
-                            <h2>First courier accepts it and picks up and
-                                Delivers Your Parcel</h2>
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend lacinia quam
-                                malesm orbi potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                                eleifend lacinia quam malesm.</span>
+                            <h2>{{ __('htw.step3_title') }}</h2>
+                            <span>{{ __('htw.step3_desc') }}</span>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
@@ -103,56 +73,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex">
-                                <div class="text_info">
-                                    <h2>Post your order with Courier Details and
-                                        Delivery Information</h2>
-                                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend lacinia quam
-                                        malesm orbi potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                                        eleifend lacinia quam malesm.</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex">
-                                <div class="text_info">
-                                    <figure class="details">
-                                        <img src="{{ asset('assets/png/details.png') }}" alt="details" style="width:90%">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex">
-                                <div class="text_info">
-                                    <figure class="location">
-                                        <img src="{{ asset('assets/png/location.png') }}" alt="location" style="width:90%">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex">
-                                <div class="text_info">
-                                    <h2>All couriers in the Neighborhood will
-                                        see Your Parcel</h2>
-                                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend lacinia quam
-                                        malesm orbi potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                                        eleifend lacinia quam malesm.</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex ">
-                                <div class="text_info">
-                                    <h2>First courier accepts it and picks up and
-                                        Delivers Your Parcel</h2>
-                                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend lacinia quam
-                                        malesm orbi potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                                        eleifend lacinia quam malesm.</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex ">
-                                <div class="text_info">
-                                    <figure class="deliver">
-                                        <img src="{{ asset('assets/png/details.png') }}" alt="deliver" style="width:90%">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div> -->
         </div>
     </section>
     <section class="third-section">

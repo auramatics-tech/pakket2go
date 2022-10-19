@@ -59,13 +59,12 @@
     @if (Route::is('booking'))
         @include('web.booking.layouts.header')
         @include('web.booking.layouts.steps')
-    @else
+    @elseif (!Route::is('login'))
         @include('web.layouts.header')
     @endif
-
     @yield('content')
 
-    @if (Route::is('booking'))
+    @if (!Route::is('booking') && !Route::is('login'))
         @include('web.layouts.footer')
     @endif
 
@@ -73,7 +72,7 @@
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
     <script>
-        console.log("{{ config('app.GOOGLE_SITE_KEY') }}","key")
+        console.log("{{ config('app.GOOGLE_SITE_KEY') }}", "key")
         var BASEURL = "{{ url('/') }}"
         var show_map = 0;
         $(document).on('click', '.registeration_type', function() {

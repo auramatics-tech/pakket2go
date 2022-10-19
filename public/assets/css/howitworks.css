@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Poppins&family=Roboto&display=swap');
+
+body {
+    font-family: "Poppins";
+    font-weight: inherit;
+    color: #000000;
+    font-size: 20px;
+    line-height: 38px;
+    width: 100%;
+    background: #FFFFFF;
+}
 
 .first-section {
     padding-top: 40px;
@@ -331,20 +344,20 @@
 
 .su_accordion_button {
     font-weight: 600 !important;
-    font-size: 25px !important;
-    line-height: 38px !important;
-    color: #000000 !important;
+    font-size: 20px !important;
+    line-height: 185.69% !important;
+    color: #777777 !important;
 }
 
 .su_accordion_item {
-    padding: 20px 0px;
+    padding: 12px 0px;
 }
 
 .su_accordion_button:not(.collapsed) {
-    color: #000000 !important;
     font-weight: 600 !important;
-    font-size: 25px !important;
-    line-height: 38px !important;
+    font-size: 20px !important;
+    line-height: 185.69% !important;
+    color: #777777 !important;
     background-color: #fff !important;
     box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color) !important;
 }
@@ -388,7 +401,7 @@ color: #01B537;
     align-items: center;
     background: url(../svg/msg.svg);
     background-repeat: no-repeat;
-    background-position: 2% center;
+    background-position: 3% center;
     padding: 16px 10px 14px 50px;
     border: 1px solid #D9D9D9;
     border-radius: 10px;
@@ -403,7 +416,7 @@ color: #01B537;
     align-items: center;
     background: url(../svg/subject.svg);
     background-repeat: no-repeat;
-    background-position: 2% center;
+    background-position: 3% center;
     padding: 16px 10px 14px 50px;
     border: 1px solid #D9D9D9;
     border-radius: 10px;
@@ -418,7 +431,7 @@ color: #01B537;
     align-items: center;
     background: url(../svg/textarea.svg);
     background-repeat: no-repeat;
-    background-position: 2% center;
+    background-position: 3% 18%;
     padding: 16px 10px 14px 50px;
     border: 1px solid #D9D9D9;
     border-radius: 10px;
@@ -434,7 +447,7 @@ color: #01B537;
 }
 
 .msg_input .code {
-    width: 150px;
+    width: 100%;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
@@ -458,7 +471,7 @@ color: #01B537;
 }
 
 .subject_input .code {
-    width: 70px;
+    width: 100%;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
@@ -522,222 +535,37 @@ textarea {
     border-radius: 20px;
 }
 .accordion-button::after {
-    background: url(../svg/open.svg) !important;
+    background: url(../svg/plus.svg) !important;
     background-repeat: no-repeat;
+    height: 25px !important;
+    width: 18px !important;
 }
-
-@media screen and (max-width: 1400px) {
-    .footer_list .child1 p {
-        width: auto;
-    }
-
-    .su_position_right {
-        top: 145px;
-    }
-
-    .su_position_left {
-        top: 150px;
-    }
+textarea {
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+    outline: none;
+  }
+  .su_textarea label{
+    width: 100%;
+  }
+  .subject_input label{
+    width: 100%;
+  }
+  .msg_input label{
+    width: 100%;
+  }
+.su_heading_accordion{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 38px;
+    color: #000000;
+    margin-top: 20px;
 }
-
-@media screen and (max-width: 1200px) {
-    .su_position_right {
-        top: 125px;
-    }
-
-    .su_position_left {
-        top: 125px;
-    }
-
-    .truck_imgone img {
-        width: 180px;
-    }
-
-    .truck_imgone {
-        margin-top: -110px;
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .su_Contact_with {
-        font-size: 31px;
-    }
-    .su_padding_input {
-        padding: 10px 0px;
-    }
-
-    .four_section_top .info,
-    .four_section_top .info {
-        padding: 15px 20px;
-    }
-
-    .su_position_right {
-        top: 92px;
-    }
-
-    .su_position_left {
-        top: 95px;
-        right: 50px;
-    }
-
-    .su_flex_align h2 {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
-
-    .su_flex_align span {
-        color: #898989;
-        font-weight: 300;
-        font-size: 12px;
-        line-height: 18px;
-    }
-
-    .content-top h1 {
-        font-size: 35px;
-    }
-
-    .first-section {
-        padding-top: 35px;
-        padding-bottom: 40px;
-    }
-
-    .su_badge {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .su_row_div_padding {
-        padding: 0px;
-    }
-
-    .su_row_padding {
-        padding: 40px 0px;
-    }
-
-    .su_position_right {
-        display: none;
-    }
-
-    .su_position_left {
-        display: none;
-    }
-
-    .su_details {
-        width: 100%;
-    }
-
-    .su_width {
-        width: 100%;
-    }
-
-}
-
-@media screen and (max-width: 480px) {
-    .su_Send_width {
-        font-size: 22px;
-        line-height: 30px;
-    }
-    .address h5 {
-        font-size: 22px;
-        line-height: 30px;
-    }
-    .su_Message {
-        font-size: 22px;
-        line-height: 30px;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .su_phone_text {
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .su_red_text_center {
-        font-weight: 500;
-        font-size: 15px;
-        line-height: 22px;
-    }
-    .su_accordion_para {
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 18px;
-    }
-    .su_accordion_body {
-        font-weight: 300;
-        font-size: 12px;
-        line-height: 18px;
-    }
-    .su_accordion_button {
-        font-size: 22px !important;
-        line-height: 30px !important;
-    }
-    .su_accordion_item {
-        padding: 2px 0px;
-    }
-    .su_accordion_button:not(.collapsed) {
-        font-size: 22px !important;
-        line-height: 30px !important;
-    }
-    .su_green_para {
-        font-size: 16px;
-        line-height: 25px;
-        margin-bottom: 30px;
-    }
-    .su_Contact_with {
-        margin-top: 30px;
-        font-size: 22px;
-        line-height: 30px;
-    }
-    .four_section_top {
-        padding: 0px 20px;
-    }
-
-    .fifth_section {
-        padding: 0px 20px;
-    }
-
-    .content-top h1 {
-        font-size: 22px;
-        line-height: 30px;
-    }
-
-    .content-top p {
-        font-size: 16px;
-        line-height: 25px;
-    }
-
-    .first-section {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .truck_imgone img {
-        width: 160px;
-    }
-
-    .truck_imgone {
-        left: 37%;
-        margin-top: -90px;
-    }
-    .su_form_card {
-        padding: 10px;
-    }
-    .su_form_section_padding {
-        margin-bottom: 160px;
-    }
-}
-
-@media screen and (max-width: 370px) {
-    .truck_imgone img {
-        width: 145px;
-    }
-
-    .truck_imgone {
-        left: 30%;
-        margin-top: -90px;
-    }
+.accordion-button:not(.collapsed)::after {
+    background: url(../svg/red\ neg.svg) !important;
+    height: 5px !important;
+    width: 15px !important;
 }
 
 /* su_css end */
