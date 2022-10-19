@@ -15,6 +15,7 @@ return [
     'How it Works' => 'Hoe het werkt',
     'Become Courier' => 'Koerier worden',
     'Login' => 'Inloggen',
+    'Register' => 'Inschrijven',
     'Your Best Choice in Netherland'=> 'Pakketjes verstuur je snel en gemakkelijk met Pakket2Go',
     'The easilest and most affordable way to transport any parcel regarding size'=> 'Jij hebt een pakketje, wij hebben koeriers!',
     'From'=> 'Van',

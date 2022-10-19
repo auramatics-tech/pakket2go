@@ -36,7 +36,7 @@
                     </li>
                     <li class="nav-item px-3">
                         @if(!Auth::check())
-                            <a class="nav-link text-white py-1" href="javascript:void(0);" onclick="modal_load('login')">{{ __('home.Login') }}</a>
+                            <a class="nav-link text-white py-1" href="{{ route('login') }}">{{ __('home.Login') }}</a>
                         @else
                             <a class="nav-link text-white py-1" href="{{ url('/home/dashboard') }}">Welkom {{ Auth::user()->first_name.' '.Auth::user()->last_name }}</a>
                         @endif

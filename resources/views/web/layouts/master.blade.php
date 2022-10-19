@@ -60,12 +60,12 @@
     @if (Route::is('booking'))
         @include('web.booking.layouts.header')
         @include('web.booking.layouts.steps')
-    @elseif (!Route::is('login'))
+    @elseif (!Route::is('login') && !Route::is('register') && !Route::is('otp'))
         @include('web.layouts.header')
     @endif
     @yield('content')
 
-    @if (!Route::is('booking') && !Route::is('login'))
+    @if (!Route::is('booking') && !Route::is('login') && !Route::is('register') && !Route::is('otp'))
         @include('web.layouts.footer')
     @endif
 

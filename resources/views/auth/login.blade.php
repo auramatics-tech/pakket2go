@@ -1,7 +1,7 @@
 @extends('web.layouts.master')
 
 @section('title')
-Pakket2Go
+Pakket2Go - Login
 @endsection
 
 @section('content')
@@ -126,8 +126,8 @@ Pakket2Go
                                 <button class="su_sign_btn" type="submit">Sign In</button>
                             </div>
                             <div class="text-center my-4">
-                                <p class="su_Join_now">Don't have an account? <span class="su_Join_now_span">Join
-                                        now</span></p>
+                                <p class="su_Join_now">Don't have an account? <a href="{{ route('register') }}" class="su_Join_now_span">Join
+                                        now</a></p>
                             </div>
                         </div>
                     </div>
