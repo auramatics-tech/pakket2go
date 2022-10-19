@@ -11,66 +11,68 @@ Pakket2Go
             <div class="su_side_color">
 
                 <div class="su_register_sidebar_padding">
-                    <div class="">
-                        <figure class="su_main_circle">
-                            <img src="{{ asset('assets/svg/white_circle.svg') }}" alt="">
-                        </figure>
-                        <figure class="text-center su_main_logo">
-                            <img src="{{ asset('assets/svg/Pakket2go.svg') }}" alt="logo">
-                        </figure>
-                        <h6 class="su_Your_Best">
-                            Your Best Choice in Netherland
-                        </h6>
-                        <p class="su_easilest">
-                            The easilest and most affordable way to transport any parcel regarding size
-                        </p>
-                        <div class="">
-                            <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                <div class="d-flex my-4">
-                                    <div>
-                                        <div class="su_white_bg">
-                                            <img src="{{ asset('assets/svg/Quick.svg') }}" alt="">
+                        <div class="su_position_white_arrow">
+                            <figure class="su_main_circle">
+                                <img src="{{ asset('assets/svg/white_circle.svg') }}" alt="">
+                            </figure>
+                        </div>
+                        <div>
+                            <figure class="text-center su_main_logo">
+                                <img src="{{ asset('assets/svg/Pakket2go.svg') }}" alt="logo">
+                            </figure>
+                            <h6 class="su_Your_Best">
+                                Your Best Choice in Netherland
+                            </h6>
+                            <p class="su_easilest">
+                                The easilest and most affordable way to transport any parcel regarding size
+                            </p>
+                            <div class="">
+                                <div class="d-lg-flex d-md-flex d-block justify-content-around">
+                                    <div class="d-flex my-4">
+                                        <div>
+                                            <div class="su_white_bg">
+                                                <img src="{{ asset('assets/svg/Quick.svg') }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="flex_align_end">
+                                            <p class="su_Quick_Fast">Quick & Fast</p>
                                         </div>
                                     </div>
-                                    <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Quick & Fast</p>
+                                    <div class="d-flex my-4">
+                                        <div>
+                                            <div class="su_white_bg">
+                                                <img src="{{ asset('assets/svg/Safe.svg') }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="flex_align_end">
+                                            <p class="su_Quick_Fast">Safe & Secure</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="d-flex my-4">
-                                    <div>
-                                        <div class="su_white_bg">
-                                            <img src="{{ asset('assets/svg/Safe.svg') }}" alt="">
+                                <div class="d-lg-flex d-md-flex d-block justify-content-around">
+                                    <div class="d-flex my-4">
+                                        <div>
+                                            <div class="su_white_bg">
+                                                <img src="{{ asset('assets/svg/Hassle.svg') }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="flex_align_end">
+                                            <p class="su_Quick_Fast">Hassle Free</p>
                                         </div>
                                     </div>
-                                    <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Safe & Secure</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                <div class="d-flex my-4">
-                                    <div>
-                                        <div class="su_white_bg">
-                                            <img src="{{ asset('assets/svg/Hassle.svg') }}" alt="">
+                                    <div class="d-flex my-4">
+                                        <div>
+                                            <div class="su_white_bg">
+                                                <img src="{{ asset('assets/svg/Support3.svg') }}" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Hassle Free</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex my-4">
-                                    <div>
-                                        <div class="su_white_bg">
-                                            <img src="{{ asset('assets/svg/Support3.svg') }}" alt="">
+                                        <div class="flex_align_end">
+                                            <p class="su_Quick_Fast">24 / 7 Support</p>
                                         </div>
-                                    </div>
-                                    <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">24 / 7 Support</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

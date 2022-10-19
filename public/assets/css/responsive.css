@@ -46,6 +46,10 @@
 
      /* sumit code start   */
 
+     .su_icons_text_adjust {
+        inline-size: 130px;
+    }
+
      .footer_list .child1 p {
          width: auto;
      }
@@ -126,6 +130,9 @@
  /* sumit code start   */
 
  @media screen and (max-width: 1200px) {
+    .su_icons_text_adjust {
+        inline-size: 110px;
+    }
      .flex_align_end {
          margin-left: 10px;
      }

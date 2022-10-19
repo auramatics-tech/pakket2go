@@ -1573,6 +1573,25 @@ p.dis_content {
 
 .su_register_sidebar_padding {
     padding: 50px 42px 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+.su_sign_up_align{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+.su_position_2_btns{
+    position: absolute;
+    top: 0;
+    left: 67%;
+}
+.su_position_white_arrow{
+    position: absolute;
+    top: 10%;
 }
 
 .su_Your_Best {
@@ -2427,6 +2446,7 @@ color: #01B537;
     outline: none !important;
 }
 .su_icons_text_adjust{
-    word-wrap: break-word;
+    inline-size: 150px; 
+    overflow: hidden;
 }
 /* sumit dashboard css end */
