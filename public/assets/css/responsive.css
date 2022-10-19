@@ -1,1083 +1,1180 @@
  /* sumit code start   */
-@media screen and (max-width: 1700px) {
-    .su_side_margin {
-        margin-left: 30px;
-    }
-}
+ @media screen and (max-width: 1700px) {
+     .su_side_margin {
+         margin-left: 30px;
+     }
+ }
 
-@media screen and (max-width: 1600px) {
-    .su_inputs_padding {
-        padding: 0px 30px;
-    }
-    .su_side_img {
-        width: 280px;
-    }
+ @media screen and (max-width: 1600px) {
+     .su_inputs_padding {
+         padding: 0px 30px;
+     }
 
-    .su_side_img img {
-        width: 100%;
-        height: 100%;
-    }
-}
+     .su_side_img {
+         width: 280px;
+     }
 
-@media screen and (max-width: 1500px) {
- 
-    .su_side_img {
-        width: 240px;
-    }
+     .su_side_img img {
+         width: 100%;
+         height: 100%;
+     }
+ }
 
-    .su_col_padding {
-        padding: 15px 50px 0px 50px;
-    }
+ @media screen and (max-width: 1500px) {
 
-    .su_sign_in_form_padding {
-        padding: 0px 100px;
-    }
-}
-/* sumit css end  */
-@media only screen and (max-width: 1440px) {
-    .form_pos {
-        position: absolute;
-        width: 83%;
-        left: 8.6%;
-        margin-top: 25px;
-    }
+     .su_side_img {
+         width: 240px;
+     }
+
+     .su_col_padding {
+         padding: 15px 50px 0px 50px;
+     }
+
+     .su_sign_in_form_padding {
+         padding: 0px 100px;
+     }
+ }
+
+ /* sumit css end  */
+ @media only screen and (max-width: 1440px) {
+     .form_pos {
+         position: absolute;
+         width: 83%;
+         left: 8.6%;
+         margin-top: 25px;
+     }
+
      /* sumit code start   */
 
-    .footer_list .child1 p {
-        width: auto;
-    }
+     .footer_list .child1 p {
+         width: auto;
+     }
 
-    .su_position_right {
-        top: 145px;
-    }
+     .su_position_right {
+         top: 145px;
+     }
 
-    .su_position_left {
-        top: 150px;
-    }
-    /* sumit css end  */
-}
-@media only screen and (max-width: 1366px) {
-    .calculate {
-        padding: 12px 40px;
-    }
-    .form_pos {
-        position: absolute;
-        width: 70%;
-        left: 15%;
-        margin-top: 25px;
-    }
-    .top_div {
-        background-position: 2.7%;
-    }
-}
-@media only screen and (max-width: 1280px) {
+     .su_position_left {
+         top: 150px;
+     }
 
-    .mobile figure,
-    .footer_list .child1 p {
-        width: 100%;
-    }
-}
+     /* sumit css end  */
+ }
+
+ @media only screen and (max-width: 1366px) {
+     .calculate {
+         padding: 12px 40px;
+     }
+
+     .form_pos {
+         position: absolute;
+         width: 70%;
+         left: 15%;
+         margin-top: 25px;
+     }
+
+     .top_div {
+         background-position: 2.7%;
+     }
+ }
+
+ @media only screen and (max-width: 1280px) {
+
+     .mobile figure,
+     .footer_list .child1 p {
+         width: 100%;
+     }
+ }
 
  /* sumit code start  */
-@media screen and (max-width: 1300px) {
-    .su_side_margin {
-        margin-left: 10px;
-    }
+ @media screen and (max-width: 1300px) {
+     .su_side_margin {
+         margin-left: 10px;
+     }
 
-    .su_register_sidebar {
-        height: 950px;
-    }
+     .su_register_sidebar {
+         height: 950px;
+     }
 
-    .su_side_img {
-        width: 180px;
-    }
+     .su_side_img {
+         width: 180px;
+     }
 
-    .su_col_padding {
-        padding: 0px 20px;
-    }
+     .su_col_padding {
+         padding: 0px 20px;
+     }
 
-    .su_inputs_padding {
-        padding: 0px 30px;
-    }
+     .su_inputs_padding {
+         padding: 0px 30px;
+     }
 
-    .su_sign_in_form_padding {
-        padding: 0px 60px;
-    }
-}
-
-/* sumit code end  */
-
-@media only screen and (max-width: 1280px) {
-
-    .mobile figure,
-    .footer_list .child1 p {
-        width: 100%;
-    }
-}
-
- /* sumit code start   */
-
-@media screen and (max-width: 1200px) {
-    .flex_align_end {
-        margin-left: 10px;
-    }
-    .su_courier_white_bg {
-        width: 380px;
-    }
-    .su_position_right {
-        top: 125px;
-    }
-
-    .su_position_left {
-        top: 125px;
-    }
-
-    .truck_imgone img {
-        width: 180px;
-    }
-
-    .truck_imgone {
-        margin-top: -110px;
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    .su_register_sidebar_padding {
-        padding: 50px 15px 50px 15px;
-    }
-
-    .su_side_img {
-        width: 150px;
-    }
-
-    .su_sign_in_form_padding {
-        padding: 0px 25px;
-    }
-
-    .flex_align_end {
-        margin-left: 15px;
-    }
-}
+     .su_sign_in_form_padding {
+         padding: 0px 60px;
+     }
+ }
 
  /* sumit code end  */
 
-@media only screen and (max-width: 1024px) {
-    .top_div {
-        background-position: 3.7%;
-    }
-    .calculate {
-        padding: 12px 20px;
-    }
-    .truck_img {
-        left: 42%;
-        margin-top: -90px;
-    }
+ @media only screen and (max-width: 1280px) {
 
-    .truck_img img {
-        width: 80%
-    }
+     .mobile figure,
+     .footer_list .child1 p {
+         width: 100%;
+     }
+ }
 
-    .calculate {
-        margin-left: 1rem;
-    }
+ /* sumit code start   */
 
-    .dflex {
-        display: flex;
-        align-items: center;
-        justify-items: center;
-    }
+ @media screen and (max-width: 1200px) {
+     .flex_align_end {
+         margin-left: 10px;
+     }
 
-    .mobile figure {
-        height: auto;
-    }
+     .su_courier_white_bg {
+         width: 380px;
+     }
 
-    .play_content {
-        width: 100%;
-    }
-}
+     .su_position_right {
+         top: 125px;
+     }
 
-@media only screen and (max-width: 991px) {
+     .su_position_left {
+         top: 125px;
+     }
+
+     .truck_imgone img {
+         width: 180px;
+     }
+
+     .truck_imgone {
+         margin-top: -110px;
+     }
+ }
+
+ @media screen and (max-width: 1100px) {
+     .su_register_sidebar_padding {
+         padding: 50px 15px 50px 15px;
+     }
+
+     .su_side_img {
+         width: 150px;
+     }
+
+     .su_sign_in_form_padding {
+         padding: 0px 25px;
+     }
+
+     .flex_align_end {
+         margin-left: 15px;
+     }
+ }
+
+ /* sumit code end  */
+
+ @media only screen and (max-width: 1024px) {
+     .top_div {
+         background-position: 3.7%;
+     }
+
+     .calculate {
+         padding: 12px 20px;
+     }
+
+     .truck_img {
+         left: 42%;
+         margin-top: -90px;
+     }
+
+     .truck_img img {
+         width: 80%
+     }
+
+     .calculate {
+         margin-left: 1rem;
+     }
+
+     .dflex {
+         display: flex;
+         align-items: center;
+         justify-items: center;
+     }
+
+     .mobile figure {
+         height: auto;
+     }
+
+     .play_content {
+         width: 100%;
+     }
+ }
+
+ @media only screen and (max-width: 991px) {
+
      /* sumit code start   */
      .su_courier_white_bg {
-        width: auto;
-    }
+         width: auto;
+     }
+
      .su_main_circle img {
-        margin-bottom: 10px;
-    }
-    .data_textarea {
-        width: 100%;
-    }
+         margin-bottom: 10px;
+     }
 
-    .su_side_color {
-        height: auto;
-    }
+     .data_textarea {
+         width: 100%;
+     }
 
-    .su_side_margin {
-        margin-left: 0px;
-    }
-    .su_Contact_with {
-        font-size: 31px;
-    }
-    .su_padding_input {
-        padding: 10px 0px;
-    }
+     .su_side_color {
+         height: auto;
+     }
 
-    .four_section_top .info,
-    .four_section_top .info {
-        padding: 15px 20px;
-    }
+     .su_side_margin {
+         margin-left: 0px;
+     }
 
-    .su_position_right {
-        top: 92px;
-    }
+     .su_Contact_with {
+         font-size: 31px;
+     }
 
-    .su_position_left {
-        top: 95px;
-        right: 50px;
-    }
+     .su_padding_input {
+         padding: 10px 0px;
+     }
 
-    .su_flex_align h2 {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
+     .four_section_top .info,
+     .four_section_top .info {
+         padding: 15px 20px;
+     }
 
-    .su_flex_align span {
-        color: #898989;
-        font-weight: 300;
-        font-size: 12px;
-        line-height: 18px;
-    }
+     .su_position_right {
+         top: 92px;
+     }
 
-    .content-top h1 {
-        font-size: 35px;
-    }
+     .su_position_left {
+         top: 95px;
+         right: 50px;
+     }
 
-    .first-section {
-        padding-top: 35px;
-        padding-bottom: 40px;
-    }
+     .su_flex_align h2 {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .su_badge {
-        width: 40px;
-        height: 40px;
-    }
+     .su_flex_align span {
+         color: #898989;
+         font-weight: 300;
+         font-size: 12px;
+         line-height: 18px;
+     }
+
+     .content-top h1 {
+         font-size: 35px;
+     }
+
+     .first-section {
+         padding-top: 35px;
+         padding-bottom: 40px;
+     }
+
+     .su_badge {
+         width: 40px;
+         height: 40px;
+     }
 
      /* sumit code end  */
 
-    .form_pos {
-        width: 83%;
-        left: 8%;
-    }
-    .info_section_top>.container {
-        max-width: 95%;
-    }
+     .form_pos {
+         width: 83%;
+         left: 8%;
+     }
 
-    .step_section {
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
+     .info_section_top>.container {
+         max-width: 95%;
+     }
 
-    .w-md-80 {
-        width: 80% !important;
-    }
+     .step_section {
+         padding-top: 30px;
+         padding-bottom: 30px;
+     }
 
-    .wf-35 {
-        width: 100%;
-    }
+     .w-md-80 {
+         width: 80% !important;
+     }
 
-    .wf-25 {
-        width: 100%;
-    }
+     .wf-35 {
+         width: 100%;
+     }
 
-    .calculate {
-        margin-left: 0px;
-        width: 100%;
-        justify-content: center;
-        padding: 12px 16px;
-    }
+     .wf-25 {
+         width: 100%;
+     }
 
-    .border-right {
-        border-right: 0;
-        border-bottom: 2px solid #D9D9D9;
-    }
+     .calculate {
+         margin-left: 0px;
+         width: 100%;
+         justify-content: center;
+         padding: 12px 16px;
+     }
 
-    .info_section_top .form-group {
-        padding-top: 16px;
-        padding-bottom: 16px;
-    }
+     .border-right {
+         border-right: 0;
+         border-bottom: 2px solid #D9D9D9;
+     }
 
-    .badge span {
-        white-space: break-spaces;
-    }
+     .info_section_top .form-group {
+         padding-top: 16px;
+         padding-bottom: 16px;
+     }
 
-    .play_section .badge p {
-        white-space: break-spaces;
-        margin-top: 20px;
-    }
+     .badge span {
+         white-space: break-spaces;
+     }
 
-    .appstore_btn figure,
-    .appstore_btn2 figure {
-        width: 20px;
-    }
+     .play_section .badge p {
+         white-space: break-spaces;
+         margin-top: 20px;
+     }
 
-    .appstore_btn figure img,
-    .appstore_btn2 figure img {
-        width: 100%;
-    }
+     .appstore_btn figure,
+     .appstore_btn2 figure {
+         width: 20px;
+     }
 
-    .content p {
-        font-size: 18px;
-        line-height: 30px;
-    }
+     .appstore_btn figure img,
+     .appstore_btn2 figure img {
+         width: 100%;
+     }
 
-    .width-lg {
-        width: 100%;
-    }
+     .content p {
+         font-size: 18px;
+         line-height: 30px;
+     }
 
-    .info_section_top form b, .info_section_top form .ad_input,
-    .about_section p, .our_values_section p, .play_section p {
-        font-size: 16px;
-        line-height: 28px;
-    }
+     .width-lg {
+         width: 100%;
+     }
 
-    .play_section .badge p, .footer_list .child1 p, .footer_list .child2 ul li a, .footer_list .child3 ul li a, .footer_list .child4 ul li a {
-        font-size: 14px;
-        line-height: 24px;
-    }
+     .info_section_top form b,
+     .info_section_top form .ad_input,
+     .about_section p,
+     .our_values_section p,
+     .play_section p {
+         font-size: 16px;
+         line-height: 28px;
+     }
 
-    .mobile figure, .footer_list .child1 p {
-        width: 80%;
-    }
+     .play_section .badge p,
+     .footer_list .child1 p,
+     .footer_list .child2 ul li a,
+     .footer_list .child3 ul li a,
+     .footer_list .child4 ul li a {
+         font-size: 14px;
+         line-height: 24px;
+     }
 
-    .navbar-toggler-icon {
-        background-image: url(../svg/bar.svg) !important;
-        background-size: 123% !important;
-    }
+     .mobile figure,
+     .footer_list .child1 p {
+         width: 80%;
+     }
 
-    .navbar-toggler {
-        border-color: #fff !important;
-        border-width: 2PX !important;
-    }
+     .navbar-toggler-icon {
+         background-image: url(../svg/bar.svg) !important;
+         background-size: 123% !important;
+     }
 
-    .navbar-toggler:focus {
-        box-shadow: 0 0 0 !important;
-    }
+     .navbar-toggler {
+         border-color: #fff !important;
+         border-width: 2PX !important;
+     }
 
-    #menu_items {
-        background-color: #fff;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        top: 72px;
-        padding: 2rem 3rem;
-        z-index: 3;
-    }
+     .navbar-toggler:focus {
+         box-shadow: 0 0 0 !important;
+     }
 
-    ul.navbar-nav {
-        justify-content: left;
-    }
+     #menu_items {
+         background-color: #fff;
+         position: absolute;
+         width: 100%;
+         left: 0;
+         top: 72px;
+         padding: 2rem 3rem;
+         z-index: 3;
+     }
 
-    .nav-item a {
-        color: #000000 !important;
-        font-weight: 400;
-    }
+     ul.navbar-nav {
+         justify-content: left;
+     }
 
-    .nav-item a, .nav-item.active a {
-        text-align: left;
-    }
+     .nav-item a {
+         color: #000000 !important;
+         font-weight: 400;
+     }
 
-    .nav-item.active a {
-        color: #01B537 !important;
-        font-size: 20px;
-    }
+     .nav-item a,
+     .nav-item.active a {
+         text-align: left;
+     }
 
-    #menu_items .nav-item {
-        margin-bottom: 1rem;
-    }
+     .nav-item.active a {
+         color: #01B537 !important;
+         font-size: 20px;
+     }
 
-    #menu_items .nav-item:last-child {
-        margin-bottom: 0rem;
-    }
+     #menu_items .nav-item {
+         margin-bottom: 1rem;
+     }
 
-    .nav-item.active .active_dot {
-        display: none;
-    }
-}
+     #menu_items .nav-item:last-child {
+         margin-bottom: 0rem;
+     }
+
+     .nav-item.active .active_dot {
+         display: none;
+     }
+ }
 
  /* sumit code start   */
-@media screen and (max-width: 768px) {
-    .su_side_img {
-        width: 190px;
-        margin: auto;
-    }
+ @media screen and (max-width: 768px) {
+     .su_side_img {
+         width: 190px;
+         margin: auto;
+     }
 
-    .su_register_sidebar {
-        height: auto;
-    }
+     .su_register_sidebar {
+         height: auto;
+     }
 
-    .su_Sign_In {
-        width: 60%;
-    }
-    .su_row_div_padding {
-        padding: 0px;
-    }
+     .su_Sign_In {
+         width: 60%;
+     }
 
-    .su_row_padding {
-        padding: 40px 0px;
-    }
+     .su_row_div_padding {
+         padding: 0px;
+     }
 
-    .su_position_right {
-        display: none;
-    }
+     .su_row_padding {
+         padding: 40px 0px;
+     }
 
-    .su_position_left {
-        display: none;
-    }
+     .su_position_right {
+         display: none;
+     }
 
-    .su_details {
-        width: 100%;
-    }
+     .su_position_left {
+         display: none;
+     }
 
-    .su_width {
-        width: 100%;
-    }
-}
+     .su_details {
+         width: 100%;
+     }
+
+     .su_width {
+         width: 100%;
+     }
+ }
 
  /* sumit code end  */
 
-@media only screen and (max-width: 767px) {
-    .logo_cls{
-        display: none;
-    }
-    .mobile_build {
-        background-image: url(../img/mobile_build.png);
-        background-repeat: no-repeat;
-        height: 200px;
-        width: 100%;
-        background-size: 100%;
-    }
+ @media only screen and (max-width: 767px) {
+     .logo_cls {
+         display: none;
+     }
 
-    .banner-section {
-        padding-bottom: 110px;
-    }
+     .mobile_build {
+         background-image: url(../img/mobile_build.png);
+         background-repeat: no-repeat;
+         height: 200px;
+         width: 100%;
+         background-size: 100%;
+     }
 
-    .truck_img {
-        left: 34%;
-        margin-top: -130px;
-    }
+     .banner-section {
+         padding-bottom: 110px;
+     }
 
-    .data_list {
-        margin-left: 12px;
-    }
+     .truck_img {
+         left: 34%;
+         margin-top: -130px;
+     }
 
-    .play_section .badge p {
-        white-space: inherit;
-        margin-top: 0;
-    }
+     .data_list {
+         margin-left: 12px;
+     }
 
-    .flxDirection {
-        flex-direction: column-reverse;
-    }
+     .play_section .badge p {
+         white-space: inherit;
+         margin-top: 0;
+     }
 
-    .mobile figure {
-        margin-left: auto;
-        margin-right: auto;
-    }
+     .flxDirection {
+         flex-direction: column-reverse;
+     }
 
-    .play_section .dflex {
-        flex-direction: column;
-        margin-bottom: 1.5rem
-    }
+     .mobile figure {
+         margin-left: auto;
+         margin-right: auto;
+     }
 
-    .badge {
-        width: fit-content;
-        padding-right: 1rem !important;
-        margin-left: auto;
-        margin-right: auto;
-    }
+     .play_section .dflex {
+         flex-direction: column;
+         margin-bottom: 1.5rem
+     }
 
-    .mob_align {
-        text-align: center;
-    }
+     .badge {
+         width: fit-content;
+         padding-right: 1rem !important;
+         margin-left: auto;
+         margin-right: auto;
+     }
 
-    .footer_bottom p {
-        font-size: 14px;
-        line-height: 24px;
-    }
+     .mob_align {
+         text-align: center;
+     }
 
-    .navbar-brand figure {
-        width: 141px;
-        height: 40px;
-    }
+     .footer_bottom p {
+         font-size: 14px;
+         line-height: 24px;
+     }
 
-    .navbar-brand figure img {
-        width: 100%;
-    }
+     .navbar-brand figure {
+         width: 141px;
+         height: 40px;
+     }
 
-    .navbar-toggler-icon {
-        width: 1em !important;
-    }
+     .navbar-brand figure img {
+         width: 100%;
+     }
 
-    .justify-content-sm-center {
-        justify-content: center !important;
-    }
+     .navbar-toggler-icon {
+         width: 1em !important;
+     }
 
-    #menu_items .nav-item {
-        margin-bottom: 0.50rem;
-    }
+     .justify-content-sm-center {
+         justify-content: center !important;
+     }
 
-    #menu_items .nav-item:last-child {
-        margin-bottom: 0.50rem;
-    }
+     #menu_items .nav-item {
+         margin-bottom: 0.50rem;
+     }
 
-    .lang_toggle {
-        border: 1px solid #D9D9D9;
-        width: 167px;
-    }
+     #menu_items .nav-item:last-child {
+         margin-bottom: 0.50rem;
+     }
 
-    .content h1 {
-        font-size: 32px;
-        line-height: 45px;
-    }
+     .lang_toggle {
+         border: 1px solid #D9D9D9;
+         width: 167px;
+     }
 
-    .our_values_section h2 {
-        font-size: 30px;
-    }
+     .content h1 {
+         font-size: 32px;
+         line-height: 45px;
+     }
 
-    #main_footer {
-        padding-top: 100px;
-    }
-    .child1 {
-        margin-bottom: 1rem;
-    }
-    .mobile figure, .footer_list .child1 p {
-        width: 100%;
-    }
-    .our_values_section figure{
-        width: 70px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .our_values_section figure img{
-        width: 100%;
-    }
-    .mob_px{
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-    #sub_header figure img{
-        width: 20px;
-    }
-    #sub_header figure img:first-child{
-        margin-top:-2px;
-    }
-    .form_pos {
-        width: 65%;
-        left: 17.5%;
-    }
-    .top_div {
-        background-position: 5.6%;
-    }
-    
-}
-@media only screen and (max-width: 600px) {
-    .form_pos {
-        width: 80.3%;
-        left: 9.5%;
-    }
-}
-@media only screen and (max-width: 480px) {
+     .our_values_section h2 {
+         font-size: 30px;
+     }
+
+     #main_footer {
+         padding-top: 100px;
+     }
+
+     .child1 {
+         margin-bottom: 1rem;
+     }
+
+     .mobile figure,
+     .footer_list .child1 p {
+         width: 100%;
+     }
+
+     .our_values_section figure {
+         width: 70px;
+         margin-left: auto;
+         margin-right: auto;
+     }
+
+     .our_values_section figure img {
+         width: 100%;
+     }
+
+     .mob_px {
+         padding-left: 0 !important;
+         padding-right: 0 !important;
+     }
+
+     #sub_header figure img {
+         width: 20px;
+     }
+
+     #sub_header figure img:first-child {
+         margin-top: -2px;
+     }
+
+     .form_pos {
+         width: 65%;
+         left: 17.5%;
+     }
+
+     .top_div {
+         background-position: 5.6%;
+     }
+
+ }
+
+ @media only screen and (max-width: 600px) {
+     .form_pos {
+         width: 80.3%;
+         left: 9.5%;
+     }
+ }
+
+ @media only screen and (max-width: 480px) {
+
      /* sumit code start  */
+     .su_icons_text_adjust {
+        width: auto;
+    }
      .su_Message {
-        font-size: 23.2169px !important;
-        line-height: 31px !important;
-    }
+         font-size: 23.2169px !important;
+         line-height: 31px !important;
+     }
+
      .su_phone_text {
-        font-size: 20px !important;
-        line-height: 30px !important;
-    }
+         font-size: 20px !important;
+         line-height: 30px !important;
+     }
+
      .su_accordion_body {
-        font-weight: 400 !important;
-        font-size: 16px !important;
-        line-height: 185.69% !important;
-        color: #313131 !important;
-    }
-    
+         font-weight: 400 !important;
+         font-size: 16px !important;
+         line-height: 185.69% !important;
+         color: #313131 !important;
+     }
+
      .su_Contact_with {
-        margin-top: 30px !important;
-        font-weight: 500 !important;
-        font-size: 20px !important;
-        line-height: 30px !important;
-    }
-    .su_green_para {
-        margin-bottom: 30px !important;
-        font-weight: 400 !important;
-        font-size: 14px !important;
-        line-height: 21px !important;
-    }
+         margin-top: 30px !important;
+         font-weight: 500 !important;
+         font-size: 20px !important;
+         line-height: 30px !important;
+     }
+
+     .su_green_para {
+         margin-bottom: 30px !important;
+         font-weight: 400 !important;
+         font-size: 14px !important;
+         line-height: 21px !important;
+     }
+
      .su_accordion_item {
-        padding: 0px 0px;
-    }
+         padding: 0px 0px;
+     }
+
      .su_courier_white_bg {
-        width: 300px;
-    }
+         width: 300px;
+     }
+
      .su_inputs_padding {
-        padding: 0px 15px;
-    }
+         padding: 0px 15px;
+     }
+
      .su_easilest {
-        font-weight: 300;
-        font-size: 12px;
-        line-height: 18px;
-        margin-bottom: 30px;
-    }
+         font-weight: 300;
+         font-size: 12px;
+         line-height: 18px;
+         margin-bottom: 30px;
+     }
+
      .su_Your_Best {
-        font-weight: 500;
-        font-size: 17px;
-        line-height: 26px;
-    }
+         font-weight: 500;
+         font-size: 17px;
+         line-height: 26px;
+     }
+
      .su_text_Sign_In {
-        font-weight: 500;
-        font-size: 17px;
-        line-height: 26px;
-        margin-bottom: 20px;
-    }
+         font-weight: 500;
+         font-size: 17px;
+         line-height: 26px;
+         margin-bottom: 20px;
+     }
+
      .su_Join_now {
-        font-weight: 500;
-        font-size: 15px;
-        line-height: 22px;
-    }
+         font-weight: 500;
+         font-size: 15px;
+         line-height: 22px;
+     }
+
      .su_Join_now_span {
-        font-weight: 500;
-        font-size: 15px;
-        line-height: 22px;
-    }
+         font-weight: 500;
+         font-size: 15px;
+         line-height: 22px;
+     }
+
      .su_Forgot_password {
-        font-weight: 500;
-        font-size: 15px;
-        line-height: 22px;
-    }
+         font-weight: 500;
+         font-size: 15px;
+         line-height: 22px;
+     }
+
      .su_checkbox_text {
-        font-weight: 500;
-        font-size: 15px;
-        line-height: 22px;
-    }
-    
-    
+         font-weight: 500;
+         font-size: 15px;
+         line-height: 22px;
+     }
+
+
      .su_sign_btn {
-        padding: 10px 50px;
-    }
-    
-    .su_white_bg_img img{
-        width: 100%;
-        height: 100%;
-    }
-    .su_green_bg_with_col {
-        padding: 45px 0px;
-    }
-    .su_See {
+         padding: 10px 50px;
+         font-weight: 600;
+         font-size: 15px;
+         line-height: 22px;
+     }
+
+     .su_white_bg_img img {
+         width: 100%;
+         height: 100%;
+     }
+
+     .su_green_bg_with_col {
+         padding: 45px 0px;
+     }
+
+     .su_See {
         font-weight: 500;
         font-size: 20px;
         line-height: 30px;
-    }
-    .su_Apply_Now {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .su_become_courier {
-        font-weight: 500 !important;
-        font-size: 20px !important;
-        line-height: 30px !important;
-    }
-    .su_register_sidebar_padding {
-        padding: 15px 15px 15px 20px;
-    }
-    .su_main_logo_become {
-        width: 250px !important;
-    }
-    .su_carousal {
-        padding: 25px 0px;
-    }
-    .su_carousal_img_ste{
-        width: 300px;
-    height: 300px;
-    margin: auto;
-    }
-    .su_Featured_Partners {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .su_white_bg_img {
-        width: 180px;
-        height: 180px;
-    }
-    .su_col_para {
-        font-size: 16px;
-        line-height: 28px;
-    }
-    .su_col_heading {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .about_section {
-        padding-top: 20px;
-        padding-bottom: 25px;
-    }
+        margin-left: 0px;
+        margin-top: 15px;
+     }
 
-    .about_section h2 {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
+     .su_Apply_Now {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+         padding: 7px 20px;
+     }
 
-    .su_content_payment {
-        padding: 10px 10px;
-    }
+     .su_become_courier {
+         font-weight: 500 !important;
+         font-size: 20px !important;
+         line-height: 30px !important;
+     }
 
-    .data_textarea {
-        width: 100%;
-    }
+     .su_register_sidebar_padding {
+         padding: 15px 15px 15px 20px;
+     }
 
-    .su_col_padding {
-        padding: 20px 0px;
-    }
+     .su_main_logo_become {
+         width: 250px !important;
+     }
 
-    .su_side_margin {
-        margin: auto;
-    }
+     .su_carousal {
+         padding: 25px 0px;
+     }
 
-    .su_sign_in_form_padding {
-        padding: 0px 5px;
-    }
+     .su_carousal_img_ste {
+         width: 300px;
+         height: 300px;
+         margin: auto;
+     }
 
-    .su_register_card {
-        padding: 20px 15px 20px 15px;
-    }
+     .su_Featured_Partners {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .radio_style {
-        padding: 1px;
-    }
+     .su_white_bg_img {
+         width: 180px;
+         height: 180px;
+     }
 
-    .radio_style label {
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 24px;
-        padding: 5px 20px;
-    }
+     .su_col_para {
+         font-size: 16px;
+         line-height: 28px;
+     }
 
-    .su_button_padding {
-        padding: 0px 60px;
-    }
+     .su_col_heading {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .su_Sign_In {
-        width: 100%;
-        padding: 8px 40px;
-    }
+     .about_section {
+         padding-top: 20px;
+         padding-bottom: 25px;
+     }
 
-    .su_Quick_Fast {
-        font-size: 16px;
-        line-height: 28px;
-        font-weight: 400;
-    }
+     .about_section h2 {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .su_courier_white_bg {
-        font-size: 14px !important;
-        line-height: 24px !important;
-        font-weight: 400px !important;
-    }
+     .su_content_payment {
+         padding: 10px 10px;
+     }
 
-    .content h1 {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
+     .data_textarea {
+         width: 100%;
+     }
 
-    .become_banner_section {
-        padding-bottom: 40px;
-    }
+     .su_col_padding {
+         padding: 20px 0px;
+     }
 
-    .su_main_top_bg {
-        background: transparent;
-        padding-bottom: 15px;
-        padding-top: 30px;
-    }
+     .su_side_margin {
+         margin: auto;
+     }
 
-    .images {
-        background: transparent;
-    }
+     .su_sign_in_form_padding {
+         padding: 0px 5px;
+     }
 
-    .su_Register_btn {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
+     .su_register_card {
+         padding: 20px 15px 20px 15px;
+     }
 
-    .su_See_Jobs {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-    }
+     .radio_style {
+         padding: 1px;
+     }
 
-    .content p {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
-    }
+     .radio_style label {
+         font-weight: 500;
+         font-size: 14px;
+         line-height: 24px;
+         padding: 5px 20px;
+     }
 
-    .msg_input {
-        padding: 16px 10px 14px 30px;
-    }
+     .su_button_padding {
+         padding: 0px 60px;
+     }
 
-    .subject_input {
-        padding: 16px 10px 14px 30px;
-    }
+     .su_Sign_In {
+         width: 100%;
+         padding: 8px 40px;
+     }
 
-    .su_textarea {
-        padding: 16px 10px 14px 30px;
-    }
+     .su_Quick_Fast {
+         font-size: 16px;
+         line-height: 28px;
+         font-weight: 400;
+     }
 
-    .su_Send_width {
-        font-size: 22px !important;
-        line-height: 30px !important;
-    }
+     .su_courier_white_bg {
+         font-size: 14px !important;
+         line-height: 24px !important;
+         font-weight: 400px !important;
+     }
 
-    .address h5 {
-        font-size: 22px;
-        line-height: 30px;
-    }
+     .content h1 {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .su_Message {
-        font-size: 22px;
-        line-height: 30px;
-        margin-top: 20px;
-        text-align: center;
-    }
+     .become_banner_section {
+         padding-bottom: 40px;
+     }
 
-    .su_phone_text {
-        font-size: 20px;
-        line-height: 30px;
-    }
+     .su_main_top_bg {
+         background: transparent;
+         padding-bottom: 15px;
+         padding-top: 30px;
+     }
 
-    .su_red_text_center {
-        font-weight: 500 !important;
-        font-size: 20px !important;
-        line-height: 30px !important;
-    }
+     .images {
+         background: transparent;
+     }
 
-    .su_accordion_para {
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 18px;
-    }
+     .su_Register_btn {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .su_accordion_body {
-        font-weight: 300;
-        font-size: 12px;
-        line-height: 18px;
-    }
+     .su_See_Jobs {
+         font-weight: 500;
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .su_accordion_button {
-        font-size: 22px !important;
-        line-height: 30px !important;
-    }
+     .content p {
+         font-weight: 400;
+         font-size: 14px;
+         line-height: 21px;
+     }
 
-    .su_accordion_item {
-        padding: 2px 0px !important;
-    }
+     .msg_input {
+         padding: 16px 10px 14px 30px;
+     }
 
-    .su_accordion_button:not(.collapsed) {
-        font-size: 22px !important;
-        line-height: 30px !important;
-    }
+     .subject_input {
+         padding: 16px 10px 14px 30px;
+     }
 
-    .su_green_para {
-        font-size: 16px;
-        line-height: 25px;
-        margin-bottom: 30px;
-    }
+     .su_textarea {
+         padding: 16px 10px 14px 30px;
+     }
 
-    .su_Contact_with {
-        margin-top: 30px;
-        font-size: 22px;
-        line-height: 30px;
-    }
+     .su_Send_width {
+         font-size: 22px !important;
+         line-height: 30px !important;
+     }
 
-    .four_section_top {
-        padding: 0px 20px;
-    }
+     .address h5 {
+         font-size: 22px;
+         line-height: 30px;
+     }
 
-    .fifth_section {
-        padding: 0px 20px;
-    }
+     .su_Message {
+         font-size: 22px;
+         line-height: 30px;
+         margin-top: 20px;
+         text-align: center;
+     }
 
-    .content-top h1 {
-        font-size: 22px;
-        line-height: 30px;
-    }
+     .su_phone_text {
+         font-size: 20px;
+         line-height: 30px;
+     }
 
-    .content-top p {
-        font-size: 16px;
-        line-height: 25px;
-    }
+     .su_red_text_center {
+         font-weight: 500 !important;
+         font-size: 20px !important;
+         line-height: 30px !important;
+     }
 
-    .first-section {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
+     .su_accordion_para {
+         font-weight: 500;
+         font-size: 12px;
+         line-height: 18px;
+     }
 
-    .truck_imgone img {
-        width: 160px;
-    }
+     .su_accordion_body {
+         font-weight: 300;
+         font-size: 12px;
+         line-height: 18px;
+     }
 
-    .truck_imgone {
-        left: 37%;
-        margin-top: -90px;
-    }
+     .su_accordion_button {
+         font-size: 22px !important;
+         line-height: 30px !important;
+     }
 
-    .su_form_card {
-        padding: 10px !important;
-    }
+     .su_accordion_item {
+         padding: 2px 0px !important;
+     }
 
-    .su_form_section_padding {
-        margin-bottom: 160px !important;
-    }
+     .su_accordion_button:not(.collapsed) {
+         font-size: 22px !important;
+         line-height: 30px !important;
+     }
 
-    /* sumit code end  */
+     .su_green_para {
+         font-size: 16px;
+         line-height: 25px;
+         margin-bottom: 30px;
+     }
 
-    .form_pos {
-        width: 91%;
-        left: 4.5%;
-    }
-    .top_heading {
-        min-width: auto;
-    }
-    #menu_items {
-        padding: 1rem 0.25rem;
-    }
+     .su_Contact_with {
+         margin-top: 30px;
+         font-size: 22px;
+         line-height: 30px;
+     }
 
-    .navbar-toggler {
-        padding: 0px 10px;
-    }
+     .four_section_top {
+         padding: 0px 20px;
+     }
 
-    .truck_img {
-        left: 33%;
-        margin-top: -155px;
-    }
+     .fifth_section {
+         padding: 0px 20px;
+     }
 
-    .footer_top {
-        padding-top: 40px;
-        padding-bottom: 30px;
-    }
+     .content-top h1 {
+         font-size: 22px;
+         line-height: 30px;
+     }
 
-    .footer_top {
-        padding-top: 40px;
-        padding-bottom: 30px;
-    }
+     .content-top p {
+         font-size: 16px;
+         line-height: 25px;
+     }
 
-    .play_section .badge p {
-        font-size: 12px;
-    }
-    .info_section form>div{
-        display: block !important;
-        height: auto;
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-    .info_section form .submit{
-        width: 100%;
-        margin-top: 12px;
-    }
-    #main_footer {
-        padding-top: 180px;
-    }
-    .border-radius-20, .info_section .info{
-        border-radius: 0px !important
-    }
-    .data_list span {
-        font-size: 14px;
-    }
-    .data_icon figure {
-        width: 50px;
-        height: 45px;
-    }
-    .data_icon figure {
-        margin-bottom: 0rem !important;
-    }
-    .mobile_build {
-        background-size: 129%;
-    }
-    .top_div {
-        background-position: 5.8%;
-    }
-    .nav_circle.mx-3{
-        margin-left:0px !important;
-    }
-   
-}
-@media only screen and (max-width: 425px){
-    .top_div {
-        background-position: 6.6%;
-    }
-}
+     .first-section {
+         padding-top: 20px;
+         padding-bottom: 20px;
+     }
 
-@media only screen and (max-width: 400px){
-    .su_courier_white_bg {
-        width: 280px;
-    }
-}
+     .truck_imgone img {
+         width: 160px;
+     }
 
-@media only screen and (max-width: 390px) {
-    .truck_img img {
-        width: 65%;
-    }
-    .banner-section {
-        padding-bottom: 50px;
-    }
-    .pakket_btn.me-3{
-        margin-right: 0.25rem!important
-    }
-    .mobile_build {
-        background-size: 129%;
-    }
-}
+     .truck_imgone {
+         left: 37%;
+         margin-top: -90px;
+     }
 
-@media only screen and (max-width: 375px) {
-    .pakket_btn.me-3{
-        margin-right: 1rem!important
-    }
-    .play_section .badge p {
-        white-space: break-spaces;
-        text-align: left;
-        margin-top: 20px;
-    }
-}
+     .su_form_card {
+         padding: 10px !important;
+     }
+
+     .su_form_section_padding {
+         margin-bottom: 160px !important;
+     }
+
+     /* sumit code end  */
+
+     .form_pos {
+         width: 91%;
+         left: 4.5%;
+     }
+
+     .top_heading {
+         min-width: auto;
+     }
+
+     #menu_items {
+         padding: 1rem 0.25rem;
+     }
+
+     .navbar-toggler {
+         padding: 0px 10px;
+     }
+
+     .truck_img {
+         left: 33%;
+         margin-top: -155px;
+     }
+
+     .footer_top {
+         padding-top: 40px;
+         padding-bottom: 30px;
+     }
+
+     .footer_top {
+         padding-top: 40px;
+         padding-bottom: 30px;
+     }
+
+     .play_section .badge p {
+         font-size: 12px;
+     }
+
+     .info_section form>div {
+         display: block !important;
+         height: auto;
+         padding-top: 15px;
+         padding-bottom: 15px;
+     }
+
+     .info_section form .submit {
+         width: 100%;
+         margin-top: 12px;
+     }
+
+     #main_footer {
+         padding-top: 180px;
+     }
+
+     .border-radius-20,
+     .info_section .info {
+         border-radius: 0px !important
+     }
+
+     .data_list span {
+         font-size: 14px;
+     }
+
+     .data_icon figure {
+         width: 50px;
+         height: 45px;
+     }
+
+     .data_icon figure {
+         margin-bottom: 0rem !important;
+     }
+
+     .mobile_build {
+         background-size: 129%;
+     }
+
+     .top_div {
+         background-position: 5.8%;
+     }
+
+     .nav_circle.mx-3 {
+         margin-left: 0px !important;
+     }
+
+ }
+
+ @media only screen and (max-width: 425px) {
+     .top_div {
+         background-position: 6.6%;
+     }
+ }
+
+ @media only screen and (max-width: 400px) {
+     .su_courier_white_bg {
+         width: 280px;
+     }
+ }
+
+ @media only screen and (max-width: 390px) {
+     .truck_img img {
+         width: 65%;
+     }
+
+     .banner-section {
+         padding-bottom: 50px;
+     }
+
+     .pakket_btn.me-3 {
+         margin-right: 0.25rem !important
+     }
+
+     .mobile_build {
+         background-size: 129%;
+     }
+ }
+
+ @media only screen and (max-width: 375px) {
+     .pakket_btn.me-3 {
+         margin-right: 1rem !important
+     }
+
+     .play_section .badge p {
+         white-space: break-spaces;
+         text-align: left;
+         margin-top: 20px;
+     }
+ }
 
  /* sumit code start   */
-@media screen and (max-width: 370px) {
-    .truck_imgone img {
-        width: 145px;
-    }
+ @media screen and (max-width: 370px) {
+     .truck_imgone img {
+         width: 145px;
+     }
 
-    .truck_imgone {
-        left: 30%;
-        margin-top: -90px;
-    }
-}
+     .truck_imgone {
+         left: 30%;
+         margin-top: -90px;
+     }
+ }
 
  /* sumit code end  */
 
-@media only screen and (max-width: 320px) {
-    .su_courier_white_bg {
-        width: 220px;
-    }
-    .nav_circle {
-        width: 22px;
-        height: 22px;
-    }
-    .nav_circle.mx-3 {
-        margin-right: 0.5rem!important;
-    }
-}
+ @media only screen and (max-width: 320px) {
+     .su_courier_white_bg {
+         width: 220px;
+     }
+
+     .nav_circle {
+         width: 22px;
+         height: 22px;
+     }
+
+     .nav_circle.mx-3 {
+         margin-right: 0.5rem !important;
+     }
+ }

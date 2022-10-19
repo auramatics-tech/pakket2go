@@ -2394,6 +2394,39 @@ p.dis_content {
     justify-content: center;
     align-items: center;
 }
-
-
+.su_enter_pin_text{
+    font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+text-align: center;
+color: #313131;
+margin-bottom: 0px;
+margin-top: 20px;
+}
+.su_phone_no{
+    margin-bottom: 0px;
+    font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+text-align: center;
+color: #01B537;
+}
+.su_otp_inputs{
+    height: 64px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1.3965px solid #01B537;
+    border-radius: 11.172px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 33.516px;
+    line-height: 46px;
+    color: #111111;
+}
+.su_otp_inputs:focus-visible {
+    outline: none !important;
+}
+.su_icons_text_adjust{
+    word-wrap: break-word;
+}
 /* sumit dashboard css end */

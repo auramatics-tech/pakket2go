@@ -78,61 +78,44 @@ Pakket2Go
             <div class="d-flex m-auto my-3 lang_toggle">
                 @include('web.layouts.language')
             </div>
-            <form action="{{ route('login') }}" method="post">
-                @csrf
-                <div class="su_sign_in_form_padding">
-                    <div class="su_sign_in_form">
-                        <p class="su_text_Sign_In">Sign In</p>
-                        <div class="su_truck_bg_img">
-                            <div class="su_truck_img">
-                                <img src="{{ asset('assets/img/truck.png') }}" alt="">
-                            </div>
+            <div class="su_sign_in_form_padding">
+                <div class="su_sign_in_form">
+                    <p class="su_text_Sign_In">Phone Verification</p>
+                    <div class="su_truck_bg_img">
+                        <div class="su_truck_img">
+                            <img src="{{ asset('assets/img/truck.png') }}" alt="">
                         </div>
-                        <input type="hidden" name="country_code" value="91">
-                        <div class="su_inputs_padding">
-                            <div class="form-group mt-4">
-                                <input type="number" name="phone_number" id="" class="su_des_textarea flag" placeholder="646872017">
-                            </div>
-                            <div class="form-group mt-4">
-                                <input type="text" name="password" id="" class="su_des_textarea Password" placeholder="Password">
-                            </div>
-
-
-                            <div class="d-flex justify-content-between align-items-center my-4">
-                                <div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <label class="su_container">
-                                                <input type="checkbox" checked="checked" name="remember">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <p class="su_checkbox_text ">
-                                                {{ __('Remember me') }}
-                                            </p>
-                                        </div>
-                                    </div>
+                    </div>
+                    <input type="hidden" name="country_code" value="91">
+                    <div class="su_inputs_padding">
+                        <p class="su_enter_pin_text">Enter the 4-digit PIN code we sent to the number:</p>
+                        <p class="su_phone_no">+31-64****017</p>
+                        <form action="">
+                            <div class="d-flex">
+                                <div class="form-group my-4 mx-2">
+                                    <input type="number" name="phone_number" id="" class="su_otp_inputs" placeholder="0">
                                 </div>
-                                <div>
-                                    @if (Route::has('password.request'))
-                                    <a class="su_Forgot_password" href="{{ route('password.request') }}">
-                                        {{ __('Forgot your password?') }}
-                                    </a>
-                                    @endif
+                                <div class="form-group my-4 mx-2">
+                                    <input type="number" name="phone_number" id="" class="su_otp_inputs" placeholder="0">
+                                </div>
+                                <div class="form-group my-4 mx-2">
+                                    <input type="number" name="phone_number" id="" class="su_otp_inputs" placeholder="0">
+                                </div>
+                                <div class="form-group my-4 mx-2">
+                                    <input type="number" name="phone_number" id="" class="su_otp_inputs" placeholder="0">
                                 </div>
                             </div>
-                            <div>
-                                <button class="su_sign_btn" type="submit">Sign In</button>
-                            </div>
-                            <div class="text-center my-4">
-                                <p class="su_Join_now">Don't have an account? <span class="su_Join_now_span">Join
-                                        now</span></p>
-                            </div>
+                        </form>
+                        <div>
+                            <button class="su_sign_btn" type="submit">Submit Code</button>
+                        </div>
+                        <div class="text-center my-4">
+                            <p class="su_Join_now">Resent PIN in <span class="su_Join_now_span">
+                                    02:39</span></p>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

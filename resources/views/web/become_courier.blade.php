@@ -238,8 +238,8 @@
                                                 <img src="{{ asset('assets/svg/Quick.svg') }}" alt="">
                                             </div>
                                         </div>
-                                        <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">Quick & Fast</p>
+                                        <div class="flex_align_end su_icons_text_adjust">
+                                            <p class="su_Quick_Fast">Quick & Fast aaaaaaaaaaaaaaaaa</p>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center my-4">
@@ -248,8 +248,8 @@
                                                 <img src="{{ asset('assets/svg/Safe.svg') }}" alt="">
                                             </div>
                                         </div>
-                                        <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">Safe & Secure</p>
+                                        <div class="flex_align_end su_icons_text_adjust">
+                                            <p class="su_Quick_Fast">Safe & Secure aaaaaaaaaaaaaaaaa</p>
                                         </div>
                                     </div>
                                 </div>
@@ -260,8 +260,8 @@
                                                 <img src="{{ asset('assets/svg/Hassle.svg') }}" alt="">
                                             </div>
                                         </div>
-                                        <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">Hassle Free</p>
+                                        <div class="flex_align_end su_icons_text_adjust">
+                                            <p class="su_Quick_Fast">Hassle Free aaaaaaaaaaaaaaaaa</p>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center my-4">
@@ -270,8 +270,8 @@
                                                 <img src="{{ asset('assets/svg/Support3.svg') }}" alt="">
                                             </div>
                                         </div>
-                                        <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">24 / 7 Support</p>
+                                        <div class="flex_align_end su_icons_text_adjust">
+                                            <p class="su_Quick_Fast">24 / 7 Support aaaaaaaaaaaaaaaaa</p>
                                         </div>
                                     </div>
                                 </div>
@@ -311,7 +311,7 @@
                             </h2>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-lg-flex d-md-flex d-block align-items-center">
                         <div>
                             <button class="su_Apply_Now">Apply Now</button>
                         </div>
