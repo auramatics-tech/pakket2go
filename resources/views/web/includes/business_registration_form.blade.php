@@ -27,11 +27,18 @@
             </div>
         </div>
         <div class="col-6">
+            <div class="form-group">
+                <form id="login" onsubmit="process(event)">
+                    <input class="su_country_dropdown" id="phone" id="phone_number" type="tel" name="phone" value="{{ old('phone_number') }}" required/>
+                </form>
+            </div>
+            {{--
             <div class="phone_input">
                 <label for="phone" class="ms-3">
                     <input type="text" name="" id="" class=" contact" placeholder="Phone">
                 </label>
             </div>
+            --}}
         </div>
     </div>
     <div class="form-group mt-4 row">
