@@ -96,7 +96,7 @@
                                 +{{ Session::get('country_code') }}-{{ substr(Session::get('phone_number'), 0, 2) }}****{{ substr(Session::get('phone_number'), -3) }}
                             </p>
                             <form action="">
-                                <div class="d-flex">
+                                <div class="d-flex my-2">
                                     <div class="form-group my-4 mx-2">
                                         <input type="number" name="phone_number" id="" class="su_otp_inputs"
                                             placeholder="0">
@@ -141,23 +141,23 @@
         @php
             $user = App\Models\User::find(Session::get('user_id'));
         @endphp
-        <input type="hidden" value="{{ $user->otp_sent_at }}" id="otp_sent_at">
+        <input type="hidden" value="{{isset( $user->otp_sent_at) ?  $user->otp_sent_at : '' }}" id="otp_sent_at">
     @endsection
 
     @section('script')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.0.1/firebase.js"></script>
         <script>
-            var phone_number = "{{ $user->country_code . $user->phone_number }}";
+            var phone_number = "{{ isset($user->country_code) ? $user->country_code . $user->phone_number : '' }}";
             var first_otp = "{{ date('F d, Y H:i:s', strtotime('+5 mins')) }}"
 
             var minutesToAdd = 1;
             var currentDate = new Date();
-            var otp_sent_at = "{{ $user->otp_sent_at }}";
-            @if (!$user->otp_sent_at)
+            var otp_sent_at = "{{ isset($user->otp_sent_at) ? $user->otp_sent_at : '' }}";
+            @if (isset($user->otp_sent_at) && !$user->otp_sent_at)
                 // Set the date we're counting down to
                 var countDownDate = new Date(currentDate.getTime() + minutesToAdd * 60000).getTime();
             @else
-                var countDownDate = "{{ $user->otp_sent_at }}"
+                var countDownDate = "{{ isset($user->otp_sent_at) ? $user->otp_sent_at : '' }}"
             @endif
         </script>
         <script src="{{ asset('assets/js/otp.js') }}"></script>

@@ -1939,6 +1939,9 @@ p.dis_content {
     text-decoration-line: underline;
     color: #FC4C00;
 }
+.su_Join_now_span:hover{
+    color: #FC4C00;
+}
 
 .su_side_margin {
     margin-left: 60px;
@@ -2421,15 +2424,16 @@ line-height: 30px;
 text-align: center;
 color: #313131;
 margin-bottom: 0px;
-margin-top: 20px;
+margin-top: 35px;
 }
 .su_phone_no{
     margin-bottom: 0px;
     font-weight: 600;
-font-size: 20px;
-line-height: 30px;
-text-align: center;
-color: #01B537;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #01B537;
+    margin: 20px 0px;
 }
 .su_otp_inputs{
     height: 64px;
