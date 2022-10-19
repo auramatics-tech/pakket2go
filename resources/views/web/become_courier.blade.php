@@ -244,7 +244,7 @@
                             </h2>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-lg-flex d-md-flex d-block align-items-center">
                         <div>
                             <button class="su_Apply_Now">{{ __('becomecourier.Apply Now') }}</button>
                         </div>
