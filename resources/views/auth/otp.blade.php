@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">Quick & Fast</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">Quick & Fast</p>
                                         </div>
                                     </div>
                                     <div class="d-flex my-4">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">Safe & Secure</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">Safe & Secure</p>
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">Hassle Free</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">Hassle Free</p>
                                         </div>
                                     </div>
                                     <div class="d-flex my-4">
@@ -67,7 +67,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">24 / 7 Support</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">24 / 7 Support</p>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,8 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-12 su_col_padding_off">
-                <div class="d-flex m-auto my-3 lang_toggle">
+                <div class="su_sign_up_align">
+                <div class="d-lg-flex d-none m-auto my-3 lang_toggle su_position_2_btns">
                     @include('web.layouts.language')
                 </div>
                 <div class="su_sign_in_form_padding">
@@ -132,6 +133,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

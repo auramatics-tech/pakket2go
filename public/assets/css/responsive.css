@@ -130,8 +130,14 @@
  /* sumit code start   */
 
  @media screen and (max-width: 1200px) {
+    .su_position_2_btns {
+        left: 66%;
+    }
     .su_icons_text_adjust {
         inline-size: 110px;
+    }
+    .su_register_sidebar_padding {
+        padding: 50px 31px 50px 30px;
     }
      .flex_align_end {
          margin-left: 10px;
@@ -218,6 +224,16 @@
  @media only screen and (max-width: 991px) {
 
      /* sumit code start   */
+     .su_white_bg_img {
+        width: 200px;
+        height: 200px;
+    }
+     .su_icons_text_adjust {
+        inline-size: 180px;
+    }
+     .su_position_white_arrow {
+        display: none;
+    }
      .su_courier_white_bg {
          width: auto;
      }
@@ -441,6 +457,13 @@
 
  /* sumit code start   */
  @media screen and (max-width: 768px) {
+    .su_icons_text_adjust {
+        inline-size: auto;
+    }
+    .su_See {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
      .su_side_img {
          width: 190px;
          margin: auto;
@@ -749,8 +772,6 @@
         font-weight: 500;
         font-size: 20px;
         line-height: 30px;
-        margin-left: 0px;
-        margin-top: 15px;
      }
 
      .su_Apply_Now {
@@ -1128,6 +1149,9 @@
  }
 
  @media only screen and (max-width: 390px) {
+    .su_courier_white_bg {
+        width: 220px;
+    }
      .truck_img img {
          width: 65%;
      }

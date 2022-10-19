@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">{{ __('home.Quick & Fast') }}</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">{{ __('home.Quick & Fast') }}</p>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center my-4">
@@ -184,7 +184,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">{{ __('home.Secure') }}</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">{{ __('home.Secure') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">{{ __('home.Hassle Free') }}</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">{{ __('home.Hassle Free') }}</p>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center my-4">
@@ -206,7 +206,7 @@
                                             </div>
                                         </div>
                                         <div class="flex_align_end">
-                                            <p class="su_Quick_Fast">{{ __('home.24/7 Support') }}</p>
+                                            <p class="su_Quick_Fast su_icons_text_adjust">{{ __('home.24/7 Support') }}</p>
                                         </div>
                                     </div>
                                 </div>

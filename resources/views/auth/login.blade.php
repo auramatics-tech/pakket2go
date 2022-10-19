@@ -28,46 +28,46 @@ Pakket2Go - Login
                         </p>
                         <div class="">
                             <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                <div class="d-flex my-4">
+                                <div class="d-flex align-items-center my-4">
                                     <div>
                                         <div class="su_white_bg">
                                             <img src="{{ asset('assets/svg/Quick.svg') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Quick & Fast</p>
+                                        <p class="su_Quick_Fast su_icons_text_adjust"> Quick & Fast</p>
                                     </div>
                                 </div>
-                                <div class="d-flex my-4">
+                                <div class="d-flex align-items-center my-4">
                                     <div>
                                         <div class="su_white_bg">
                                             <img src="{{ asset('assets/svg/Safe.svg') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Safe & Secure</p>
+                                        <p class="su_Quick_Fast su_icons_text_adjust"> Safe & Secure</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                <div class="d-flex my-4">
+                                <div class="d-flex align-items-center my-4">
                                     <div>
                                         <div class="su_white_bg">
                                             <img src="{{ asset('assets/svg/Hassle.svg') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Hassle Free</p>
+                                        <p class="su_Quick_Fast su_icons_text_adjust"> Hassle Free</p>
                                     </div>
                                 </div>
-                                <div class="d-flex my-4">
+                                <div class="d-flex align-items-center my-4">
                                     <div>
                                         <div class="su_white_bg">
                                             <img src="{{ asset('assets/svg/Support3.svg') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">24 / 7 Support</p>
+                                        <p class="su_Quick_Fast su_icons_text_adjust"> 24 / 7 Support</p>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@ Pakket2Go - Login
         </div>
         <div class="col-lg-6 col-md-12 col-12 su_col_padding_off">
             <div class="su_sign_up_align">
-                <div class="d-flex m-auto my-3 lang_toggle su_position_2_btns">
+                <div class="d-lg-flex d-none m-auto my-3 lang_toggle su_position_2_btns">
                     @include('web.layouts.language')
                 </div>
                 <div>
@@ -95,11 +95,15 @@ Pakket2Go - Login
                                 <input type="hidden" name="country_code" value="91">
                                 <div class="su_inputs_padding">
                                     <div class="form-group mt-4">
-                                        <input type="number" name="phone_number" id="" class="su_des_textarea flag" placeholder="646872017">
+                                        <form id="login" onsubmit="process(event)">
+                                            <input class="su_country_dropdown" id="phone" type="tel" name="phone" />
+                                        </form>
                                     </div>
+                                    <div class="alert alert-info" style="display: none;"></div>
                                     <div class="form-group mt-4">
                                         <input type="text" name="password" id="" class="su_des_textarea Password" placeholder="Password">
                                     </div>
+
 
 
                                     <div class="d-flex justify-content-between align-items-center my-4">
