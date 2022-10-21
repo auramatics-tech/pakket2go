@@ -33,12 +33,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // check if phone number is registered but not verified if not verified move to otp screen
-        $check = User::where(['country_code' => $request->country_code, 'phone_number' => $request->phone_number, 'phone_number_verified' => 0])->first();
-        if (isset($check->id)) {
-            session(['user_id' => $check->id]);
-            return redirect()->route('otp');
-        }
+        echo "<pre>";
+        print_r($request->all()); die;
         if (isset($request->user_type) && $request->user_type == 'private') {
             $rules =  [
                 'user_type' => ['required'],
@@ -69,6 +65,12 @@ class RegisteredUserController extends Controller
 
         $request->validate($rules);
 
+        // check if phone number is registered but not verified if not verified move to otp screen
+        $check = User::where(['country_code' => $request->country_code, 'phone_number' => $request->phone_number, 'phone_number_verified' => 0])->first();
+        if (isset($check->id)) {
+            session(['user_id' => $check->id]);
+            return redirect()->route('otp');
+        }
         $user = User::create([
             'user_type' => $request->user_type,
             'name' => $request->name,

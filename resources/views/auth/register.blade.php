@@ -118,7 +118,7 @@
                                 </div>
 
                                 <div class="text-center my-4">
-                                    <button class="su_Sign_In">Register</button>
+                                    <button class="su_Sign_In" type="submit">Register</button>
                                 </div>
                                 <p class="su_Login">Already have an account? <a href="{{ route('login') }}"
                                         class="su_login_red">Login</a></p>
