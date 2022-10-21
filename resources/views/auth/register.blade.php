@@ -5,6 +5,7 @@
 @endsection
 
 @section('style')
+<link rel="stylesheet" href="{{ asset('assets/css/howitworks.css') }}">
     <style>
 
 .form-wrapper {
@@ -206,13 +207,18 @@
         })
     </script>
     <script>
+       
+        $(document).on('click','.form-label',function(){
+            $(this).closest('input').focus()
+            $(this).closest('.form-group').addClass('focused');
+        })
         $('input').focus(function(){
         $(this).parents('.form-group').addClass('focused');
         });
-        $(document).on('click','.form-label',function(){
-            $(this).closest('input').focus()
-            $(this).parents('.form-group').addClass('focused');
-        })
+
+        $(document).on('click','.iti__country',function(){
+        $('#phone').val($(this).children('.iti__dial-code').html())
+    }) 
 
         $('input').blur(function(){
         var inputValue = $(this).val();
@@ -222,6 +228,6 @@
         } else {
             $(this).addClass('filled');
         }
-        })  
+        }) 
     </script>
 @endsection

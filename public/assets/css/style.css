@@ -1935,7 +1935,7 @@ p.dis_content {
     font-weight: 700;
     font-size: 20.9611px;
     line-height: 29px;
-    text-decoration-line: underline;
+    text-decoration-line: underline !important;
     color: #FC4C00;
 }
 .su_Join_now_span:hover{
@@ -2542,5 +2542,33 @@ margin-top: 35px;
     position: absolute;
     top: 0;
     left: 57%;
+}
+.msg_input label{
+    width: 100%;
+  }
+  .msg_input input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+}
+.subject_input input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+}
+.su_textarea {
+    display: flex;
+    align-items: center;
+    background: url(../svg/textarea.svg);
+    background-repeat: no-repeat;
+    background-position: 3% 18%;
+    padding: 16px 10px 14px 35px;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    outline: 0;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 26px;
+    color: #989898
 }
 /* sumit dashboard css end */
