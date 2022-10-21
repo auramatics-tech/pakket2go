@@ -5,18 +5,18 @@
         <label class="form-label" for="">Full name</label>
         <input class="su_hide_input" id="" class="form-input" placeholder="" value="{{ old('email') }}" type="text" />
         @error('full_name')
-            <span class="text-danger">{{ $message }}</span>
+        <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
 
-    <div class="form-group mt-4 row">
+    <div class="mt-4 row">
         <div class="col-6">
 
             <div class="form-group des_textarea contact su_padding_important_email">
                 <label class="form-label" for="">Email</label>
                 <input class="su_hide_input" id="" class="form-input" placeholder="" value="{{ old('email') }}" type="text" />
                 @error('email')
-                    <span class="text-danger">{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -28,12 +28,12 @@
                     <input class="su_country_dropdown" id="phone" id="phone_number" type="tel" name="phone" value="{{ old('phone_number') }}" required />
                     @error('phone_number')
                     <span class="text-danger">{{ $message }}</span>
-                @enderror
+                    @enderror
             </div>
+        </div>
     </div>
-</div>
-<div class="form-group mt-4 row">
-    <div class="col-6">
+    <div class="mt-4 row">
+        <div class="col-6">
             <div class="form-group des_textarea phone_input">
                 <label class="form-label" for="">Password</label>
                 <input class="su_hide_input" id="" name="password" class="form-input" placeholder="" value="{{ old('email') }}" type="text" />
@@ -41,10 +41,10 @@
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
-    </div>
-    <div class="col-6">
+        </div>
+        <div class="col-6">
 
-    <div class="form-group des_textarea phone_input">
+            <div class="form-group des_textarea phone_input">
                 <label class="form-label" for="">Confirm Password</label>
                 <input class="su_hide_input" id="" name="password_conformation" class="form-input" placeholder="" value="{{ old('email') }}" type="text" />
                 @error('password_conformation')
@@ -52,6 +52,6 @@
                 @enderror
             </div>
 
+        </div>
     </div>
-</div>
 </div>

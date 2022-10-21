@@ -528,7 +528,7 @@ a {
 }
 
 .play_content {
-    width: 465px;
+    width: 480px;
 }
 
 .appstore_btn,
@@ -1828,7 +1828,7 @@ p.dis_content {
 }
 
 .su_col_padding {
-    padding: 25px 80px 0px 80px;
+    padding: 25px 50px 0px 50px;
 }
 
 .su_Quick_Fast {
@@ -2126,7 +2126,6 @@ p.dis_content {
 
 .su_main_top_bg {
     background: #F8F9FA;
-    padding-bottom: 30px;
     padding-top: 50px;
 }
 
@@ -2505,6 +2504,7 @@ margin-top: 35px;
     line-height: 33px;
     text-align: center;
     color: #01B537;
+    margin-bottom: 0px;
 }
 .truck_imgone {
     position: absolute;
@@ -2571,4 +2571,15 @@ margin-top: 35px;
     line-height: 26px;
     color: #989898
 }
+.su_padding_important_email{
+    padding: 16px 10px 14px 50px !important;
+}
+.su_color_margin{
+    background: #f8f9fa;
+    padding: 40px 0px;
+}
+.su_bg_color{
+    background: #f8f9fa;
+}
+
 /* sumit dashboard css end */

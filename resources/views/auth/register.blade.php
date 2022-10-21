@@ -55,9 +55,7 @@
 .su_hide_input:focus-visible {
     outline: none !important;
 }
-.su_padding_important_email{
-    padding: 16px 10px 14px 50px !important;
-}
+
 
     </style>
 @endsection

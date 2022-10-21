@@ -28,7 +28,7 @@
                             <p class="su_easilest">
                                 The easilest and most affordable way to transport any parcel regarding size
                             </p>
-                            <div class="">
+                            <div class="su_margin_767">
                                 <div class="d-lg-flex d-md-flex d-block justify-content-around">
                                     <div class="d-flex align-items-center my-4">
                                         <div>

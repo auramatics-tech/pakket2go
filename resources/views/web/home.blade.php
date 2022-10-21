@@ -8,7 +8,7 @@ Pakket2Go
 @endsection
 
 @section('content')
-<section class="become_banner_section">
+<section class="become_banner_section su_bg_color">
     <div class="su_main_top_bg">
         <div class="container content text-center">
             <h1>{{ __('home.Your Best Choice in Netherland') }}</h1>
@@ -25,7 +25,7 @@ Pakket2Go
     </div>
     </div>
 </section>
-<section class="info_section_top">
+<section class="info_section_top su_color_margin">
     <div class="container bg-white info text-center">
         @include('web.includes.booking')
     </div>
@@ -88,7 +88,7 @@ Pakket2Go
                     <img src="{{ asset('assets/img/parsalboy.png') }}" alt="">
                 </figure>
             </div>
-            <div class="col-lg-6 col-md-12 ps-lg-5 text-center text-md-center text-lg-start mt-md-5">
+            <div class="col-lg-6 col-md-12 ps-lg-5 text-center text-md-center text-lg-start">
                 <button class="about_btn">{{ __('home.About Us') }}</button>
                 <div class="py-4">
                     <h2>{{ __('home.Who Are We?') }}</h2>
