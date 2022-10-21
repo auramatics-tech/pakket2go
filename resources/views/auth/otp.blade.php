@@ -3,7 +3,9 @@
 @section('title')
     Pakket2Go - Otp
 @endsection
-
+@section('style')
+<link rel="stylesheet" href="{{ asset('assets/css/howitworks.css') }}">
+@endsection
 @section('content')
     <div class="container-fluid" style="padding-left: 0% !important">
         <div class="row">
@@ -28,7 +30,7 @@
                             </p>
                             <div class="">
                                 <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Quick.svg') }}" alt="">
@@ -38,7 +40,7 @@
                                             <p class="su_Quick_Fast su_icons_text_adjust">Quick & Fast</p>
                                         </div>
                                     </div>
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Safe.svg') }}" alt="">
@@ -50,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Hassle.svg') }}" alt="">
@@ -60,7 +62,7 @@
                                             <p class="su_Quick_Fast su_icons_text_adjust">Hassle Free</p>
                                         </div>
                                     </div>
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Support3.svg') }}" alt="">
