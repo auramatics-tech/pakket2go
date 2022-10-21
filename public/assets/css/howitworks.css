@@ -23,29 +23,8 @@ body {
     text-align: center;
 }
 
-.content-top h1 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 60px;
-    text-align: center;
-    color: #000000;
-}
-
 .second_section {
-    background: #EEF8F0;
-    border: 1px solid #D9D9D9;
-}
-
-.content-top p {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 33px;
-    text-align: center;
-    color: #01B537;
+    background: #F8F9FA;
 }
 
 .fifth_section {
@@ -54,17 +33,6 @@ body {
     width: 100%;
     left: 0;
     margin-top: -110px;
-}
-
-
-.truck_imgone {
-    position: absolute;
-    left: 44%;
-    margin-top: -140px;
-}
-
-.below {
-    margin-bottom: 132px;
 }
 
 .center-images {
@@ -162,13 +130,7 @@ body {
     padding-bottom: 20px;
 }
 
-.four_section_top .info,
-.four_section_top .info {
-    background: #EEF8F0;
-    border: 1px solid #D9D9D9;
-    border-radius: 30px;
-    padding: 1.5rem 1rem;
-}
+
 
 .fifth_section_top .address,
 .fifth_section .address {
@@ -243,27 +205,9 @@ body {
     align-items: center;
 }
 
-.su_flex_align h2 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 43px;
-    margin-bottom: 0px;
-}
 
-.su_flex_align span {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 36px;
-    color: #898989;
-}
 
-.su_width {
-    width: 85%;
-}
+
 
 .su_badge {
     width: 55px;
@@ -278,30 +222,7 @@ body {
     line-height: 45px !important;
 }
 
-.su_position_right {
-    top: 160px;
-    position: relative;
-    right: 20px;
-}
 
-.su_position_left {
-    top: 160px;
-    position: relative;
-    right: 110px;
-}
-
-.su_flex_end {
-    display: flex;
-    justify-content: end;
-}
-
-.su_details {
-    width: 80%;
-}
-
-.su_row_div_padding {
-    padding: 60px 0px;
-}
 
 .su_Contact_with {
     font-weight: 600;

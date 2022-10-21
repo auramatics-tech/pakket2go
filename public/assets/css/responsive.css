@@ -45,6 +45,7 @@
      }
 
      /* sumit code start   */
+   
 
      .su_icons_text_adjust {
         inline-size: 130px;
@@ -54,15 +55,20 @@
          width: auto;
      }
 
-     .su_position_right {
-         top: 145px;
-     }
-
-     .su_position_left {
-         top: 150px;
-     }
-
      /* sumit css end  */
+ }
+
+ @media only screen and (max-width: 1400px){
+    .su_position_right {
+        top: 140px;
+    }
+    .su_position_left {
+        top: 150px;
+        right: 90px;
+    }
+    .su_position_3_btns {
+        left: 55%;
+    }
  }
 
  @media only screen and (max-width: 1366px) {
@@ -130,6 +136,9 @@
  /* sumit code start   */
 
  @media screen and (max-width: 1200px) {
+    .su_position_3_btns {
+        left: 53%;
+    }
     .su_position_2_btns {
         left: 66%;
     }
@@ -152,12 +161,13 @@
      }
 
      .su_position_left {
-         top: 125px;
-     }
+        top: 130px;
+        right: 70px;
+    }
 
-     .truck_imgone img {
+     /* .truck_imgone img {
          width: 180px;
-     }
+     } */
 
      .truck_imgone {
          margin-top: -110px;
@@ -165,6 +175,9 @@
  }
 
  @media screen and (max-width: 1100px) {
+    .su_position_3_btns {
+        left: 52%;
+    }
      .su_register_sidebar_padding {
          padding: 50px 15px 50px 15px;
      }
@@ -224,6 +237,26 @@
  @media only screen and (max-width: 991px) {
 
      /* sumit code start   */
+     .truck_imgone {
+        left: 37%;
+    }
+     .row_reverce_one{
+        flex-direction: column-reverse;
+        padding: 0px 0px 20px 0px;
+     }
+     .row_reverce_three{
+        flex-direction: column-reverse; 
+        padding: 0px 0px 20px 0px;
+     }
+     .row_reverce_two{
+        padding: 0px 0px 20px 0px;
+     }
+     .su_width {
+        width: 100%;
+    }
+    .su_details {
+        width: 100%;
+    }
      .su_white_bg_img {
         width: 200px;
         height: 200px;
@@ -268,12 +301,11 @@
      }
 
      .su_position_right {
-         top: 92px;
-     }
+       display: none;
+    }
 
      .su_position_left {
-         top: 95px;
-         right: 50px;
+        display: none;
      }
 
      .su_flex_align h2 {
@@ -347,6 +379,11 @@
          padding-top: 16px;
          padding-bottom: 16px;
      }
+
+     .four_section_top .form-group {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
 
      .badge span {
          white-space: break-spaces;
@@ -505,6 +542,12 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
+    .truck_imgone {
+        left: 35%;
+    }
+    .truck_imgone img{
+        width: 200px;
+    }
      .logo_cls {
          display: none;
      }
@@ -656,11 +699,36 @@
          width: 80.3%;
          left: 9.5%;
      }
+     .truck_imgone {
+        left: 30%;
+    }
  }
 
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
+     .su_register_sidebar_padding {
+        padding: 50px 0px 50px 0px;
+    }
+     .su_flex_align h2 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+     .su_flex_align span {
+        font-size: 16px;
+        line-height: 25px;
+    }
+     .four_section_top .form-group {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+     .info_section_top {
+        margin: 0px 30px;
+    }
+
+     .su_phone_no {
+        margin: 10px 0px;
+    }
      .su_icons_text_adjust {
         width: auto;
     }
@@ -788,7 +856,7 @@
      }
 
      .su_register_sidebar_padding {
-         padding: 15px 15px 15px 20px;
+        padding: 15px 0px 15px 0px;
      }
 
      .su_main_logo_become {
@@ -905,7 +973,7 @@
      }
 
      .su_main_top_bg {
-         background: transparent;
+        background: #F8F9FA;
          padding-bottom: 15px;
          padding-top: 30px;
      }
@@ -1012,6 +1080,7 @@
 
      .four_section_top {
          padding: 0px 20px;
+         margin: 0px 30px;
      }
 
      .fifth_section {
@@ -1136,6 +1205,12 @@
 
  }
 
+ @media only screen and (max-width: 435px){
+    .phone_input {
+        line-height: 15px;
+    }
+ }
+
  @media only screen and (max-width: 425px) {
      .top_div {
          background-position: 6.6%;
@@ -1149,6 +1224,9 @@
  }
 
  @media only screen and (max-width: 390px) {
+    .four_section_top {
+        padding: 0px 0px;
+    }
     .su_courier_white_bg {
         width: 220px;
     }

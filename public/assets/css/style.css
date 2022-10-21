@@ -431,17 +431,15 @@ a {
 }
 
 .about_btn {
-    background: #EEF8F0;
-    border: 1px solid #D9D9D9;
-    border-radius: 8.48485px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
+    padding: 8px 16px;
+    font-weight: 500;
     font-size: 14.8485px;
     line-height: 22px;
     text-align: center;
-    color: #044074;
-    padding: 8px 16px;
+    color: #01B537;
+    background: #EEF8F0;
+    border: 1px solid #D9D9D9;
+    border-radius: 8.48485px;
 }
 
 .about_section {
@@ -1838,6 +1836,7 @@ p.dis_content {
     font-size: 21.6283px;
     line-height: 150%;
     color: #FFFFFF;
+    margin-bottom: 0px;
 }
 
 .su_white_bg {
@@ -1937,6 +1936,9 @@ p.dis_content {
     font-size: 20.9611px;
     line-height: 29px;
     text-decoration-line: underline;
+    color: #FC4C00;
+}
+.su_Join_now_span:hover{
     color: #FC4C00;
 }
 
@@ -2421,15 +2423,16 @@ line-height: 30px;
 text-align: center;
 color: #313131;
 margin-bottom: 0px;
-margin-top: 20px;
+margin-top: 35px;
 }
 .su_phone_no{
     margin-bottom: 0px;
     font-weight: 600;
-font-size: 20px;
-line-height: 30px;
-text-align: center;
-color: #01B537;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #01B537;
+    margin: 20px 0px;
 }
 .su_otp_inputs{
     height: 64px;
@@ -2461,5 +2464,83 @@ color: #01B537;
 }
 .iti {
     width: 100%;
+}
+.su_position_right {
+    top: 160px;
+    position: relative;
+    right: 20px;
+}
+.su_position_left {
+    top: 160px;
+    position: relative;
+    right: 110px;
+}
+.su_details {
+    width: 80%;
+}
+.su_width {
+    width: 85%;
+}
+.su_flex_end {
+    display: flex;
+    justify-content: end;
+}
+.su_row_div_padding {
+    padding: 60px 0px;
+}
+.content-top h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    color: #000000;
+}
+.content-top p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: #01B537;
+}
+.truck_imgone {
+    position: absolute;
+    left: 44%;
+    margin-top: -140px;
+}
+.below {
+    margin-bottom: 132px;
+}
+.four_section_top .info,
+.four_section_top .info {
+    background: #EEF8F0;
+    border: 1px solid #D9D9D9;
+    border-radius: 30px;
+    padding: 1.5rem 1rem;
+}
+.su_flex_align h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 43px;
+    margin-bottom: 0px;
+}
+
+.su_flex_align span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 36px;
+    color: #898989;
+}
+.su_position_3_btns{
+    position: absolute;
+    top: 0;
+    left: 57%;
 }
 /* sumit dashboard css end */

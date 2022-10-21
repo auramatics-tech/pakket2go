@@ -6,6 +6,51 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('assets/css/howitworks.css') }}">
+    <style>
+
+.form-wrapper {
+  max-width: 30%;
+  min-width: 300px;
+  padding: 50px 30px 50px 30px;
+  margin: 50px auto;   
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+}
+
+.form-group {
+  position:relative;  
+
+  & + .form-group {
+    margin-top: 30px;
+  }
+}
+
+.form-label {
+    position: absolute;
+    left: 60px;
+    top: 15px;
+    width: auto;
+    width: auto !important;
+}
+
+.focused .form-label {
+    transform: translateY(-125%);
+    font-size: .75em;
+    background-color: #ffffff;
+    font-weight: 600;
+    font-size: 14.4298px;
+    line-height: 20px;
+    color: #01B537;
+    transition: all .3s ease-out;
+}
+
+
+
+.form-input.filled {
+  box-shadow: 0 2px 0 0 lightgreen;
+}
+    </style>
 @endsection
 
 @section('content')
@@ -124,40 +169,32 @@
                             <h6 class="su_Message">{{ __('contact.Leave Us a Message') }}</h6>
 
                             <form action="">
-                                <div class="form-group mt-4">
-                                    <div class="msg_input">
-
-                                        <label for="Email" class="ms-3">
-                                            <span class="Email_label">{{ __('contact.Email Address') }}</span>
-                                            <div>
-                                                <input type="text" class="code" value="john@gmail.com">
-                                            </div>
-                                        </label>
+  
+                            <div class="form-group msg_input mt-4">
+                                    <label class="form-label" for="first">Email Address</label>
+                                    <input id="first" class="form-input" type="text" />
                                     </div>
-                                </div>
-                                <div class="form-group mt-4">
-                                    <div class="subject_input">
 
-                                        <label for="phone" class="ms-3">
-                                            <!-- <span class="phone_label">phone</span> -->
-                                            <div>
-                                                <input type="text" class="code"
-                                                    placeholder="{{ __('contact.Subject') }}">
-                                            </div>
-                                        </label>
+                                    <div class="form-group subject_input mt-4">
+                                    <label class="form-label" for="">Subject</label>
+                                    <input id="" class="form-input" type="text" />
                                     </div>
-                                </div>
+
                                 <div class="form-group mt-4">
                                     <div class="su_textarea">
                                         <label for="phone" class="ms-3">
                                             <!-- <span class="phone_label">phone</span> -->
                                             <div>
                                                 <textarea type="text" placeholder="{{ __('contact.Type your message here') }}" name="w3review" rows="4"
-                                                    cols="50"></textarea>
+                                                    cols="50" ></textarea>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
+                                    
+
+                                   
+
                                 <button class="su_Send_width">{{ __('contact.Send') }}</button>
                             </form>
                         </div>
@@ -170,6 +207,21 @@
 @endsection
 
 @section('script')
+    <script>
+        $('input').focus(function(){
+        $(this).parents('.form-group').addClass('focused');
+        });
+
+        $('input').blur(function(){
+        var inputValue = $(this).val();
+        if ( inputValue == "" ) {
+            $(this).removeClass('filled');
+            $(this).parents('.form-group').removeClass('focused');  
+        } else {
+            $(this).addClass('filled');
+        }
+        })  
+    </script>
     <script>
         style = [
             {

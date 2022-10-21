@@ -3,7 +3,9 @@
 @section('title')
     Pakket2Go - Otp
 @endsection
-
+@section('style')
+<link rel="stylesheet" href="{{ asset('assets/css/howitworks.css') }}">
+@endsection
 @section('content')
     <div class="container-fluid" style="padding-left: 0% !important">
         <div class="row">
@@ -28,7 +30,7 @@
                             </p>
                             <div class="">
                                 <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Quick.svg') }}" alt="">
@@ -38,7 +40,7 @@
                                             <p class="su_Quick_Fast su_icons_text_adjust">Quick & Fast</p>
                                         </div>
                                     </div>
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Safe.svg') }}" alt="">
@@ -50,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class="d-lg-flex d-md-flex d-block justify-content-around">
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Hassle.svg') }}" alt="">
@@ -60,7 +62,7 @@
                                             <p class="su_Quick_Fast su_icons_text_adjust">Hassle Free</p>
                                         </div>
                                     </div>
-                                    <div class="d-flex my-4">
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <div class="su_white_bg">
                                                 <img src="{{ asset('assets/svg/Support3.svg') }}" alt="">
@@ -96,7 +98,7 @@
                                 +{{ Session::get('country_code') }}-{{ substr(Session::get('phone_number'), 0, 2) }}****{{ substr(Session::get('phone_number'), -3) }}
                             </p>
                             <form action="">
-                                <div class="d-flex">
+                                <div class="d-flex my-2">
                                     <div class="form-group my-4 mx-2">
                                         <input type="number" name="phone_number" id="" class="su_otp_inputs"
                                             placeholder="0">
@@ -141,23 +143,23 @@
         @php
             $user = App\Models\User::find(Session::get('user_id'));
         @endphp
-        <input type="hidden" value="{{ $user->otp_sent_at }}" id="otp_sent_at">
+        <input type="hidden" value="{{isset( $user->otp_sent_at) ?  $user->otp_sent_at : '' }}" id="otp_sent_at">
     @endsection
 
     @section('script')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.0.1/firebase.js"></script>
         <script>
-            var phone_number = "{{ $user->country_code . $user->phone_number }}";
+            var phone_number = "{{ isset($user->country_code) ? $user->country_code . $user->phone_number : '' }}";
             var first_otp = "{{ date('F d, Y H:i:s', strtotime('+5 mins')) }}"
 
             var minutesToAdd = 1;
             var currentDate = new Date();
-            var otp_sent_at = "{{ $user->otp_sent_at }}";
-            @if (!$user->otp_sent_at)
+            var otp_sent_at = "{{ isset($user->otp_sent_at) ? $user->otp_sent_at : '' }}";
+            @if (isset($user->otp_sent_at) && !$user->otp_sent_at)
                 // Set the date we're counting down to
                 var countDownDate = new Date(currentDate.getTime() + minutesToAdd * 60000).getTime();
             @else
-                var countDownDate = "{{ $user->otp_sent_at }}"
+                var countDownDate = "{{ isset($user->otp_sent_at) ? $user->otp_sent_at : '' }}"
             @endif
         </script>
         <script src="{{ asset('assets/js/otp.js') }}"></script>
