@@ -347,25 +347,8 @@ color: #01B537;
     line-height: 26px;
     color: #989898
 }
-.su_textarea {
-    display: flex;
-    align-items: center;
-    background: url(../svg/textarea.svg);
-    background-repeat: no-repeat;
-    background-position: 3% 18%;
-    padding: 16px 10px 14px 50px;
-    border: 1px solid #D9D9D9;
-    border-radius: 10px;
-    outline: 0;
-    font-weight: 300;
-    font-size: 17px;
-    line-height: 26px;
-    color: #989898
-}
-.msg_input input {
-    border: 0;
-    outline: 0;
-}
+
+
 
 .msg_input .code {
     width: 100%;
@@ -386,10 +369,7 @@ color: #01B537;
     color: #000000;
     width: 100%;
 }
-.subject_input input {
-    border: 0;
-    outline: 0;
-}
+
 
 .subject_input .code {
     width: 100%;
@@ -473,9 +453,7 @@ textarea {
   .subject_input label{
     width: 100%;
   }
-  .msg_input label{
-    width: 100%;
-  }
+
 .su_heading_accordion{
     font-weight: 600;
     font-size: 25px;

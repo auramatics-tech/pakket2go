@@ -30,7 +30,6 @@
     position: absolute;
     left: 60px;
     top: 15px;
-    width: auto;
     width: auto !important;
 }
 
@@ -45,11 +44,6 @@
     transition: all .3s ease-out;
 }
 
-
-
-.form-input.filled {
-  box-shadow: 0 2px 0 0 lightgreen;
-}
     </style>
 @endsection
 
@@ -164,6 +158,11 @@
 
 @section('script')
     <script>
+          $(document).on('click','.form-label',function(){
+            $(this).closest('input').focus()
+            $(this).closest('.form-group').addClass('focused');
+        })
+        
         $('input').focus(function(){
         $(this).parents('.form-group').addClass('focused');
         });

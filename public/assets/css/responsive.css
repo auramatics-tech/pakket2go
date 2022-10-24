@@ -542,6 +542,9 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
+    .su_margin_767{
+        margin-left: 20px;
+    }
     .truck_imgone {
         left: 35%;
     }
@@ -704,6 +707,12 @@
     }
  }
 
+ @media only screen and (max-width: 576px){
+    .su_white_section_margin {
+        margin: 100px 0px;
+    }
+ }
+
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
@@ -723,7 +732,7 @@
         padding-bottom: 10px;
     }
      .info_section_top {
-        margin: 0px 30px;
+        margin: 0px;
     }
 
      .su_phone_no {
@@ -1080,7 +1089,6 @@
 
      .four_section_top {
          padding: 0px 20px;
-         margin: 0px 30px;
      }
 
      .fifth_section {
@@ -1224,8 +1232,8 @@
  }
 
  @media only screen and (max-width: 390px) {
-    .four_section_top {
-        padding: 0px 0px;
+    .third-section {
+        padding-bottom: 110px;
     }
     .su_courier_white_bg {
         width: 220px;
@@ -1272,6 +1280,22 @@
  }
 
  /* sumit code end  */
+
+ @media only screen and (max-width: 340px){
+    .des_textarea {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .form-label {
+        left: 35px !important;
+    }
+    .phone_input {
+        padding: 16px 10px 14px 35px;
+    }
+    .su_padding_important_email {
+        padding: 16px 10px 14px 35px !important;
+    }
+ }
 
  @media only screen and (max-width: 320px) {
      .su_courier_white_bg {

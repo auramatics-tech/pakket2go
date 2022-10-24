@@ -39,6 +39,7 @@ Route::prefix('{locale?}')
         Route::get('/how-it-works', [HomeController::class, 'howitworks'])->name('howitworks');
         Route::get('/become-courier', [HomeController::class, 'become_courier'])->name('become_courier');
         Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
+        Route::get('/dashboard-user', [HomeController::class, 'dashboard_user'])->name('dashboard_user');
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
         Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 

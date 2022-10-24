@@ -81,7 +81,7 @@ Pakket2Go - How it works
         </div>
     </div>
 </section>
-<section class="third-section">
+<section class="third-section su_bg_color">
     <div class="center-images">
         <img src="{{ asset('assets/img/cloud.png') }}" class="img-fluid" alt="cloud">
         <img src="{{ asset('assets/img/building.png') }}" class="img-fluid d-none d-lg-block d-md-block" alt="building">
@@ -92,7 +92,7 @@ Pakket2Go - How it works
     </div>
     </div>
 </section>
-<section class="four_section_top">
+<section class="four_section_top su_bg_color">
     <div class="container bg-white info text-center below">
         @include('web.includes.booking')
     </div>

@@ -147,3 +147,10 @@ Pakket2Go - Login
     </div>
 </div>
 @endsection
+@section('script')
+<script>
+    $(document).on('click','.iti__country',function(){
+        $('#phone').val($(this).children('.iti__dial-code').html())
+    }) 
+</script>
+@endsection

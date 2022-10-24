@@ -34,4 +34,9 @@ class HomeController extends Controller
         return view('web.contact_us');
     }
 
+    public function dashboard_user()
+    {
+        return view('web.dashboard_user');
+    }
+
 }
