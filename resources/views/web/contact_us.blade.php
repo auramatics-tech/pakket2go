@@ -62,7 +62,7 @@
             </div>
             <div class="accordion su_accordion_padding" id="accordionExample">
                 <h2 class="su_heading_accordion">{{ __('contact.General Questions') }}</h2>
-                @for ($i = 1; $i <= 3; $i++)
+                @for ($i = 1; $i <= 5; $i++)
                     <div class="accordion-item su_accordion_item">
                         <h2 class="accordion-header su_accordion_header" id="headingGeneral{{ $i }}">
                             <button
@@ -78,50 +78,6 @@
                             aria-labelledby="heading{{ $i }}" data-bs-parent="#accordionExample">
                             <div class="accordion-body su_accordion_body">
                                 {{ __("contact.g_q_description_$i") }}
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-            <div class="accordion su_accordion_padding" id="accordionExample">
-                <h2 class="su_heading_accordion">{{ __('contact.Payment') }}</h2>
-                @for ($i = 1; $i <= 3; $i++)
-                    <div class="accordion-item su_accordion_item">
-                        <h2 class="accordion-header su_accordion_header" id="heading{{ $i }}">
-                            <button
-                                class="accordion-button su_accordion_button @if ($i != 1) collapsed @endif"
-                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $i }}"
-                                aria-expanded="true" aria-controls="collapse{{ $i }}">
-                                {{ __("contact.payment_title_$i") }}
-                            </button>
-                        </h2>
-                        <div id="collapse{{ $i }}"
-                            class="accordion-collapse collapse @if ($i == 1) show @endif"
-                            aria-labelledby="heading{{ $i }}" data-bs-parent="#accordionExample">
-                            <div class="accordion-body su_accordion_body">
-                                {{ __("contact.payment_description_$i") }}
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-            <div class="accordion su_accordion_padding" id="accordionExample">
-                <h2 class="su_heading_accordion">{{ __('contact.Delivery') }}</h2>
-                @for ($i = 1; $i <= 3; $i++)
-                    <div class="accordion-item su_accordion_item">
-                        <h2 class="accordion-header su_accordion_header" id="heading{{ $i }}">
-                            <button
-                                class="accordion-button su_accordion_button @if ($i != 1) collapsed @endif"
-                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $i }}"
-                                aria-expanded="true" aria-controls="collapse{{ $i }}">
-                                {{ __("contact.delivery_title_$i") }}
-                            </button>
-                        </h2>
-                        <div id="collapse{{ $i }}"
-                            class="accordion-collapse collapse @if ($i == 1) show @endif"
-                            aria-labelledby="heading{{ $i }}" data-bs-parent="#accordionExample">
-                            <div class="accordion-body su_accordion_body">
-                                {{ __("contact.delivery_description_$i") }}
                             </div>
                         </div>
                     </div>

@@ -19,11 +19,11 @@
             </div>
             <div class="d-flex justify-content-center">
                 <div>
-                    <button class="su_Register_btn">{{ __('home.Register') }}</button>
+                    <a href="{{ route('register') }}" class="su_Register_btn">{{ __('home.Register') }}</a>
                 </div>
-                <div>
+                {{-- <div>
                     <button class="su_See_Jobs">{{ __('becomecourier.See Jobs') }}</button>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="images">
@@ -36,7 +36,7 @@
         </div>
         </div>
     </section>
-    <section class="about_section">
+    {{-- <section class="about_section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12 ps-lg-5 text-center text-md-center text-lg-start">
@@ -69,7 +69,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="su_green_bg_with_col">
         <div class="container">
             <div class="row">
@@ -246,11 +246,11 @@
                     </div>
                     <div class="d-lg-flex d-md-flex d-block align-items-center">
                         <div>
-                            <button class="su_Apply_Now">{{ __('becomecourier.Apply Now') }}</button>
+                            <a href="{{ route('register') }}" class="su_Apply_Now">{{ __('becomecourier.Apply Now') }}</a>
                         </div>
-                        <div>
+                        {{-- <div>
                             <button class="su_See">{{ __('becomecourier.See Jobs') }}</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

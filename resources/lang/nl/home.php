@@ -70,5 +70,8 @@ return [
     'Twitter'=> 'Twitter',
     'LinkedIn'=> 'LinkedIn',
     'All rights reserved'=> 'All rechten voorbehouden',
-    'Limited'=> 'B.V.'
+    'Limited'=> 'B.V.',
+    'Thank You' => 'Bedankt',
+    'Your order has been sucessfully created' => 'Uw account is succesvol aangemaakt.',
+    'Track my order' => 'Terug naar de homepagina'
 ];
