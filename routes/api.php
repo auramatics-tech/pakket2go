@@ -23,9 +23,11 @@ use App\Http\Controllers\Api\UserController;
 Route::group(['prefix' => '/{lang}/'], function () {
 
     Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/check-phone-number', [UserController::class, 'check_phone_number']);
     Route::post('/register', [UserController::class, 'register']);
 
     Route::group(['prefix' => 'booking'], function () {
+        Route::get('/clear-booking', [BookingController::class, 'clear_booking']);
         Route::get('/steps', [BookingController::class, 'steps']);
         Route::post('/', [BookingController::class, 'booking']);
     });

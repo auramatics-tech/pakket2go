@@ -345,4 +345,12 @@ class BookingController extends Controller
 
         return $final_price;
     }
+
+    public function clear_booking(Request $request)
+    {
+        $booking = Booking::where('id', $request->id)->delete();
+        BookingDetails::where('booking_id', $request->id)->delete();
+
+        return response()->json(['status'=>1,'message'=>'Booking deleted successfully']);
+    }
 }

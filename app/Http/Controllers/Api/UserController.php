@@ -88,7 +88,35 @@ class UserController extends BaseController
             event(new Registered($user));
 
             Auth::login($user);
-            return redirect(app()->getLocale() . RouteServiceProvider::HOME);
+            return response()->json(['status'=>1,'message'=>'User registered successfully']);
+        }
+    }
+
+    public function check_phone_number(Request $request)
+    {
+
+        $validator = \Validator::make($request->all(), [
+            'phone_number' => 'required',
+            'country_code' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->messages();
+            return $this->sendError('Missing required fields', $errors, 200);
+        }
+        $phone_number =  $request->phone_number;
+        $country_code =  $request->country_code;
+        $user = User::where('phone_number', $phone_number)->where('country_code', $country_code)->first();
+        if (!empty($user)) {
+            $response['message'] = "User registered with phone number";
+            $response['phone_number'] = $phone_number;
+            $response['user_id'] = $user->id;
+            $response['status'] = 1;
+            return response()->json($response, 200);
+        } else {
+            $response['message'] = "Invalid mobile number";
+            $response['status'] = 0;
+            return response()->json($response, 200);
         }
     }
 }
