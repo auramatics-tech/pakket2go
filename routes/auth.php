@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('update-otp', [RegisteredUserController::class, 'update_otp']);
 Route::post('verify-otp', [RegisteredUserController::class, 'verify_otp']);
 
+Route::get('/kvkautocomplete', [RegisteredUserController::class, 'kvkautocomplete']);
+Route::get('/kvkbasicprofile', [RegisteredUserController::class, 'kvkbasicprofile']);
+
 Route::prefix('{locale}')
     ->where(['locale' => '[a-zA-Z]{2}'])
     ->middleware('setlocale')
@@ -25,10 +28,7 @@ Route::prefix('{locale}')
 
             Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
-
-            Route::get('otp', [AuthenticatedSessionController::class, 'otp'])
-                ->name('otp');
-
+                
             Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
             Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])

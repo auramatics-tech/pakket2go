@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
+use Session;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -33,8 +35,23 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all()); die;
+        // echo "<pre>";
+        // print_r($request->all());
+        // die;
+
+        // check if phone number is registered but not verified if not verified move to otp screen
+        $check = User::where(['country_code' => $request->country_code, 'phone_number' => $request->phone_number, 'phone_number_verified' => 0])->first();
+        if (isset($check->id)) {
+            // update user
+            $user = User::where('id', $check->id)->update($this->user_data($request));
+            $check->otp_sent_at = '';
+            $check->save();
+
+            Auth::login($check);
+
+            return redirect()->route('otp');
+        }
+
         if (isset($request->user_type) && $request->user_type == 'private') {
             $rules =  [
                 'user_type' => ['required'],
@@ -65,13 +82,28 @@ class RegisteredUserController extends Controller
 
         $request->validate($rules);
 
-        // check if phone number is registered but not verified if not verified move to otp screen
-        $check = User::where(['country_code' => $request->country_code, 'phone_number' => $request->phone_number, 'phone_number_verified' => 0])->first();
-        if (isset($check->id)) {
-            session(['user_id' => $check->id]);
-            return redirect()->route('otp');
-        }
-        $user = User::create([
+        $user = User::create($this->user_data($request));
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect()->route('otp')->with('phone_number', $request->country_code . $request->phone_number);
+    }
+
+    public function update_otp(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->otp_sent_at = $request->date;
+        $user->otp_result = $request->otp_result;
+        $user->save();
+
+        return response()->json(['status' => 1]);
+    }
+
+    protected function user_data($request)
+    {
+        $data = [
             'user_type' => $request->user_type,
             'name' => $request->name,
             'first_name' => isset($request->first_name) ?? $request->first_name,
@@ -86,25 +118,10 @@ class RegisteredUserController extends Controller
             'zipcode' => isset($request->first_name) ?? $request->zipcode,
             'password' => Hash::make($request->password),
             'email_verified_at' => date("Y-m-d H:i:s")
-        ]);
+        ];
 
-        event(new Registered($user));
-
-        session(['user_id' => $user->id]);
-
-        return redirect()->route('otp')->with('phone_number', $request->country_code . $request->phone_number);
+        return $data;
     }
-
-    public function update_otp(Request $request)
-    {
-        $user = User::find($request->id);
-        $user->otp_sent_at = $request->date;
-        $user->save();
-
-        return response()->json(['status' => 1]);
-    }
-
-
 
     public function verify_otp(Request $request)
     {
@@ -112,8 +129,66 @@ class RegisteredUserController extends Controller
         $user->phone_number_verified = 1;
         $user->save();
 
-        Auth::login($user);
-
         return response()->json(['status' => 1]);
+    }
+
+    public function kvkautocomplete(Request $request)
+    {
+        $res =  'autocomplete success';
+        $searchkeyword   = $request->get('searchval');
+        $apiURL = env('KVK_API') . "zoeken?handelsnaam='$searchkeyword'";
+
+        $resarr = [];
+
+        $client = new \GuzzleHttp\Client(['verify' => false, 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'apikey' => 'l7xxc7eedf88b2864ab9b29bdfcbfc1156e5']]);
+        $response = $client->request('GET', $apiURL);
+
+        $statusCode = $response->getStatusCode();
+        if ($statusCode != 200) {
+            $responseBody = ['msg' => 'Error'];
+            $resarr[$responseBody];
+        } else {
+            $responseBody = json_decode($response->getBody(), true);
+            $totalcount = count($responseBody['resultaten']);
+            if ($totalcount > 0) {
+                foreach ($responseBody['resultaten'] as $resb) {
+                    $resarr[] = $resb;
+                }
+            } else {
+                $responseBody = ['msg' => 'Empty'];
+                $resarr[$responseBody];
+            }
+        }
+
+        return response()->json($resarr);
+    }
+
+    public function kvkbasicprofile(Request $request)
+    {
+        $res =  'autocomplete success';
+        $kvknumberis   = $request->get('kvknumberis');
+        $apiURL = env('KVK_API') . "basisprofielen/" . $kvknumberis;
+
+        $resarr = [];
+
+        $client = new \GuzzleHttp\Client(['verify' => false, 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json', 'apikey' => 'l7xxc7eedf88b2864ab9b29bdfcbfc1156e5']]);
+        $response = $client->request('GET', $apiURL);
+
+        $statusCode = $response->getStatusCode();
+        if ($statusCode != 200) {
+            $responseBody = ['msg' => 'Error'];
+            $resarr[$responseBody];
+        } else {
+            $responseBody = json_decode($response->getBody(), true);
+            $totalcount = count($responseBody['_embedded']);
+            if ($totalcount > 0) {
+                $resarr[] = $responseBody['_embedded']['hoofdvestiging']['adressen'];
+            } else {
+                $responseBody = ['msg' => 'Empty'];
+                $resarr[$responseBody];
+            }
+        }
+
+        return response()->json($resarr);
     }
 }

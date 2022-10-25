@@ -33,6 +33,8 @@ class User extends Authenticatable
         'city',
         'zipcode',
         'profile_pic',
+        'otp_sent_at',
+        'otp_result'
     ];
 
     /**

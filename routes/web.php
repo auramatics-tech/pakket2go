@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\App;
 
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\BookingController;
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +30,11 @@ Route::get('/language/{locale}', function ($locale) {
     return back();
 });
 
+Route::get('/load-register-form/{type}', function ($type) {
+    $form = view("web.includes." . $type . "_registration_form")->render();
+    return response()->json(['form' => $form]);
+});
+
 Route::prefix('{locale?}')
     ->where(['locale' => '[a-zA-Z]{2}'])
     ->middleware('setlocale')
@@ -48,9 +53,17 @@ Route::prefix('{locale?}')
         });
 
 
-        Route::get('/home', function () {
-            return view('dashboard');
-        })->middleware(['auth'])->name('dashboard');
+        Route::middleware(['auth'])->group(function () {
+
+            Route::get('otp', [AuthenticatedSessionController::class, 'otp'])
+                ->name('otp');
+
+            Route::middleware(['verified_phone'])->group(function () {
+                Route::get('/home', function () {
+                    return view('dashboard');
+                })->name('dashboard');
+            });
+        });
     });
 
 require __DIR__ . '/auth.php';

@@ -1,12 +1,7 @@
-var send_pin = 1;
-
 window.onload = function () {
     render();
     timer();
-    if (!otp_sent_at) {
-        phoneSendAuth(phone_number)
-        update_otp_sent_at();
-    }
+    phoneSendAuth(phone_number)
 };
 function render() {
     const firebaseConfig = {
@@ -29,44 +24,54 @@ function render() {
 }
 
 function phoneSendAuth(phone_number) {
-    console.log(phone_number, send_pin)
-    if (phone_number && send_pin) {
-        send_pin = 0;
-        firebase.auth().signInWithPhoneNumber('+' + phone_number, window.recaptchaVerifier).then(function (confirmationResult) {
-            window.confirmationResult = confirmationResult;
-            coderesult = confirmationResult;
-            console.log(coderesult);
-            return true;
-        }).catch(function (error) {
-            console.log(error);
-            $("#error").text(error.message);
-            $("#error").show();
-            return false;
-        });
-    }
+    firebase.auth().signInWithPhoneNumber('+' + phone_number, window.recaptchaVerifier).then(function (confirmationResult) {
+        window.confirmationResult = confirmationResult;
+        coderesult = confirmationResult;
+        console.log(coderesult);
+        console.log(coderesult.verificationId);
+        update_otp_sent_at()
+        $("#error").hide();
+        return true;
+    }).catch(function (error) {
+        console.log(error);
+        $("#error").text(error.message);
+        $("#error").show();
+        return false;
+    });
 }
 
 function codeverify() {
     var otp = '';
     $('.su_otp_inputs').each(function () {
+        if (!$(this).val()) {
+            $("#valid_otp").show()
+            return false;
+        }
         otp = otp + $(this).val();
     })
     console.log(otp);
-    coderesult.confirm(otp).then(function (result) {
-        var user = result.user;
-        verify_otp()
-        window.location.href = BASEURL + '/' + $('meta[name="locale"]').attr('content') + '/home'
-    }).catch(function (error) {
-        $("#valid_otp").show()
-    });
+    if (coderesult) {
+        coderesult.confirm(otp).then(function (result) {
+            var user = result.user;
+            verify_otp();
+        }).catch(function (error) {
+            $("#error").hide();
+            $("#expired_otp").hide()
+            $("#valid_otp").show()
+        });
+    } else{
+        $("#error").hide();
+        $("#valid_otp").hide()
+        $("#expired_otp").show()
+    }
+
 }
 
 $(document).on('click', '.resend', function () {
     phoneSendAuth(phone_number)
-    minutesToAdd = 1;
+    minutesToAdd = 2;
     currentDate = new Date();
     countDownDate = new Date(currentDate.getTime() + minutesToAdd * 60000).getTime();
-    update_otp_sent_at()
     timer()
 })
 
@@ -84,7 +89,6 @@ function timer() {
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        send_pin = 0;
         if (minutes < 10) {
             minutes = '0' + minutes
         }
@@ -96,7 +100,6 @@ function timer() {
 
         // If the count down is over, write some text 
         if (distance < 0) {
-            send_pin = 1;
             clearInterval(x);
             document.getElementById("su_Join_now_span").innerHTML = '<a class="su_Join_now_span resend" href="javascript:void(0);">Resend Code</a>';
         }
@@ -114,7 +117,7 @@ function verify_otp() {
             id: $('#user_id').val()
         },
         success: function () {
-
+            window.location.href = BASEURL + '/' + $('meta[name="locale"]').attr('content') + '/home'
         }
     })
 }
@@ -135,3 +138,17 @@ function update_otp_sent_at() {
         }
     })
 }
+
+var elts = document.getElementsByClassName('su_otp_inputs')
+$('.su_otp_inputs').each(function (elt) {
+    console.log('here')
+    $(this).on("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if ($(this).length == 1 && event.keyCode != 8 && event.keyCode != 46) {
+            // Focus on the next sibling
+            var next = parseInt($(this).attr('id')) + 1;
+            console.log(next)
+            $('#' + next).focus()
+        }
+    });
+})
