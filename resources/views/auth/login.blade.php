@@ -109,7 +109,7 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center my-4">
+                                        <div class="d-flex justify-content-between align-items-center su_margin_1366">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div>
@@ -136,7 +136,7 @@
                                         <div>
                                             <button class="su_sign_btn" type="submit">Sign In</button>
                                         </div>
-                                        <div class="text-center my-4">
+                                        <div class="text-center su_margin_1366">
                                             <p class="su_Join_now">Don't have an account? <a href="{{ route('register') }}"
                                                     class="su_Join_now_span">Join
                                                     now</a></p>

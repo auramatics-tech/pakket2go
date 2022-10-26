@@ -86,14 +86,15 @@
      .top_div {
          background-position: 2.7%;
      }
- }
-
- @media only screen and (max-width: 1280px) {
-
-     .mobile figure,
-     .footer_list .child1 p {
-         width: 100%;
-     }
+     .su_sign_btn {
+        padding: 10px 35px;
+    }
+    .su_margin_1366{
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    
  }
 
  /* sumit code start  */
