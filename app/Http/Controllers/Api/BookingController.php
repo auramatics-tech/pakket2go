@@ -63,12 +63,15 @@ class BookingController extends BaseController
         // check if user has completed the current booking step if not redirect to step 1 or to last completed step +1
         $booking = Booking::when($request->booking_id, function ($query) use ($request) {
             $query->where('id', $request->booking_id);
-        }, function ($query)  use ($user_id, $session_id) {
-            $query->where(function ($query)  use ($user_id, $session_id) {
-                $query->where('session_id', $session_id)
-                    ->orwhere('user_id', $user_id);
-            });
-        })->where('status', 0)
+        })->when(
+            $user_id,
+            function ($query)  use ($user_id) {
+                $query->where('user_id', $user_id);
+            },
+            function ($query)  use ($session_id) {
+                $query->where('session_id', $session_id);
+            }
+        )->where('status', 0)
             ->latest()->first();
 
         if (!isset($booking->id)) {

@@ -88,8 +88,41 @@ class UserController extends BaseController
             ]);
 
             event(new Registered($user));
+            Auth::login($user);
 
-            return response()->json(['status' => 1, 'message' => 'User registered successfully']);
+            $user = User::select(
+                'id',
+                'name',
+                'first_name',
+                'last_name',
+                'email',
+                'phone_number as mobile_number',
+                'country_code',
+                'status',
+                'street',
+                'house_no as housenumber',
+                'zipcode',
+                'city as cityname',
+                'kvk_no as kvknumber',
+                'profile_pic as profilepic',
+                'phone_number_verified',
+                'password'
+            )
+                ->find($user->id);
+
+
+
+            // Revoke all tokens...
+            $user->tokens()->delete();
+
+            $user->isCompany = ($user->user_type == 'courier') ? 1 : 0;
+            $user->companyname =  ($user->isCompany) ? $user->name : '';
+
+            $success['id'] =  $user->id;
+            $success['token'] =  $user->createToken('pakket2go')->plainTextToken;
+            $success['user'] =  $user;
+
+            return $this->sendResponse($success, 'User registered successfully');
         }
     }
 

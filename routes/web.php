@@ -50,9 +50,9 @@ Route::prefix('{locale?}')
 
         Route::group(['prefix' => 'booking'], function () {
             Route::middleware(['auth'])->group(function () {
-                Route::get('/pickup-address', [BookingController::class, 'index'])->name('booking.pickup_address');
-                Route::get('/delivery-address', [BookingController::class, 'index'])->name('booking.delivery_address');
-                Route::get('/payment', [BookingController::class, 'index'])->name('booking.payment');
+                Route::get('/{pickup-address}', [BookingController::class, 'index'])->name('booking.pickup_address');
+                Route::get('/{delivery-address}', [BookingController::class, 'index'])->name('booking.delivery_address');
+                Route::get('/{payment}', [BookingController::class, 'index'])->name('booking.payment');
             });
             Route::get('/{step?}', [BookingController::class, 'index'])->name('booking');
         });

@@ -20,6 +20,8 @@ class BookingController extends Controller
 
     function __construct(Request $request)
     {
+        echo "<pre>";
+        print_r($request->all()); die;
         $this->step = isset($request->step) ? $request->step : '';
     }
 
@@ -31,15 +33,20 @@ class BookingController extends Controller
     {
         // check if step from the url is valid step
         $current_step = BookingStep::where('url_code', $this->step)->first();
+        echo "<pre>";
+        print_r(request()->all()); die;
         if (!isset($current_step->id))
             return redirect()->route('booking', ['step' => 'address']);
-
-        $user_id = isset(auth('web')->user()->id) ? auth('web')->user()->id : '';
         // check if user has completed the current booking step if not redirect to step 1 or to last completed step +1
-        $booking = Booking::where(function ($query) use ($user_id) {
-            $query->where('session_id', Session::getId())
-                ->orwhere('user_id', $user_id);
-        })->where('status', 0)
+        $booking = Booking::when(
+            Auth::id(),
+            function ($query) {
+                $query->where('user_id', Auth::id())->orwhere('session_id', Session::get('logged_in'));
+            },
+            function ($query) {
+                $query->where('session_id', Session::getId());
+            }
+        )->where('status', 0)
             ->latest()->first();
 
         if (isset($booking->id) && Session::has('logged_in')) {
