@@ -2630,42 +2630,50 @@ p.dis_content {
     width: 100%;
     height: 100%;
 }
-.su_user_name{
+
+.su_user_name {
     font-weight: 600;
     font-size: 16.5997px;
     line-height: 17px;
     color: #FFFFFF;
 }
-.su_user_email{
+
+.su_user_email {
     font-weight: 500;
     font-size: 15.414px;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.6);
 }
-.mg_left_10{
+
+.mg_left_10 {
     margin-left: 10px;
 }
-.dashboard_hr{
+
+.dashboard_hr {
     color: white;
 }
-.su_menu_title a{
+
+.su_menu_title a {
     font-weight: 600;
     font-size: 15.439px;
     line-height: 22px;
     color: #B8B8B8;
     margin-left: 10px;
 }
-.su_side_padding_dashboard{
+
+.su_side_padding_dashboard {
     padding-left: 15px;
     padding-right: 15px;
 }
-.su_padding_items{
+
+.su_padding_items {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
-.su_About_Pakket2Go{
+
+.su_About_Pakket2Go {
     font-weight: 400;
     font-size: 13px;
     line-height: 22px;
@@ -2673,16 +2681,70 @@ p.dis_content {
     margin-bottom: 0px;
     margin-top: 20px;
 }
-.su_logout_red{
+
+.su_logout_red {
     color: #FC4C00 !important;
 }
-.su_padding_items:hover{
+
+.su_padding_items:hover {
     background: #01B537;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
-.su_padding_items:hover .su_menu_title a{
+
+.su_padding_items:hover .su_menu_title a {
     color: white;
 }
+
 /* sumit dashboard css end */
+
+.form-wrapper {
+    max-width: 30%;
+    min-width: 300px;
+    padding: 50px 30px 50px 30px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+}
+
+.form-group {
+    position: relative;
+
+    &+.form-group {
+        margin-top: 30px;
+    }
+}
+
+.form-label {
+    position: absolute;
+    left: 60px;
+    top: 15px;
+    width: auto;
+    width: auto !important;
+}
+
+.focused .form-label {
+    transform: translateY(-125%);
+    font-size: .75em;
+    background-color: #ffffff;
+    font-weight: 600;
+    font-size: 14.4298px;
+    line-height: 20px;
+    color: #01B537;
+    transition: all .3s ease-out;
+}
+
+.form-input.filled {
+    box-shadow: 0 2px 0 0 lightgreen;
+}
+
+.su_hide_input {
+    border: none;
+    width: 100%;
+}
+
+.su_hide_input:focus-visible {
+    outline: none !important;
+}

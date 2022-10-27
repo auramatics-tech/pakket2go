@@ -82,13 +82,14 @@ class UserController extends BaseController
                 'city' => $request->city,
                 'zipcode' => $request->zipcode,
                 'password' => Hash::make($request->password),
-                'profile_pic' => $profile_pic
+                'profile_pic' => $profile_pic,
+                'phone_number_verified' => 1,
+                'status' => 1
             ]);
 
             event(new Registered($user));
 
-            Auth::login($user);
-            return response()->json(['status'=>1,'message'=>'User registered successfully']);
+            return response()->json(['status' => 1, 'message' => 'User registered successfully']);
         }
     }
 

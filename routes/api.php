@@ -32,8 +32,12 @@ Route::group(['prefix' => '/{lang}/'], function () {
         Route::post('/', [BookingController::class, 'booking']);
     });
 
-    
+
     Route::get('/countries', [AuthController::class, 'countries']);
+
+    Route::middleware(['auth:sanctum'])->group(function () {
+        
+    });
 });
 
 

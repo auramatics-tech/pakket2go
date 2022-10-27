@@ -6,7 +6,7 @@
             </figure>
             <p class="mb-0 ms-2 primary-color ">
                 Already have an account?
-                <a href="#" class="login_ancr orange-color ms-2">login</a>
+                <a href="{{ route('booking.pickup_address') }}" class="login_ancr orange-color ms-2">login</a>
                 here
             </p>
         </div>

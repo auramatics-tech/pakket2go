@@ -19,6 +19,7 @@
     </div>
     <form action="" id="booking_form" style="display: none" method="POST">
         @csrf
+        <input type="hidden" name="session_id" value="{{ Session::getId() }}">
         <input type="hidden" name="booking_id" value="{{ $booking->id }}">
         <input type="hidden" name="step" value="{{ $current_step->id }}">
         <input type="hidden" id="value_{{ $current_step->id }}" name="type_id"

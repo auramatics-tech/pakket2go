@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\BookingStep;
 use App\Models\ParcelOption;
+use App\Models\BookingDetails;
 
 use Session;
 use Auth;
@@ -33,13 +34,19 @@ class BookingController extends Controller
         if (!isset($current_step->id))
             return redirect()->route('booking', ['step' => 'address']);
 
-
+        $user_id = isset(auth('web')->user()->id) ? auth('web')->user()->id : '';
         // check if user has completed the current booking step if not redirect to step 1 or to last completed step +1
-        $booking = Booking::where(function ($query) {
+        $booking = Booking::where(function ($query) use ($user_id) {
             $query->where('session_id', Session::getId())
-                ->orwhere('user_id', Auth::id());
+                ->orwhere('user_id', $user_id);
         })->where('status', 0)
             ->latest()->first();
+
+        if (isset($booking->id) && Session::has('logged_in')) {
+            $booking->current_step = $current_step->id;
+            $booking->user_id = Auth::id();
+            $booking->save();
+        }
 
         if (!isset($booking->id) && $current_step->id != 1)
             return redirect()->route('booking', ['step' => 'address']);
@@ -54,7 +61,7 @@ class BookingController extends Controller
             $parcel_options = ParcelOption::whereJsonContains('step', $current_step->id)->get();
         }
 
-        $parcel_details =  $booking->details;
+        $parcel_details =  isset($booking->details) ? $booking->details : new BookingDetails();
 
         return view("web.booking.layouts.master", ['booking_steps' => $booking_steps, 'current_step' => $current_step, 'parcel_options' => $parcel_options, 'booking' => $booking, 'parcel_details' => $parcel_details]);
     }

@@ -136,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" value="{{ Session::get('user_id') }}" id="user_id">
+        <input type="hidden" value="{{ Auth::user()->id }}" id="user_id">
         <input type="hidden" value="{{ isset(Auth::user()->otp_sent_at) ? Auth::user()->otp_sent_at : '' }}"
             id="otp_sent_at">
     @endsection

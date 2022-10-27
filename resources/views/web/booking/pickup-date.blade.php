@@ -15,6 +15,9 @@
 
     <form action="" method="POST" id="booking_form">
         @csrf
+        
+        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+        <input type="hidden" name="session_id" value="{{ Session::getId() }}">
         <input type="hidden" name="booking_id" value="{{ $booking->id }}">
         <input type="hidden" name="step" value="{{ $current_step->id }}">
         <input type="hidden" name="pickup_date" id="pickup_date" value="{{ $booking->booking_data($parcel_details, 'pickup_date', 'date') }}">

@@ -3,6 +3,8 @@
             <div class="form_pos">
                 <form action="" id="booking_form" class="w-100 mx-auto" method="post">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                    <input type="hidden" name="session_id" value="{{ Session::getId() }}">
                     <div class="map_form">
                         <div class="top_div">
                             <div class="form-group">
@@ -12,7 +14,7 @@
                                     </span>
                                     <input class="form-control border-0 ad_input searchInput" type="text"
                                         name="pickup_address" placeholder="{{ __('home.Enter locality or address') }}"
-                                        id="searchInput_from" value="{{ isset($booking->address->pickup_address) ? $booking->address->pickup_address : '' }}">
+                                        id="searchInput_from" value="{{ isset($booking->address->pickup_address) ? $booking->address->pickup_address : request()->from }}">
                                 </label>
                             </div>
                             <hr class="border_bottom">
@@ -23,7 +25,7 @@
                                     </span>
                                     <input class="form-control border-0 ad_input searchInput" type="text"
                                         name="delivery_address" placeholder="{{ __('home.Enter locality or address') }}"
-                                        id="searchInput_to" value="{{ isset($booking->address->delivery_address) ? $booking->address->delivery_address : '' }}">
+                                        id="searchInput_to" value="{{ isset($booking->address->delivery_address) ? $booking->address->delivery_address :  request()->to }}">
                                 </label>
                             </div>
                         </div>
