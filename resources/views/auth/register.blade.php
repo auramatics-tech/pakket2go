@@ -227,8 +227,8 @@
         })
 
         $(document).on('click', '.form-label', function() {
-            $(this).closest('input').focus()
             $(this).closest('.form-group').addClass('focused');
+            $(this).parent().find('input').focus();
         })
 
         $('input').focus(function() {
