@@ -2624,42 +2624,50 @@ p.dis_content {
     width: 100%;
     height: 100%;
 }
-.su_user_name{
+
+.su_user_name {
     font-weight: 600;
     font-size: 16.5997px;
     line-height: 17px;
     color: #FFFFFF;
 }
-.su_user_email{
+
+.su_user_email {
     font-weight: 500;
     font-size: 15.414px;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.6);
 }
-.mg_left_10{
+
+.mg_left_10 {
     margin-left: 10px;
 }
-.dashboard_hr{
+
+.dashboard_hr {
     color: white;
 }
-.su_menu_title a{
+
+.su_menu_title a {
     font-weight: 600;
     font-size: 15.439px;
     line-height: 22px;
     color: #B8B8B8;
     margin-left: 10px;
 }
-.su_side_padding_dashboard{
+
+.su_side_padding_dashboard {
     padding-left: 15px;
     padding-right: 15px;
 }
-.su_padding_items{
+
+.su_padding_items {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
-.su_About_Pakket2Go{
+
+.su_About_Pakket2Go {
     font-weight: 400;
     font-size: 13px;
     line-height: 22px;
@@ -2667,16 +2675,19 @@ p.dis_content {
     margin-bottom: 0px;
     margin-top: 20px;
 }
-.su_logout_red{
+
+.su_logout_red {
     color: #FC4C00 !important;
 }
-.su_padding_items:hover{
+
+.su_padding_items:hover {
     background: #01B537;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
-.su_padding_items:hover .su_menu_title a{
+
+.su_padding_items:hover .su_menu_title a {
     color: white;
 }
 .su_search_filter_img{

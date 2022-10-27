@@ -36,11 +36,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        $current_session = Session::getId();
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(app()->getLocale() . RouteServiceProvider::HOME);
+        return redirect()->intended(app()->getLocale() . RouteServiceProvider::HOME)->with('logged_in', $current_session);
     }
 
     /**

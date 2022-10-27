@@ -20,13 +20,15 @@
     <div class="card_data mt-4">
         @php
             $parcel_type = App\Models\ParcelOption::find($booking->booking_data($parcel_details, 'parcel_type', 'id'));
-            $details = json_decode($parcel_details->parcel_details);
+            $details = ($parcel_details->parcel_details) ? json_decode($parcel_details->parcel_details) : [];
         @endphp
         @if (isset($parcel_type->id) && $parcel_type->dimensions == 1)
             <h6>Fill in the dimensions and check the price</h6>
         @endif
         <form action="" method="POST" id="booking_form">
             @csrf
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+            <input type="hidden" name="session_id" value="{{ Session::getId() }}">
             <input type="hidden" name="booking_id" value="{{ $booking->id }}">
             <input type="hidden" name="step" value="{{ $current_step->id }}">
             @if (count($details))

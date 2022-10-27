@@ -1,20 +1,23 @@
-<form action="">
-    <div class="form-group mt-4">
-        <div class="radio_style">
-            <label for="private" data-type="business" class="active registeration_type" id="type_private">
-                Private
-                <input type="radio" name="" id="Private" checked>
-            </label>
-            <label for="business" data-type="private" class="registeration_type" id="type_business">
-                Business
-                <input type="radio" name="" id="Business">
-            </label>
-        </div>
+<div class="form-group mt-4">
+    <div class="radio_style">
+        <label for="Private" id="private" class="@if (!old('user_type') || old('user_type') == 'private') active @endif user_type"
+            data-other="courier">
+            Private
+            <input type="radio" value="private" name="user_type" id="form_private"
+                @if (!old('user_type') || old('user_type') == 'private') checked @endif>
+        </label>
+        <label for="Courier" id="courier" class="@if (old('user_type') == 'courier') active @endif user_type"
+            data-other="private">
+            Business
+            <input type="radio" value="courier" name="user_type" id="form_courier"
+                @if (old('user_type') == 'courier') checked @endif>
+        </label>
     </div>
-    @include('web.includes.private_registration_form')
-    @include('web.includes.business_registration_form')
-    <p class="mb-0 dis_content mt-4">Your contact details are passed on to the driver so that they
-        can get intouch with you during
-        transport</p>
-
-</form>
+</div>
+<div id="register_form">
+    @if (old('user_type'))
+        @include('web.includes.' . old('user_type') . '_registration_form')
+    @else
+        @include('web.includes.private_registration_form')
+    @endif
+</div>

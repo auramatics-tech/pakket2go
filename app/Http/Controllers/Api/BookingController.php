@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\BaseController as BaseController;
 use Illuminate\Http\Request;
 
 use App\Models\Booking;
@@ -14,8 +14,9 @@ use App\Models\SiteSetting;
 
 use Session;
 use Auth;
+use App;
 
-class BookingController extends Controller
+class BookingController extends BaseController
 {
 
     function __construct(Request $request)
@@ -50,23 +51,36 @@ class BookingController extends Controller
      */
     public function booking(Request $request)
     {
+
+        if ($request->ajax()) {
+            $user_id = $request->user_id;
+            $session_id = $request->session_id;
+        } else {
+            $user_id = isset(auth('sanctum')->user()->id) ? auth('sanctum')->user()->id : '';
+            $session_id = Session::getId();
+        }
+
         // check if user has completed the current booking step if not redirect to step 1 or to last completed step +1
         $booking = Booking::when($request->booking_id, function ($query) use ($request) {
             $query->where('id', $request->booking_id);
-        }, function ($query) {
-            $query->where(function ($query) {
-                $query->where('session_id', Session::getId())
-                    ->orwhere('user_id', Auth::id());
-            });
-        })->where('status', 0)
+        })->when(
+            $user_id,
+            function ($query)  use ($user_id) {
+                $query->where('user_id', $user_id);
+            },
+            function ($query)  use ($session_id) {
+                $query->where('session_id', $session_id);
+            }
+        )->where('status', 0)
             ->latest()->first();
 
         if (!isset($booking->id)) {
             $booking = new Booking;
         }
 
-        $booking->user_id = Auth::id();
-        $booking->session_id = Session::getId();
+
+        $booking->user_id = $user_id;
+        $booking->session_id = $session_id;
         $booking->current_step = $request->step;
         $booking->status = 0;
         $booking->save();
@@ -92,6 +106,20 @@ class BookingController extends Controller
             $this->deliveryFloor($request, $booking);
         } elseif ($request->step == 7) {
             $this->deliveryFloor($request, $booking);
+        } elseif ($request->step == 9) {
+            if (!auth('sanctum')->user()->id) {
+                return $this->sendError('Please login first', [], 401);
+            }
+            $booking->user_id = auth('sanctum')->user()->id;
+            $booking->address_id = $this->saveAddress($request, $booking);
+            $booking->save();
+        } elseif ($request->step == 10) {
+            if (!auth('sanctum')->user()->id) {
+                return $this->sendError('Please login first', [], 401);
+            }
+            $booking->user_id = auth('sanctum')->user()->id;
+            $booking->address_id = $this->saveAddress($request, $booking);
+            $booking->save();
         }
 
         $price = $this->calculate_final_price($booking);
@@ -99,7 +127,7 @@ class BookingController extends Controller
             $next_step = BookingStep::find($request->step + 1);
             $redirect = '';
             $step_view = '';
-            $redirect =  route('booking', ['step' => $next_step->url_code]);
+            $redirect =  route('booking', ['step' => $next_step->url_code, 'locale' => App::getLocale()]);
             return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => $step_view]);
         } else {
             return response()->json(['success' => 1, 'message' => 'Booking data saved successfully', 'booking_id' => $booking->id, 'pricing_details' => $price, 'final_price' => $booking->final_price]);
@@ -351,6 +379,6 @@ class BookingController extends Controller
         $booking = Booking::where('id', $request->id)->delete();
         BookingDetails::where('booking_id', $request->id)->delete();
 
-        return response()->json(['status'=>1,'message'=>'Booking deleted successfully']);
+        return response()->json(['status' => 1, 'message' => 'Booking deleted successfully']);
     }
 }

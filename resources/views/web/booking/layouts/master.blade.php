@@ -26,7 +26,7 @@
 @section('script')
     @if ($current_step->id == 1)
         <script>
-            console.log("{{ config('name') }}","key")
+            console.log("{{ config('name') }}", "key")
             var show_map = 1;
             var direction = 1;
         </script>
@@ -69,7 +69,7 @@
         function final_price($this) {
             var step = $this.attr('data-step');
             var option = $this.attr('data-option');
-            console.log(step,option)
+            console.log(step, option)
 
             $('#info_name_' + step).html($('#name_' + step + '_' + option).html());
             $('#info_price_' + step).html('€ ' + $('#price_' + step + '_' + option).val());
@@ -87,7 +87,7 @@
         $('#booking_form').on('submit', function(e) {
             e.preventDefault();
             $.ajax({
-                url: BASEURL + '/api/booking',
+                url: BASEURL + '/api/{{ App::getLocale() }}/booking',
                 method: 'post',
                 data: $('#booking_form').serialize(),
                 success: function(data) {
@@ -117,4 +117,15 @@
             $(".to_address_p").after('<p id="delivery_date_p">' + date_view + '</p>');
         })
     </script>
+
+
+    @if ($current_step->id == 8)
+        <script src="{{ asset('assets/js/login_register.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script>
+            var user_type = "{{ old('user_type') }}";
+        </script>
+        <script src="{{ asset('assets/js/register.js') }}"></script>
+    @endif
 @endsection

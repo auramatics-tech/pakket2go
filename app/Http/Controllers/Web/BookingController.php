@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\BookingStep;
 use App\Models\ParcelOption;
+use App\Models\BookingDetails;
 
 use Session;
 use Auth;
@@ -19,6 +20,8 @@ class BookingController extends Controller
 
     function __construct(Request $request)
     {
+        echo "<pre>";
+        print_r($request->all()); die;
         $this->step = isset($request->step) ? $request->step : '';
     }
 
@@ -30,16 +33,27 @@ class BookingController extends Controller
     {
         // check if step from the url is valid step
         $current_step = BookingStep::where('url_code', $this->step)->first();
+        echo "<pre>";
+        print_r(request()->all()); die;
         if (!isset($current_step->id))
             return redirect()->route('booking', ['step' => 'address']);
-
-
         // check if user has completed the current booking step if not redirect to step 1 or to last completed step +1
-        $booking = Booking::where(function ($query) {
-            $query->where('session_id', Session::getId())
-                ->orwhere('user_id', Auth::id());
-        })->where('status', 0)
+        $booking = Booking::when(
+            Auth::id(),
+            function ($query) {
+                $query->where('user_id', Auth::id())->orwhere('session_id', Session::get('logged_in'));
+            },
+            function ($query) {
+                $query->where('session_id', Session::getId());
+            }
+        )->where('status', 0)
             ->latest()->first();
+
+        if (isset($booking->id) && Session::has('logged_in')) {
+            $booking->current_step = $current_step->id;
+            $booking->user_id = Auth::id();
+            $booking->save();
+        }
 
         if (!isset($booking->id) && $current_step->id != 1)
             return redirect()->route('booking', ['step' => 'address']);
@@ -54,7 +68,7 @@ class BookingController extends Controller
             $parcel_options = ParcelOption::whereJsonContains('step', $current_step->id)->get();
         }
 
-        $parcel_details =  $booking->details;
+        $parcel_details =  isset($booking->details) ? $booking->details : new BookingDetails();
 
         return view("web.booking.layouts.master", ['booking_steps' => $booking_steps, 'current_step' => $current_step, 'parcel_options' => $parcel_options, 'booking' => $booking, 'parcel_details' => $parcel_details]);
     }

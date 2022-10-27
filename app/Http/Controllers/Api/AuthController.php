@@ -32,21 +32,47 @@ class AuthController extends BaseController
             $errors = $credentials->messages();
             return $this->sendError('Missing required fields', $errors, 401);
         } else {
+            $country_code = $request->country_code;
             $phone_number = $request->phone_number;
             $password = $request->password;
 
-            $user = User::where('phone_number', $phone_number)->first();
+            $user = User::select(
+                'id',
+                'name',
+                'first_name',
+                'last_name',
+                'email',
+                'phone_number as mobile_number',
+                'country_code',
+                'status',
+                'street',
+                'house_no as housenumber',
+                'zipcode',
+                'city as cityname',
+                'kvk_no as kvknumber',
+                'profile_pic as profilepic',
+                'phone_number_verified',
+                'password'
+            )
+                ->where('phone_number', $phone_number)->where('country_code', $country_code)->where('status', 1)->first();
+
+            if (isset($user->id) && !$user->phone_number_verified) {
+                return $this->sendError('Phone number not verified', [], 401);
+            }
             if (!$user || !Hash::check($password, $user->password)) {
                 return $this->sendError('Invalid login details', [], 401);
             }
         }
 
         // Revoke all tokens...
-        // $user->tokens()->delete();
+        $user->tokens()->delete();
+
+        $user->isCompany = ($user->user_type == 'courier') ? 1 : 0;
+        $user->companyname =  ($user->isCompany) ? $user->name : '';
 
         $success['id'] =  $user->id;
         $success['token'] =  $user->createToken('pakket2go')->plainTextToken;
-        $success['data'] =  $user;
+        $success['user'] =  $user;
 
         return $this->sendResponse($success, 'Login successfull.');
     }
