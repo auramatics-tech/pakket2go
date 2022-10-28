@@ -17,129 +17,36 @@
             </p>
         </div>
     </div>
+    <form action="" id="booking_form" style="display: none" method="POST">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+        <input type="hidden" name="session_id" value="{{ Session::getId() }}">
+        <input type="hidden" name="booking_id" value="{{ $booking->id }}">
+        <input type="hidden" name="step" value="{{ $current_step->id }}">
+        <input type="hidden" name="method" value="" id="method">
+    </form>
     <div class="payment_card_data mt-4">
         <h6 class="mb-0 ct_h6">Select your payment method</h6>
         <div class="row mt-3">
-            <div class="col-6 mt-4">
-                <div class="pay_card active">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/paypal.png') }}" alt="">
-                        </figure>
+            @if (count($payment_methods))
+                @foreach ($payment_methods as $key =>  $payment_method)
+                    <div class="col-6 mt-4">
+                        <div class="pay_card @if($key == 0) active @endif" data-method="{{ $payment_method->description }}">
+                            <div class="img">
+                                <figure>
+                                    <img src="{{ $payment_method->image->svg }}" alt="">
+                                </figure>
+                            </div>
+                            <div class="text">
+                                <h6 class="mb-0">{{ $payment_method->description }}</h6>
+                            </div>
+                            <div class="button">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text">
-                        <h6 class="mb-0">PayPal</h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-4">
-                <div class="pay_card">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/creditcard.png') }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="text">
-                        <h6 class="mb-0">Credit Card</h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-4">
-                <div class="pay_card">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/giropay.png') }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="text">
-                        <h6 class="mb-0">Giropay</h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-4">
-                <div class="pay_card">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/ideal.png') }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="text">
-                        <h6 class="mb-0">Ideal</h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-4">
-                <div class="pay_card">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/bancontact.png') }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="text">
-                        <h6 class="mb-0">Bancontact</h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-4">
-                <div class="pay_card">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/kbc.png') }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="text">
-                        <h6 class="mb-0">KBC/CBC Payment </h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-4">
-                <div class="pay_card">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/belfius.png') }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="text">
-                        <h6 class="mb-0">Belfius Pay</h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-4">
-                <div class="pay_card">
-                    <div class="img">
-                        <figure>
-                            <img src="{{ asset('assets/img/sofort.png') }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="text">
-                        <h6 class="mb-0">Sofort Banking</h6>
-                    </div>
-                    <div class="button">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>

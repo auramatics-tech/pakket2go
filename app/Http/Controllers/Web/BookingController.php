@@ -13,7 +13,9 @@ use App\Models\BookingDetails;
 use Session;
 use Auth;
 use App;
+use Log;
 
+use Mollie\Laravel\Facades\Mollie;
 
 class BookingController extends Controller
 {
@@ -66,6 +68,21 @@ class BookingController extends Controller
 
         $parcel_details =  isset($booking->details) ? $booking->details : new BookingDetails();
 
-        return view("web.booking.layouts.master", ['booking_steps' => $booking_steps, 'current_step' => $current_step, 'parcel_options' => $parcel_options, 'booking' => $booking, 'parcel_details' => $parcel_details]);
+        $payment_methods = [];
+        if ($this->step == 'payment') {
+            $payment_methods = Mollie::api()->methods()->allActive();
+        }
+
+        return view("web.booking.layouts.master", ['booking_steps' => $booking_steps, 'current_step' => $current_step, 'parcel_options' => $parcel_options, 'booking' => $booking, 'parcel_details' => $parcel_details, 'payment_methods' => $payment_methods]);
     }
+
+    public function payment_confirmation(Request $request){
+        echo "<pre>";
+        print_r($request->all());
+    }
+
+    public function payment_webhook(Request $request){
+        Log::info($request->all());
+    }
+
 }

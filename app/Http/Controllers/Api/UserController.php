@@ -59,16 +59,8 @@ class UserController extends BaseController
 
         if ($credentials->fails()) {
             $errors = $credentials->messages();
-            return $this->sendError('Missing required fields', $errors, 401);
+            return $this->sendError('Error', $errors, 401);
         } else {
-            $profile_pic = '';
-            if ($request->has('profile_pic')) {
-                $uploadFolder = '/uploads/profile_pic';
-                $imageName = time() . '.' . $request->profile_pic->extension();
-                $request->profile_pic->move(storage_path($uploadFolder), $imageName);
-                $profile_pic = $uploadFolder . '/' . $imageName;
-            }
-
             $user = User::create([
                 'user_type' => $request->user_type,
                 'name' => $request->name,
@@ -82,7 +74,7 @@ class UserController extends BaseController
                 'city' => $request->city,
                 'zipcode' => $request->zipcode,
                 'password' => Hash::make($request->password),
-                'profile_pic' => $profile_pic,
+                'profile_pic' => $request->profile_pic,
                 'phone_number_verified' => 1,
                 'status' => 1
             ]);
