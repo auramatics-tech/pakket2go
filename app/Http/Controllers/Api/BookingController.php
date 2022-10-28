@@ -107,17 +107,17 @@ class BookingController extends BaseController
         } elseif ($request->step == 7) {
             $this->deliveryFloor($request, $booking);
         } elseif ($request->step == 9) {
-            if (!auth('sanctum')->user()->id) {
+            if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                 return $this->sendError('Please login first', [], 401);
             }
-            $booking->user_id = auth('sanctum')->user()->id;
+            $booking->user_id = $user_id;
             $booking->address_id = $this->saveAddress($request, $booking);
             $booking->save();
         } elseif ($request->step == 10) {
-            if (!auth('sanctum')->user()->id) {
+            if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                 return $this->sendError('Please login first', [], 401);
             }
-            $booking->user_id = auth('sanctum')->user()->id;
+            $booking->user_id = $user_id;
             $booking->address_id = $this->saveAddress($request, $booking);
             $booking->save();
         }

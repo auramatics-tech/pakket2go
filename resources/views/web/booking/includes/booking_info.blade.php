@@ -65,7 +65,7 @@
                 <span class="final_price">€ {{ number_format($booking->final_price, 2) }}</span>
             </div>
             <p class="mb-0 text-white me-3">
-                Continue
+               @if(Route::is("booking.payment")) Make Payment @else Continue @endif
                 <span class="angle_bot"><i class="fa-solid fa-angle-right"></i><i
                         class="fa-solid fa-angle-right"></i></span>
             </p>
@@ -76,7 +76,7 @@
                     <span class="final_price">€ {{ number_format($booking->final_price, 2) }}</span>
                 </div>
                 <p class="mb-0 text-white me-3">
-                    Continue
+                    @if(Route::is("booking.payment")) Make Payment @else Continue @endif
                     <span class="angle_bot"><i class="fa-solid fa-angle-right"></i><i
                             class="fa-solid fa-angle-right"></i></span>
                 </p>

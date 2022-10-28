@@ -52,7 +52,8 @@ class AuthController extends BaseController
                 'kvk_no as kvknumber',
                 'profile_pic as profilepic',
                 'phone_number_verified',
-                'password'
+                'password',
+                'user_type'
             )
                 ->where('phone_number', $phone_number)->where('country_code', $country_code)->where('status', 1)->first();
 

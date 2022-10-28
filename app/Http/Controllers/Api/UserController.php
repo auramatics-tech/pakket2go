@@ -106,7 +106,8 @@ class UserController extends BaseController
                 'kvk_no as kvknumber',
                 'profile_pic as profilepic',
                 'phone_number_verified',
-                'password'
+                'password',
+                'user_type'
             )
                 ->find($user->id);
 
@@ -115,7 +116,7 @@ class UserController extends BaseController
             // Revoke all tokens...
             $user->tokens()->delete();
 
-            $user->isCompany = ($user->user_type == 'courier') ? 1 : 0;
+            $user->isCompany = ($user->user_type != 'courier') ? 1 : 0;
             $user->companyname =  ($user->isCompany) ? $user->name : '';
 
             $success['id'] =  $user->id;
@@ -143,6 +144,7 @@ class UserController extends BaseController
         $user = User::where('phone_number', $phone_number)->where('country_code', $country_code)->first();
         if (!empty($user)) {
             $response['message'] = "User registered with phone number";
+            $response['user_type'] = $user->user_type;
             $response['phone_number'] = $phone_number;
             $response['user_id'] = $user->id;
             $response['status'] = 1;

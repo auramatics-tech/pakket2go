@@ -20,9 +20,7 @@ class BookingController extends Controller
 
     function __construct(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all()); die;
-        $this->step = isset($request->step) ? $request->step : '';
+        $this->step = isset($request->step) ? $request->step : $request->segment(3);
     }
 
     /**
@@ -33,8 +31,6 @@ class BookingController extends Controller
     {
         // check if step from the url is valid step
         $current_step = BookingStep::where('url_code', $this->step)->first();
-        echo "<pre>";
-        print_r(request()->all()); die;
         if (!isset($current_step->id))
             return redirect()->route('booking', ['step' => 'address']);
         // check if user has completed the current booking step if not redirect to step 1 or to last completed step +1
