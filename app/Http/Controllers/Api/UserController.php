@@ -67,6 +67,7 @@ class UserController extends BaseController
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
+                'country_code' => $request->country_code,
                 'phone_number' => $request->phone_number,
                 'street' => $request->street,
                 'house_no' => $request->house_no,
