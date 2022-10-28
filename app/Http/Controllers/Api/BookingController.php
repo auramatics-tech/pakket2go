@@ -356,6 +356,7 @@ class BookingController extends BaseController
             $booking_payment = new BookingPayments();
         }
         $booking_payment->booking_id = $booking->id;
+        $booking_payment->amount = $booking->final_price;
         $booking_payment->transaction_id = $payment->id;
         $booking_payment->status = $payment->status;
         $booking_payment->save();
