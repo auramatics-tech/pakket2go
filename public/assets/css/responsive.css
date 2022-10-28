@@ -105,6 +105,9 @@
  }
 
  @media screen and (max-width: 1300px) {
+    .su_button_padding {
+        padding: 0px 50px;
+    }
     .mt_1257 {
         margin-right: 0px;
     }
@@ -115,9 +118,9 @@
          margin-left: 10px;
      }
 
-     .su_register_sidebar {
+     /* .su_register_sidebar {
          height: 950px;
-     }
+     } */
 
      .su_side_img {
          width: 180px;
@@ -307,6 +310,9 @@
  @media only screen and (max-width: 991px) {
 
      /* sumit code start   */
+     .su_button_padding {
+        padding: 0px 30px;
+    }
      .su_card_out_box {
         height: 85vh;
     }
@@ -625,6 +631,18 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
+
+      /* .su_register_sidebar {
+         height: 950px;
+     } */
+     .su_register_sidebar_padding {
+        display: block;
+        height: auto;
+    }
+
+    .su_button_padding {
+        padding: 0px 15px;
+    }
     .su_cou_width_70 {
         width: 40%;
     }
@@ -1114,7 +1132,7 @@
      }
 
      .su_button_padding {
-         padding: 0px 60px;
+         padding: 0px 10px;
      }
 
      .su_Sign_In {
@@ -1400,6 +1418,9 @@
  }
 
  @media only screen and (max-width: 400px) {
+    .su_register_card {
+        padding: 20px 5px 20px 5px;
+    }
      .su_courier_white_bg {
          width: 280px;
      }
