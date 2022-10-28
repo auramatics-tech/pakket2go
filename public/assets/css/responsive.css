@@ -137,6 +137,23 @@
  /* sumit code start   */
 
  @media screen and (max-width: 1200px) {
+    .su_after_img::after {
+        background: none;
+        background-position: none;
+        content: '.';
+        width: 0px;
+    }
+    .su_map_img_dashboard {
+        width: 100%;
+        height: 190px;
+        margin-top: 15px;
+    }
+    .su_block_in_1200{
+        display: block !important;
+    }
+    .su_Book_Transport {
+        padding: 5px 16px !important;
+    }
     .su_position_3_btns {
         left: 53%;
     }
@@ -175,6 +192,12 @@
      }
  }
 
+ @media screen and (max-width: 1167px){
+    .su_navbar_heading {
+        font-size: 18px;
+    }
+ }
+
  @media screen and (max-width: 1100px) {
     .su_position_3_btns {
         left: 52%;
@@ -197,6 +220,22 @@
  }
 
  /* sumit code end  */
+
+ @media only screen and (max-width: 1080px){
+    .su_navbar_heading {
+        font-size: 16px;
+    }
+    .su_Book_Transport {
+        line-height: 20px;
+        margin-left: 10px;
+    }
+ }
+
+ @media only screen and (max-width: 1030px){
+    .su_Book_Transport {
+        display: none;
+    }
+ }
 
  @media only screen and (max-width: 1024px) {
      .top_div {
@@ -238,6 +277,9 @@
  @media only screen and (max-width: 991px) {
 
      /* sumit code start   */
+     .su_container_dashboard {
+        padding: 0px 15px;
+    }
      .truck_imgone {
         left: 37%;
     }
@@ -493,6 +535,10 @@
      }
  }
 
+ @media screen and (max-width: 872px){
+
+ }
+
  /* sumit code start   */
  @media screen and (max-width: 768px) {
     .su_icons_text_adjust {
@@ -598,9 +644,6 @@
 
      .badge {
          width: fit-content;
-         padding-right: 1rem !important;
-         margin-left: auto;
-         margin-right: auto;
      }
 
      .mob_align {
@@ -709,6 +752,47 @@
  }
 
  @media only screen and (max-width: 576px){
+    .su_search_border_style {
+        padding: 8px 10px 8px 50px;
+    }
+    .su_padding_toolbar {
+        padding: 15px 0px;
+    }
+    .su_item_name_btn {
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .su_address_dashboard {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .su_item_date {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .su_item_price {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .su_item_name {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .Track_orders {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .su_navbar_heading {
+        font-weight: 600;
+        line-height: 27px;
+    }
+
     .su_white_section_margin {
         margin: 100px 0px;
     }
@@ -717,6 +801,16 @@
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
+     .su_my_480{
+        margin: 8px 0px 8px 0px;
+     }
+     .su_card_out_box {
+        padding: 10px;
+    }
+     .Track_orders {
+        font-size: 14px;
+        line-height: 17px;
+    }
      .su_register_sidebar_padding {
         padding: 50px 0px 50px 0px;
     }
@@ -1214,6 +1308,13 @@
 
  }
 
+ @media only screen and (max-width: 452px){
+    .su_item_name_btn {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+ }
+
  @media only screen and (max-width: 435px){
     .phone_input {
         line-height: 15px;
@@ -1278,11 +1379,23 @@
          left: 30%;
          margin-top: -90px;
      }
+     .su_navbar_heading {
+        white-space: nowrap;
+        width: 125px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
  }
 
  /* sumit code end  */
 
  @media only screen and (max-width: 340px){
+    .su_width_40 {
+        width: 35%;
+    }
+    .su_width_60 {
+        width: 65%;
+    }
     .des_textarea {
         font-size: 14px;
         line-height: 20px;
