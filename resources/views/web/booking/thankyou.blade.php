@@ -1,4 +1,4 @@
-@extends('layouts.web.master')
+@extends('web.layouts.master')
 
 @section('title')
     Pakket2Go - Thank You
