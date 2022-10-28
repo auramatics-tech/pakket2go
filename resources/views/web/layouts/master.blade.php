@@ -68,7 +68,7 @@
     @endif
     @yield('content')
 
-    @if (!Route::is('booking') && !Route::is('login') && !Route::is('register') && !Route::is('otp'))
+    @if (!Route::is('booking') && !Route::is('booking.*') && !Route::is('login') && !Route::is('register') && !Route::is('otp'))
         @include('web.layouts.footer')
     @endif
 

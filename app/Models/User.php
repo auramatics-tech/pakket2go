@@ -34,7 +34,9 @@ class User extends Authenticatable
         'zipcode',
         'profile_pic',
         'otp_sent_at',
-        'otp_result'
+        'otp_result',
+        'phone_number_verified',
+        'status'
     ];
 
     /**

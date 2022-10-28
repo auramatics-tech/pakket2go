@@ -16,6 +16,8 @@ use Session;
 use Auth;
 use App;
 
+use Mollie\Laravel\Facades\Mollie;
+
 class BookingController extends BaseController
 {
 
@@ -85,41 +87,52 @@ class BookingController extends BaseController
         $booking->status = 0;
         $booking->save();
 
-        if ($request->step == 1) {
-            $booking->address_id = $this->saveAddress($request, $booking);
-            $booking->save();
-            $this->parcelType($request, $booking);
-            $this->calcualte_distance_price($request, $booking);
-        } elseif ($request->step == 2) {
-            $this->parcelType($request, $booking);
-        } elseif ($request->step == 3) {
-            $this->parcelDetails($request, $booking);
-        } elseif ($request->step == 4) {
-            $this->pickupDate($request, $booking);
-            $this->pickupExtraHelp($request, $booking);
-        } elseif ($request->step == 5) {
-            $this->pickupExtraHelp($request, $booking);
-            $this->pickupFloor($request, $booking);
-        } elseif ($request->step == 6) {
-            $this->pickupFloor($request, $booking);
-            $request->type_id = '';
-            $this->deliveryFloor($request, $booking);
-        } elseif ($request->step == 7) {
-            $this->deliveryFloor($request, $booking);
-        } elseif ($request->step == 9) {
-            if (!auth('sanctum')->user()->id) {
-                return $this->sendError('Please login first', [], 401);
-            }
-            $booking->user_id = auth('sanctum')->user()->id;
-            $booking->address_id = $this->saveAddress($request, $booking);
-            $booking->save();
-        } elseif ($request->step == 10) {
-            if (!auth('sanctum')->user()->id) {
-                return $this->sendError('Please login first', [], 401);
-            }
-            $booking->user_id = auth('sanctum')->user()->id;
-            $booking->address_id = $this->saveAddress($request, $booking);
-            $booking->save();
+        switch ($request->step) {
+            case 1:
+                $booking->address_id = $this->saveAddress($request, $booking);
+                $booking->save();
+                $this->parcelType($request, $booking);
+                $this->calcualte_distance_price($request, $booking);
+                break;
+            case 2:
+                $this->parcelType($request, $booking);
+            case 3:
+                $this->parcelDetails($request, $booking);
+            case 4:
+                $this->pickupDate($request, $booking);
+                $this->pickupExtraHelp($request, $booking);
+            case 5:
+                $this->pickupExtraHelp($request, $booking);
+                $this->pickupFloor($request, $booking);
+            case 6:
+                $this->pickupFloor($request, $booking);
+                $request->type_id = '';
+                $this->deliveryFloor($request, $booking);
+            case 7:
+                $this->deliveryFloor($request, $booking);
+            case 9:
+                if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
+                    return $this->sendError('Please login first', [], 401);
+                }
+                $booking->user_id = $user_id;
+                $booking->address_id = $this->saveAddress($request, $booking);
+                $booking->save();
+            case 10:
+                if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
+                    return $this->sendError('Please login first', [], 401);
+                }
+                $booking->user_id = $user_id;
+                $booking->address_id = $this->saveAddress($request, $booking);
+                $booking->save();
+            case 11:
+                if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
+                    return $this->sendError('Please login first', [], 401);
+                }
+                $redirect = $this->payment($request, $booking);
+                return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => '']);
+            default:
+                return $this->sendError('Invalid step data', [], 401);
+                break;
         }
 
         $price = $this->calculate_final_price($booking);
@@ -309,6 +322,41 @@ class BookingController extends BaseController
         $booking_details->delivery_floor = json_encode($delivery_floor);
         $booking_details->save();
         return $booking_details->id;
+    }
+
+    protected function payment($request, $booking)
+    {
+        echo "<pre>";
+        print_r([
+            "amount" => [
+                "currency" => "EUR",
+                "value" => number_format($booking->final_price, 2) // You must send the correct number of decimals, thus we enforce the use of strings
+            ],
+            "method" => strtolower($request->method),
+            "description" => "Booking #$booking->id",
+            "redirectUrl" => route('booking.success'),
+            "webhookUrl" => route('webhooks.mollie'),
+            "metadata" => [
+                "order_id" => $booking->id,
+            ],
+        ]); die;
+        
+        $payment = Mollie::api()->payments->create([
+            "amount" => [
+                "currency" => "EUR",
+                "value" => number_format($booking->final_price, 2) // You must send the correct number of decimals, thus we enforce the use of strings
+            ],
+            "method" => strtolower($request->method),
+            "description" => "Booking #$booking->id",
+            "redirectUrl" => route('booking.success'),
+            "webhookUrl" => route('webhooks.mollie'),
+            "metadata" => [
+                "order_id" => $booking->id,
+            ],
+        ]);
+
+        // redirect customer to Mollie checkout page
+        return redirect($payment->getCheckoutUrl(), 303);
     }
 
     protected function calcualte_distance_price($request, $booking)

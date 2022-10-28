@@ -59,22 +59,15 @@ class UserController extends BaseController
 
         if ($credentials->fails()) {
             $errors = $credentials->messages();
-            return $this->sendError('Missing required fields', $errors, 401);
+            return $this->sendError('Error', $errors, 401);
         } else {
-            $profile_pic = '';
-            if ($request->has('profile_pic')) {
-                $uploadFolder = '/uploads/profile_pic';
-                $imageName = time() . '.' . $request->profile_pic->extension();
-                $request->profile_pic->move(storage_path($uploadFolder), $imageName);
-                $profile_pic = $uploadFolder . '/' . $imageName;
-            }
-
             $user = User::create([
                 'user_type' => $request->user_type,
                 'name' => $request->name,
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
+                'country_code' => $request->country_code,
                 'phone_number' => $request->phone_number,
                 'street' => $request->street,
                 'house_no' => $request->house_no,
@@ -82,7 +75,7 @@ class UserController extends BaseController
                 'city' => $request->city,
                 'zipcode' => $request->zipcode,
                 'password' => Hash::make($request->password),
-                'profile_pic' => $profile_pic,
+                'profile_pic' => $request->profile_pic,
                 'phone_number_verified' => 1,
                 'status' => 1
             ]);
@@ -106,7 +99,8 @@ class UserController extends BaseController
                 'kvk_no as kvknumber',
                 'profile_pic as profilepic',
                 'phone_number_verified',
-                'password'
+                'password',
+                'user_type'
             )
                 ->find($user->id);
 
@@ -115,7 +109,7 @@ class UserController extends BaseController
             // Revoke all tokens...
             $user->tokens()->delete();
 
-            $user->isCompany = ($user->user_type == 'courier') ? 1 : 0;
+            $user->isCompany = ($user->user_type != 'courier') ? 1 : 0;
             $user->companyname =  ($user->isCompany) ? $user->name : '';
 
             $success['id'] =  $user->id;
@@ -143,6 +137,8 @@ class UserController extends BaseController
         $user = User::where('phone_number', $phone_number)->where('country_code', $country_code)->first();
         if (!empty($user)) {
             $response['message'] = "User registered with phone number";
+            $response['user_type'] = $user->user_type;
+            $response['isCompany'] = ($user->user_type != 'courier') ? 1 : 0;
             $response['phone_number'] = $phone_number;
             $response['user_id'] = $user->id;
             $response['status'] = 1;

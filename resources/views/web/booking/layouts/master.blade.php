@@ -66,6 +66,13 @@
             final_price($(this))
         })
 
+        $(document).on('click', '.pay_card', function() {
+            $('.pay_card').removeClass('active');
+            $(this).addClass('active')
+
+            $('#method').val($(this).attr('data-method'));
+        })
+
         function final_price($this) {
             var step = $this.attr('data-step');
             var option = $this.attr('data-option');
