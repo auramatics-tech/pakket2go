@@ -39,4 +39,9 @@ class HomeController extends Controller
         return view('web.dashboard_user');
     }
 
+    public function dashboard_courier()
+    {
+        return view('web.dashboard_courier');
+    }
+
 }

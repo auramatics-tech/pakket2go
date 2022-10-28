@@ -98,14 +98,29 @@
  }
 
  /* sumit code start  */
+ @media screen and (max-width: 1308px) and (min-width: 1300px){
+    .mt_1257 {
+        margin-right: 0px;
+    }
+ }
+
  @media screen and (max-width: 1300px) {
+    .su_button_padding {
+        padding: 0px 50px;
+    }
+    .mt_1257 {
+        margin-right: 0px;
+    }
+    .su_cou_apply_now {
+        padding: 12px 22px;
+    }
      .su_side_margin {
          margin-left: 10px;
      }
 
-     .su_register_sidebar {
+     /* .su_register_sidebar {
          height: 950px;
-     }
+     } */
 
      .su_side_img {
          width: 180px;
@@ -135,6 +150,15 @@
  }
 
  /* sumit code start   */
+
+ @media screen and (max-width: 1257px) and (min-width: 1201px) {
+    .su_cou_block {
+        display: block;
+    }
+    .mt_1257{
+        margin-top: 20px;
+    }
+  }
 
  @media screen and (max-width: 1200px) {
     .su_after_img::after {
@@ -193,9 +217,18 @@
  }
 
  @media screen and (max-width: 1167px){
+    .su_cou_width_70 {
+        width: 30%;
+    }
+    .su_courier_form_flex {
+        display: block;
+    }
     .su_navbar_heading {
         font-size: 18px;
     }
+    .su_border_right{
+        border-right: none;
+      }
  }
 
  @media screen and (max-width: 1100px) {
@@ -277,6 +310,12 @@
  @media only screen and (max-width: 991px) {
 
      /* sumit code start   */
+     .su_button_padding {
+        padding: 0px 30px;
+    }
+     .su_card_out_box {
+        height: 85vh;
+    }
      .su_container_dashboard {
         padding: 0px 15px;
     }
@@ -541,6 +580,9 @@
 
  /* sumit code start   */
  @media screen and (max-width: 768px) {
+    .su_card_out_box {
+        height: 84vh;
+    }
     .su_icons_text_adjust {
         inline-size: auto;
     }
@@ -589,6 +631,21 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
+
+      /* .su_register_sidebar {
+         height: 950px;
+     } */
+     .su_register_sidebar_padding {
+        display: block;
+        height: auto;
+    }
+
+    .su_button_padding {
+        padding: 0px 15px;
+    }
+    .su_cou_width_70 {
+        width: 40%;
+    }
     .su_margin_767{
         margin-left: 20px;
     }
@@ -741,6 +798,15 @@
 
  }
 
+ @media screen and (max-width: 673px) and (min-width: 320px) {
+    .su_cou_block {
+        display: block;
+    }
+    .mt_1257{
+        margin-top: 20px;
+    }
+  }
+
  @media only screen and (max-width: 600px) {
      .form_pos {
          width: 80.3%;
@@ -752,6 +818,9 @@
  }
 
  @media only screen and (max-width: 576px){
+    .su_cou_width_70 {
+        width: 50%;
+    }
     .su_search_border_style {
         padding: 8px 10px 8px 50px;
     }
@@ -801,6 +870,23 @@
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
+     .su_cou_width_70 {
+        width: 100%;
+    }
+     .su_container_dashboard {
+        padding: 0px 5px;
+    }
+     .su_courier_search {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .su_cou_apply_now {
+        font-size: 14px;
+        line-height: 21px;
+    }
+     .su_480_block_this{
+        display: block !important;
+    }
      .su_my_480{
         margin: 8px 0px 8px 0px;
      }
@@ -1046,7 +1132,7 @@
      }
 
      .su_button_padding {
-         padding: 0px 60px;
+         padding: 0px 10px;
      }
 
      .su_Sign_In {
@@ -1309,6 +1395,10 @@
  }
 
  @media only screen and (max-width: 452px){
+    .su_item_name_btn_close {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
     .su_item_name_btn {
         margin-left: 0px;
         margin-top: 10px;
@@ -1328,6 +1418,9 @@
  }
 
  @media only screen and (max-width: 400px) {
+    .su_register_card {
+        padding: 20px 5px 20px 5px;
+    }
      .su_courier_white_bg {
          width: 280px;
      }

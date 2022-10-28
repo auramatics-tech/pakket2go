@@ -12,14 +12,18 @@
 
                     <div class="su_register_sidebar_padding">
                         <div class="su_position_white_arrow">
-                            <figure class="su_main_circle">
-                                <img src="{{ asset('assets/svg/white_circle.svg') }}" alt="">
-                            </figure>
+                            <a href="">
+                                <figure class="su_main_circle">
+                                    <img src="{{ asset('assets/svg/white_circle.svg') }}" alt="">
+                                </figure>
+                            </a>
                         </div>
                         <div>
-                            <figure class="text-center su_main_logo">
-                                <img src="{{ asset('assets/svg/Pakket2go.svg') }}" alt="logo">
-                            </figure>
+                            <a href="">
+                                <figure class="text-center su_main_logo">
+                                    <img src="{{ asset('assets/svg/Pakket2go.svg') }}" alt="logo">
+                                </figure>
+                            </a>
                             <h6 class="su_Your_Best">
                                 Your Best Choice in Netherland
                             </h6>

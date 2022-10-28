@@ -16,9 +16,11 @@
                 <div class="col-lg-3 col-md-3 col-12 su_col_padding_off">
                     <div class="su_register_sidebar">
                         <div class="su_register_sidebar_padding">
-                            <figure class="su_main_circle">
-                                <img src="{{ asset('assets/svg/white_circle.svg') }}" alt="">
-                            </figure>
+                            <a href="">
+                                <figure class="su_main_circle">
+                                    <img src="{{ asset('assets/svg/white_circle.svg') }}" alt="">
+                                </figure>
+                            </a>
                             <figure class="text-center su_main_logo">
                                 <img src="{{ asset('assets/svg/Pakket2go.svg') }}" alt="logo">
                             </figure>
@@ -90,20 +92,22 @@
                                     <div class="su_button_padding">
                                         @include('web.includes.register')
                                     </div>
-                                    <div class="d-flex su_margin_top">
-                                        <div>
-                                            <label class="su_container">
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <p class="su_checkbox_text ">
-                                                I agree to the
-                                                <a href="#" class="login_ancr orange-color ms-2">Terms and
-                                                    Conditions</a>
-                                                of Pakket2Go
-                                            </p>
+                                    <div class="su_button_padding">
+                                        <div class="d-flex su_margin_top">
+                                            <div>
+                                                <label class="su_container">
+                                                    <input type="checkbox" checked="checked">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <p class="su_checkbox_text ">
+                                                    I agree to the
+                                                    <a href="#" class="login_ancr orange-color ms-2">Terms and
+                                                        Conditions</a>
+                                                    of Pakket2Go
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -129,6 +133,11 @@
     <script>
         $(document).on("click", ".user_type", function() {
 
+            if($(this).attr('id') == 'private'){
+                $('.su_position_3_btns').css('position','absolute')    
+            }else{
+                $('.su_position_3_btns').css('position','initial')    
+            }
             $('.user_type').removeClass("active")
             $(this).addClass("active")
             console.log($(this).attr('data-other'))

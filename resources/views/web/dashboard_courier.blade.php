@@ -212,8 +212,7 @@
                     <div class="container-fluid d-flex align-items-stretch">
                         <div class="d-flex align-items-center justify-content-between su_navbar_padding">
                             <div class="d-flex align-items-center">
-                                <h2 class="su_navbar_heading">Want to deliver your packages/products?</h2>
-                                <button class="su_Book_Transport">Book a Transport >></button>
+                                <h2 class="su_navbar_heading">Dashboard</h2>
                             </div>
 
                             <div class="d-flex align-content-center justify-content-center lang_toggle">
@@ -226,19 +225,45 @@
                 <div class="d-flex flex-column flex-column-fluid" id="kt_content">
 
                     <div class="toolbar su_padding_toolbar" id="kt_toolbar">
-                        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
-                            <div class="su_width_40">
-                                <h3 class="Track_orders">Track orders</h3>
+                        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack su_480_block_this">
+                            <div class="su_cou_width_30">
+                                <h3 class="Track_orders">My Deliveries</h3>
+                                <p class="su_available_deliveries">Total available deliveries: <span><b>284</b></span></p>
                             </div>
-                            <div class="su_width_60">
-                                <!-- <input class="su_dashboard_search su_search_filter_img" type="text" placeholder="Search..."> -->
-                                {{--<img src="{{asset('assets/svg/search_filter.svg')}}" alt="">--}}
-                                <div class="form-group su_search_border_style ">
-                                    <input class="su_search_border" id="" class="form-input" placeholder="search..." value="{{ old('email') }}" type="text" />
-                                    @error('full_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <div class="su_cou_width_70">
+                                <form action="">
+                                    <div class="su_border_Courier_page su_courier_form_flex">
+                                        <div class="su_border_right">
+                                            <label for="" class="d-flex align-items-center">
+                                                <span class="su_mr_5">
+                                                    <img src="{{ asset('assets/svg/courier_location.svg') }}" alt="form">
+                                                </span>
+
+                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Find Address" id="searchInput_from">
+                                            </label>
+                                        </div>
+                                        <div class="su_border_right">
+                                            <label for="" class="d-flex align-items-center">
+                                                <span class="su_mr_5">
+                                                    <img src="{{ asset('assets/svg/courier_Packing.svg') }}" alt="form">
+                                                </span>
+
+                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Packing type" id="searchInput_from">
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label for="" class="d-flex align-items-center">
+                                                <span class="su_mr_5">
+                                                    <img src="{{ asset('assets/svg/courier_delivery.svg') }}" alt="form">
+                                                </span>
+
+                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Delivery Date" id="searchInput_from">
+                                            </label>
+                                        </div>
+                                        <div class="su_courier_search_pt"><a class="su_courier_search" href="">search</a></div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -249,17 +274,24 @@
                                     <div class="su_card">
                                         <div class="d-flex su_block_in_1200 justify-content-between align-items-center">
                                             <div class="w-100">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="su_item_img">
-                                                        <img src="{{ asset('assets/img/sofa.png') }}" alt="">
-                                                    </div>
-                                                    <div class="su_margin_left_15">
-                                                        <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
-                                                        <p class="su_item_price">€30.00</p>
+                                                <div class="justify-content-between su_cou_block">
+                                                    <div>
                                                         <div class="d-flex align-items-center">
-                                                            <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
-                                                            <p class="su_item_date">Order date: Friday, Sep 07</p>
+                                                            <div class="su_item_img">
+                                                                <img src="{{ asset('assets/img/sofa.png') }}" alt="">
+                                                            </div>
+                                                            <div class="su_margin_left_15">
+                                                                <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
+                                                                <p class="su_item_price">€30.00</p>
+                                                                <div class="d-flex align-items-center">
+                                                                    <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
+                                                                    <p class="su_item_date">Order date: Friday, Sep 07</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="mt_1257">
+                                                        <a class="su_cou_apply_now" href="">Apply Now >></a>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -287,17 +319,24 @@
                                     <div class="su_card">
                                         <div class="d-flex su_block_in_1200 justify-content-between align-items-center">
                                             <div class="w-100">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="su_item_img">
-                                                        <img src="{{ asset('assets/img/shampoo.png') }}" alt="">
-                                                    </div>
-                                                    <div class="su_margin_left_15">
-                                                        <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
-                                                        <p class="su_item_price">€30.00</p>
+                                                <div class="justify-content-between su_cou_block">
+                                                    <div>
                                                         <div class="d-flex align-items-center">
-                                                            <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
-                                                            <p class="su_item_date">Order date: Friday, Sep 07</p>
+                                                            <div class="su_item_img">
+                                                                <img src="{{ asset('assets/img/shampoo.png') }}" alt="">
+                                                            </div>
+                                                            <div class="su_margin_left_15">
+                                                                <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
+                                                                <p class="su_item_price">€30.00</p>
+                                                                <div class="d-flex align-items-center">
+                                                                    <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
+                                                                    <p class="su_item_date">Order date: Friday, Sep 07</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="mt_1257">
+                                                        <a class="su_cou_apply_now" href="">Apply Now >></a>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -325,18 +364,25 @@
                                     <div class="su_card">
                                         <div class="d-flex su_block_in_1200 justify-content-between align-items-center">
                                             <div class="w-100">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="su_item_img">
-                                                        <img src="{{ asset('assets/img/products.png') }}" alt="">
-                                                    </div>
-                                                    <div class="su_margin_left_15">
-                                                        <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
-                                                        <p class="su_item_price">€30.00</p>
+                                                <div class="justify-content-between su_cou_block">
+                                                    <div>
                                                         <div class="d-flex align-items-center">
-                                                            <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
-                                                            <p class="su_item_date">Order date: Friday, Sep 07</p>
+                                                            <div class="su_item_img">
+                                                                <img src="{{ asset('assets/img/products.png') }}" alt="">
+                                                            </div>
+                                                            <div class="su_margin_left_15">
+                                                                <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn_close"><span class="badge su_badges_red">0</span>Closed</button></h2>
+                                                                <p class="su_item_price">€30.00</p>
+                                                                <div class="d-flex align-items-center">
+                                                                    <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
+                                                                    <p class="su_item_date">Order date: Friday, Sep 07</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <!-- <div class="mt_1257">
+                                                        <a class="su_cou_apply_now" href="">Apply Now  >></a>
+                                                    </div> -->
                                                 </div>
                                                 <hr>
                                                 <div class="d-flex su_block_in_1200">
@@ -359,6 +405,7 @@
 
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
