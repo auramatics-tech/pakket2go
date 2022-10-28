@@ -2690,16 +2690,18 @@ p.dis_content {
 .su_padding_items:hover .su_menu_title a {
     color: white;
 }
-.su_search_filter_img{
 
-}
-.su_search_border{
+.su_search_filter_img {}
+
+.su_search_border {
     border: none;
     width: 100%;
 }
+
 .su_search_border:focus-visible {
     outline: none !important;
 }
+
 .su_search_border_style {
     display: block;
     width: 100%;
@@ -2717,7 +2719,8 @@ p.dis_content {
     box-shadow: inset 1.33333px 1.33333px 5.33333px rgb(0 0 0 / 15%);
     border-radius: 66.6667px;
 }
-.su_card_out_box{
+
+.su_card_out_box {
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
@@ -2725,27 +2728,32 @@ p.dis_content {
     height: 78vh;
     overflow-y: auto;
 }
-.su_badges{
+
+.su_badges {
     background: #01B537;
     padding: 2px 4px !important;
     color: #01B537;
     margin-right: 10px;
 }
-.su_padding_toolbar{
+
+.su_padding_toolbar {
     padding: 20px 0px;
 }
-.su_container_dashboard{
+
+.su_container_dashboard {
     width: 100%;
     padding: 0px 35px;
 }
+
 /* .iti__flag {
     width: 25px !important;
     height: 25px !important;
     border-radius: 25px;
 } */
-.invalid_number{
+.invalid_number {
     display: none;
 }
+
 /* .iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
     background-color: rgba(0, 0, 0, 0.05);
     height: 63% !important;
@@ -2755,4 +2763,51 @@ p.dis_content {
     font-size: 14.4298px;
     line-height: 20px;
 }
+
 /* sumit dashboard css end */
+.form-wrapper {
+    max-width: 30%;
+    min-width: 300px;
+    padding: 50px 30px 50px 30px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+}
+
+.form-group {
+    position: relative;
+
+}
+
+.form-label {
+    position: absolute;
+    left: 60px;
+    top: 15px;
+    width: auto;
+    width: auto !important;
+}
+
+.focused .form-label {
+    transform: translateY(-125%);
+    font-size: .75em;
+    background-color: #ffffff;
+    font-weight: 600;
+    font-size: 14.4298px;
+    line-height: 20px;
+    color: #01B537;
+    transition: all .3s ease-out;
+}
+
+.form-input.filled {
+    box-shadow: 0 2px 0 0 lightgreen;
+}
+
+.su_hide_input {
+    border: none;
+    width: 100%;
+}
+
+.su_hide_input:focus-visible {
+    outline: none !important;
+}
