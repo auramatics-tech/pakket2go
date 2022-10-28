@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
+use App\Models\User;
 use App\Models\Booking;
 use App\Models\BookingPayments;
 use App\Models\BookingAddress;
@@ -69,13 +71,22 @@ class BookingController extends BaseController
         })->when(
             $user_id,
             function ($query)  use ($user_id) {
-                $query->where('user_id', $user_id);
+                $query->where(function ($q) use ($user_id) {
+                    $q->where('user_id', $user_id)->orwhere('session_id', Session::get('logged_in'));
+                });
             },
             function ($query)  use ($session_id) {
                 $query->where('session_id', $session_id);
             }
         )->where('status', 0)
             ->latest()->first();
+
+        if (!isset($booking->id) && $request->step != 1) {
+            if ($request->ajax())
+                return response()->json(['success' => 1, 'redirect' => route('booking.address', ['locale' => App::getLocale()]), 'step_view' => '']);
+            else
+                return response()->json(['success' => 0, 'message' => 'Please start from step 1']);
+        }
 
         if (!isset($booking->id)) {
             $booking = new Booking;
@@ -84,9 +95,12 @@ class BookingController extends BaseController
 
         $booking->user_id = $user_id;
         $booking->session_id = $session_id;
-        $booking->current_step = $request->step;
         $booking->status = 0;
         $booking->save();
+
+
+        $skip_steps = skip_steps($booking);
+
 
         switch ($request->step) {
             case 1:
@@ -100,10 +114,16 @@ class BookingController extends BaseController
                 break;
             case 3:
                 $this->parcelDetails($request, $booking);
+                $request->pickup_date = date("Y-m-d");
+                $request->price = 0;
+                $this->pickupDate($request, $booking);
                 break;
             case 4:
                 $this->pickupDate($request, $booking);
-                $this->pickupExtraHelp($request, $booking);
+                if (!in_array(5, $skip_steps))
+                    $this->pickupExtraHelp($request, $booking);
+                else
+                    $this->pickupFloor($request, $booking);
                 break;
             case 5:
                 $this->pickupExtraHelp($request, $booking);
@@ -146,13 +166,35 @@ class BookingController extends BaseController
         }
 
         $price = $this->calculate_final_price($booking);
+        $next_step = BookingStep::find($request->step + 1);
         if ($request->ajax()) {
-            $next_step = BookingStep::find($request->step + 1);
             $redirect = '';
             $step_view = '';
+
+            $skip_steps = skip_steps($booking, $next_step->id, $user_id);
+
+            if (!empty($skip_steps) && in_array($next_step->id, $skip_steps)) {
+                $next_step = BookingStep::find($next_step->id + 1);
+            }
+            if ($user_id) {
+                $user = User::find($user_id);
+            }
+            if ($next_step->id == 11 && isset($user->id) && $user->user_type == 'business') {
+                $booking->status = 1;
+                $booking->save();
+                $redirect =  route('booking.success', ['locale' => App::getLocale()]);
+                return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => $step_view]);
+            }
+
+            $booking->current_step = $next_step->id;
+            $booking->save();
+
             $redirect =  route('booking', ['step' => $next_step->url_code, 'locale' => App::getLocale()]);
             return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => $step_view]);
         } else {
+
+            $booking->current_step = $next_step->id;
+            $booking->save();
             return response()->json(['success' => 1, 'message' => 'Booking data saved successfully', 'booking_id' => $booking->id, 'pricing_details' => $price, 'final_price' => $booking->final_price]);
         }
     }
@@ -191,12 +233,61 @@ class BookingController extends BaseController
         $address->delivery_contact_name = isset($request->delivery_contact_name) ? $request->delivery_contact_name : $address->delivery_contact_name;
         $address->delivery_contact_number = isset($request->delivery_contact_number) ? $request->delivery_contact_number :  $address->delivery_contact_number;
 
-        // Direction image
-        $address->distance = isset($request->distance) ? $request->distance :  $address->distance;
-        $address->direction_image = isset($request->direction_image) ? $request->direction_image :  $address->direction_image;
+        if ($request->step == 1) {
+            $direction_data = $this->direction_image($request);
+            $address->distance = isset($request->distance) ? $request->distance :  $direction_data['total_distance'];
+            $address->direction_image = $direction_data['direction_image'];
+        }
         $address->save();
 
         return $address->id;
+    }
+
+    protected function direction_image($request, $size = "400x400")
+    {
+        $origin = "$request->pickup_lat,$request->pickup_lng";
+        $destination = "$request->delivery_lat,$request->delivery_lng";
+        $waypoints = array(
+            $origin,
+            $destination
+        );
+        $markers = array();
+        $waypoints_labels = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K");
+        $waypoints_label_iter = 0;
+
+        $from_icon = 'https://bmh-software.nl/Testingacc/public/assets/img/from.png';
+        $to_icon = 'https://bmh-software.nl/Testingacc/public/assets/img/to.png';
+
+        $markers[] = "markers=icon:$from_icon" . urlencode("|") . "label:" . urlencode($waypoints_labels[$waypoints_label_iter++] . '|' . $origin);
+        $markers[] = "markers=icon:$to_icon" . urlencode("|") . "label:" . urlencode($waypoints_labels[$waypoints_label_iter] . '|' . $destination);
+
+        $routes = Http::get(env('GOOGLE_MAPS_API') . "directions/json?origin=$origin&destination=$destination&waypoints=" . implode('|', $waypoints) . "&key=" . env('GOOGLE_SITE_KEY'));
+
+        $total_distance = 0;
+        $distance = isset($routes['routes'][0]['legs']) ? $routes['routes'][0]['legs'] : array();
+        if (count($distance)) {
+            foreach ($distance as $travel) {
+                $total_distance += $travel['distance']['value'];
+            }
+        }
+        $data['total_distance'] = round($total_distance / 1000);
+
+        $polyline = isset($routes['routes'][0]['overview_polyline']['points']) ? urlencode($routes['routes'][0]['overview_polyline']['points']) : '';
+        $markers = implode('&', $markers);
+
+        $styles = "style=feature:administrative|element:geometry|visibility:off&style=feature:road|element:labels.icon|visibility:off&style=feature:poi|visibility:off&style=feature:transit|visibility:off&style=saturation:-100";
+
+        $direction_image = env('GOOGLE_MAPS_API') . "staticmap?size=$size&maptype=roadmap&path=color:0xfc4c00|weight:5|enc:$polyline&$markers&$styles&key=" . env('GOOGLE_SITE_KEY');
+
+        $time = time();
+        $desFolder = public_path('storage') . '/uploads/bookings/';
+        $imageName = 'direction_' . $time . '.png';
+        $imagePath = $desFolder . $imageName;
+        file_put_contents($imagePath, file_get_contents($direction_image));
+
+        $data['direction_image'] = '/uploads/bookings/' . $imageName;
+
+        return $data;
     }
 
     protected function parcelType($request, $booking)
@@ -394,7 +485,7 @@ class BookingController extends BaseController
 
     protected function calculate_final_price($booking)
     {
-        $booking_details = $booking->details;
+        $booking_details = BookingDetails::where('booking_id', $booking->id)->first();
         $price = 0;
 
         $price += $booking->booking_data($booking_details, 'parcel_type', 'price');
