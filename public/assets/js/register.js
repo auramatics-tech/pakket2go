@@ -121,7 +121,7 @@ function autocompletecn() {
     });
 }
 
-
+var user_type;
 if (user_type)
     $('input').parents('.form-group').addClass('focused');
 
