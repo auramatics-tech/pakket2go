@@ -145,6 +145,7 @@ class UserController extends BaseController
         if (!empty($user)) {
             $response['message'] = "User registered with phone number";
             $response['user_type'] = $user->user_type;
+            $response['isCompany'] = ($user->user_type != 'courier') ? 1 : 0;
             $response['phone_number'] = $phone_number;
             $response['user_id'] = $user->id;
             $response['status'] = 1;
