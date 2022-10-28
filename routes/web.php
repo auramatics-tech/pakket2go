@@ -53,7 +53,7 @@ Route::prefix('{locale?}')
                 Route::get('/pickup-address', [BookingController::class, 'index'])->name('booking.pickup_address');
                 Route::get('/delivery-address', [BookingController::class, 'index'])->name('booking.delivery_address');
                 Route::get('/payment', [BookingController::class, 'index'])->name('booking.payment');
-                Route::get('/payment-confirmation', [BookingController::class, 'payment_confirmation'])->name('booking.success');
+                Route::get('/thank-you', [BookingController::class, 'thankyou'])->name('booking.success');
             });
             Route::get('/{step?}', [BookingController::class, 'index'])->name('booking');
         });

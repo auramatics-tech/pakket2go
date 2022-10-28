@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Booking;
+use App\Models\BookingPayments;
 use App\Models\BookingStep;
 use App\Models\ParcelOption;
 use App\Models\BookingDetails;
@@ -76,13 +77,25 @@ class BookingController extends Controller
         return view("web.booking.layouts.master", ['booking_steps' => $booking_steps, 'current_step' => $current_step, 'parcel_options' => $parcel_options, 'booking' => $booking, 'parcel_details' => $parcel_details, 'payment_methods' => $payment_methods]);
     }
 
-    public function payment_confirmation(Request $request){
-        echo "<pre>";
-        print_r($request->all());
+    public function thankyou()
+    {
+        return view("web.booking.thankyou");
     }
 
-    public function payment_webhook(Request $request){
+    public function payment_webhook(Request $request)
+    {
         Log::info($request->all());
-    }
+        $paymentId = $request->input('id');
+        $booking_payment = BookingPayments::where('transaction_id', $paymentId)->first();
+        $payment = Mollie::api()->payments->get($paymentId);
 
+        if ($payment->isPaid()) {
+            $booking_payment->status = 'paid';
+            $booking_payment->save();
+
+            $booking = Booking::where('payment_id', $booking_payment->id)->first();
+            $booking->status = 1;
+            $booking->save();
+        }
+    }
 }

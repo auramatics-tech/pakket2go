@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+    # Handle ngrok X-Original-Host Header
+    RewriteCond %{HTTP:X-Original-Host} \.ngrok\.io$ [NC]
+    RewriteRule .* - [E=HTTP_X_FORWARDED_HOST:%{HTTP:X-Original-Host}]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

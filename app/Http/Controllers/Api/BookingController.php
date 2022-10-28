@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BaseController as BaseController;
 use Illuminate\Http\Request;
 
 use App\Models\Booking;
+use App\Models\BookingPayments;
 use App\Models\BookingAddress;
 use App\Models\BookingStep;
 use App\Models\BookingDetails;
@@ -96,20 +97,26 @@ class BookingController extends BaseController
                 break;
             case 2:
                 $this->parcelType($request, $booking);
+                break;
             case 3:
                 $this->parcelDetails($request, $booking);
+                break;
             case 4:
                 $this->pickupDate($request, $booking);
                 $this->pickupExtraHelp($request, $booking);
+                break;
             case 5:
                 $this->pickupExtraHelp($request, $booking);
                 $this->pickupFloor($request, $booking);
+                break;
             case 6:
                 $this->pickupFloor($request, $booking);
                 $request->type_id = '';
                 $this->deliveryFloor($request, $booking);
+                break;
             case 7:
                 $this->deliveryFloor($request, $booking);
+                break;
             case 9:
                 if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                     return $this->sendError('Please login first', [], 401);
@@ -117,6 +124,7 @@ class BookingController extends BaseController
                 $booking->user_id = $user_id;
                 $booking->address_id = $this->saveAddress($request, $booking);
                 $booking->save();
+                break;
             case 10:
                 if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                     return $this->sendError('Please login first', [], 401);
@@ -124,12 +132,14 @@ class BookingController extends BaseController
                 $booking->user_id = $user_id;
                 $booking->address_id = $this->saveAddress($request, $booking);
                 $booking->save();
+                break;
             case 11:
                 if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                     return $this->sendError('Please login first', [], 401);
                 }
                 $redirect = $this->payment($request, $booking);
                 return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => '']);
+                break;
             default:
                 return $this->sendError('Invalid step data', [], 401);
                 break;
@@ -222,7 +232,7 @@ class BookingController extends BaseController
 
         if (count($request->description)) {
             foreach ($request->description as $key => $val) {
-                $data[$key]['image'] = $request->image[$key];
+                $data[$key]['image'] = isset($request->image[$key]) ? $request->image[$key] : '';
                 $data[$key]['description'] = $request->description[$key];
                 $data[$key]['width'] = $request->width[$key];
                 $data[$key]['height'] = $request->height[$key];
@@ -326,21 +336,7 @@ class BookingController extends BaseController
 
     protected function payment($request, $booking)
     {
-        echo "<pre>";
-        print_r([
-            "amount" => [
-                "currency" => "EUR",
-                "value" => number_format($booking->final_price, 2) // You must send the correct number of decimals, thus we enforce the use of strings
-            ],
-            "method" => strtolower($request->method),
-            "description" => "Booking #$booking->id",
-            "redirectUrl" => route('booking.success'),
-            "webhookUrl" => route('webhooks.mollie'),
-            "metadata" => [
-                "order_id" => $booking->id,
-            ],
-        ]); die;
-        
+
         $payment = Mollie::api()->payments->create([
             "amount" => [
                 "currency" => "EUR",
@@ -348,15 +344,26 @@ class BookingController extends BaseController
             ],
             "method" => strtolower($request->method),
             "description" => "Booking #$booking->id",
-            "redirectUrl" => route('booking.success'),
+            "redirectUrl" => route('booking.success', ['locale' => App::getLocale()]),
             "webhookUrl" => route('webhooks.mollie'),
             "metadata" => [
-                "order_id" => $booking->id,
+                "booking_id" => $booking->id,
+                "user_id" => $booking->user_id,
             ],
         ]);
+        $booking_payment = BookingPayments::where('booking_id', $booking->id)->first();
+        if (!isset($booking_payment->id)) {
+            $booking_payment = new BookingPayments();
+        }
+        $booking_payment->booking_id = $booking->id;
+        $booking_payment->transaction_id = $payment->id;
+        $booking_payment->status = $payment->status;
+        $booking_payment->save();
 
+        $booking->payment_id = $booking_payment->id;
+        $booking->save();
         // redirect customer to Mollie checkout page
-        return redirect($payment->getCheckoutUrl(), 303);
+        return $payment->getCheckoutUrl();
     }
 
     protected function calcualte_distance_price($request, $booking)
