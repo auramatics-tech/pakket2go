@@ -75,9 +75,7 @@ class BookingController extends BaseController
             }
         )->where('status', 0)
             ->latest()->first();
-        echo "<pre>";
-        print_r($booking);
-        die;
+
         if (!isset($booking->id)) {
             $booking = new Booking;
         }
@@ -130,7 +128,7 @@ class BookingController extends BaseController
                 if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                     return $this->sendError('Please login first', [], 401);
                 }
-                $redirect = $this->payment($booking, $request);
+                $redirect = $this->payment($request, $booking);
                 return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => '']);
             default:
                 return $this->sendError('Invalid step data', [], 401);
@@ -328,14 +326,27 @@ class BookingController extends BaseController
 
     protected function payment($request, $booking)
     {
-        echo round($booking->final_price, 2);
-        die;
+        echo "<pre>";
+        print_r([
+            "amount" => [
+                "currency" => "EUR",
+                "value" => number_format($booking->final_price, 2) // You must send the correct number of decimals, thus we enforce the use of strings
+            ],
+            "method" => strtolower($request->method),
+            "description" => "Booking #$booking->id",
+            "redirectUrl" => route('booking.success'),
+            "webhookUrl" => route('webhooks.mollie'),
+            "metadata" => [
+                "order_id" => $booking->id,
+            ],
+        ]); die;
+        
         $payment = Mollie::api()->payments->create([
             "amount" => [
                 "currency" => "EUR",
-                "value" => round($booking->final_price, 2) // You must send the correct number of decimals, thus we enforce the use of strings
+                "value" => number_format($booking->final_price, 2) // You must send the correct number of decimals, thus we enforce the use of strings
             ],
-            "method" => $request->method,
+            "method" => strtolower($request->method),
             "description" => "Booking #$booking->id",
             "redirectUrl" => route('booking.success'),
             "webhookUrl" => route('webhooks.mollie'),
