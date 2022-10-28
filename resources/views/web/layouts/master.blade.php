@@ -60,7 +60,7 @@
 </head>
 
 <body>
-    @if (Route::is('booking') || Route::is('booking.*'))
+    @if ((Route::is('booking') || Route::is('booking.*')) && !Route('booking.success'))
         @include('web.booking.layouts.header')
         @include('web.booking.layouts.steps')
     @elseif (!Route::is('login') && !Route::is('register') && !Route::is('otp'))
