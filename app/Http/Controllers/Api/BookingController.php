@@ -75,7 +75,9 @@ class BookingController extends BaseController
             }
         )->where('status', 0)
             ->latest()->first();
-
+        echo "<pre>";
+        print_r($booking);
+        die;
         if (!isset($booking->id)) {
             $booking = new Booking;
         }
@@ -326,7 +328,8 @@ class BookingController extends BaseController
 
     protected function payment($request, $booking)
     {
-        echo round($booking->final_price, 2); die;
+        echo round($booking->final_price, 2);
+        die;
         $payment = Mollie::api()->payments->create([
             "amount" => [
                 "currency" => "EUR",
