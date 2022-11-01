@@ -56,13 +56,13 @@ trait BookingTrait
         $booking->final_price = $price + $booking->distance_price;
         $booking->save();
         $final_price = array();
-        
+
         $steps = BookingStep::where('status', 1)->orderby('order', 'asc')->get();
         if (count($steps)) {
             $key = 0;
             foreach ($steps as $step_key => $step) {
                 if ($step->id == '1') {
-                    $final_price[$key]['name'] = "Distance $booking->distance Km";
+                    $final_price[$key]['name'] = "Distance ".$booking->address->distance ." Km";
                     $final_price[$key]['price'] = number_format($booking->distance_price, 2);
                     $final_price[$key]['step'] = $step->id;
                     $key++;

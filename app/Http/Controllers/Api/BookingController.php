@@ -250,7 +250,7 @@ class BookingController extends BaseController
 
         if ($request->step == 1) {
             $direction_data = $this->direction_image($request, $booking);
-            $address->distance = isset($request->distance) ? $request->distance :  $direction_data['total_distance'];
+            $address->distance = (isset($request->distance) && $request->distance) ? $request->distance :  $direction_data['total_distance'];
             $address->direction_image = $direction_data['direction_image'];
         }
         $address->save();
@@ -486,7 +486,7 @@ class BookingController extends BaseController
         return response()->json(['status' => true, 'message' => 'Booking deleted successfully']);
     }
 
-    
+
     public function last_location(Request $request)
     {
         return $this->last_location_info($request);
