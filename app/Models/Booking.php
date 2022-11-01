@@ -11,6 +11,25 @@ class Booking extends Model
 {
     use HasFactory;
 
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            $model->booking_code = 'BOOKING-' . str_pad($model->id, 7, "0", STR_PAD_LEFT);
+            $model->save();
+        });
+    }
+
+    public function booking_status()
+    {
+        return ucfirst(implode(' ', explode('-', BookingStatus::where('id', $this->status)->pluck('status_type')->first())));
+    }
+
+    public function payment_status()
+    {
+        return $this->hasOne(BookingPayments::class);
+    }
+
     public function address()
     {
         return $this->hasOne(BookingAddress::class);

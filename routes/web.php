@@ -60,9 +60,6 @@ Route::prefix('{locale?}')
             Route::get('/{step?}', [BookingController::class, 'index'])->name('booking');
         });
 
-        Route::middleware(['auth'])->group(function () {
-            Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-        });
 
         Route::middleware(['auth'])->group(function () {
 
@@ -70,9 +67,7 @@ Route::prefix('{locale?}')
                 ->name('otp');
 
             Route::middleware(['verified_phone'])->group(function () {
-                Route::get('/home', function () {
-                    return view('dashboard');
-                })->name('dashboard');
+                Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
             });
         });
     });

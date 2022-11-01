@@ -47,7 +47,7 @@ class BookingController extends Controller
             function ($query) {
                 $query->where('session_id', Session::getId());
             }
-        )->where('status', 0)
+        )->where('status', 1)
             ->latest()->first();
 
         if (isset($booking->id) && Session::has('logged_in')) {
