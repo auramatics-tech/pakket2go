@@ -42,7 +42,7 @@
         <div class="card order_detail mx-auto py-4" style="width: 500px;">
             <div class="card-body">
                 <figure>
-                    <img src="{{ asset('public/website/img/thankyou.png') }}" alt="logo">
+                    <img src="{{ asset('assets/img/thankyou.png') }}" alt="logo">
                 </figure>
                 <h1>{{ __('home.Thank You') }}!</h1>
                 <p class="order_p">{{ __('home.Your order has been sucessfully created') }}</p>
