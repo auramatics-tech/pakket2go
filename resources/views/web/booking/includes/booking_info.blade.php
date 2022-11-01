@@ -1,7 +1,9 @@
 <div class="child_second">
     <div>
         <div class="map_frame">
-            <div id="map"></div>
+            <div id="map">
+                <img src="{{ asset('storage/' . $booking->address->direction_image) }}" alt="" width="100%" height="100%" class="img-responsive">
+            </div>
         </div>
         <div class="content_total mt-4">
             <span class="from orange-color">From &gt;&gt;</span>
@@ -15,7 +17,9 @@
             @if (isset($parcel_details->id) && $booking->booking_data($parcel_details, 'pickup_floor', 'name'))
                 <div class="d-flex justify-content-between" class="step_5">
                     <p id="info_name_6">{{ $booking->booking_data($parcel_details, 'pickup_floor', 'name') }}</p>
-                    <p id="info_price_6" class="prices" data-price="{{ number_format($booking->booking_data($parcel_details, 'pickup_floor', 'price'), 2) }}">€
+                    <p id="info_price_6" class="prices"
+                        data-price="{{ number_format($booking->booking_data($parcel_details, 'pickup_floor', 'price'), 2) }}">
+                        €
                         {{ number_format($booking->booking_data($parcel_details, 'pickup_floor', 'price'), 2) }}</p>
                 </div>
             @endif
@@ -31,7 +35,9 @@
             @if (isset($parcel_details->id) && $booking->booking_data($parcel_details, 'delivery_floor', 'name'))
                 <div class="d-flex justify-content-between">
                     <p id="info_name_7">{{ $booking->booking_data($parcel_details, 'delivery_floor', 'name') }}</p>
-                    <p id="info_price_7" class="prices" data-price="{{ number_format($booking->booking_data($parcel_details, 'delivery_floor', 'price'), 2) }}">€
+                    <p id="info_price_7" class="prices"
+                        data-price="{{ number_format($booking->booking_data($parcel_details, 'delivery_floor', 'price'), 2) }}">
+                        €
                         {{ number_format($booking->booking_data($parcel_details, 'delivery_floor', 'price'), 2) }}</p>
                 </div>
             @endif
@@ -45,7 +51,7 @@
                 @if (isset($parcel_details->id))
                     @if (count($booking_steps))
                         @foreach ($booking_steps as $steps)
-                            @if($steps->id < 6)
+                            @if ($steps->id < 6)
                                 @include('web.booking.includes.parcel_details_card')
                             @endif
                         @endforeach
@@ -65,7 +71,13 @@
                 <span class="final_price">€ {{ number_format($booking->final_price, 2) }}</span>
             </div>
             <p class="mb-0 text-white me-3">
-               @if(Route::is("booking.payment")) Make Payment @else Continue @endif
+                @if (Route::is('booking.payment'))
+                    Make Payment
+                @elseif(isset(Auth::user()->id) && Auth::user()->user_type == 'business')
+                    Place Order
+                @else
+                    Continue
+                @endif
                 <span class="angle_bot"><i class="fa-solid fa-angle-right"></i><i
                         class="fa-solid fa-angle-right"></i></span>
             </p>
@@ -76,7 +88,13 @@
                     <span class="final_price">€ {{ number_format($booking->final_price, 2) }}</span>
                 </div>
                 <p class="mb-0 text-white me-3">
-                    @if(Route::is("booking.payment")) Make Payment @else Continue @endif
+                    @if (Route::is('booking.payment'))
+                        Make Payment
+                    @elseif(isset(Auth::user()->id) && Auth::user()->user_type == 'business')
+                        Place Order
+                    @else
+                        Continue
+                    @endif
                     <span class="angle_bot"><i class="fa-solid fa-angle-right"></i><i
                             class="fa-solid fa-angle-right"></i></span>
                 </p>

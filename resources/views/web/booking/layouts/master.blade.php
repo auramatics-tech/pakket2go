@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+    <div class="loading">Loading&#8230;</div>
     @if ($current_step->id != 1)
         <section class="courier_type_section">
             <div class="container d-flex">
@@ -93,6 +94,7 @@
 
         $('#booking_form').on('submit', function(e) {
             e.preventDefault();
+            $('.loading').show();
             $.ajax({
                 url: BASEURL + '/api/{{ App::getLocale() }}/booking',
                 method: 'post',

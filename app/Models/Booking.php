@@ -23,7 +23,7 @@ class Booking extends Model
 
     public function booking_data($details, $type, $return)
     {
-        $parcel_type =  json_decode($details->{$type});
+        $parcel_type =  isset($details->{$type}) ? json_decode($details->{$type}) : '';
 
         $data['id'] = isset($parcel_type->id) ? $parcel_type->id : '';
         $data['date'] = isset($parcel_type->pickup_date) ? $parcel_type->pickup_date : '';

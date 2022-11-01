@@ -40,7 +40,9 @@ class BookingController extends Controller
         $booking = Booking::when(
             Auth::id(),
             function ($query) {
-                $query->where('user_id', Auth::id())->orwhere('session_id', Session::get('logged_in'));
+                $query->where(function ($q) {
+                    $q->where('user_id', Auth::id())->orwhere('session_id', Session::get('logged_in'));
+                });
             },
             function ($query) {
                 $query->where('session_id', Session::getId());
@@ -54,10 +56,19 @@ class BookingController extends Controller
             $booking->save();
         }
 
-        if (!isset($booking->id) && $current_step->id != 1)
+        if (!isset($booking->id) && $current_step->id != 1) {
             return redirect()->route('booking', ['step' => 'address']);
-        elseif (isset($booking->id) && $booking->step >= $current_step->id)
-            echo "ht";
+        } elseif (isset($booking->id) && $booking->current_step > $current_step->id) {
+            $skip_steps = skip_steps($booking, $current_step->id);
+            if (empty($skip_steps) || in_array($current_step->id, $skip_steps)) {
+                $booking_step = BookingStep::where('id', $booking->current_step)->first();
+                return redirect()->route('booking', ['step' => $booking_step->url_code]);
+            }
+        } elseif (isset($booking->id) && $booking->current_step < $current_step->id) {
+            $booking_step = BookingStep::where('id', $booking->current_step)->first();
+            return redirect()->route('booking', ['step' => $booking_step->url_code]);
+        }
+
 
         $booking_steps = BookingStep::where('status', 1)->orderby('order', 'asc')->get();
         if ($current_step->id == 5) {
@@ -67,14 +78,22 @@ class BookingController extends Controller
             $parcel_options = ParcelOption::whereJsonContains('step', $current_step->id)->get();
         }
 
-        $parcel_details =  isset($booking->details) ? $booking->details : new BookingDetails();
+        $parcel_details =  isset($booking->details) ? $booking->details : '';
 
         $payment_methods = [];
         if ($this->step == 'payment') {
             $payment_methods = Mollie::api()->methods()->allActive();
         }
+        $previous_step = '';
+        if ($current_step->id > 1) {
+            $previous_step = BookingStep::where('id', $current_step->id - 1)->first();
+            $skip_steps = skip_steps($booking, $previous_step->id);
+            if (!empty($skip_steps) && in_array($previous_step->id, $skip_steps)) {
+                $previous_step = BookingStep::where('id', $previous_step->id - 1)->first();
+            }
+        }
 
-        return view("web.booking.layouts.master", ['booking_steps' => $booking_steps, 'current_step' => $current_step, 'parcel_options' => $parcel_options, 'booking' => $booking, 'parcel_details' => $parcel_details, 'payment_methods' => $payment_methods]);
+        return view("web.booking.layouts.master", ['booking_steps' => $booking_steps, 'current_step' => $current_step, 'previous_step' => $previous_step, 'parcel_options' => $parcel_options, 'booking' => $booking, 'parcel_details' => $parcel_details, 'payment_methods' => $payment_methods]);
     }
 
     public function thankyou()
