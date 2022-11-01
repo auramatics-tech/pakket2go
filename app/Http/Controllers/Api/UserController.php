@@ -170,18 +170,14 @@ class UserController extends BaseController
         if ($user_type == 'private') {
             $rules =  [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::id()],
-                'country_code' => ['required'],
-                'phone_number' => ['required', 'unique:users,phone_number,' . Auth::id()]
+                'country_code' => ['required']
             ];
         } else {
             $rules = [
                 'name' => ['required', 'string', 'max:255'],
                 'first_name' => ['required'],
                 'last_name' => ['required'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::id()],
                 'country_code' => ['required'],
-                'phone_number' => ['required', 'unique:users,phone_number,' . Auth::id()],
                 'street' => ['required'],
                 'house_no' => ['required'],
                 'house_no_extension' => ['required'],
@@ -189,6 +185,17 @@ class UserController extends BaseController
                 'city' => ['required'],
                 'zipcode' => ['required']
             ];
+        }
+        if (Auth::id()) {
+            $rules = array_merge($rules, [
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::id()],
+                'phone_number' => ['required', 'unique:users,phone_number,' . Auth::id()]
+            ]);
+        } else {
+            $rules = array_merge($rules, [
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'phone_number' => ['required', 'unique:users,phone_number']
+            ]);
         }
 
         return $rules;
