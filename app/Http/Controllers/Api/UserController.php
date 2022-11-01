@@ -194,7 +194,7 @@ class UserController extends BaseController
         } else {
             $rules = array_merge($rules, [
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'phone_number' => ['required', 'unique:users,phone_number']
+                'phone_number' => ['required', 'unique:users']
             ]);
         }
 

@@ -55,7 +55,8 @@ trait BookingTrait
         $booking->courier_price = $courier_price;
         $booking->final_price = $price + $booking->distance_price;
         $booking->save();
-
+        $final_price = array();
+        
         $steps = BookingStep::where('status', 1)->orderby('order', 'asc')->get();
         if (count($steps)) {
             $key = 0;
