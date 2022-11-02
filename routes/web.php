@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 
 use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\BookingController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 /*
@@ -44,17 +45,17 @@ Route::prefix('{locale?}')
         Route::get('/how-it-works', [HomeController::class, 'howitworks'])->name('howitworks');
         Route::get('/become-courier', [HomeController::class, 'become_courier'])->name('become_courier');
         Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
-        Route::get('/dashboard-user', [HomeController::class, 'dashboard_user'])->name('dashboard_user');
-        Route::get('/dashboard-courier', [HomeController::class, 'dashboard_courier'])->name('dashboard_courier');
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
         Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+
+        // Route::get('/dashboard-courier', [HomeController::class, 'dashboard_courier'])->name('dashboard_courier');
 
         Route::group(['prefix' => 'booking'], function () {
             Route::middleware(['auth'])->group(function () {
                 Route::get('/pickup-address', [BookingController::class, 'index'])->name('booking.pickup_address');
                 Route::get('/delivery-address', [BookingController::class, 'index'])->name('booking.delivery_address');
                 Route::get('/payment', [BookingController::class, 'index'])->name('booking.payment');
-                Route::get('/payment-confirmation', [BookingController::class, 'payment_confirmation'])->name('booking.success');
+                Route::get('/thank-you', [BookingController::class, 'thankyou'])->name('booking.success');
             });
             Route::get('/{step?}', [BookingController::class, 'index'])->name('booking');
         });
@@ -66,9 +67,7 @@ Route::prefix('{locale?}')
                 ->name('otp');
 
             Route::middleware(['verified_phone'])->group(function () {
-                Route::get('/home', function () {
-                    return view('dashboard');
-                })->name('dashboard');
+                Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
             });
         });
     });

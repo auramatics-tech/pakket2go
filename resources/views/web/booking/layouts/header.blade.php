@@ -2,7 +2,9 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container d-flex align-items-center">
             <div class="d-flex align-items-center">
-                <a href="{{ route('home') }}">
+
+                <a
+                    @if ($current_step->id > 1) href="{{ route('booking', ['step' => $previous_step->url_code, 'locale' => App::getLocale()]) }}" @else href="{{ route('home') }}" @endif>
                     <i class="fa-solid fa-angle-left text-white"></i>
                 </a>
                 <div class="d-flex align-items-center ms-3">

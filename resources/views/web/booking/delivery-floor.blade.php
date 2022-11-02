@@ -25,7 +25,7 @@
         <input type="hidden" name="step" value="{{ $current_step->id }}">
         <input type="hidden" id="value_{{ $current_step->id }}" name="type_id"
             value="{{ $booking->booking_data($parcel_details, 'pickup_floor', 'id') }}">
-    </form>yy
+    </form>
     <div class="card_data mt-4">
         <h6>Delivey: Where does everything go?</h6>
         <p class="mb-0 pl_des">The damage insurance applies from door to door and not indoord.</p>

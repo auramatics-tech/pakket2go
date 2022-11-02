@@ -11,6 +11,25 @@ class Booking extends Model
 {
     use HasFactory;
 
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            $model->booking_code = 'BOOKING-' . str_pad($model->id, 7, "0", STR_PAD_LEFT);
+            $model->save();
+        });
+    }
+
+    public function booking_status()
+    {
+        return ucfirst(implode(' ', explode('-', BookingStatus::where('id', $this->status)->pluck('status_type')->first())));
+    }
+
+    public function payment_status()
+    {
+        return $this->hasOne(BookingPayments::class);
+    }
+
     public function address()
     {
         return $this->hasOne(BookingAddress::class);
@@ -23,7 +42,7 @@ class Booking extends Model
 
     public function booking_data($details, $type, $return)
     {
-        $parcel_type =  json_decode($details->{$type});
+        $parcel_type =  isset($details->{$type}) ? json_decode($details->{$type}) : '';
 
         $data['id'] = isset($parcel_type->id) ? $parcel_type->id : '';
         $data['date'] = isset($parcel_type->pickup_date) ? $parcel_type->pickup_date : '';

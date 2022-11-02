@@ -1,31 +1,27 @@
 <?php
-//Same parameters and a new $lang parameter
-use Illuminate\Support\Str;
 
-if (function_exists('CheckInvalidPlan')) {
-    function route($name, $parameters = [], $absolute = true, $lang = null)
+use App\Models\ParcelOption;
+
+if (!function_exists('skip_steps')) {
+    function skip_steps($booking, $current_step = '', $user_id = '')
     {
-
-        echo $name; die;
-        /*
-    * Remember the ajax routes we wanted to exclude from our lang system?
-    * Check if the name provided to the function is the one you want to
-    * exclude. If it is we will just use the original implementation.
-    **/
-        if (Str::contains($name, ['ajax', 'autocomplete'])) {
-            return app('url')->route($name, $parameters, $absolute);
+        $skip_steps = [];
+        if ($user_id == '') {
+            $user_id = Auth::id();
         }
 
-        //Check if $lang is valid and make a route to chosen lang
-        if ($lang && in_array($lang, config('app.alt_langs'))) {
-            return app('url')->route($lang . '_' . $name, $parameters, $absolute);
-        }
+        $booking_details = $booking->details;
+        $parcel_type = $booking->booking_data($booking_details, 'parcel_type', 'id');
+        $skip_steps = json_decode(
+            ParcelOption::where('id', $parcel_type)
+                ->pluck('skip_steps')
+                ->first(),
+        );
 
-        /**
-         * For all other routes get the current locale_prefix and prefix the name.
-         */
-        $locale_prefix = config('app.locale_prefix');
-        if ($locale_prefix == '') $locale_prefix = 'pl';
-        return app('url')->route($locale_prefix . '_' . $name, $parameters, $absolute);
+        if ($current_step == 8 && $user_id) {
+            $skip_steps[] = 8;
+        }
+        
+        return $skip_steps;
     }
 }

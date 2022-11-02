@@ -4,22 +4,31 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
+use App\Models\User;
 use App\Models\Booking;
+use App\Models\BookingPayments;
 use App\Models\BookingAddress;
 use App\Models\BookingStep;
 use App\Models\BookingDetails;
 use App\Models\ParcelOption;
-use App\Models\SiteSetting;
+
+
+use App\Http\Traits\BookingTrait;
 
 use Session;
 use Auth;
 use App;
+use File;
+use Image;
 
 use Mollie\Laravel\Facades\Mollie;
 
 class BookingController extends BaseController
 {
+
+    use BookingTrait;
 
     function __construct(Request $request)
     {
@@ -44,7 +53,7 @@ class BookingController extends BaseController
             }
         }
 
-        return response()->json(['status' => 1, 'message' => 'Parcel options retrieved', 'parcel_options' => $parcel_options]);
+        return response()->json(['status' => true, 'message' => 'Parcel options retrieved', 'parcel_options' => $parcel_options]);
     }
 
     /**
@@ -66,15 +75,27 @@ class BookingController extends BaseController
         $booking = Booking::when($request->booking_id, function ($query) use ($request) {
             $query->where('id', $request->booking_id);
         })->when(
-            $user_id,
+            $user_id && !$request->booking_id,
             function ($query)  use ($user_id) {
-                $query->where('user_id', $user_id);
+                $query->where(function ($q) use ($user_id) {
+                    $q->where('user_id', $user_id)->when(Session::get('logged_in'), function ($q1) {
+                        $q1->orwhere('session_id', Session::get('logged_in'));
+                    });
+                });
             },
-            function ($query)  use ($session_id) {
-                $query->where('session_id', $session_id);
+            function ($query)  use ($session_id, $request) {
+                if (!$request->booking_id)
+                    $query->where('session_id', $session_id);
             }
-        )->where('status', 0)
+        )->where('status', 1)
             ->latest()->first();
+
+        if (!isset($booking->id) && $request->step != 1) {
+            if ($request->ajax())
+                return response()->json(['success' => true, 'redirect' => route('booking.address', ['locale' => App::getLocale()]), 'step_view' => '']);
+            else
+                return response()->json(['success' => false, 'message' => 'Please start from step 1']);
+        }
 
         if (!isset($booking->id)) {
             $booking = new Booking;
@@ -83,9 +104,11 @@ class BookingController extends BaseController
 
         $booking->user_id = $user_id;
         $booking->session_id = $session_id;
-        $booking->current_step = $request->step;
-        $booking->status = 0;
         $booking->save();
+
+
+        $skip_steps = skip_steps($booking);
+
 
         switch ($request->step) {
             case 1:
@@ -96,20 +119,39 @@ class BookingController extends BaseController
                 break;
             case 2:
                 $this->parcelType($request, $booking);
+                break;
             case 3:
                 $this->parcelDetails($request, $booking);
+                if ($request->ajax()) {
+                    $request->pickup_date = date("Y-m-d");
+                    $request->price = 0;
+                    $this->pickupDate($request, $booking);
+                }
+                break;
             case 4:
                 $this->pickupDate($request, $booking);
-                $this->pickupExtraHelp($request, $booking);
+                if ($request->ajax()) {
+                    if (!in_array(5, $skip_steps))
+                        $this->pickupExtraHelp($request, $booking);
+                    else
+                        $this->pickupFloor($request, $booking);
+                }
+                break;
             case 5:
                 $this->pickupExtraHelp($request, $booking);
-                $this->pickupFloor($request, $booking);
+                if ($request->ajax())
+                    $this->pickupFloor($request, $booking);
+                break;
             case 6:
                 $this->pickupFloor($request, $booking);
-                $request->type_id = '';
-                $this->deliveryFloor($request, $booking);
+                if ($request->ajax()) {
+                    $request->type_id = '';
+                    $this->deliveryFloor($request, $booking);
+                }
+                break;
             case 7:
                 $this->deliveryFloor($request, $booking);
+                break;
             case 9:
                 if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                     return $this->sendError('Please login first', [], 401);
@@ -117,6 +159,7 @@ class BookingController extends BaseController
                 $booking->user_id = $user_id;
                 $booking->address_id = $this->saveAddress($request, $booking);
                 $booking->save();
+                break;
             case 10:
                 if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                     return $this->sendError('Please login first', [], 401);
@@ -124,26 +167,50 @@ class BookingController extends BaseController
                 $booking->user_id = $user_id;
                 $booking->address_id = $this->saveAddress($request, $booking);
                 $booking->save();
+                break;
             case 11:
                 if (!$request->ajax() && !isset(auth('sanctum')->user()->id)) {
                     return $this->sendError('Please login first', [], 401);
                 }
                 $redirect = $this->payment($request, $booking);
-                return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => '']);
+                return response()->json(['success' => true, 'redirect' => $redirect, 'step_view' => '']);
+                break;
             default:
                 return $this->sendError('Invalid step data', [], 401);
                 break;
         }
 
         $price = $this->calculate_final_price($booking);
+        $next_step = BookingStep::find($request->step + 1);
         if ($request->ajax()) {
-            $next_step = BookingStep::find($request->step + 1);
             $redirect = '';
             $step_view = '';
+
+            $skip_steps = skip_steps($booking, $next_step->id, $user_id);
+
+            if (!empty($skip_steps) && in_array($next_step->id, $skip_steps)) {
+                $next_step = BookingStep::find($next_step->id + 1);
+            }
+            if ($user_id) {
+                $user = User::find($user_id);
+            }
+            if ($next_step->id == 11 && isset($user->id) && $user->user_type == 'business') {
+                $booking->status = 2;
+                $booking->save();
+                $redirect =  route('booking.success', ['locale' => App::getLocale()]);
+                return response()->json(['success' => true, 'redirect' => $redirect, 'step_view' => $step_view]);
+            }
+
+            $booking->current_step = $next_step->id;
+            $booking->save();
+
             $redirect =  route('booking', ['step' => $next_step->url_code, 'locale' => App::getLocale()]);
-            return response()->json(['success' => 1, 'redirect' => $redirect, 'step_view' => $step_view]);
+            return response()->json(['success' => true, 'redirect' => $redirect, 'step_view' => $step_view]);
         } else {
-            return response()->json(['success' => 1, 'message' => 'Booking data saved successfully', 'booking_id' => $booking->id, 'pricing_details' => $price, 'final_price' => $booking->final_price]);
+
+            $booking->current_step = $next_step->id;
+            $booking->save();
+            return response()->json(['success' => true, 'message' => 'Booking data saved successfully', 'booking_id' => $booking->id, 'parcel_code' => $booking->booking_code, 'pricing_details' => $price, 'final_price' => $booking->final_price]);
         }
     }
 
@@ -181,12 +248,64 @@ class BookingController extends BaseController
         $address->delivery_contact_name = isset($request->delivery_contact_name) ? $request->delivery_contact_name : $address->delivery_contact_name;
         $address->delivery_contact_number = isset($request->delivery_contact_number) ? $request->delivery_contact_number :  $address->delivery_contact_number;
 
-        // Direction image
-        $address->distance = isset($request->distance) ? $request->distance :  $address->distance;
-        $address->direction_image = isset($request->direction_image) ? $request->direction_image :  $address->direction_image;
+        if ($request->step == 1) {
+            $direction_data = $this->direction_image($request, $booking);
+            $address->distance = (isset($request->distance) && $request->distance) ? $request->distance :  $direction_data['total_distance'];
+            $address->direction_image = $direction_data['direction_image'];
+        }
         $address->save();
 
         return $address->id;
+    }
+
+    protected function direction_image($request, $booking, $size = "400x400")
+    {
+        $origin = "$request->pickup_lat,$request->pickup_lng";
+        $destination = "$request->delivery_lat,$request->delivery_lng";
+        $waypoints = array(
+            $origin,
+            $destination
+        );
+        $markers = array();
+        $waypoints_labels = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K");
+        $waypoints_label_iter = 0;
+
+        $from_icon = 'https://bmh-software.nl/Testingacc/public/assets/img/from.png';
+        $to_icon = 'https://bmh-software.nl/Testingacc/public/assets/img/to.png';
+
+        $markers[] = "markers=icon:$from_icon" . urlencode("|") . "label:" . urlencode($waypoints_labels[$waypoints_label_iter++] . '|' . $origin);
+        $markers[] = "markers=icon:$to_icon" . urlencode("|") . "label:" . urlencode($waypoints_labels[$waypoints_label_iter] . '|' . $destination);
+
+        $routes = Http::get(env('GOOGLE_MAPS_API') . "directions/json?origin=$origin&destination=$destination&waypoints=" . implode('|', $waypoints) . "&key=" . env('GOOGLE_SITE_KEY'));
+
+        $total_distance = 0;
+        $distance = isset($routes['routes'][0]['legs']) ? $routes['routes'][0]['legs'] : array();
+        if (count($distance)) {
+            foreach ($distance as $travel) {
+                $total_distance += $travel['distance']['value'];
+            }
+        }
+        $data['total_distance'] = round($total_distance / 1000);
+
+        $polyline = isset($routes['routes'][0]['overview_polyline']['points']) ? urlencode($routes['routes'][0]['overview_polyline']['points']) : '';
+        $markers = implode('&', $markers);
+
+        $styles = "style=feature:administrative|element:geometry|visibility:off&style=feature:road|element:labels.icon|visibility:off&style=feature:poi|visibility:off&style=feature:transit|visibility:off&style=saturation:-100";
+
+        $direction_image = env('GOOGLE_MAPS_API') . "staticmap?size=$size&maptype=roadmap&path=color:0xfc4c00|weight:5|enc:$polyline&$markers&$styles&key=" . env('GOOGLE_SITE_KEY');
+
+        $time = time();
+        $imageName = 'direction_' . $time . '.png';
+        $path = public_path('/storage/uploads/bookings/' . $booking->id . '/direction') . '/' . $imageName;
+
+        if (!File::exists($path)) {
+            File::makeDirectory($path . 'original', 0775, true, true);
+        }
+        Image::make(file_get_contents($direction_image))->save($path);
+
+        $data['direction_image'] = '/uploads/bookings/' . $imageName;
+
+        return $data;
     }
 
     protected function parcelType($request, $booking)
@@ -222,7 +341,7 @@ class BookingController extends BaseController
 
         if (count($request->description)) {
             foreach ($request->description as $key => $val) {
-                $data[$key]['image'] = $request->image[$key];
+                $data[$key]['image'] = isset($request->image[$key]) ? $request->image[$key] : '';
                 $data[$key]['description'] = $request->description[$key];
                 $data[$key]['width'] = $request->width[$key];
                 $data[$key]['height'] = $request->height[$key];
@@ -326,21 +445,7 @@ class BookingController extends BaseController
 
     protected function payment($request, $booking)
     {
-        echo "<pre>";
-        print_r([
-            "amount" => [
-                "currency" => "EUR",
-                "value" => number_format($booking->final_price, 2) // You must send the correct number of decimals, thus we enforce the use of strings
-            ],
-            "method" => strtolower($request->method),
-            "description" => "Booking #$booking->id",
-            "redirectUrl" => route('booking.success'),
-            "webhookUrl" => route('webhooks.mollie'),
-            "metadata" => [
-                "order_id" => $booking->id,
-            ],
-        ]); die;
-        
+
         $payment = Mollie::api()->payments->create([
             "amount" => [
                 "currency" => "EUR",
@@ -348,85 +453,42 @@ class BookingController extends BaseController
             ],
             "method" => strtolower($request->method),
             "description" => "Booking #$booking->id",
-            "redirectUrl" => route('booking.success'),
+            "redirectUrl" => route('booking.success', ['locale' => App::getLocale()]),
             "webhookUrl" => route('webhooks.mollie'),
             "metadata" => [
-                "order_id" => $booking->id,
+                "booking_id" => $booking->id,
+                "user_id" => $booking->user_id,
             ],
         ]);
+        $booking_payment = BookingPayments::where('booking_id', $booking->id)->first();
+        if (!isset($booking_payment->id)) {
+            $booking_payment = new BookingPayments();
+        }
+        $booking_payment->booking_id = $booking->id;
+        $booking_payment->amount = $booking->final_price;
+        $booking_payment->transaction_id = $payment->id;
+        $booking_payment->status = $payment->status;
+        $booking_payment->save();
 
+        $booking->payment_id = $booking_payment->id;
+        $booking->save();
         // redirect customer to Mollie checkout page
-        return redirect($payment->getCheckoutUrl(), 303);
+        return $payment->getCheckoutUrl();
     }
 
-    protected function calcualte_distance_price($request, $booking)
-    {
-        $totaldistance =  $request->get('distance');
-        $parcelrate = SiteSetting::select('startprice', 'level1', 'level2', 'level3')->find(1);
-        if ($totaldistance <= 20) {
-            //startprice
-            $pricekm = $parcelrate->startprice;
-            $price = round($pricekm, 2);
-        } else if ($totaldistance > 20 && $totaldistance <= 100) {
-            //level1
-            $pricekm = $parcelrate->level1;
-            $price = round($totaldistance * $pricekm, 2);
-        } else if ($totaldistance > 100 && $totaldistance <= 200) {
-            //level2
-            $pricekm = $parcelrate->level2;
-            $price = round($totaldistance * $pricekm, 2);
-        } else if ($totaldistance > 200) {
-            //level3
-            $pricekm = $parcelrate->level3;
-            $price = round($totaldistance * $pricekm, 2);
-        }
-        $booking->distance_price = $price;
-        $booking->save();
-    }
 
-    protected function calculate_final_price($booking)
-    {
-        $booking_details = $booking->details;
-        $price = 0;
-
-        $price += $booking->booking_data($booking_details, 'parcel_type', 'price');
-        $price += $booking->booking_data($booking_details, 'parcel_details', 'price');
-        $price += $booking->booking_data($booking_details, 'pickup_extra_help', 'price');
-        $price += $booking->booking_data($booking_details, 'pickup_floor', 'price');
-        $price += $booking->booking_data($booking_details, 'delivery_floor', 'price');
-
-        $booking->final_price = $price + $booking->distance_price;
-        $booking->save();
-
-        $steps = BookingStep::where('status', 1)->orderby('order', 'asc')->get();
-        if (count($steps)) {
-            $key = 0;
-            foreach ($steps as $step_key => $step) {
-                if ($step->id == '1') {
-                    $final_price[$key]['name'] = "Distance $booking->distance Km";
-                    $final_price[$key]['price'] = number_format($booking->distance_price, 2);
-                    $final_price[$key]['step'] = $step->id;
-                    $key++;
-                } else {
-                    $type = implode('_', explode('-', $step->url_code));
-                    if ($booking->booking_data($booking_details, $type, 'name')) {
-                        $final_price[$key]['name'] = $booking->booking_data($booking_details, $type, 'name');
-                        $final_price[$key]['price'] = $booking->booking_data($booking_details, $type, 'price');
-                        $final_price[$key]['step'] = $step->id;
-                        $key++;
-                    }
-                }
-            }
-        }
-
-        return $final_price;
-    }
 
     public function clear_booking(Request $request)
     {
         $booking = Booking::where('id', $request->id)->delete();
         BookingDetails::where('booking_id', $request->id)->delete();
 
-        return response()->json(['status' => 1, 'message' => 'Booking deleted successfully']);
+        return response()->json(['status' => true, 'message' => 'Booking deleted successfully']);
+    }
+
+
+    public function last_location(Request $request)
+    {
+        return $this->last_location_info($request);
     }
 }
