@@ -180,7 +180,7 @@
 
                             </div>
 
-                            <div class="aside-footer flex-column-auto su_side_padding_dashboard" id="kt_aside_footer">
+                            <div class="aside-footer flex-column-auto su_side_padding_dashboard su_dashboard_logout_position" id="kt_aside_footer">
                                 <div class="su_padding_items">
                                     <a class="" href="">
                                         <span class="">

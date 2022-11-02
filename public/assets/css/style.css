@@ -46,6 +46,10 @@ a {
     color: #FC4C00;
 }
 
+.orange-color:hover {
+    color: #FC4C00;
+}
+
 .border-radius-20 {
     border-radius: 20px !important;
 }
@@ -1819,6 +1823,10 @@ p.dis_content {
     color: #FC4C00;
 }
 
+.su_login_red:hover {
+    color: #FC4C00;
+}
+
 .su_margin_top {
     margin: 30px 0px;
 }
@@ -2932,4 +2940,29 @@ width: 70%;
 }
 .iti--separate-dial-code .iti__selected-flag {
     background-color: transparent !important;
+}
+.su_courier_search_filter {
+    font-weight: 600;
+    font-size: 16.875px;
+    line-height: 25px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #01B537;
+    border-radius: 11.25px;
+    padding: 12px 10px;
+    display: none;
+}
+
+.su_courier_search_filter:hover {
+    color: #FFFFFF;
+}
+.su_accordion_button {
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 185.69% !important;
+    color: #777777 !important;
+}
+.su_dashboard_logout_position{
+    position: fixed;
+    bottom: 30px;
 }

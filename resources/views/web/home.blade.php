@@ -142,7 +142,7 @@ Pakket2Go
                 <div class="play_content">
                     <div class="d-flex badge align-items-center">
                         <button class="pakket_btn me-3">Pakket2Go</button>
-                        <p class="mb-0">{{ __('home.Is available Now on android and ios') }}
+                        <p class="mb-0 mt-0">{{ __('home.Is available Now on android and ios') }}
                         </p>
                     </div>
                     <div class="py-3 mob_align">

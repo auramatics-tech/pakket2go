@@ -180,7 +180,7 @@
 
                             </div>
 
-                            <div class="aside-footer flex-column-auto su_side_padding_dashboard" id="kt_aside_footer">
+                            <div class="aside-footer flex-column-auto su_side_padding_dashboard su_dashboard_logout_position" id="kt_aside_footer">
                                 <div class="su_padding_items">
                                     <a class="" href="">
                                         <span class="">
@@ -225,7 +225,7 @@
                 <div class="d-flex flex-column flex-column-fluid" id="kt_content">
 
                     <div class="toolbar su_padding_toolbar" id="kt_toolbar">
-                        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack su_480_block_this">
+                        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
                             <div class="su_cou_width_30">
                                 <h3 class="Track_orders">My Deliveries</h3>
                                 <p class="su_available_deliveries">Total available deliveries: <span><b>284</b></span></p>
@@ -233,7 +233,7 @@
                             <div class="su_cou_width_70">
                                 <form action="">
                                     <div class="su_border_Courier_page su_courier_form_flex">
-                                        <div class="su_border_right">
+                                        <div class="su_border_right su_block_1167">
                                             <label for="" class="d-flex align-items-center">
                                                 <span class="su_mr_5">
                                                     <img src="{{ asset('assets/svg/courier_location.svg') }}" alt="form">
@@ -242,7 +242,7 @@
                                                 <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Find Address" id="searchInput_from">
                                             </label>
                                         </div>
-                                        <div class="su_border_right">
+                                        <div class="su_border_right su_block_1167">
                                             <label for="" class="d-flex align-items-center">
                                                 <span class="su_mr_5">
                                                     <img src="{{ asset('assets/svg/courier_Packing.svg') }}" alt="form">
@@ -251,7 +251,7 @@
                                                 <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Packing type" id="searchInput_from">
                                             </label>
                                         </div>
-                                        <div>
+                                        <div class="su_block_1167">
                                             <label for="" class="d-flex align-items-center">
                                                 <span class="su_mr_5">
                                                     <img src="{{ asset('assets/svg/courier_delivery.svg') }}" alt="form">
@@ -260,7 +260,54 @@
                                                 <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Delivery Date" id="searchInput_from">
                                             </label>
                                         </div>
-                                        <div class="su_courier_search_pt"><a class="su_courier_search" href="">search</a></div>
+                                        <div class="su_courier_search_pt su_block_1167"><a class="su_courier_search" href="">search</a></div>
+
+                                        <div class=""><a class="su_courier_search_filter" data-bs-toggle="modal" data-bs-target="#exampleModal" href="">search filter</a></div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Filter</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="su_border_right">
+                                                            <label for="" class="d-flex align-items-center">
+                                                                <span class="su_mr_5">
+                                                                    <img src="{{ asset('assets/svg/courier_location.svg') }}" alt="form">
+                                                                </span>
+
+                                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Find Address" id="searchInput_from">
+                                                            </label>
+                                                        </div>
+                                                        <div class="su_border_right">
+                                                            <label for="" class="d-flex align-items-center">
+                                                                <span class="su_mr_5">
+                                                                    <img src="{{ asset('assets/svg/courier_Packing.svg') }}" alt="form">
+                                                                </span>
+
+                                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Packing type" id="searchInput_from">
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <label for="" class="d-flex align-items-center">
+                                                                <span class="su_mr_5">
+                                                                    <img src="{{ asset('assets/svg/courier_delivery.svg') }}" alt="form">
+                                                                </span>
+
+                                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Delivery Date" id="searchInput_from">
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="su_courier_search_pt"><a class="su_courier_search" href="">search</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
 

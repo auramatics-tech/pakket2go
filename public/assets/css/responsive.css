@@ -217,6 +217,12 @@
  }
 
  @media screen and (max-width: 1167px){
+    .su_courier_search_filter {
+        display: block;
+    }
+    .su_block_1167{
+        display: none;
+    }
     .su_cou_width_70 {
         width: 30%;
     }
@@ -229,6 +235,9 @@
     .su_border_right{
         border-right: none;
       }
+      .su_border_Courier_page {
+        border: none;
+    }
  }
 
  @media screen and (max-width: 1100px) {
@@ -635,6 +644,12 @@
       /* .su_register_sidebar {
          height: 950px;
      } */
+     .su_mr_10_480{
+        margin-left: 22px;
+     }
+     .play_content{
+        text-align: center;
+     }
      .su_register_sidebar_padding {
         display: block;
         height: auto;
@@ -699,9 +714,9 @@
          margin-bottom: 1.5rem
      }
 
-     .badge {
+     /* .badge {
          width: fit-content;
-     }
+     } */
 
      .mob_align {
          text-align: center;
@@ -870,6 +885,20 @@
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
+     .su_mr_10_480{
+        margin-left: 22px;
+     }
+     .form-label {
+        margin-bottom: 0px !important;
+    }
+     .su_courier_search_filter {
+        width: 50%;
+        margin-left: auto;
+    }
+     .su_available_deliveries {
+        font-size: 14px;
+        line-height: 17px;
+    }
      .su_cou_width_70 {
         width: 100%;
     }
@@ -1109,7 +1138,7 @@
      }
 
      .su_side_margin {
-         margin: auto;
+        margin: 10px;
      }
 
      .su_sign_in_form_padding {
@@ -1427,6 +1456,9 @@
  }
 
  @media only screen and (max-width: 390px) {
+    .su_courier_search_filter {
+        width: 62%;
+    }
     .third-section {
         padding-bottom: 110px;
     }
