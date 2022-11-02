@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Http\Traits\BookingTrait;
-
+use App\Models\Enquiry;
+use App\Models\UserLocation;
 use File;
 use Image;
 use Validator;
@@ -42,8 +43,8 @@ class UserController extends BaseController
         $credentials = Validator::make($request->all(), $rules);
 
         if ($credentials->fails()) {
-            $errors = $credentials->messages();
-            return $this->sendError('Error', $errors, 401);
+            $errors = $credentials->errors();
+            return $this->sendError($errors->first(), [], 200);
         } else {
 
             $user = $this->save_user_data($request);
@@ -69,8 +70,8 @@ class UserController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            $errors = $validator->messages();
-            return $this->sendError('Missing required fields', $errors, 200);
+            $errors = $validator->errors();
+            return $this->sendError($errors->first(), [], 200);
         }
         $phone_number =  $request->phone_number;
         $country_code =  $request->country_code;
@@ -103,8 +104,8 @@ class UserController extends BaseController
         $credentials = Validator::make($request->all(), $rules);
 
         if ($credentials->fails()) {
-            $errors = $credentials->messages();
-            return $this->sendError('Error', $errors, 401);
+            $errors = $credentials->errors();
+            return $this->sendError($errors->first(), [], 200);
         } else {
 
             $user = $this->save_user_data($request);
@@ -201,6 +202,113 @@ class UserController extends BaseController
         return $rules;
     }
 
+    public function update_password(Request $request)
+    {
+        $rules = [
+            'password' => ['required', 'confirmed', Rules\Password::defaults()]
+        ];
+
+        $credentials = Validator::make($request->all(), $rules);
+
+        if ($credentials->fails()) {
+            $errors = $credentials->errors();
+            return $this->sendError($errors->first(), [], 200);
+        } else {
+            $user = User::find(Auth::user()->id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return $this->sendResponse($this->user_data($user), 'Password updated successfully');
+        }
+    }
+
+    public function reset_password(Request $request)
+    {
+        $rules = [
+            'user_id' => ['required'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()]
+        ];
+
+        $credentials = Validator::make($request->all(), $rules);
+
+        if ($credentials->fails()) {
+            $errors = $credentials->errors();
+            return $this->sendError($errors->first(), [], 200);
+        } else {
+            $user = User::find($request->user_id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return $this->sendResponse($this->user_data($user), 'Password reseted successfully');
+        }
+    }
+
+    public function contact_us(Request $request)
+    {
+
+        $rules = [
+            'name' => ['required'],
+            'phone' => ['required'],
+            'message' => ['required'],
+        ];
+
+        $credentials = Validator::make($request->all(), $rules);
+
+        if ($credentials->fails()) {
+            $errors = $credentials->errors();
+            return $this->sendError($errors->first(), [], 200);
+        } else {
+            $enquiry = new Enquiry();
+            $enquiry->user_id = (Auth::id()) ? Auth::id()  : '';
+            $enquiry->name = $request->name;
+            $enquiry->subject = 'Enquiry from app';
+            $enquiry->phone = $request->phone;
+            $enquiry->message = $request->message;
+            $enquiry->save();
+            return $this->sendResponse($enquiry, 'Thanks!! We will contact you shortly');
+        }
+    }
+
+
+    public function nearbyriders(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'lat' => 'required',
+            'long' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return $this->sendError($errors->first(), [], 200);
+        }
+
+        $riders = UserLocation::select(
+            'user_locations.created_at as track_time',
+            'latitude as lat',
+            'longitude as long',
+            'accuracy',
+            'rotation',
+            'user_id',
+            'first_name',
+            'last_name',
+            DB::raw('SQRT( POW(69.1 * (`latitude` - ' . $request->lat . '), 2) + POW(69.1 * (' . $request->long . ' - `longitude`) * COS(`latitude` / 57.3), 2)) AS distance')
+        )
+            ->leftJoin('users', 'users.id', '=', 'user_locations.user_id')
+            ->where("users.user_type", "courier")
+            ->whereIn('user_locations.id', function ($query) {
+                $query->from('user_locations')->select(DB::raw('max(id) as id'))
+                    ->groupby('user_locations.user_id');
+            })
+            ->orderBy('distance', 'asc')
+            ->get();
+
+        if (count($riders)) {
+            return $this->sendResponse($riders, count($riders) . ' Riders found nearby');
+        } else {
+            return $this->sendResponse([], 'No nearby rider found');
+        }
+    }
+
     protected function save_user_data($request)
     {
         $data = [
@@ -240,6 +348,11 @@ class UserController extends BaseController
             $user->save();
         }
 
+        return $this->user_data($user);
+    }
+
+    protected function user_data($user)
+    {
         $url = url('/');
         $user = User::select(
             'id',

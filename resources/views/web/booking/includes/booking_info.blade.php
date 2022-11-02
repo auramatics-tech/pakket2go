@@ -2,7 +2,7 @@
     <div>
         <div class="map_frame">
             <div id="map">
-                <img src="{{ asset('storage/' . $booking->address->direction_image) }}" alt="" width="100%" height="100%" class="img-responsive">
+                <img src="{{ asset($booking->address->direction_image) }}" alt="" width="100%" height="100%" class="img-responsive">
             </div>
         </div>
         <div class="content_total mt-4">
