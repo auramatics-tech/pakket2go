@@ -165,9 +165,10 @@ class BookingController extends BaseController
                 }
                 $booking->user_id = $user_id;
                 $booking->address_id = $this->saveAddress($request, $booking);
-                $booking->status = 2;
                 $booking->save();
                 if (isset(auth('sanctum')->user()->id) && auth('sanctum')->user()->user_type == 'business') {
+                    $booking->status = 2;
+                    $booking->save();
                     $this->booking_data($booking);
                     return $this->sendResponse($booking, 'Booking created successfully');
                 }
@@ -228,7 +229,7 @@ class BookingController extends BaseController
 
             $booking->current_step = $next_step->id;
             $booking->save();
-            return response()->json(['success' => true, 'booking_status' => $booking->booking_status(), 'message' => 'Booking data saved successfully', 'booking_id' => $booking->id, 'parcel_code' => $booking->booking_code, 'pricing_details' => $price, 'final_price' => number_format($booking->final_price,2)]);
+            return response()->json(['success' => true, 'booking_status' => $booking->booking_status(), 'message' => 'Booking data saved successfully', 'booking_id' => $booking->id, 'parcel_code' => $booking->booking_code, 'pricing_details' => $price, 'final_price' => round($booking->final_price, 2)]);
         }
     }
 
@@ -370,8 +371,21 @@ class BookingController extends BaseController
                 $cm_cube = $request->width[$key] * $request->height[$key] * $request->length[$key];
                 $meter_cube +=  $cm_cube / 1000000;
                 $pricing = (($cm_cube / 10000) / 5) * 0.50;
-                $data[$key]['image'] = isset($request->image[$key]) ? $request->image[$key] : '';
-                $data[$key]['description'] = $request->description[$key];
+
+                // store image
+                if (isset($request->image[$key]) && $request->image[$key]) {
+                    $time = time();
+                    $imageName = 'booking_image_' . $key . '_' . $time . '.png';
+                    $path = public_path('/storage/uploads/bookings/' . $booking->id . '/details') . '/' . $imageName;
+
+                    if (!File::exists($path)) {
+                        File::makeDirectory($path . 'original', 0775, true, true);
+                    }
+                    Image::make(file_get_contents($request->image[$key]))->save($path);
+                }
+
+                $data[$key]['image'] = isset($request->image[$key]) ? '/storage/uploads/bookings/' . $booking->id . '/details/' . $imageName : '';
+                $data[$key]['description'] = ($request->description[$key]) ? $request->description[$key] : '';
                 $data[$key]['width'] = $request->width[$key];
                 $data[$key]['height'] = $request->height[$key];
                 $data[$key]['length'] = $request->length[$key];

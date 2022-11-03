@@ -179,7 +179,6 @@
                                 </div>
 
                             </div>
-
                             <div class="aside-footer flex-column-auto su_side_padding_dashboard su_dashboard_logout_position" id="kt_aside_footer">
                                 <div class="su_padding_items">
                                     <a class="" href="">
@@ -199,8 +198,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
                 </div>
@@ -212,8 +209,7 @@
                     <div class="container-fluid d-flex align-items-stretch">
                         <div class="d-flex align-items-center justify-content-between su_navbar_padding">
                             <div class="d-flex align-items-center">
-                                <h2 class="su_navbar_heading">Want to deliver your packages/products?</h2>
-                                <button class="su_Book_Transport">Book a Transport >></button>
+                                <h2 class="su_navbar_heading">Dashboard</h2>
                             </div>
 
                             <div class="d-flex align-content-center justify-content-center lang_toggle">
@@ -227,138 +223,246 @@
 
                     <div class="toolbar su_padding_toolbar" id="kt_toolbar">
                         <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
-                            <div class="su_width_40">
-                                <h3 class="Track_orders">Track orders</h3>
+                            <div class="su_cou_width_30">
+                                <h3 class="Track_orders">My Deliveries</h3>
+                                <p class="su_available_deliveries">Total available deliveries: <span><b>284</b></span></p>
                             </div>
-                            <div class="su_width_60">
-                                <!-- <input class="su_dashboard_search su_search_filter_img" type="text" placeholder="Search..."> -->
-                                {{--<img src="{{asset('assets/svg/search_filter.svg')}}" alt="">--}}
-                                <div class="form-group su_search_border_style ">
-                                    <input class="su_search_border" id="" class="form-input" placeholder="search..." value="{{ old('email') }}" type="text" />
-                                    @error('full_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <div class="su_cou_width_70">
+                                <form action="">
+                                    <div class="su_border_Courier_page su_courier_form_flex">
+                                        <div class="su_border_right su_block_1167">
+                                            <label for="" class="d-flex align-items-center">
+                                                <span class="su_mr_5">
+                                                    <img src="{{ asset('assets/svg/courier_location.svg') }}" alt="form">
+                                                </span>
+
+                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Find Address" id="searchInput_from">
+                                            </label>
+                                        </div>
+                                        <div class="su_border_right su_block_1167">
+                                            <label for="" class="d-flex align-items-center">
+                                                <span class="su_mr_5">
+                                                    <img src="{{ asset('assets/svg/courier_Packing.svg') }}" alt="form">
+                                                </span>
+
+                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Packing type" id="searchInput_from">
+                                            </label>
+                                        </div>
+                                        <div class="su_block_1167">
+                                            <label for="" class="d-flex align-items-center">
+                                                <span class="su_mr_5">
+                                                    <img src="{{ asset('assets/svg/courier_delivery.svg') }}" alt="form">
+                                                </span>
+
+                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Delivery Date" id="searchInput_from">
+                                            </label>
+                                        </div>
+                                        <div class="su_courier_search_pt su_block_1167"><a class="su_courier_search" href="">search</a></div>
+
+                                        <div class=""><a class="su_courier_search_filter" data-bs-toggle="modal" data-bs-target="#exampleModal" href="">search filter</a></div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Filter</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="su_border_right">
+                                                            <label for="" class="d-flex align-items-center">
+                                                                <span class="su_mr_5">
+                                                                    <img src="{{ asset('assets/svg/courier_location.svg') }}" alt="form">
+                                                                </span>
+
+                                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Find Address" id="searchInput_from">
+                                                            </label>
+                                                        </div>
+                                                        <div class="su_border_right">
+                                                            <label for="" class="d-flex align-items-center">
+                                                                <span class="su_mr_5">
+                                                                    <img src="{{ asset('assets/svg/courier_Packing.svg') }}" alt="form">
+                                                                </span>
+
+                                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Packing type" id="searchInput_from">
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <label for="" class="d-flex align-items-center">
+                                                                <span class="su_mr_5">
+                                                                    <img src="{{ asset('assets/svg/courier_delivery.svg') }}" alt="form">
+                                                                </span>
+
+                                                                <input class="form-control border-0 ad_input searchInput placeholder_courier" type="text" name="from" placeholder="Delivery Date" id="searchInput_from">
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="su_courier_search_pt"><a class="su_courier_search" href="">search</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <div id="" class="su_container_dashboard">
                             <div class="su_card_out_box">
-                                <div class="su_card_dashboard">
-                                    <div class="su_card">
-                                        <div class="d-flex su_block_in_1200 justify-content-between align-items-center">
-                                            <div class="w-100">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="su_item_img">
-                                                        <img src="{{ asset('assets/img/sofa.png') }}" alt="">
-                                                    </div>
-                                                    <div class="su_margin_left_15">
-                                                        <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
-                                                        <p class="su_item_price">€30.00</p>
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
-                                                            <p class="su_item_date">Order date: Friday, Sep 07</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="d-flex su_block_in_1200">
-                                                    <div class="d-flex align-items-center su_after_img su_my_480">
-                                                        <img src="{{ asset('assets/svg/circle_circle.svg') }}" alt="">
-                                                        <p class="su_address_dashboard">20 Ranipukur Lane, PO 234, Noord-Holland</p>
-                                                    </div>
-                                                    <div class="d-flex align-items-center su_my_480">
-                                                        <img src="{{ asset('assets/svg/location_dashboard.svg') }}" alt="">
-                                                        <p class="su_address_dashboard">20 Ranipukur Lane, PO 234, Noord-Holland</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="su_map_img_dashboard">
-                                                    <img src="{{ asset('assets/img/map_dashboard.png') }}" alt="">
-                                                </div>
+
+                                <div class="su_card my-4">
+
+                                    <div class="su_flex_768_block justify-content-between">
+                                        <div class="su_order_width_20 su_order_width_sm">
+                                            <div class="su_details_img">
+                                                <img src="{{ asset('assets/img/sofa.png') }}" alt="">
                                             </div>
                                         </div>
+                                        <div class="su_order_width_80">
+                                            <div class="table-responsive">
+                                                <table class="table w-100">
+                                                    <tr class="su_display_grid_sm">
+                                                        <td class="su_order_width_40">
+                                                            <div class="su_margin_left_15">
+                                                                <h2 class="su_item_name_new">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
+                                                                <p class="su_item_price_new">€30.00</p>
+                                                                <div class="d-flex align-items-center">
+                                                                    <img class="su_margin_x_20" src="{{ asset('assets/svg/truck_svg.svg') }}" alt="">
+                                                                    <img class="su_margin_x_20" src="{{ asset('assets/svg/person_with_order.svg') }}" alt="">
+                                                                    <img class="su_margin_x_20" src="{{ asset('assets/svg/order_loading.svg') }}" alt="">
 
-                                    </div>
-                                </div>
-                                <div class="su_card_dashboard my-4">
-                                    <div class="su_card">
-                                        <div class="d-flex su_block_in_1200 justify-content-between align-items-center">
-                                            <div class="w-100">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="su_item_img">
-                                                        <img src="{{ asset('assets/img/shampoo.png') }}" alt="">
-                                                    </div>
-                                                    <div class="su_margin_left_15">
-                                                        <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
-                                                        <p class="su_item_price">€30.00</p>
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
-                                                            <p class="su_item_date">Order date: Friday, Sep 07</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="d-flex su_block_in_1200">
-                                                    <div class="d-flex align-items-center su_after_img su_my_480">
-                                                        <img src="{{ asset('assets/svg/circle_circle.svg') }}" alt="">
-                                                        <p class="su_address_dashboard">20 Ranipukur Lane, PO 234, Noord-Holland</p>
-                                                    </div>
-                                                    <div class="d-flex align-items-center su_my_480">
-                                                        <img src="{{ asset('assets/svg/location_dashboard.svg') }}" alt="">
-                                                        <p class="su_address_dashboard">20 Ranipukur Lane, PO 234, Noord-Holland</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="su_map_img_dashboard">
-                                                    <img src="{{ asset('assets/img/map_dashboard.png') }}" alt="">
-                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="su_order_width_40">
+                                                            <div class="su_flex_column">
+                                                                <div>
+                                                                    <div class="d-flex justify-content-between align_items-center">
+                                                                        <div class="su_order_details_text su_margin_y_12">Small Package</div>
+                                                                        <div class="su_order_details_text su_margin_y_12">€ 20.00</div>
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-between align_items-center">
+                                                                        <div class="su_order_details_text su_margin_y_12">12.5 x 11 x 10 cm</div>
+                                                                        <div class="su_order_details_text su_margin_y_12">€ 0.00</div>
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-between align_items-center">
+                                                                        <div class="su_order_details_text su_margin_y_12">Extra person needed to carry </div>
+                                                                        <div class="su_order_details_text su_margin_y_12">€ 10.00</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
                                             </div>
                                         </div>
-
                                     </div>
-                                </div>
-                                <div class="su_card_dashboard">
-                                    <div class="su_card">
-                                        <div class="d-flex su_block_in_1200 justify-content-between align-items-center">
-                                            <div class="w-100">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="su_item_img">
-                                                        <img src="{{ asset('assets/img/products.png') }}" alt="">
-                                                    </div>
-                                                    <div class="su_margin_left_15">
-                                                        <h2 class="su_item_name">#31djh2jbn45 <button class="su_item_name_btn"><span class="badge su_badges">0</span>Active</button></h2>
-                                                        <p class="su_item_price">€30.00</p>
-                                                        <div class="d-flex align-items-center">
-                                                            <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
-                                                            <p class="su_item_date">Order date: Friday, Sep 07</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="d-flex su_block_in_1200">
-                                                    <div class="d-flex align-items-center su_after_img su_my_480">
-                                                        <img src="{{ asset('assets/svg/circle_circle.svg') }}" alt="">
-                                                        <p class="su_address_dashboard">20 Ranipukur Lane, PO 234, Noord-Holland</p>
-                                                    </div>
-                                                    <div class="d-flex align-items-center su_my_480">
-                                                        <img src="{{ asset('assets/svg/location_dashboard.svg') }}" alt="">
-                                                        <p class="su_address_dashboard">20 Ranipukur Lane, PO 234, Noord-Holland</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="su_map_img_dashboard">
-                                                    <img src="{{ asset('assets/img/map_dashboard.png') }}" alt="">
-                                                </div>
+                                    <hr>
+
+                                    <div class="su_flex_768_block justify-content-between">
+                                        <div class="su_order_width_20 su_order_width_sm">
+                                            <div class="su_map_img_dashboard_new">
+                                                <img src="{{ asset('assets/img/map_dashboard.png') }}" alt="">
                                             </div>
                                         </div>
+                                        <div class="su_order_width_80">
+                                            <div class="table-responsive">
+                                            <table class="table w-100">
+                                                <tr class="su_display_grid_sm">
+                                                    <td class="su_order_width_40">
+                                                        <div class="su_flex align-items-basline">
+                                                            <div class="su_from_text su_margin_right_20 su_sm_ml">From >></div>
+                                                            <div class="su_order_details_text">20 Ranipukur Lane, PO 234, Noord-Holland</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="su_order_width_40">
+                                                        <div class=" su_flex_column">
+                                                            <div>
+                                                                <div class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">Friday, 07 September 2022</div>
+                                                                    <div class="su_order_details_text su_margin_y_12">€ 0.00</div>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">Ground Floor</div>
+                                                                    <div class="su_order_details_text su_margin_y_12">€ 0.00</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
 
+                                            </table>
+                                            </div>
+                                            <hr>
+                                            <div class="table-responsive">
+                                            <table class="table w-100">
+                                                <tr class="su_display_grid_sm">
+                                                    <td class="su_order_width_40">
+                                                        <div class="d-flex align-items-basline">
+                                                            <div class="su_to_text su_margin_right_20 su_sm_ml">To >></div>
+                                                            <div class="su_order_details_text">Mirja Bazar, PO 1234, Zuid-Holland</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="su_order_width_40">
+                                                        <div class=" su_flex_column">
+                                                            <div>
+                                                                <div class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">Sunday, 09 September 2022</div>
+                                                                    <div class="su_order_details_text su_margin_y_12">€ 10.00</div>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">2nd Floor</div>
+                                                                    <div class="su_order_details_text su_margin_y_12">€ 10.00</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="su_order_width_20">
+                                        </div>
+                                        <div class="su_order_width_80">
+                                            <div class="table-responsive">
+                                                <table class="table w-100">
+                                                    <tr class="su_display_grid_sm">
+                                                        <td class="su_order_width_40">
+                                                           
+                                                        </td>
+                                                        <td class="su_order_width_40">
+                                                            <div class="su_flex_column">
+                                                                <div>
+                                                                    <div class="d-flex justify-content-between align_items-center">
+                                                                        <div class="su_total_details su_margin_y_12">Total Price</div>
+                                                                        <div class="su_total_details_price su_margin_y_12">€ 40.00</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

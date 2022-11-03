@@ -65,14 +65,14 @@ trait BookingTrait
             foreach ($steps as $step_key => $step) {
                 if ($step->id == '1') {
                     $final_price[$key]['name'] = "Distance " . $booking->address->distance . " Km";
-                    $final_price[$key]['price'] = number_format($booking->distance_price, 2);
+                    $final_price[$key]['price'] = round($booking->distance_price, 2);
                     $final_price[$key]['step'] = $step->id;
                     $key++;
                 } else if ($step->id == '3') {
                     $data = $booking->booking_data($booking_details, 'parcel_details', 'all');
                     foreach ($data as $parcel_details) {
                         $final_price[$key]['name'] = $parcel_details['name'];
-                        $final_price[$key]['price'] = number_format($parcel_details['price'], 2);
+                        $final_price[$key]['price'] = round($parcel_details['price'], 2);
                         $final_price[$key]['step'] = $step->id;
                         $key++;
                     }
@@ -80,7 +80,7 @@ trait BookingTrait
                     $type = implode('_', explode('-', $step->url_code));
                     if ($booking->booking_data($booking_details, $type, 'name')) {
                         $final_price[$key]['name'] = $booking->booking_data($booking_details, $type, 'name');
-                        $final_price[$key]['price'] = $booking->booking_data($booking_details, $type, 'price');
+                        $final_price[$key]['price'] = round($booking->booking_data($booking_details, $type, 'price'));
                         $final_price[$key]['step'] = $step->id;
                         $key++;
                     }

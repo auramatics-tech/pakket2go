@@ -50,7 +50,7 @@ class Booking extends Model
             if (count($parcel_type)) {
                 foreach ($parcel_type as $key => $p_type) {
                     $data[$key]['image'] = isset($p_type->image) ? $p_type->image : '';
-                    $data[$key]['name'] = isset($p_type->width) ? $p_type->width . 'x' . $p_type->height . 'x' . $p_type->length : '';
+                    $data[$key]['name'] = isset($p_type->width) ? ($p_type->width . 'x' . $p_type->height . 'x' . $p_type->length).' cm' : '';
                     $data[$key]['description'] = isset($p_type->description) ? $p_type->description : '';
                     $data[$key]['price'] = isset($p_type->pricing) ? number_format($p_type->pricing, 2) : 0;
                     $price += $data[$key]['price'];

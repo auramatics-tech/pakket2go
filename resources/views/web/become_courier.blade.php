@@ -159,7 +159,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="su_register_sidebar_padding">
+                    <div class="">
                         <div class="">
                             <figure class="su_main_logo_become">
                                 <img src="{{ asset('assets/svg/Pakket2go.svg') }}" alt="logo">

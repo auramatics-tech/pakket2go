@@ -100,11 +100,41 @@
                 method: 'post',
                 data: $('#booking_form').serialize(),
                 success: function(data) {
-                    if (data.redirect) {
+                    if (data.success && data.redirect) {
                         window.location.href = data.redirect;
+                    } else {
+                        $('.loading').hide();
+                        $('input').removeClass('is-invalid')
+                        if (data.field_name == 'parcel_size') {
+
+                        } else {
+                            $(".border_bottom").css('border-top', '0.5px solid #D9D9D9')
+                            $('input[name="' + data.field_name + '"]').addClass("is-invalid").focus();
+                            $(".border_bottom").css('border-top', '0.5px solid red')
+                        }
                     }
                 }
             })
+        })
+
+        $(document).on("keyup", ".big_parcel_charges", function() {
+            if ($(this).val() == 0) {
+                $(this).val('')
+            }
+
+            var total_parcel_details = parseInt($('#parcel_details_main').attr('data-count'));
+            console.log(total_parcel_details)
+            $("#parcel_details_div").html('');
+            for (var i = 0; i <= total_parcel_details; i++) {
+                var height = $('#height_' + i).val();
+                var width = $('#width_' + i).val();
+                var length = $('#length_' + i).val();
+                var name = height + 'x' + width + 'x' + length + 'cm';
+
+                $("#parcel_details_div").append('<div class="d-flex justify-content-between">\n\
+                                        <p">' + name + '</p>\n\
+                                        <p class="prices" data-price="10">10</p></div>');
+            }
         })
 
         $(document).on('click', '.continue_button', function() {
@@ -125,16 +155,6 @@
             $(".from_address_p").after('<p id="pickup_date_p">' + date_view + '</p>');
             $(".to_address_p").after('<p id="delivery_date_p">' + date_view + '</p>');
         })
-        @if ($current_step->id == 3)
-            $(document).on('keyup', '.big_parcel_charges', function() {
-                var id = $(this).attr("data-id");
-                var height = $('#height_' + id).val();
-                var width = $('#width_' + id).val();
-                var length = $('#length_' + id).val();
-
-                var m_cube = parseFloat(height) * parseFloat(width) * parseFloat(length);
-            })
-        @endif
     </script>
 
 
