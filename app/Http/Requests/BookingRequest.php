@@ -51,6 +51,7 @@ class BookingRequest extends FormRequest
             'success' => false,
             'data'    => [],
             'message' => $errors->first(),
+            'field_name' => array_key_first($this->getValidatorInstance()->failed())
         ];
 
         throw new HttpResponseException(response()->json($response, 200));
@@ -105,12 +106,12 @@ class BookingRequest extends FormRequest
     {
         return [
             'pickup_address' => ['required'],
-            'pickup_street' => ['required'],
+            'delivery_address' => ['required'],
+            // 'pickup_street' => ['required'],
             'pickup_lat' => ['required'],
             'pickup_lng' => ['required'],
             'step' => ['required'],
-            'delivery_address' => ['required'],
-            'delivery_street' => ['required'],
+            // 'delivery_street' => ['required'],
             'delivery_lat' => ['required'],
             'delivery_lng' => ['required']
         ];
@@ -147,10 +148,10 @@ class BookingRequest extends FormRequest
         return [
             'step' => ['required'],
             'booking_id' => ['required'],
-            'width' => ['required'],
-            'height' => ['required'],
-            'length' => ['required'],
-            'parcel_size' => ['required', 'integer', 'max:6'],
+            'width' => ['required', 'min:1'],
+            'height' => ['required', 'min:1'],
+            'length' => ['required', 'min:1'],
+            'parcel_size' => ['required', 'integer', 'min:1', 'max:6'],
         ];
     }
 

@@ -1,3 +1,16 @@
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
 <div class="child_first">
     <div class="d-flex align-items-center justify-content-between top_data">
         <div class="parcel">
@@ -20,7 +33,7 @@
     <div class="card_data mt-4">
         @php
             $parcel_type = App\Models\ParcelOption::find($booking->booking_data($parcel_details, 'parcel_type', 'id'));
-            $details = ($parcel_details->parcel_details) ? json_decode($parcel_details->parcel_details) : [];
+            $details = $parcel_details->parcel_details ? json_decode($parcel_details->parcel_details) : [];
         @endphp
         @if (isset($parcel_type->id) && $parcel_type->dimensions == 1)
             <h6>Fill in the dimensions and check the price</h6>
