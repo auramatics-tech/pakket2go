@@ -36,7 +36,39 @@
  }
 
  /* sumit css end  */
- @media only screen and (max-width: 1440px) {
+ @media only screen and (max-width: 1440px){
+    .su_details_img {
+        width: 190px;
+    }
+    .su_map_img_dashboard_new {
+        width: 175px;
+    }
+ }
+
+ @media only screen and (max-width: 1400px) {
+    .su_details_img {
+        width: 190px;
+    }
+    .pakket2go_vdo_set>iframe { 
+        width: 500px;
+    }
+    .su_position_right {
+        top: 140px;
+    }
+    .su_position_left {
+        top: 150px;
+        right: 90px;
+    }
+    .su_position_3_btns {
+        left: 55%;
+    }
+
+    .su_margin_right_20 {
+        margin-right: 5px;
+    }
+    .su_sm_ml{
+        margin-left: 10px;
+    }
      .form_pos {
          position: absolute;
          width: 83%;
@@ -58,20 +90,10 @@
      /* sumit css end  */
  }
 
- @media only screen and (max-width: 1400px){
-    .su_position_right {
-        top: 140px;
-    }
-    .su_position_left {
-        top: 150px;
-        right: 90px;
-    }
-    .su_position_3_btns {
-        left: 55%;
-    }
- }
-
  @media only screen and (max-width: 1366px) {
+    .su_details_img {
+        width: 170px;
+    }
      .calculate {
          padding: 12px 40px;
      }
@@ -105,6 +127,12 @@
  }
 
  @media screen and (max-width: 1300px) {
+    .su_map_img_dashboard_new {
+        width: 150px;
+    }
+    .su_details_img {
+        width: 160px;
+    }
     .su_button_padding {
         padding: 0px 50px;
     }
@@ -161,6 +189,33 @@
   }
 
  @media screen and (max-width: 1200px) {
+    .su_details_img {
+        width: 130px;
+    }
+    .su_map_img_dashboard_new {
+        width: 130px;
+    }
+    .su_total_details_price {
+        font-size: 22px;
+    }
+    .su_total_details {
+        font-size: 22px;
+    }
+    .su_item_price_new {
+        font-size: 20px;
+    }
+    .su_item_name_new {
+        font-size: 20px;
+    }
+    .su_order_details_text {
+        font-size: 18px;
+    }
+    .su_details_img {
+        width: 145px;
+    }
+    .pakket2go_vdo_set>iframe { 
+        width: 450px;
+    }
     .su_after_img::after {
         background: none;
         background-position: none;
@@ -217,6 +272,12 @@
  }
 
  @media screen and (max-width: 1167px){
+    .su_courier_search_filter {
+        display: block;
+    }
+    .su_block_1167{
+        display: none;
+    }
     .su_cou_width_70 {
         width: 30%;
     }
@@ -229,9 +290,15 @@
     .su_border_right{
         border-right: none;
       }
+      .su_border_Courier_page {
+        border: none;
+    }
  }
 
  @media screen and (max-width: 1100px) {
+    .su_details_img {
+        width: 120px;
+    }
     .su_position_3_btns {
         left: 52%;
     }
@@ -265,6 +332,9 @@
  }
 
  @media only screen and (max-width: 1030px){
+    .su_map_img_dashboard_new {
+        width: 110px;
+    }
     .su_Book_Transport {
         display: none;
     }
@@ -310,6 +380,18 @@
  @media only screen and (max-width: 991px) {
 
      /* sumit code start   */
+     .su_map_img_dashboard_new {
+        width: 160px;
+    }
+     .su_details_img {
+        width: 160px;
+    }
+     .pakket2go_vdo_set{
+        margin-bottom: 10px;
+     }
+     .pakket2go_vdo_set>iframe {
+        width: 100%;
+    }
      .su_button_padding {
         padding: 0px 30px;
     }
@@ -575,11 +657,46 @@
  }
 
  @media screen and (max-width: 872px){
-
+    .su_map_img_dashboard_new {
+        width: 130px;
+    }
+    .su_details_img {
+        width: 130px;
+    }
  }
 
  /* sumit code start   */
  @media screen and (max-width: 768px) {
+    .su_details_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    .su_order_width_sm{
+        width: 100%;
+    }
+    .su_order_width_80 {
+        width: 100%;
+    }
+    .su_flex_768_block{
+        display: block;
+    }
+    .su_total_details_price {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .su_total_details {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .su_item_name_new {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .su_order_details_text {
+        font-weight: 400;
+        font-size: 16px;
+    }
     .su_card_out_box {
         height: 84vh;
     }
@@ -631,10 +748,26 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
-
-      /* .su_register_sidebar {
-         height: 950px;
-     } */
+    .su_display_grid_sm{
+        display: grid;
+    }
+    .su_order_width_40{
+        width: 100%;
+    }
+    .su_details_img {
+        width: 50%;
+        margin: auto;
+    }
+    .su_map_img_dashboard_new {
+        width: 50%;
+        margin: auto;
+    }
+     .su_mr_10_480{
+        margin-left: 22px;
+     }
+     .play_content{
+        text-align: center;
+     }
      .su_register_sidebar_padding {
         display: block;
         height: auto;
@@ -699,9 +832,9 @@
          margin-bottom: 1.5rem
      }
 
-     .badge {
+     /* .badge {
          width: fit-content;
-     }
+     } */
 
      .mob_align {
          text-align: center;
@@ -818,6 +951,12 @@
  }
 
  @media only screen and (max-width: 576px){
+    .su_map_img_dashboard_new {
+        width: 60%;
+    }
+    .su_details_img {
+        width: 60%;
+    }
     .su_cou_width_70 {
         width: 50%;
     }
@@ -867,9 +1006,38 @@
     }
  }
 
+ @media only screen and (max-width: 500px){
+    .su_margin_y_12 {
+        margin: 5px 0px;
+    }
+    .su_details_img {
+        width: 100%;
+    }
+    .su_map_img_dashboard_new {
+        width: 100%;
+    }
+    .su_details_img img {
+        object-fit: inherit;
+    }
+ }
+
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
+     .su_mr_10_480{
+        margin-left: 22px;
+     }
+     .form-label {
+        margin-bottom: 0px !important;
+    }
+     .su_courier_search_filter {
+        width: 50%;
+        margin-left: auto;
+    }
+     .su_available_deliveries {
+        font-size: 14px;
+        line-height: 17px;
+    }
      .su_cou_width_70 {
         width: 100%;
     }
@@ -1109,7 +1277,7 @@
      }
 
      .su_side_margin {
-         margin: auto;
+        margin: 10px;
      }
 
      .su_sign_in_form_padding {
@@ -1412,6 +1580,9 @@
  }
 
  @media only screen and (max-width: 425px) {
+    .pakket2go_vdo_set>iframe {
+        height: 280px;
+    }
      .top_div {
          background-position: 6.6%;
      }
@@ -1427,6 +1598,9 @@
  }
 
  @media only screen and (max-width: 390px) {
+    .su_courier_search_filter {
+        width: 62%;
+    }
     .third-section {
         padding-bottom: 110px;
     }
