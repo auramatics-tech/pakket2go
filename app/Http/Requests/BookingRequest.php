@@ -195,11 +195,12 @@ class BookingRequest extends FormRequest
         return [
             'step' => ['required'],
             'booking_id' => ['required'],
-            'delivery_address' => ['required'],
-            'delivery_postcode' => ['required'],
-            'delivery_street' => ['required'],
-            'delivery_lat' => ['required'],
-            'delivery_lng' => ['required']
+            'pickup_postcode' => ['required'],
+            'pickup_house_no' => ['required'],
+            'pickup_street' => ['required'],
+            'pickup_locality' => ['required'],
+            'pickup_contact_name' => ['required'],
+            'pickup_contact_number' => ['required']
         ];
     }
 
@@ -208,11 +209,12 @@ class BookingRequest extends FormRequest
         return [
             'step' => ['required'],
             'booking_id' => ['required'],
-            'delivery_address' => ['required'],
             'delivery_postcode' => ['required'],
+            'delivery_house_no' => ['required'],
             'delivery_street' => ['required'],
-            'delivery_lat' => ['required'],
-            'delivery_lng' => ['required']
+            'delivery_locality' => ['required'],
+            'delivery_contact_name' => ['required'],
+            'delivery_contact_number' => ['required']
         ];
     }
 
