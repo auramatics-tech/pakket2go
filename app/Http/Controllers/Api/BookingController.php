@@ -48,6 +48,7 @@ class BookingController extends BaseController
                         $option->name = json_decode($option->name)->{$this->lang};
                         $option->description = json_decode($option->description)->{$this->lang};
                         $option->image = asset($option->image);
+                        $option->skip_steps = ($option->skip_steps) ? json_decode($option->skip_steps) : [];
                         $option->step = $step_key + 1;
                     }
                 }
