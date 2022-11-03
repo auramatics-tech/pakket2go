@@ -28,7 +28,7 @@ class HomeController extends Controller
         return view('web.become_courier');
     }
 
-    
+
     public function contact_us()
     {
         return view('web.contact_us');
@@ -44,4 +44,12 @@ class HomeController extends Controller
         return view('web.dashboard_courier');
     }
 
+    public function order_detail()
+    {
+        return view('web.order_detail_invoice');
+    }
+
+    public function order_detail_pdf(){
+        return view('web.order_detail_invoice_pdf');
+    }
 }
