@@ -110,6 +110,7 @@ class BookingController extends BaseController
             case 1:
                 $booking->user_id = $user_id;
                 $booking->session_id = $session_id;
+                $booking->save();
                 $booking->address_id = $this->saveAddress($request, $booking);
                 $booking->save();
                 $this->parcelType($request, $booking);
