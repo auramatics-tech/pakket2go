@@ -125,6 +125,16 @@
             $(".from_address_p").after('<p id="pickup_date_p">' + date_view + '</p>');
             $(".to_address_p").after('<p id="delivery_date_p">' + date_view + '</p>');
         })
+        @if ($current_step->id == 3)
+            $(document).on('keyup', '.big_parcel_charges', function() {
+                var id = $(this).attr("data-id");
+                var height = $('#height_' + id).val();
+                var width = $('#width_' + id).val();
+                var length = $('#length_' + id).val();
+
+                var m_cube = parseFloat(height) * parseFloat(width) * parseFloat(length);
+            })
+        @endif
     </script>
 
 

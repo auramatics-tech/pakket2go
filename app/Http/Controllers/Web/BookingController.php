@@ -60,9 +60,10 @@ class BookingController extends Controller
             return redirect()->route('booking', ['step' => 'address']);
         } elseif (isset($booking->id) && $booking->current_step > $current_step->id) {
             $skip_steps = skip_steps($booking, $current_step->id);
-            if (empty($skip_steps) || in_array($current_step->id, $skip_steps)) {
+            if (empty($skip_steps) || !in_array($current_step->id, $skip_steps)) {
+            } else {
                 $booking_step = BookingStep::where('id', $booking->current_step)->first();
-                return redirect()->route('booking', ['step' => $booking_step->url_code]);
+                return redirect()->route('booking', ['step' => $current_step->url_code]);
             }
         } elseif (isset($booking->id) && $booking->current_step < $current_step->id) {
             $booking_step = BookingStep::where('id', $booking->current_step)->first();

@@ -21,17 +21,17 @@
         <label for="height">
             <img src="{{ asset('assets/svg/height.svg') }}" alt="">
             <span>Height</span>
-            <input type="text" class="text" name="height[]" id="height" value="12.5cm" placeholder="12.5cm">
+            <input type="text" class="text big_parcel_charges" data-id="0" name="height[]" id="height_0" value="0" placeholder="100">
         </label>
         <label for="width">
             <img src="{{ asset('assets/svg/width.svg') }}" alt="">
             <span>Width</span>
-            <input type="text" class="text" name="width[]" id="width" value="11cm" placeholder="11cm">
+            <input type="text" class="text big_parcel_charges" data-id="0" name="width[]" id="width_0" value="0" placeholder="100">
         </label>
         <label for="length">
             <img src="{{ asset('assets/svg/length.svg') }}" alt="">
             <span>Length</span>
-            <input type="text" class="text" name="length[]" id="length" value="10cm" placeholder="10cm">
+            <input type="text" class="text big_parcel_charges" data-id="0" name="length[]" id="length_0" value="0" placeholder="100">
         </label>
     </div>
 </div>
