@@ -105,13 +105,11 @@ class BookingRequest extends FormRequest
     {
         return [
             'pickup_address' => ['required'],
-            'pickup_postcode' => ['required'],
             'pickup_street' => ['required'],
             'pickup_lat' => ['required'],
             'pickup_lng' => ['required'],
             'step' => ['required'],
             'delivery_address' => ['required'],
-            'delivery_postcode' => ['required'],
             'delivery_street' => ['required'],
             'delivery_lat' => ['required'],
             'delivery_lng' => ['required']
