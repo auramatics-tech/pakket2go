@@ -151,7 +151,7 @@ class BookingRequest extends FormRequest
             'width' => ['required', 'min:1'],
             'height' => ['required', 'min:1'],
             'length' => ['required', 'min:1'],
-            'parcel_size' => ['required', 'integer', 'min:1', 'max:6'],
+            'parcel_size' => ['required', 'integer', 'max:6'],
         ];
     }
 

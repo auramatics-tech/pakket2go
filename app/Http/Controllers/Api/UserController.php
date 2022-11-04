@@ -82,11 +82,11 @@ class UserController extends BaseController
             $response['isCompany'] = ($user->user_type != 'courier') ? 1 : 0;
             $response['phone_number'] = $phone_number;
             $response['user_id'] = $user->id;
-            $response['status'] = 1;
+            $response['status'] = true;
             return response()->json($response, 200);
         } else {
             $response['message'] = "Invalid mobile number";
-            $response['status'] = 0;
+            $response['status'] = false;
             return response()->json($response, 200);
         }
     }
@@ -236,6 +236,9 @@ class UserController extends BaseController
             return $this->sendError($errors->first(), [], 200);
         } else {
             $user = User::find($request->user_id);
+            if (!isset($user->id)) {
+                return $this->sendError('User not found', [], 200);
+            }
             $user->password = Hash::make($request->password);
             $user->save();
 

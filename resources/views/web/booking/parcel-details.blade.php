@@ -44,13 +44,28 @@
             <input type="hidden" name="session_id" value="{{ Session::getId() }}">
             <input type="hidden" name="booking_id" value="{{ $booking->id }}">
             <input type="hidden" name="step" value="{{ $current_step->id }}">
-            @if (count($details))
-                @foreach ($details as $detail)
+            <div id="parcel_details_main" data-count="{{ count($details) }}">
+                @if (count($details))
+                    @foreach ($details as $key => $detail)
+                        @include('web.booking.includes.details')
+                    @endforeach
+                @else
+                    @php
+                        $key = 0;
+                    @endphp
                     @include('web.booking.includes.details')
-                @endforeach
-            @else
-                @include('web.booking.includes.details')
-            @endif
+                @endif
+            </div>
         </form>
+        <div class="form-group last_div">
+            <button type="button" class="primary_btn border-0" id="new_parcel_item">
+                <div>
+                    <figure>
+                        <img src="{{ asset('assets/svg/plus.svg') }}" alt="plus">
+                    </figure>
+                </div>
+                <p class="mb-0 text-white ms-2">Add Items</p>
+            </button>
+        </div>
     </div>
 </div>

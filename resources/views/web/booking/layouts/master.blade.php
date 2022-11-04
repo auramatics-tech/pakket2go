@@ -84,6 +84,10 @@
             $('#info_price_' + step).attr('data-price', $('#price_' + step + '_' + option).val())
 
             $('#value_' + step).val(option)
+            calculate_price()
+        }
+
+        function calculate_price() {
             var price = 0.00;
             $('.prices').each(function() {
                 price = parseFloat(price) + parseFloat($(this).attr('data-price'));
@@ -117,25 +121,104 @@
             })
         })
 
-        $(document).on("keyup", ".big_parcel_charges", function() {
-            if ($(this).val() == 0) {
-                $(this).val('')
-            }
+        @if ($current_step->id == 3)
 
-            var total_parcel_details = parseInt($('#parcel_details_main').attr('data-count'));
-            console.log(total_parcel_details)
-            $("#parcel_details_div").html('');
-            for (var i = 0; i <= total_parcel_details; i++) {
-                var height = $('#height_' + i).val();
-                var width = $('#width_' + i).val();
-                var length = $('#length_' + i).val();
-                var name = height + 'x' + width + 'x' + length + 'cm';
+            $(document).on("keyup", ".big_parcel_charges", function() {
+                if ($(this).val() == 0) {
+                    $(this).val('')
+                }
+                var meter_cube = 0;
+                var total_parcel_details = parseInt($('#parcel_details_main').attr('data-count'));
+                $("#parcel_details_div").html('');
+                for (var i = 0; i <= total_parcel_details; i++) {
+                    var dimensions = [];
+                    if ($('#height_' + i).val())
+                        dimensions.push($('#height_' + i).val());
+                    if ($('#width_' + i).val())
+                        dimensions.push($('#width_' + i).val());
+                    if ($('#length_' + i).val())
+                        dimensions.push($('#length_' + i).val());
 
-                $("#parcel_details_div").append('<div class="d-flex justify-content-between">\n\
-                                        <p">' + name + '</p>\n\
-                                        <p class="prices" data-price="10">10</p></div>');
-            }
-        })
+                    var cm_cube = 0;
+                    var price = 0.00;
+                    if (dimensions[0] && dimensions[1] && dimensions[2])
+                        cm_cube = dimensions[0] * dimensions[1] * dimensions[2]
+
+                    meter_cube += cm_cube / 1000000;
+                    console.log(meter_cube)
+                    if (meter_cube <= 6) {
+
+                        price = ((cm_cube / 10000) / 5) * 0.50;
+
+                        var name = dimensions.join('x') + ' cm';
+                        var desc = $('#description_' + i).val();
+
+                        $("#parcel_details_div").append('<p>' + desc + '</p><div class="d-flex justify-content-between">\n\
+                                            \n\
+                                                                                                                    <p>' +
+                            name +
+                            '</p>\n\
+                                                                                                                    <p class="prices" data-price="' +
+                            price.toFixed(2) +
+                            '">€ ' + price.toFixed(2) + '</p></div>');
+                    }
+                }
+
+                calculate_price()
+            })
+
+            $(document).on('click', '#new_parcel_item', function() {
+                var count = parseInt($('#parcel_details_main').attr('data-count')) + 1;
+                if (count <= 12) {
+                    $('#parcel_details_main')
+                        .append('<hr><div class="form-group mt-4">\n\
+                                                                    <label for="upload" class="drag_wrapper">\n\
+                                                                        <input type="file" name="image[]" class="drag_file" id="upload">\n\
+                                                                        <figure>\n\
+                                                                            <img src="' + BASEURL + 'assets/svg/add_a_photo.svg" alt="" class="mb-3">\n\
+                                                                            <p class="mb-0">Upload Courier Image Drag & Drop</p>\n\
+                                                                            <span>or</span>\n\
+                                                                            <p class="browse_files mb-0 mx-auto text-white mt-2">\n\
+                                                                                Browse Files\n\
+                                                                            </p>\n\
+                                                                        </figure>\n\
+                                                                    </label>\n\
+                                                                </div>\n\
+                                                                <div class="form-group mt-4">\n\
+                                                                    <label for="description" class="primary-color dta">Description</label>\n\
+                                                                    <textarea name="description[]" rows="1" class="des_textarea mt-3 big_parcel_charges" placeholder="Type here..."\n\
+                                                                        id="description_' + count + '"></textarea>\n\
+                                                                </div>\n\
+                                                                <div class="form-group mt-4">\n\
+                                                                    <p class="primary-color dta">Dimensions (max weight is 200kg)</p>\n\
+                                                                    <div class="card dimentions">\n\
+                                                                        <label for="height">\n\
+                                                                            <img src="' + BASEURL +
+                            'assets/svg/height.svg" alt="">\n\
+                                                                            <span>Height</span>\n\
+                                                                            <input type="number" class="text big_parcel_charges" name="height[]" id="height_' +
+                            count + '" placeholder="">\n\
+                                                                        </label>\n\
+                                                                        <label for="width">\n\
+                                                                            <img src="' + BASEURL +
+                            'assets/svg/width.svg" alt="">\n\
+                                                                            <span>Width</span>\n\
+                                                                            <input type="number" class="text big_parcel_charges" name="width[]" id="width_' +
+                            count + '" placeholder="">\n\
+                                                                        </label>\n\
+                                                                        <label for="length">\n\
+                                                                            <img src="' + BASEURL +
+                            'assets/svg/length.svg" alt="">\n\
+                                                                            <span>Length</span>\n\
+                                                                            <input type="number" class="text big_parcel_charges" name="length[]" id="length_' +
+                            count + '" placeholder="">\n\
+                                                                        </label>\n\
+                                                                    </div>\n\
+                                                                </div>');
+                    $('#parcel_details_main').attr('data-count', count)
+                }
+            })
+        @endif
 
         $(document).on('click', '.continue_button', function() {
             $('#booking_form').submit();
