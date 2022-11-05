@@ -75,5 +75,6 @@ Route::prefix('{locale?}')
     });
 
 Route::post('/mollie/payment', [BookingController::class, 'payment_webhook'])->name('webhooks.mollie');
+Route::get('/mollie/payment', [BookingController::class, 'payment_webhook']);
 
 require __DIR__ . '/auth.php';

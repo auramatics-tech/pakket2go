@@ -118,8 +118,9 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],
-        'Payment' => [
-            'path' => storage_path('logs/Payment.log'),
+        'Payments' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/payment.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],

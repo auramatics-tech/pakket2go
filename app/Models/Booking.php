@@ -42,6 +42,11 @@ class Booking extends Model
         return $this->hasOne(BookingDetails::class);
     }
 
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
     public function booking_data($details, $type, $return)
     {
         $parcel_type =  isset($details->{$type}) ? json_decode($details->{$type}) : '';
