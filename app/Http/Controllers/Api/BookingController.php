@@ -189,7 +189,7 @@ class BookingController extends BaseController
                     return $this->sendResponse($booking, 'Booking created successfully');
                 } else {
                     $redirect = $this->payment($request, $booking);
-                    $booking->status = 2;
+                    $booking->status = 1;
                     $booking->save();
                     return response()->json(['success' => true, 'redirect' => $redirect, 'step_view' => '']);
                 }

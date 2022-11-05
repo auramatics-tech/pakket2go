@@ -104,18 +104,37 @@ class BookingController extends Controller
 
     public function payment_webhook(Request $request)
     {
-        Log::info($request->all());
+        Log::channel('Payments')->info($request->all());
         $paymentId = $request->input('id');
         $booking_payment = BookingPayments::where('transaction_id', $paymentId)->first();
-        $payment = Mollie::api()->payments->get($paymentId);
 
-        if ($payment->isPaid()) {
-            $booking_payment->status = 'paid';
+        if (substr($paymentId, 0, 3) == 'ord') {
+            $payment = Mollie::api()->orders->get($paymentId);
+            $booking_payment->status = $payment->status;
             $booking_payment->save();
+            Log::channel('Payments')->info($payment);
 
-            $booking = Booking::where('payment_id', $booking_payment->id)->first();
-            $booking->status = 1;
-            $booking->save();
+            if ($booking_payment->status == 'paid') {
+                $booking = Booking::where('payment_id', $booking_payment->id)->first();
+                $booking->status = 1;
+                $booking->save();
+            } else {
+                $booking = Booking::where('payment_id', $booking_payment->id)->first();
+                $booking->status = 2;
+                $booking->save();
+            }
+        } else {
+
+            $payment = Mollie::api()->payments->get($paymentId);
+            Log::channel('Payments')->info($payment);
+            if ($payment->isPaid()) {
+                $booking_payment->status = 'paid';
+                $booking_payment->save();
+
+                $booking = Booking::where('payment_id', $booking_payment->id)->first();
+                $booking->status = 2;
+                $booking->save();
+            }
         }
     }
 }
