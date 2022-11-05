@@ -38,6 +38,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
 
 
     Route::get('/countries', [AuthController::class, 'countries']);
+    Route::get("nearbyriders", [UserController::class, 'nearbyriders']);
 
     Route::post('/reset-password', [UserController::class, 'reset_password']);
 
@@ -61,7 +62,6 @@ Route::group(['prefix' => '/{lang}/'], function () {
             Route::post('/update-location', [CourierController::class, 'update_location']);
         });
 
-        Route::get("nearbyriders", [UserController::class, 'nearbyriders']);
         Route::post("contact-us", [UserController::class, 'contact_us']);
 
         // Chat api's
