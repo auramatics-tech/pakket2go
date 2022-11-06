@@ -243,29 +243,29 @@ class BookingController extends BaseController
         $address->booking_id = $booking->id;
 
         // Pickup
-        $address->pickup_address = isset($request->pickup_address) ? $request->pickup_address : $address->pickup_address;
-        $address->pickup_postcode = isset($request->pickup_postcode) ? $request->pickup_postcode : $address->pickup_postcode;
-        $address->pickup_house_no = isset($request->pickup_house_no) ? $request->pickup_house_no :  $address->pickup_house_no;
-        $address->pickup_street = isset($request->pickup_street) ? $request->pickup_street : $address->pickup_street;
-        $address->pickup_locality = isset($request->pickup_locality) ? $request->pickup_locality : $address->pickup_locality;
-        $address->pickup_lat = isset($request->pickup_lat) ? $request->pickup_lat : $address->pickup_lat;
-        $address->pickup_lng = isset($request->pickup_lng) ? $request->pickup_lng : $address->pickup_lng;
-        $address->pickup_additinal_info = isset($request->pickup_additinal_info) ? $request->pickup_additinal_info : $address->pickup_additinal_info;
-        $address->pickup_closing_time = isset($request->pickup_closing_time) ? $request->pickup_closing_time : $address->pickup_closing_time;
-        $address->pickup_contact_name = isset($request->pickup_contact_name) ? $request->pickup_contact_name : $address->pickup_contact_name;
-        $address->pickup_contact_number = isset($request->pickup_contact_number) ? $request->pickup_contact_number :  $address->pickup_contact_number;
+        $address->pickup_address = (isset($request->pickup_address) && $request->pickup_address) ? $request->pickup_address : $address->pickup_address;
+        $address->pickup_postcode = (isset($request->pickup_postcode) && $request->pickup_postcode) ? $request->pickup_postcode : $address->pickup_postcode;
+        $address->pickup_house_no = (isset($request->pickup_house_no) && $request->pickup_house_no) ? $request->pickup_house_no :  $address->pickup_house_no;
+        $address->pickup_street = (isset($request->pickup_street) && $request->pickup_street) ? $request->pickup_street : $address->pickup_street;
+        $address->pickup_locality = (isset($request->pickup_locality) && $request->pickup_locality) ? $request->pickup_locality : $address->pickup_locality;
+        $address->pickup_lat = (isset($request->pickup_lat) && $request->pickup_lat) ? $request->pickup_lat : $address->pickup_lat;
+        $address->pickup_lng = (isset($request->pickup_lng) && $request->pickup_lng) ? $request->pickup_lng : $address->pickup_lng;
+        $address->pickup_additinal_info = (isset($request->pickup_additinal_info) && $request->pickup_additinal_info) ? $request->pickup_additinal_info : $address->pickup_additinal_info;
+        $address->pickup_closing_time = (isset($request->pickup_closing_time) && $request->pickup_closing_time) ? $request->pickup_closing_time : $address->pickup_closing_time;
+        $address->pickup_contact_name = (isset($request->pickup_contact_name) && $request->pickup_contact_name) ? $request->pickup_contact_name : $address->pickup_contact_name;
+        $address->pickup_contact_number = (isset($request->pickup_contact_number) && $request->pickup_contact_number) ? $request->pickup_contact_number :  $address->pickup_contact_number;
 
         // Delivery
-        $address->delivery_address = isset($request->delivery_address) ? $request->delivery_address : $address->delivery_address;
-        $address->delivery_postcode = isset($request->delivery_postcode) ? $request->delivery_postcode : $address->delivery_postcode;
-        $address->delivery_house_no = isset($request->delivery_house_no) ? $request->delivery_house_no :  $address->delivery_house_no;
-        $address->delivery_street = isset($request->delivery_street) ? $request->delivery_street : $address->delivery_street;
-        $address->delivery_locality = isset($request->delivery_locality) ? $request->delivery_locality : $address->delivery_locality;
-        $address->delivery_lat = isset($request->delivery_lat) ? $request->delivery_lat : $address->delivery_lat;
-        $address->delivery_lng = isset($request->delivery_lng) ? $request->delivery_lng : $address->delivery_lng;
-        $address->delivery_additinal_info = isset($request->delivery_additinal_info) ? $request->delivery_additinal_info : $address->delivery_additinal_info;
-        $address->delivery_contact_name = isset($request->delivery_contact_name) ? $request->delivery_contact_name : $address->delivery_contact_name;
-        $address->delivery_contact_number = isset($request->delivery_contact_number) ? $request->delivery_contact_number :  $address->delivery_contact_number;
+        $address->delivery_address = (isset($request->delivery_address) && $request->delivery_address) ? $request->delivery_address : $address->delivery_address;
+        $address->delivery_postcode = (isset($request->delivery_postcode) && $request->delivery_postcode) ? $request->delivery_postcode : $address->delivery_postcode;
+        $address->delivery_house_no = (isset($request->delivery_house_no) && $request->delivery_house_no) ? $request->delivery_house_no :  $address->delivery_house_no;
+        $address->delivery_street = (isset($request->delivery_street) && $request->delivery_street) ? $request->delivery_street : $address->delivery_street;
+        $address->delivery_locality = (isset($request->delivery_locality) && $request->delivery_locality) ? $request->delivery_locality : $address->delivery_locality;
+        $address->delivery_lat = (isset($request->delivery_lat) && $request->delivery_lat) ? $request->delivery_lat : $address->delivery_lat;
+        $address->delivery_lng = (isset($request->delivery_lng) && $request->delivery_lng) ? $request->delivery_lng : $address->delivery_lng;
+        $address->delivery_additinal_info = (isset($request->delivery_additinal_info) && $request->delivery_additinal_info) ? $request->delivery_additinal_info : $address->delivery_additinal_info;
+        $address->delivery_contact_name = (isset($request->delivery_contact_name) && $request->delivery_contact_name) ? $request->delivery_contact_name : $address->delivery_contact_name;
+        $address->delivery_contact_number = (isset($request->delivery_contact_number) && $request->delivery_contact_number) ? $request->delivery_contact_number :  $address->delivery_contact_number;
 
         if ($request->step == 1) {
             $direction_data = $this->direction_image($request, $booking);

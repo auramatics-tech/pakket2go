@@ -58,7 +58,6 @@ Route::group(['prefix' => '/{lang}/'], function () {
             Route::post('/booking/{status}', [CourierController::class, 'update_booking']);
             Route::get('/earnings', [CourierController::class, 'earnings']);
             Route::get('/last-location', [CourierController::class, 'last_location']);
-            Route::post('/update-booking-location', [CourierController::class, 'update_location']);
             Route::post('/update-location', [CourierController::class, 'update_location']);
         });
 
