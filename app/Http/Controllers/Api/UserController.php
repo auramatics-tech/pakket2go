@@ -127,7 +127,8 @@ class UserController extends BaseController
             })
             ->get();
         if (count($bookings)) {
-            foreach ($bookings as $booking) {
+            foreach ($bookings as $key => $booking) {
+                $bookings[$key]->invoice_url = url('booking-invoice/' . $booking->id);
                 $this->booking_data($booking);
             }
         }
