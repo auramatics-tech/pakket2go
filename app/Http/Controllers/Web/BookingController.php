@@ -10,12 +10,14 @@ use App\Models\BookingPayments;
 use App\Models\BookingStep;
 use App\Models\ParcelOption;
 use App\Models\BookingDetails;
+use App\Models\UserLocation;
 
 use Session;
 use Auth;
 use App;
 use Illuminate\Support\Facades\Mail;
 use Log;
+use DB;
 
 use Mollie\Laravel\Facades\Mollie;
 
@@ -109,7 +111,6 @@ class BookingController extends Controller
         try {
             $paymentId = $request->input('id');
             $booking_payment = BookingPayments::where('transaction_id', $paymentId)->first();
-
             $payment = Mollie::api()->payments->get($paymentId);
             if ($payment->isPaid()) {
                 $booking_payment->status = 'paid';
@@ -152,7 +153,7 @@ class BookingController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
             Log::channel("Payments")->info($th->getMessage());
-            return response()->json(['status' => false]);
+            return response()->json(['status' => false, 'message' => $th->getMessage()]);
         }
     }
 
