@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PDF;
+use Response;
 
 
 class HomeController extends Controller
@@ -49,7 +51,11 @@ class HomeController extends Controller
         return view('web.order_detail_invoice');
     }
 
-    public function order_detail_pdf(){
-        return view('web.order_detail_invoice_pdf');
+
+    public function generatePDF()
+    {
+        $pdf = PDF::loadView('web.order_detail_invoice_pdf')->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('invoice.pdf');
+        // return view('web.order_detail_invoice_pdf');
     }
 }

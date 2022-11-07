@@ -450,7 +450,7 @@
                                                                 <div>
                                                                     <div class="d-flex justify-content-between align_items-center">
                                                                         <div class="su_total_details su_margin_y_12">Total Price</div>
-                                                                        <div class="su_total_details_price su_margin_y_12">€ 40.00</div>
+                                                                        <div class="su_total_details_price su_margin_y_12"><a href="{{route('generatePDF')}}">€ 40.00</a></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
