@@ -7,6 +7,7 @@ use App\Models\Countries;
 use Illuminate\Http\Request;
 use Validator;
 use Hash;
+use DB;
 
 use App\Models\User;
 
@@ -35,7 +36,7 @@ class AuthController extends BaseController
             $country_code = $request->country_code;
             $phone_number = $request->phone_number;
             $password = $request->password;
-
+            $url = url('/');
             $user = User::select(
                 'id',
                 'name',
@@ -50,10 +51,11 @@ class AuthController extends BaseController
                 'zipcode',
                 'city as cityname',
                 'kvk_no as kvknumber',
-                'profile_pic as profilepic',
+                DB::raw("(CONCAT('$url',profile_pic)) as profilepic"),
                 'phone_number_verified',
                 'password',
-                'user_type'
+                'user_type',
+                'device_token'
             )
                 ->where('phone_number', $phone_number)->where('country_code', $country_code)->where('status', 1)->first();
 
@@ -68,6 +70,8 @@ class AuthController extends BaseController
         // Revoke all tokens...
         $user->tokens()->delete();
 
+        $user->device_token = $request->device_token;
+        $user->save();
         $user->isCompany = ($user->user_type == 'courier') ? 1 : 0;
         $user->companyname =  ($user->isCompany) ? $user->name : '';
 

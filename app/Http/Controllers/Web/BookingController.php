@@ -10,11 +10,14 @@ use App\Models\BookingPayments;
 use App\Models\BookingStep;
 use App\Models\ParcelOption;
 use App\Models\BookingDetails;
+use App\Models\UserLocation;
 
 use Session;
 use Auth;
 use App;
+use Illuminate\Support\Facades\Mail;
 use Log;
+use DB;
 
 use Mollie\Laravel\Facades\Mollie;
 
@@ -104,18 +107,93 @@ class BookingController extends Controller
 
     public function payment_webhook(Request $request)
     {
-        Log::info($request->all());
-        $paymentId = $request->input('id');
-        $booking_payment = BookingPayments::where('transaction_id', $paymentId)->first();
-        $payment = Mollie::api()->payments->get($paymentId);
+        Log::channel('Payments')->info($request->all());
+        try {
+            $paymentId = $request->input('id');
+            $booking_payment = BookingPayments::where('transaction_id', $paymentId)->first();
+            $payment = Mollie::api()->payments->get($paymentId);
+            if ($payment->isPaid()) {
+                $booking_payment->status = 'paid';
+                $booking_payment->save();
 
-        if ($payment->isPaid()) {
-            $booking_payment->status = 'paid';
-            $booking_payment->save();
+                $booking = Booking::where('payment_id', $booking_payment->id)->first();
+                $booking->status = 2;
+                $booking->save();
 
-            $booking = Booking::where('payment_id', $booking_payment->id)->first();
-            $booking->status = 1;
-            $booking->save();
+                // Mail to booking user
+                Mail::send('mails.new_booking', ['booking' => $booking, 'type' => 'user'], function ($mail) use ($booking) {
+                    $mail->to($booking->user->email, $booking->user->first_name . ' ' . $booking->user->last_name)
+                        ->subject('New order');
+                });
+
+                // New order admin mail
+                Mail::send('mails.new_booking', ['booking' => $booking, 'type' => 'admin'], function ($mail) use ($booking) {
+                    $mail->to(env('ADMIN_MAIL'), 'Pakket2Go')
+                        ->subject('New order received');
+                });
+
+                $this->booking_nearby_riders($booking);
+            } else {
+                $booking_payment->status = 'failed';
+                $booking_payment->save();
+
+                $booking = Booking::where('payment_id', $booking_payment->id)->first();
+                $booking->status = 1;
+                $booking->save();
+
+                // Payment failed
+                Mail::send('mails.payment_failed', ['booking' => $booking], function ($mail) use ($booking) {
+                    $mail->to($booking->user->email, $booking->user->first_name . ' ' . $booking->user->last_name)
+                        ->subject('Payment Failed');
+                });
+            }
+
+            return response()->json(['status' => true]);
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::channel("Payments")->info($th->getMessage());
+            return response()->json(['status' => false, 'message' => $th->getMessage()]);
+        }
+    }
+
+
+
+    protected function booking_nearby_riders($booking)
+    {
+        $riders = UserLocation::select(
+            'user_locations.created_at as track_time',
+            'latitude as lat',
+            'longitude as long',
+            'accuracy',
+            'rotation',
+            'user_id',
+            'first_name',
+            'last_name',
+            'device_token',
+            DB::raw('SQRT( POW(69.1 * (`latitude` - ' . $booking->address->pickup_lat . '), 2) + POW(69.1 * (' . $booking->address->pickup_lng . ' - `longitude`) * COS(`latitude` / 57.3), 2)) AS distance')
+        )
+            ->leftJoin('users', 'users.id', '=', 'user_locations.user_id')
+            ->where("users.user_type", "courier")
+            ->whereIn('user_locations.id', function ($query) {
+                $query->from('user_locations')->select(DB::raw('max(id) as id'))
+                    ->groupby('user_locations.user_id');
+            })
+            ->whereNotNull('device_token')
+            ->having('distance', '<=', '45')
+            ->orderBy('distance', 'asc')
+            ->get();
+
+        if (count($riders)) {
+            foreach ($riders as $rider) {
+                $this->sendPushNotification($rider->device_token, 'New ready to pick up order nearby you.', 'neworder', $booking->booking_code);
+
+                // Send new order mails
+                Mail::send('mails.courier_nearby', ['booking' => $booking], function ($mail) use ($rider) {
+                    $mail->to($rider->email, $rider->first_name . ' ' . $rider->last_name)
+                        ->subject('New ready to pick up order nearby you');
+                });
+            }
         }
     }
 }
