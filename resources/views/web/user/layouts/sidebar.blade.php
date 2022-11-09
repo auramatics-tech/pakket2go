@@ -187,7 +187,7 @@
                     <div class="su_padding_items">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button class="" type="submit">
+                            <button class="su_submit_btn" type="submit">
                                 <span class="">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
