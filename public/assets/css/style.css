@@ -2364,6 +2364,22 @@ p.dis_content {
     padding: 5px 15px;
     margin-left: 12px;
 }
+.su_item_name_btn:hover{
+    color: #000000;
+}
+.su_item_view_details{
+    background: #01B537;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 26px;
+    color: #FFFFFF;
+    padding: 5px 15px;
+}
+.su_item_view_details:hover{
+    color: #FFFFFF;
+}
+
 
 .su_item_name_btn_close {
     font-weight: 500;
@@ -2738,7 +2754,7 @@ p.dis_content {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     padding: 25px;
-    height: 78vh;
+    height: 100vh;
     overflow-y: auto;
 }
 
@@ -2972,10 +2988,10 @@ p.dis_content {
     color: #777777 !important;
 }
 
-.su_dashboard_logout_position {
+/* .su_dashboard_logout_position {
     position: fixed;
     bottom: 30px;
-}
+} */
 
 /* Absolute Center Spinner */
 .loading {
@@ -3220,4 +3236,17 @@ p.dis_content {
 .pakket2go_vdo_set>iframe{
     width: 100%;
     border-radius: 8px;
+}
+.su_submit_btn{
+    background: transparent;
+    border: none;
+}
+.w-child-1{
+    width: 55%;
+}
+.w-child-2{
+    width: 40%;
+}
+.su_flex_block_at_767{
+    display: flex;
 }

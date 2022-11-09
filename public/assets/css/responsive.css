@@ -761,6 +761,9 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
+    .su_flex_block_at_767{
+        display: block;
+     }
     .su_display_grid_sm{
         display: grid;
     }
@@ -1043,6 +1046,7 @@
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
+
      .su_vdo_bg {
         background-size: 435px 460px;
     }
@@ -1617,6 +1621,18 @@
  }
 
  @media only screen and (max-width: 400px) {
+    .su_block_at_400{
+        display: block !important;
+    }
+    .img_hide_400{
+        display: none;
+    }
+    .w-child-1 {
+        width: 100%;
+    }
+    .w-child-2 {
+        width: 100%;
+    }
     .su_vdo_bg {
         background-size: 355px 340px;
     }

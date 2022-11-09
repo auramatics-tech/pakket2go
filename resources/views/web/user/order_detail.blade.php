@@ -100,6 +100,8 @@
                         <hr>
 
                         <div class="su_flex_768_block justify-content-between">
+                            <div class="su_order_width_20"></div>
+                            <div class="su_order_width_80">
                             <div class="su_order_width_100">
                                 <div class="table-responsive">
                                     <table class="table w-100">
@@ -193,6 +195,7 @@
 
                                     </table>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <hr>
