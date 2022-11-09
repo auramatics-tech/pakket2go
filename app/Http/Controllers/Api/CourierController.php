@@ -94,7 +94,7 @@ class CourierController extends BaseController
                 $query->whereNull("courier_user_id")->orwhere('courier_user_id', Auth::id());
             })
             ->join("users", "users.id", "=", "bookings.courier_user_id")
-            ->where('bookings.booking_code', $request->parcel_code)
+            ->where('bookings.id', $request->booking_id)
             ->first();
         if (isset($booking->id)) {
             if ($status == 'accepted' || $status == 'pickedup' || $status == 'delivered') {
