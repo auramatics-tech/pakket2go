@@ -15,6 +15,7 @@ use App\Models\UserLocation;
 use Auth;
 use Image;
 use File;
+use DB;
 
 
 class CourierController extends BaseController
@@ -34,16 +35,30 @@ class CourierController extends BaseController
     public function bookings(Request $request)
     {
         $status = $request->status;
-        $bookings = Booking::select('bookings.*')->when($status, function ($query) use ($status) {
-            $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
-                ->where(function ($q)  use ($status) {
-                    $q->where('booking_status.status_type', $status)->orwhere("booking_status.status", $status);
-                });
+        $bookings = Booking::when(isset($request->latlong) && $request->latlong, function ($query) use ($request) {
+            $latlng = explode(',', $request->latlong);
+
+            $query->select(
+                'bookings.*',
+                DB::raw('SQRT( POW(69.1 * (`pickup_lat` - ' . $latlng[0] . '), 2) + POW(69.1 * (' . $latlng[1] . ' - `pickup_lng`) * COS(`pickup_lat` / 57.3), 2)) AS distance')
+            )
+                ->join('booking_address', 'booking_address.booking_id', '=', 'bookings.id');
+        }, function ($query) {
+            $query->select('bookings.*');
         })
+            ->when($status, function ($query) use ($status) {
+                $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
+                    ->where(function ($q)  use ($status) {
+                        $q->where('booking_status.status_type', $status)->orwhere("booking_status.status", $status);
+                    });
+            })
             ->whereNotIn('bookings.id', function ($query) {
                 $query->select('booking_id')
                     ->from("courier_canceled_bookings")
                     ->where('user_id', Auth::id());
+            })
+            ->when(isset($request->latlong) && $request->latlong, function ($query) {
+                $query->having("distance", "<=", 45);
             })
             ->whereNull("courier_user_id")
             ->get();
@@ -59,7 +74,7 @@ class CourierController extends BaseController
     public function update_booking(Request $request)
     {
         $status = $request->status;
-        $booking = Booking::select('bookings.*')->when($status, function ($query) use ($status) {
+        $booking = Booking::select('bookings.*', 'users.device_token')->when($status, function ($query) use ($status) {
             $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
                 ->where(function ($q)  use ($status) {
                     if ($status == 'accepted')
@@ -78,6 +93,7 @@ class CourierController extends BaseController
             ->where(function ($query) {
                 $query->whereNull("courier_user_id")->orwhere('courier_user_id', Auth::id());
             })
+            ->join("users", "users.id", "=", "bookings.courier_user_id")
             ->where('bookings.booking_code', $request->parcel_code)
             ->first();
         if (isset($booking->id)) {
@@ -101,6 +117,8 @@ class CourierController extends BaseController
                 }
                 $booking->save();
                 $this->save_tracking($booking, $status, $signature);
+                if ($booking->device_token)
+                    $this->sendPushNotification($booking->device_token, 'Booking status changed to ' . ucfirst($status), 'booking', $booking->id);
             } elseif ($status == 'rejected') {
                 $canceled_bookings = CourierCanceledBookings::where(['user_id' => Auth::id(), 'booking_id' => $request->booking_id])->first();
                 if (!isset($canceled_bookings->id)) {

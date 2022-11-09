@@ -143,6 +143,6 @@ class ChatController extends BaseController
         $receiver = User::find($conversation->receiver_id);
         // Send push notification
         if ($receiver->device_token)
-            $this->sendPushNotification($receiver->device_token, 'You received new message', 'chat', $booking->booking_code);
+            $this->sendPushNotification($receiver->device_token, 'You received new message', 'chat', $booking->id);
     }
 }

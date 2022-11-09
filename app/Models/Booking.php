@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App;
+use DB;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -55,7 +56,7 @@ class Booking extends Model
             if (count($parcel_type)) {
                 foreach ($parcel_type as $key => $p_type) {
                     $data[$key]['image'] = isset($p_type->image) ? $p_type->image : '';
-                    $data[$key]['name'] = isset($p_type->width) ? ($p_type->width . 'x' . $p_type->height . 'x' . $p_type->length).' cm' : '';
+                    $data[$key]['name'] = isset($p_type->width) ? ($p_type->width . 'x' . $p_type->height . 'x' . $p_type->length) . ' cm' : '';
                     $data[$key]['description'] = isset($p_type->description) ? $p_type->description : '';
                     $data[$key]['price'] = isset($p_type->pricing) ? number_format($p_type->pricing, 2) : 0;
                     $price += $data[$key]['price'];
@@ -74,5 +75,32 @@ class Booking extends Model
 
             return isset($data[$return]) ? $data[$return] : 0;
         }
+    }
+
+
+    public function courier_details()
+    {
+        $url = url('/');
+        return $this->belongsTo(User::class, 'courier_user_id')->select(
+            'id',
+            'name',
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number as mobile_number',
+            'country_code',
+            'status',
+            'street',
+            'house_no as housenumber',
+            'zipcode',
+            'city as cityname',
+            'kvk_no as kvknumber',
+            DB::raw("(CONCAT('$url',profile_pic)) as profilepic"),
+            'phone_number_verified',
+            'password',
+            'user_type',
+            'device_token',
+            'documents_verified',
+        );
     }
 }

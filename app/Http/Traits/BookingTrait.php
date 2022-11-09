@@ -105,6 +105,7 @@ trait BookingTrait
         $booking->extra_help =  ($booking_details->extra_help && $booking_details->extra_help != '[]') ? json_decode($booking_details->extra_help) : new stdClass;
         $booking->pickup_floor =  ($booking_details->pickup_floor && $booking_details->pickup_floor != '[]') ? $this->decode_detail(json_decode($booking_details->pickup_floor)) : new stdClass;
         $booking->delivery_floor =  ($booking_details->delivery_floor && $booking_details->delivery_floor != '[]') ? $this->decode_detail(json_decode($booking_details->delivery_floor)) : new stdClass;
+        $booking->courier_details = $booking->courier_details;
         unset($booking->details);
 
         return $booking;
