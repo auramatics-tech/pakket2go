@@ -32,11 +32,7 @@
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDPyWbxCqalUPsqs3f2bY1w_FDh5rAAXEE&callback=initMap"
-    async defer></script>
-<script src="{{ asset('js/common.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 <script>

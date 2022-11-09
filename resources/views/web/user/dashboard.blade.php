@@ -32,19 +32,25 @@
                                         <div class="w-100">
                                             <div class="d-flex align-items-center">
                                                 <div class="su_item_img">
-                                                    <img src="{{ asset($booking->address->direction_image) }}" alt="">
+                                                    <img src="{{ asset($booking->address->direction_image) }}"
+                                                        alt="">
                                                 </div>
                                                 <div class="su_margin_left_15">
-                                                    <h2 class="su_item_name">{{ $booking->booking_code }} <button
-                                                            class="su_item_name_btn">
+                                                    <div style="display: flex">
+                                                        <h2 class="su_item_name">{{ $booking->booking_code }}</h2>
+                                                        <button class="su_item_name_btn">
                                                             <span
                                                                 class="badge su_badges">0</span>{{ $booking->booking_status() }}</button>
-                                                    </h2>
+                                                        <div class="su_item_name_btn" style="float: right;position: relative;left: 111%;">
+                                                            <a class="" href="{{ route('booking.details',['id'=>$booking->booking_code]) }}">View Details</a>
+                                                        </div>
+                                                    </div>
                                                     <p class="su_item_price">€{{ number_format($booking->final_price, 2) }}
                                                     </p>
                                                     <div class="d-flex align-items-center">
                                                         <img src="{{ asset('assets/svg/order_date.svg') }}" alt="">
-                                                        <p class="su_item_date">Order date: {{ date('l, M d',strtotime($booking->created_at)) }}</p>
+                                                        <p class="su_item_date">Order date:
+                                                            {{ date('l, M d', strtotime($booking->created_at)) }}</p>
                                                     </div>
                                                 </div>
                                             </div>
