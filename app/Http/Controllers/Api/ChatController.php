@@ -95,7 +95,6 @@ class ChatController extends BaseController
             'receiver.last_name as receiver_lastname',
             'sender.first_name as sender_firstname',
             'sender.last_name as sender_lastname'
-
         )
             ->leftJoin('users as receiver', 'chats.receiver_id', '=', 'receiver.id')
             ->leftJoin('users as sender', 'chats.sender_id', '=', 'sender.id')

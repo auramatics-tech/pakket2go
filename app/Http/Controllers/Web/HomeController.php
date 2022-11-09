@@ -55,7 +55,7 @@ class HomeController extends Controller
     public function generatePDF()
     {
         $pdf = PDF::loadView('web.order_detail_invoice_pdf')->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('invoice.pdf');
-        // return view('web.order_detail_invoice_pdf');
+        // return $pdf->download('invoice.pdf');
+        return view('web.order_detail_invoice_pdf');
     }
 }
