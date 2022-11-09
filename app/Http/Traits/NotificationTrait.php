@@ -8,7 +8,7 @@ use Log;
 trait NotificationTrait
 {
 
-    protected function sendPushNotification($token = "", $msg = "", $typedata = "", $booking_code = "")
+    protected function sendPushNotification($token = "", $msg = "", $type = "", $booking_id = "")
     {
         $data = array(
             "to" => $token,
@@ -17,7 +17,7 @@ trait NotificationTrait
                 "content_available" => true,
                 "priority" => "high"
             ),
-            "data" => array("targetScreen" => "detail", "type" => $typedata, "booking_code" => $booking_code),
+            "data" => array("targetScreen" => "detail", "type" => $type, "booking_id" => $booking_id),
             "priority" => 'high',
             "sound" => 'app_sound.wav',
             "content_available" => true,

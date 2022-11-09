@@ -120,10 +120,9 @@ class UserController extends BaseController
     {
         $bookings = Booking::where('user_id', Auth::id())
             ->when(isset($request->type) && $request->type, function ($query) use ($request) {
+                $types = array_map('strtolower', explode(',', $request->type));
                 $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
-                    ->where(function ($q)  use ($request) {
-                        $q->where('booking_status.status_type', $request->type)->orwhere("booking_status.status", $request->type);
-                    });
+                ->whereIn('booking_status.status_type', $types);
             })
             ->get();
         if (count($bookings)) {
@@ -375,6 +374,8 @@ class UserController extends BaseController
             'phone_number_verified',
             'password',
             'user_type',
+            'device_token',
+            'documents_verified',
             DB::raw("(CONCAT('$url',profile_pic)) as profilepic")
         )
             ->find($user->id);

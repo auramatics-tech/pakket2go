@@ -55,7 +55,8 @@ class AuthController extends BaseController
                 'phone_number_verified',
                 'password',
                 'user_type',
-                'device_token'
+                'device_token',
+                'documents_verified',
             )
                 ->where('phone_number', $phone_number)->where('country_code', $country_code)->where('status', 1)->first();
 

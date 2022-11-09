@@ -186,7 +186,7 @@ class BookingController extends Controller
 
         if (count($riders)) {
             foreach ($riders as $rider) {
-                $this->sendPushNotification($rider->device_token, 'New ready to pick up order nearby you.', 'neworder', $booking->booking_code);
+                $this->sendPushNotification($rider->device_token, 'New ready to pick up order nearby you.', 'booking', $booking->id);
 
                 // Send new order mails
                 Mail::send('mails.courier_nearby', ['booking' => $booking], function ($mail) use ($rider) {
