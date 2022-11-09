@@ -50,12 +50,14 @@
                         <div class="d-flex">
                             <div>
                                 <div class="su_user_img">
-                                    <img src="@if(Auth::user()->profile_pic){{ asset(Auth::user()->profile_pic) }}@else{{ asset('assets/img/avatar.png') }}@endif" alt="">
+                                    <img src="@if (Auth::user()->profile_pic) {{ asset(Auth::user()->profile_pic) }}@else{{ asset('assets/img/avatar.png') }} @endif"
+                                        alt="">
                                 </div>
                             </div>
                             <div>
                                 <div class="mg_left_10">
-                                    <h3 class="su_user_name">{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h3>
+                                    <h3 class="su_user_name">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
+                                    </h3>
                                     <p class="su_user_email">{{ Auth::user()->email }}</p>
                                 </div>
                             </div>
@@ -64,7 +66,7 @@
                 </div>
                 <div class="su_side_padding_dashboard">
                     <div class="su_padding_items">
-                        <a href="">
+                        <a href="{{ route('dashboard') }}">
                             <span class="">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -114,7 +116,7 @@
                     <hr class="dashboard_hr">
                     <h5 class="su_About_Pakket2Go">About Pakket2Go</h5>
                     <div class="su_padding_items">
-                        <a href="">
+                        <a href="{{ route('contact_us') }}" target="_blank">
                             <span class="">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -130,7 +132,7 @@
                         </a>
                     </div>
                     <div class="su_padding_items">
-                        <a href="">
+                        <a href="{{ route('terms') }}" target="_blank">
                             <span class="">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -146,7 +148,7 @@
                         </a>
                     </div>
                     <div class="su_padding_items">
-                        <a href="">
+                        <a href="{{ route('privacy') }}" target="_blank">
                             <span class="">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -183,20 +185,23 @@
                 <div class="aside-footer flex-column-auto su_side_padding_dashboard su_dashboard_logout_position"
                     id="kt_aside_footer">
                     <div class="su_padding_items">
-                        <a class="" href="">
-                            <span class="">
-                                <span class="menu-icon">
-                                    <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <img src="{{ asset('assets/svg/logout.svg') }}" alt="">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button class="" type="submit">
+                                <span class="">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <img src="{{ asset('assets/svg/logout.svg') }}" alt="">
+                                        </span>
+                                        <!--end::Svg Icon-->
                                     </span>
-                                    <!--end::Svg Icon-->
+                                    <span class="su_menu_title ">
+                                        <span class="su_logout_red side_bar_text">Log-out</span>
+                                    </span>
                                 </span>
-                                <span class="su_menu_title ">
-                                    <span class="su_logout_red side_bar_text">Log-out</span>
-                                </span>
-                            </span>
-                        </a>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
