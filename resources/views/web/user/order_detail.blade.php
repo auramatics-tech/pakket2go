@@ -8,6 +8,9 @@
                 <div class="su_cou_width_30">
                     <h3 class="Track_orders">Order Details</h3>
                 </div>
+                <div>
+                    <a href="{{ route('booking.invoice', ['id' => $booking->booking_code]) }}">Download Invoice</a>
+                </div>
             </div>
         </div>
         <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -54,7 +57,7 @@
                                                                 Distance ({{ $booking->address->distance }} Km)
                                                             </div>
                                                             <div class="su_order_details_text su_margin_y_12">€
-                                                                {{ number_format($booking->distance_price,2) }}
+                                                                {{ number_format($booking->distance_price, 2) }}
                                                             </div>
                                                         </div>
                                                         <div class="d-flex justify-content-between align_items-center">
