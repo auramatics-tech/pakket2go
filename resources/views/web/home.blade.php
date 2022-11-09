@@ -82,14 +82,16 @@ Pakket2Go
 </section>
 <section class="about_section">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row ">
             <div class="col-lg-6 col-md-12">
-             <figure class="about_img">
+                {{-- <figure class="about_img">
                     <img src="{{ asset('assets/img/parsalboy.png') }}" alt="">
-                </figure> 
-                <!-- <div class="pakket2go_vdo_set">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/eBTDfBFA47A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div> -->
+                </figure> --}}
+                <div class="su_vdo_bg">
+                        <div class="pakket2go_vdo_set">
+                            <iframe width="563" height="452" src="https://www.youtube.com/embed/eBTDfBFA47A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                </div>
             </div>
             <div class="col-lg-6 col-md-12 ps-lg-5 text-center text-md-center text-lg-start">
                 <button class="about_btn">{{ __('home.About Us') }}</button>

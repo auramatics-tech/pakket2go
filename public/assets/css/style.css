@@ -3200,7 +3200,7 @@ p.dis_content {
     line-height: 21px;
     color: #313131;
 }
-.su_total_details_price{
+.su_total_details_price a{
     font-weight: 700;
     font-size: 24.9138px;
     line-height: 21px;
@@ -3210,3 +3210,14 @@ p.dis_content {
     display: flex;
 }
 /* order_detail end  */
+.su_vdo_bg{
+    background-image: url("../img/bg_both_img.png");
+    background-size: 650px 525px;
+    background-repeat: no-repeat;
+    background-position: right top;
+    padding: 35px;
+}
+.pakket2go_vdo_set>iframe{
+    width: 100%;
+    border-radius: 8px;
+}
