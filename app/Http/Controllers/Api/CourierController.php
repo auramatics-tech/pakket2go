@@ -88,7 +88,7 @@ class CourierController extends BaseController
             $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
                 ->where(function ($q)  use ($status) {
                     if ($status == 'accepted')
-                        $q->where('booking_status.status_type', 'ready-to-pickup')->orwhere("booking_status.status", 'ready-to-pickup');
+                        $q->where('booking_status.status_type', 'ready-to-pickup');
                     elseif ($status == 'pickedup')
                         $q->where("booking_status.status", 'Accepted');
                     elseif ($status == 'delivered')
@@ -106,6 +106,7 @@ class CourierController extends BaseController
             ->join("users", "users.id", "=", "bookings.user_id")
             ->where('bookings.id', $request->booking_id)
             ->first();
+
         if (isset($booking->id)) {
             if ($status == 'accepted' || $status == 'pickedup' || $status == 'delivered') {
                 $signature = '';
