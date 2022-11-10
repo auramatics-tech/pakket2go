@@ -36,6 +36,7 @@
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 <script>
+    var BASEURL = "{{ url('/') }}";
     $(".su_click_icon").click(function() {
         if ($(this).hasClass("active")) {
             $('.side_bar_text').show()
@@ -68,6 +69,98 @@
     $(document).on('click', '#su_show_icon_sidebar', function() {
         $('.su_click_icon').trigger('click');
     })
+
+    @if (Auth::user()->user_type == 'courier')
+        "{{ Auth::user()->tokens('pakket2go-web')->delete() }}"
+        var token = "{{ Auth::user()->createToken('pakket2go-web')->plainTextToken }}";
+
+        $(document).on("click", '.courier_job', function() {
+            var booking_id = $(this).attr('data-id');
+            var status = $(this).attr('data-status');
+            $.ajax({
+                url: BASEURL + "/api/{{ App::getLocale() }}" + "/courier/booking/" + status,
+                method: "post",
+                headers: {
+                    "Authorization": "Bearer " + token,
+                    "Accept": "application/json"
+                },
+                data: {
+                    booking_id: booking_id
+                },
+                success: function() {
+                    // window.location.href = "{{ route('my_deliveries') }}";
+                }
+            })
+        })
+
+        function handlePermission() {
+            navigator.permissions.query({
+                name: 'geolocation'
+            }).then((result) => {
+                if (result.state === 'granted') {
+                    navigator.geolocation.getCurrentPosition(revealPosition, positionDenied, {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    });
+                } else if (result.state === 'prompt') {
+                    report(result.state);
+                    navigator.geolocation.getCurrentPosition(revealPosition, positionDenied, {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    });
+                } else if (result.state === 'denied') {
+                    report(result.state);
+                }
+                result.addEventListener('change', () => {
+                    report(result.state);
+                });
+            });
+        }
+
+        function revealPosition(position) {
+            console.log(position.coords)
+            updateLocation(position)
+        }
+
+        function positionDenied() {
+            console.log('posititon positionDenied')
+        }
+
+        function report(state) {
+            console.log(`Permission ${state.coords}`);
+        }
+
+        handlePermission();
+
+        function updateLocation(position) {
+            $.ajax({
+                url: BASEURL + "/api/{{ App::getLocale() }}" + "/courier/update-location",
+                method: "post",
+                headers: {
+                    "Authorization": "Bearer " + token,
+                    "Accept": "application/json"
+                },
+                data: {
+                    lat: position.coords.latitude,
+                    long: position.coords.longitude,
+                    accuracy: position.coords.accuracy,
+                    booking_id: "{{ $current_booking }}"
+                },
+                success: function() {}
+            })
+        }
+
+        // update location after every minute
+        setInterval(() => {
+            navigator.geolocation.getCurrentPosition(revealPosition, positionDenied, {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            });
+        }, 300000);
+    @endif
 </script>
 
 </html>
