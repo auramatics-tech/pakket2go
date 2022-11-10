@@ -6,12 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pakket2Go - Address</title>
-    <style>
-
-    </style>
 </head>
 
-<body>
+<body style="font-family: 'Poppins';font-style: normal;">
     <header>
         <table style="background-color: #01B537;width:100%;padding: 8px 20px;">
             <tr style="">
@@ -133,13 +130,13 @@
         </table>
         <section style="border-bottom: 1px solid black;margin: 10px 0px;"></section>
         <table style="width:100%;">
-            <tbody >
-                <tr>    
-                <th style="text-align:right; width:50%"></th>
+            <tbody>
+                <tr>
+                    <th style="text-align:right; width:50%"></th>
                     <th style="text-align:left; width:25%">
                         <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Total Price</p>
                     </th>
-                    <th style="text-align:right; width:25%" >
+                    <th style="text-align:right; width:25%">
                         <p style="font-weight: 700;font-size: 24.9138px;line-height: 21px;color: #FC4C00;margin:0px;">€ 40 .00</p>
                     </th>
                 </tr>
@@ -169,16 +166,16 @@
             <tbody>
                 <tr>
                     <th style="width:25%;text-align:left;" rowspan="4">
-                    <p style="font-weight: 400;font-size: 18.06px;line-height: 20px;color: #FFFFFF;margin:0px;">We connect customers and couriers. As experienced entrepreneurs with different expertise, we simplify the transport of goods for companies and couriers.</p>
+                        <p style="font-weight: 400;font-size: 18.06px;line-height: 20px;color: #FFFFFF;margin:0px;">We connect customers and couriers. As experienced entrepreneurs with different expertise, we simplify the transport of goods for companies and couriers.</p>
                     </th>
                     <th style="text-align:left;width:25%">
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Legal</p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">+123 456 789 10</p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">+123 456 789 10</p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Facebook</p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Facebook</p>
                     </th>
                 </tr>
                 <tr>
@@ -186,10 +183,10 @@
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Privacy Policy</p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">info.pakket2go.com</p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">info.pakket2go.com</p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Instagram</p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Instagram</p>
                     </th>
                 </tr>
                 <tr>
@@ -197,10 +194,10 @@
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Terms and conditions</p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Location, City</p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Location, City</p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Twitter</p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Twitter</p>
                     </th>
                 </tr>
                 <tr>
@@ -208,15 +205,15 @@
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;"></p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;"></p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;"></p>
                     </th>
                     <th style="text-align:left;width:25%">
-                    <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin: 5px 0px;">LinkedIn</p>
+                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin: 5px 0px;">LinkedIn</p>
                     </th>
                 </tr>
             </tbody>
         </table>
-      
+
 
         <table style="background: #01B537;border-radius: 20px;width: 80%;margin: auto;">
             <tbody>

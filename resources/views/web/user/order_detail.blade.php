@@ -9,7 +9,7 @@
                     <h3 class="Track_orders">Order Details</h3>
                 </div>
                 <div>
-                    <a href="{{ route('booking.invoice', ['id' => $booking->booking_code]) }}">Download Invoice</a>
+                    <a class="download_pdf_btn" href="{{ route('booking.invoice', ['id' => $booking->booking_code]) }}">Download Invoice</a>
                 </div>
             </div>
         </div>

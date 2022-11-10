@@ -967,6 +967,12 @@
  }
 
  @media only screen and (max-width: 576px){
+    .download_pdf_btn{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        padding: 5px 15px;
+    }
     .su_map_img_dashboard_new {
         width: 60%;
     }
@@ -1046,7 +1052,10 @@
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
-
+     .download_pdf_btn {
+        font-size: 14px;
+        line-height: 17px;
+    }
      .su_vdo_bg {
         background-size: 435px 460px;
     }

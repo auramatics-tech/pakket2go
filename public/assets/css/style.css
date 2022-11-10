@@ -3250,3 +3250,15 @@ p.dis_content {
 .su_flex_block_at_767{
     display: flex;
 }
+.download_pdf_btn{
+    background: #01B537;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 26px;
+    color: #FFFFFF;
+    padding: 10px 20px;
+}
+.download_pdf_btn:hover{
+    color: #FFFFFF;
+}

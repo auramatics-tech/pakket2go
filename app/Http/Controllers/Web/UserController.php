@@ -9,7 +9,6 @@ use App\Models\Booking;
 
 use Auth;
 use Pdf;
-
 class UserController extends Controller
 {
 
