@@ -130,7 +130,7 @@ class BookingController extends BaseController
             case 4:
                 $this->pickupDate($request, $booking);
                 if ($request->ajax()) {
-                    if (!in_array(5, $skip_steps))
+                    if ($skip_steps && !in_array(5, $skip_steps))
                         $this->pickupExtraHelp($request, $booking);
                     else
                         $this->pickupFloor($request, $booking);

@@ -54,9 +54,6 @@
                 </tr>
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <!-- <img style="margin: 0px 10px;" src="http://localhost:8000/assets/svg/truck_svg.svg" alt="">
-                        <img style="margin: 0px 10px;" src="http://localhost:8000/assets/svg/person_with_order.svg" alt="">
-                        <img style="margin: 0px 10px;" src="http://localhost:8000/assets/svg/order_loading.svg" alt=""> -->
                     </th>
                     <th style="text-align:left;width:25%">
                         <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Extra person needed to carry </p>

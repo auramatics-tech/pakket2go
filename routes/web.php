@@ -44,8 +44,6 @@ Route::prefix('{locale?}')
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::get('/how-it-works', [HomeController::class, 'howitworks'])->name('howitworks');
         Route::get('/become-courier', [HomeController::class, 'become_courier'])->name('become_courier');
-        Route::get('/order-detail', [HomeController::class, 'order_detail'])->name('order_detail');
-        Route::get('/order-detail-pdf', [HomeController::class, 'order_detail_pdf'])->name('order_detail_pdf');
         Route::get('/generate-pdf', [HomeController::class, 'generatePDF'])->name('generatePDF');
         Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
@@ -72,6 +70,9 @@ Route::prefix('{locale?}')
 
             Route::middleware(['verified_phone'])->group(function () {
                 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+                Route::get('/my-deliveries', [UserController::class, 'my_deliveries'])->name('my_deliveries');
+                Route::get('/order-detail/{id}', [UserController::class, 'booking_details'])->name('booking.details');
+                Route::get('booking-invoice/{id}', [UserController::class, 'booking_invoice'])->name('booking.invoice');
             });
         });
     });

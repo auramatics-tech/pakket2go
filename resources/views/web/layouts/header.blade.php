@@ -38,7 +38,7 @@
                         @if(!Auth::check())
                             <a class="nav-link text-white py-1" href="{{ route('login') }}">{{ __('home.Login') }}</a>
                         @else
-                            <a class="nav-link text-white py-1" href="{{ url('/home/dashboard') }}">Welkom {{ Auth::user()->first_name.' '.Auth::user()->last_name }}</a>
+                            <a class="nav-link text-white py-1" href="{{ route('dashboard') }}">Welkom {{ Auth::user()->first_name.' '.Auth::user()->last_name }}</a>
                         @endif
                     </li>
                 </ul>
