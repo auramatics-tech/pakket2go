@@ -29,34 +29,34 @@
             <tbody style="">
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 22.4224px;line-height: 34px;color: #000000;">#31djh2jbn45 <span style="background: #EEF8F0;border: 1.24569px solid #D9D9D9;border-radius: 62.2845px;font-weight: 500;font-size: 18.6853px;line-height: 28px;color: #000000;    margin-left: 10px;padding: 7px 15px;">Active</span></p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #000000;">#31djh2jbn45 <span style="background: #EEF8F0;border: 1.24569px solid #D9D9D9;border-radius: 62.2845px;font-weight: 500;font-size: 17px;line-height: 26px;color: #000000;    margin-left: 10px;padding: 7px 15px;">Active</span></p>
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Small Package</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Small Package</p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 20.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 20.00</p>
                     </th>
                 </tr>
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="margin: 0px;font-weight: 600;font-size: 24px;line-height: 36px;color: #FC4C00;">€ 30.00 </p>
+                        <p style="margin: 0px;font-weight: 600;font-size: 17px;line-height: 26px;color: #FC4C00;">€ 30.00 </p>
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">12.5 x 11 x 10 cm</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">12.5 x 11 x 10 cm</p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 0.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 0.00</p>
                     </th>
                 </tr>
                 <tr>
                     <th style="text-align: left;width:50%">
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Extra person needed to carry </p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Extra person needed to carry </p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 10.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
                     </th>
                 </tr>
             </tbody>
@@ -66,24 +66,24 @@
             <tbody style="">
                 <tr>
                     <th style="text-align: left;width:50%">
-
+                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;color: #FC4C00;margin:0px;">From >> <span style="font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">20 Ranipukur Lane, PO 234, Noord-Holland</span> </p>
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Friday, 07 September 2022</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Friday, 07 September 2022</p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 0.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 0.00</p>
                     </th>
                 </tr>
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="font-weight: 600;font-size: 18.6853px;line-height: 28px;color: #FC4C00;margin:0px;">From >> <span style="font-weight: 500;font-size: 21.1767px;line-height: 33px;color: #313131;">20 Ranipukur Lane, PO 234, Noord-Holland</span> </p>
+
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Ground Floor</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Ground Floor</p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 0.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 0.00</p>
                     </th>
                 </tr>
                 <tr>
@@ -93,10 +93,10 @@
                         <img style="margin: 0px 10px;" src="http://localhost:8000/assets/svg/order_loading.svg" alt=""> -->
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Extra person needed to carry </p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Extra person needed to carry </p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 10.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
                     </th>
                 </tr>
             </tbody>
@@ -106,24 +106,24 @@
             <tbody style="">
                 <tr>
                     <th style="text-align: left;width:50%">
-
+                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;color: #01B537;margin:0px;">To >> <span style="font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Mirja Bazar, PO 1234, Zuid-Holland</span> </p>
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Sunday, 09 September 2022</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Sunday, 09 September 2022</p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 10.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
                     </th>
                 </tr>
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="font-weight: 600;font-size: 18.6853px;line-height: 28px;color: #01B537;margin:0px;">To >> <span style="font-weight: 500;font-size: 21.1767px;line-height: 33px;color: #313131;">Mirja Bazar, PO 1234, Zuid-Holland</span> </p>
+
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">2nd Floor</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">2nd Floor</p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">€ 10.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
                     </th>
                 </tr>
             </tbody>
@@ -134,94 +134,79 @@
                 <tr>
                     <th style="text-align:right; width:50%"></th>
                     <th style="text-align:left; width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 21.1767px;line-height: 21px;color: #313131;">Total Price</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Total Price</p>
                     </th>
                     <th style="text-align:right; width:25%">
-                        <p style="font-weight: 700;font-size: 24.9138px;line-height: 21px;color: #FC4C00;margin:0px;">€ 40 .00</p>
+                        <p style="font-weight: 700;font-size: 17px;line-height: 26px;color: #FC4C00;margin:0px;">€ 40 .00</p>
                     </th>
                 </tr>
             </tbody>
         </table>
     </section>
-    <section style="background: #25282B;margin: 10px 0px;padding: 30px 15px;">
+
+    <section style="background: #25282B;margin: 20px 0px;padding: 30px 30px;">
+
         <table style="width:100%;">
             <tbody>
                 <tr>
-                    <th style="width:25%">
-
+                    <th style="text-align:left;width:50%">
+                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;letter-spacing: 0.257966px;color: #01B537;margin: 8px 0px;">About Us</p>
                     </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 600;font-size: 23.2169px;line-height: 31px;letter-spacing: 0.257966px;color: #01B537;margin: 8px 0px;">About Us</p>
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 600;font-size: 23.2169px;line-height: 31px;letter-spacing: 0.257966px;color: #01B537;margin: 8px 0px;">Contact Us</p>
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 600;font-size: 23.2169px;line-height: 31px;letter-spacing: 0.257966px;color: #01B537;margin: 8px 0px;"></p>
+                    <th style="text-align:left;width:50%">
+                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;letter-spacing: 0.257966px;color: #01B537;margin: 8px 0px;">Contact Us</p>
                     </th>
                 </tr>
-            </tbody>
-        </table>
-        <table style="width:100%;">
-            <tbody>
                 <tr>
-                    <th style="width:25%;text-align:left;" rowspan="4">
-                        <p style="font-weight: 400;font-size: 18.06px;line-height: 20px;color: #FFFFFF;margin:0px;">We connect customers and couriers. As experienced entrepreneurs with different expertise, we simplify the transport of goods for companies and couriers.</p>
-                    </th>
-                    <th style="text-align:left;width:25%">
+                    <th style="text-align:left;width:50%">
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Legal</p>
                     </th>
-                    <th style="text-align:left;width:25%">
+                    <th style="text-align:left;width:50%">
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">+123 456 789 10</p>
                     </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Facebook</p>
-                    </th>
                 </tr>
                 <tr>
-                    <th style="text-align:left;width:25%">
+                    <th style="text-align:left;width:50%">
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Privacy Policy</p>
                     </th>
-                    <th style="text-align:left;width:25%">
+                    <th style="text-align:left;width:50%">
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">info.pakket2go.com</p>
                     </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Instagram</p>
-                    </th>
                 </tr>
                 <tr>
-                    <th style="text-align:left;width:25%">
+                    <th style="text-align:left;width:50%">
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Terms and conditions</p>
                     </th>
-                    <th style="text-align:left;width:25%">
+                    <th style="text-align:left;width:50%">
                         <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Location, City</p>
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Twitter</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;"></p>
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;"></p>
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin: 5px 0px;">LinkedIn</p>
                     </th>
                 </tr>
             </tbody>
         </table>
 
+        <table style="width:100%;  margin:10px 0px;">
+        <tbody>
+            <tr>
+                 <th style="width:50%;text-align:left;" >
+                    <p style="font-weight: 400;font-size: 18.06px;line-height: 20px;color: #FFFFFF;margin:0px;">We connect customers and couriers. As experienced entrepreneurs with different expertise, we simplify the transport of goods for companies and couriers.</p>
+                </th>
+                <th style="width:50%;text-align:left;">
+                 <ul style="list-style-type:none;padding:0px;">
+                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Facebook</li>
+                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Instagram</li>
+                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Twitter</li>
+                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">LinkedIn</li>
+                 </ul>
+                </th>
+            </tr>
+        </tbody>
+        </table>
 
-        <table style="background: #01B537;border-radius: 20px;width: 80%;margin: auto;">
+        <table style="background: #01B537;border-radius: 20px;width: 100%;margin: auto;">
             <tbody>
                 <tr>
-                    <th style="text-align: left;padding: 0px 15px;">
+                    <th style="text-align: center;padding: 0px 15px;">
                         <p style="font-weight: 600;font-size: 18px;line-height: 18px;color: #FFFFFF;"> 2022 Pakket2Go Limited. All rights reserved.</p>
                     </th>
-                    <th></th>
                 </tr>
             </tbody>
         </table>

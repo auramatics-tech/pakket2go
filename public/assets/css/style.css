@@ -2100,6 +2100,9 @@ p.dis_content {
     padding: 9px 30px;
     border: none;
 }
+.su_Apply_Now:hover{
+    color: #FFFFFF !important;
+}
 
 .su_See {
     background: #FFFFFF;

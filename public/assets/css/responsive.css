@@ -387,6 +387,9 @@
  @media only screen and (max-width: 991px) {
 
      /* sumit code start   */
+     .lang_toggle {
+        width: 200px;
+    }
      .su_vdo_bg {
         background-size: 690px 460px;
     }
@@ -888,7 +891,7 @@
 
      .lang_toggle {
          border: 1px solid #D9D9D9;
-         width: 167px;
+         /* width: 167px; */
      }
 
      .content h1 {
@@ -1654,6 +1657,12 @@
  }
 
  @media only screen and (max-width: 390px) {
+    .su_navbar_heading {
+        white-space: nowrap;
+        width: 135px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .su_courier_search_filter {
         width: 62%;
     }
@@ -1714,6 +1723,9 @@
  }
 
  @media screen and (max-width: 350px) {
+    .su_navbar_heading {
+        width: 95px;
+    }
     .su_vdo_bg {
         background-size: 300px 340px;
     }
