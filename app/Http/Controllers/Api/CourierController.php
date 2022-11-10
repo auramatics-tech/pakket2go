@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BaseController as BaseController;
 use Illuminate\Http\Request;
 
 use App\Http\Traits\BookingTrait;
+use App\Http\Traits\NotificationTrait;
 
 use App\Models\Booking;
 use App\Models\BookingTracking;
@@ -20,7 +21,7 @@ use DB;
 
 class CourierController extends BaseController
 {
-    use BookingTrait;
+    use BookingTrait, NotificationTrait;
 
     function __construct(Request $request)
     {
@@ -74,15 +75,24 @@ class CourierController extends BaseController
     public function update_booking(Request $request)
     {
         $status = $request->status;
+
+        if ($status == 'accepted') {
+            // check if any other booking is pending for delivery
+            $bookings = Booking::where('courier_user_id', Auth::id())->where('status', '<', 5)->count();
+            if ($bookings) {
+                return $this->sendError([], 'Please deliver current order first', 200);
+            }
+        }
+
         $booking = Booking::select('bookings.*', 'users.device_token')->when($status, function ($query) use ($status) {
             $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
                 ->where(function ($q)  use ($status) {
                     if ($status == 'accepted')
                         $q->where('booking_status.status_type', 'ready-to-pickup')->orwhere("booking_status.status", 'ready-to-pickup');
                     elseif ($status == 'pickedup')
-                        $q->where("booking_status.status", 'Pickedup');
+                        $q->where("booking_status.status", 'Accepted');
                     elseif ($status == 'delivered')
-                        $q->where("booking_status.status", 'Delivered');
+                        $q->where("booking_status.status", 'Pickedup');
                 });
         })
             ->whereNotIn('bookings.id', function ($query) {
@@ -93,14 +103,16 @@ class CourierController extends BaseController
             ->where(function ($query) {
                 $query->whereNull("courier_user_id")->orwhere('courier_user_id', Auth::id());
             })
-            ->join("users", "users.id", "=", "bookings.courier_user_id")
+            ->join("users", "users.id", "=", "bookings.user_id")
             ->where('bookings.id', $request->booking_id)
             ->first();
         if (isset($booking->id)) {
             if ($status == 'accepted' || $status == 'pickedup' || $status == 'delivered') {
                 $signature = '';
                 $booking->courier_user_id = Auth::id();
-                if ($status == 'pickedup') {
+                if ($status == 'accepted') {
+                    $booking->status = 3;
+                } elseif ($status == 'pickedup') {
                     $booking->status = 4;
                 } elseif ($status == 'delivered') {
                     $booking->status = 5;
@@ -158,28 +170,31 @@ class CourierController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
             'lat' => 'required',
-            'long' => 'required',
-            'accuracy' => 'required',
-            'rotation' => 'required'
+            'long' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json(['result' => "", 'status' => false, 'message' => "Validation Error"], 200);
         }
 
-        $location = new UserLocation();
+        $last_location = UserLocation::where('user_id', Auth::id())->latest()->first();
+        if ($last_location->latitude == $request->lat && $last_location->longitude == $request->long) {
+            $location = $last_location;
+        } else {
+            $location = new UserLocation();
+        }
         $location->user_id = Auth::id();
         $location->latitude = $request->lat;
-        $location->longitude = $request->lat;
+        $location->longitude = $request->long;
         $location->accuracy = $request->accuracy;
         $location->rotation = $request->rotation;
 
-        if (isset($request->parcel_code) && $request->parcel_code) {
-            $booking = Booking::where('booking_code', $request->parcel_code)->where("courier_user_id", Auth::id())->first();
+        if (isset($request->booking_id) && $request->booking_id) {
+            $booking = Booking::where('id', $request->booking_id)->where("courier_user_id", Auth::id())->first();
             if (!isset($booking->id)) {
                 return $this->sendResponse([], 'Invalid booking');
             }
-            $location->booking_id = $request->parcel_code;
+            $location->booking_id = $request->booking_id;
         }
 
         $location->save();

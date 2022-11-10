@@ -70,6 +70,7 @@ Route::prefix('{locale?}')
 
             Route::middleware(['verified_phone'])->group(function () {
                 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+                Route::get('/my-deliveries', [UserController::class, 'my_deliveries'])->name('my_deliveries');
                 Route::get('/order-detail/{id}', [UserController::class, 'booking_details'])->name('booking.details');
                 Route::get('booking-invoice/{id}', [UserController::class, 'booking_invoice'])->name('booking.invoice');
             });

@@ -81,8 +81,9 @@
                             </span>
                         </a>
                     </div>
+                    @if(Auth::user()->user_type == 'courier')
                     <div class="su_padding_items">
-                        <a href="">
+                        <a href="{{ route('my_deliveries') }}">
                             <span class="">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -97,6 +98,7 @@
                             </span>
                         </a>
                     </div>
+                    @endif
                     <div class="su_padding_items">
                         <a href="">
                             <span class="">

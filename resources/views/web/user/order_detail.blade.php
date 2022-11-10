@@ -36,7 +36,8 @@
                                                                 class="badge su_badges">0</span>{{ $booking->booking_status() }}</button>
                                                     </h2>
                                                     <p class="su_item_price_new">
-                                                        €{{ number_format($booking->final_price, 2) }}</p>
+                                                        €{{ Auth::user()->user_type == 'courier' && Auth::user()->id != $booking->id ? number_format($booking->courier_price, 2) : number_format($booking->final_price, 2) }}
+                                                    </p>
                                                     <div class="d-flex align-items-center">
                                                         <img class="su_margin_x_20"
                                                             src="{{ asset('assets/svg/truck_svg.svg') }}" alt="">
@@ -56,17 +57,21 @@
                                                             <div class="su_order_details_text su_margin_y_12">
                                                                 Distance ({{ $booking->address->distance }} Km)
                                                             </div>
-                                                            <div class="su_order_details_text su_margin_y_12">€
-                                                                {{ number_format($booking->distance_price, 2) }}
-                                                            </div>
+                                                            @if (Auth::user()->user_type != 'courier')
+                                                                <div class="su_order_details_text su_margin_y_12">€
+                                                                    {{ number_format($booking->distance_price, 2) }}
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div class="d-flex justify-content-between align_items-center">
                                                             <div class="su_order_details_text su_margin_y_12">
                                                                 {{ $booking->booking_data($booking_details, 'parcel_type', 'name') }}
                                                             </div>
-                                                            <div class="su_order_details_text su_margin_y_12">€
-                                                                {{ $booking->booking_data($booking_details, 'parcel_type', 'price') }}
-                                                            </div>
+                                                            @if (Auth::user()->user_type != 'courier')
+                                                                <div class="su_order_details_text su_margin_y_12">€
+                                                                    {{ $booking->booking_data($booking_details, 'parcel_type', 'price') }}
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         @if (count($booking->booking_data($booking_details, 'parcel_details', 'name')))
                                                             @foreach ($booking->booking_data($booking_details, 'parcel_details', 'name') as $details)
@@ -74,9 +79,11 @@
                                                                     class="d-flex justify-content-between align_items-center">
                                                                     <div class="su_order_details_text su_margin_y_12">
                                                                         {{ $details['name'] }}</div>
-                                                                    <div class="su_order_details_text su_margin_y_12">€
-                                                                        {{ $details['price'] }}
-                                                                    </div>
+                                                                    @if (Auth::user()->user_type != 'courier')
+                                                                        <div class="su_order_details_text su_margin_y_12">€
+                                                                            {{ $details['price'] }}
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             @endforeach
                                                         @endif
@@ -84,9 +91,11 @@
                                                             <div class="su_order_details_text su_margin_y_12">
                                                                 {{ $booking->booking_data($booking_details, 'extra_help', 'name') }}
                                                             </div>
-                                                            <div class="su_order_details_text su_margin_y_12">€
-                                                                {{ $booking->booking_data($booking_details, 'extra_help', 'price') }}
-                                                            </div>
+                                                            @if (Auth::user()->user_type != 'courier')
+                                                                <div class="su_order_details_text su_margin_y_12">€
+                                                                    {{ $booking->booking_data($booking_details, 'extra_help', 'price') }}
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,132 +111,147 @@
                         <div class="su_flex_768_block justify-content-between">
                             <div class="su_order_width_20"></div>
                             <div class="su_order_width_80">
-                            <div class="su_order_width_100">
-                                <div class="table-responsive">
-                                    <table class="table w-100">
-                                        <tr class="su_display_grid_sm">
-                                            <td class="su_order_width_40">
-                                                <div class="su_flex align-items-basline">
-                                                    <div class="su_from_text su_margin_right_20 su_sm_ml">From >></div>
-                                                    <div class="su_order_details_text">
-                                                        {{ $booking->address->pickup_address }}</div>
-                                                </div>
-                                            </td>
-                                            <td class="su_order_width_40">
-                                                <div class=" su_flex_column">
-                                                    @if ($booking->booking_data($booking_details, 'pickup_date', 'date'))
-                                                        <div>
-                                                            <div class="d-flex justify-content-between align_items-center">
-                                                                <div class="su_order_details_text su_margin_y_12">
-                                                                    {{ date('l, d F Y', strtotime($booking->booking_data($booking_details, 'pickup_date', 'date'))) }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                    @if ($booking->booking_data($booking_details, 'extra_help', 'date'))
-                                                        <div>
-                                                            <div class="d-flex justify-content-between align_items-center">
-                                                                <div class="su_order_details_text su_margin_y_12">
-                                                                    {{ $booking->booking_data($booking_details, 'extra_help', 'name') }}
-                                                                </div>
-                                                            </div>
-                                                            <div class="su_order_details_text su_margin_y_12">€
-                                                                {{ number_format($booking->booking_data($booking_details, 'extra_help', 'price'), 2) }}
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                    @if ($booking->booking_data($booking_details, 'pickup_floor', 'name'))
-                                                        <div>
-                                                            <div class="d-flex justify-content-between align_items-center">
-                                                                <div class="su_order_details_text su_margin_y_12">
-                                                                    {{ $booking->booking_data($booking_details, 'pickup_floor', 'name') }}
-                                                                </div>
-                                                                <div class="su_order_details_text su_margin_y_12">€
-                                                                    {{ number_format($booking->booking_data($booking_details, 'pickup_floor', 'price'), 2) }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                    </table>
-                                </div>
-                                <hr>
-                                <div class="table-responsive">
-                                    <table class="table w-100">
-                                        <tr class="su_display_grid_sm">
-                                            <td class="su_order_width_40">
-                                                <div class="d-flex align-items-basline">
-                                                    <div class="su_to_text su_margin_right_20 su_sm_ml">To >></div>
-                                                    <div class="su_order_details_text">
-                                                        {{ $booking->address->delivery_address }}
+                                <div class="su_order_width_100">
+                                    <div class="table-responsive">
+                                        <table class="table w-100">
+                                            <tr class="su_display_grid_sm">
+                                                <td class="su_order_width_40">
+                                                    <div class="su_flex align-items-basline">
+                                                        <div class="su_from_text su_margin_right_20 su_sm_ml">From >></div>
+                                                        <div class="su_order_details_text">
+                                                            {{ $booking->address->pickup_address }}</div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="su_order_width_40">
-                                                <div class=" su_flex_column">
-                                                    @if ($booking->booking_data($booking_details, 'pickup_date', 'date'))
-                                                        <div>
-                                                            <div class="d-flex justify-content-between align_items-center">
-                                                                <div class="su_order_details_text su_margin_y_12">
-                                                                    {{ date('l, d F Y', strtotime($booking->booking_data($booking_details, 'pickup_date', 'date'))) }}
+                                                </td>
+                                                <td class="su_order_width_40">
+                                                    <div class=" su_flex_column">
+                                                        @if ($booking->booking_data($booking_details, 'pickup_date', 'date'))
+                                                            <div>
+                                                                <div
+                                                                    class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">
+                                                                        {{ date('l, d F Y', strtotime($booking->booking_data($booking_details, 'pickup_date', 'date'))) }}
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @endif
-                                                    @if ($booking->booking_data($booking_details, 'delivery_floor', 'name'))
-                                                        <div>
-                                                            <div class="d-flex justify-content-between align_items-center">
-                                                                <div class="su_order_details_text su_margin_y_12">
-                                                                    {{ $booking->booking_data($booking_details, 'delivery_floor', 'name') }}
+                                                        @endif
+                                                        @if ($booking->booking_data($booking_details, 'extra_help', 'date'))
+                                                            <div>
+                                                                <div
+                                                                    class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">
+                                                                        {{ $booking->booking_data($booking_details, 'extra_help', 'name') }}
+                                                                    </div>
                                                                 </div>
-                                                                <div class="su_order_details_text su_margin_y_12">€
-                                                                    {{ number_format($booking->booking_data($booking_details, 'delivery_floor', 'price'), 2) }}
+                                                                @if (Auth::user()->user_type != 'courier')
+                                                                    <div class="su_order_details_text su_margin_y_12">€
+                                                                        {{ number_format($booking->booking_data($booking_details, 'extra_help', 'price'), 2) }}
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        @endif
+                                                        @if ($booking->booking_data($booking_details, 'pickup_floor', 'name'))
+                                                            <div>
+                                                                <div
+                                                                    class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">
+                                                                        {{ $booking->booking_data($booking_details, 'pickup_floor', 'name') }}
+                                                                    </div>
+                                                                    @if (Auth::user()->user_type != 'courier')
+                                                                        <div class="su_order_details_text su_margin_y_12">€
+                                                                            {{ number_format($booking->booking_data($booking_details, 'pickup_floor', 'price'), 2) }}
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                    </table>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div class="d-flex justify-content-between">
-                            <div class="su_order_width_20">
-                            </div>
-                            <div class="su_order_width_80">
-                                <div class="table-responsive">
-                                    <table class="table w-100">
-                                        <tr class="su_display_grid_sm">
-                                            <td class="su_order_width_40">
-
-                                            </td>
-                                            <td class="su_order_width_40">
-                                                <div class="su_flex_column">
-                                                    <div>
-                                                        <div class="d-flex justify-content-between align_items-center">
-                                                            <div class="su_total_details su_margin_y_12">Total Price</div>
-                                                            <div class="su_total_details_price su_margin_y_12"><a
-                                                                    href="{{ route('generatePDF') }}">€
-                                                                    {{ number_format($booking->final_price, 2) }}</a></div>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                    <div class="table-responsive">
+                                        <table class="table w-100">
+                                            <tr class="su_display_grid_sm">
+                                                <td class="su_order_width_40">
+                                                    <div class="d-flex align-items-basline">
+                                                        <div class="su_to_text su_margin_right_20 su_sm_ml">To >></div>
+                                                        <div class="su_order_details_text">
+                                                            {{ $booking->address->delivery_address }}
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                                <td class="su_order_width_40">
+                                                    <div class=" su_flex_column">
+                                                        @if ($booking->booking_data($booking_details, 'pickup_date', 'date'))
+                                                            <div>
+                                                                <div
+                                                                    class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">
+                                                                        {{ date('l, d F Y', strtotime($booking->booking_data($booking_details, 'pickup_date', 'date'))) }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        @if ($booking->booking_data($booking_details, 'delivery_floor', 'name'))
+                                                            <div>
+                                                                <div
+                                                                    class="d-flex justify-content-between align_items-center">
+                                                                    <div class="su_order_details_text su_margin_y_12">
+                                                                        {{ $booking->booking_data($booking_details, 'delivery_floor', 'name') }}
+                                                                    </div>
+                                                                    @if (Auth::user()->user_type != 'courier')
+                                                                        <div class="su_order_details_text su_margin_y_12">€
+                                                                            {{ number_format($booking->booking_data($booking_details, 'delivery_floor', 'price'), 2) }}
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                    </table>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        @if (Auth::user()->user_type != 'courier')
+                            <hr>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="su_order_width_20">
+                                </div>
+                                <div class="su_order_width_80">
+                                    <div class="table-responsive">
+                                        <table class="table w-100">
+                                            <tr class="su_display_grid_sm">
+                                                <td class="su_order_width_40">
+
+                                                </td>
+                                                <td class="su_order_width_40">
+                                                    <div class="su_flex_column">
+                                                        <div>
+                                                            <div class="d-flex justify-content-between align_items-center">
+                                                                <div class="su_total_details su_margin_y_12">Total Price
+                                                                </div>
+                                                                <div class="su_total_details_price su_margin_y_12"><a
+                                                                        href="javascript:void(0);">€
+                                                                        {{ Auth::user()->user_type == 'courier' && Auth::user()->id != $booking->id ? number_format($booking->courier_price, 2) : number_format($booking->final_price, 2) }}</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
 
                 </div>
