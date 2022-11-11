@@ -5,7 +5,7 @@
                 <img src="{{ asset('assets/svg/group.svg') }}" alt="group">
             </figure>
             <p class="mb-0 ms-2 primary-color ">
-                Extra Help
+                {{ __('booking.Extra Help') }}
             </p>
         </div>
         <div class="moreinfo">
@@ -13,7 +13,7 @@
                 <img src="{{ asset('assets/svg/g_info.svg') }}" alt="info">
             </figure>
             <p class="mb-0 ms-2 primary-color ">
-                More info
+                {{ __('booking.More info') }}
             </p>
         </div>
     </div>
@@ -23,19 +23,20 @@
         <input type="hidden" name="session_id" value="{{ Session::getId() }}">
         <input type="hidden" name="booking_id" value="{{ $booking->id }}">
         <input type="hidden" name="step" value="{{ $current_step->id }}">
-        <input type="hidden" id="value_{{ $current_step->id }}" name="type_id"
-            value="{{ $booking->booking_data($parcel_details, 'pickup_floor', 'id') }}">
+        <input type="hidden" id="value_{{ $current_step->id }}" name="type_id" value="{{ $booking->booking_data($parcel_details, 'pickup_floor', 'id') }}">
     </form>
     <div class="card_data mt-4">
-        <h6>Pick-up: Where are the items?</h6>
-        <p class="mb-0 pl_des">The damage insurance applies from door to door and not indoord.</p>
+        <h6> {{ __('booking.Pick-up items') }}</h6>
+        <p class="mb-0 pl_des">
+        {{ __('booking.The damage insurance applies from door to door and not indoord.') }}
+        </p>
         @php
-            $type = 'pickup_';
+        $type = 'pickup_';
         @endphp
         @if ($parcel_options)
-            @foreach ($parcel_options as $options)
-                @include('web.booking.includes.floor_card')
-            @endforeach
+        @foreach ($parcel_options as $options)
+        @include('web.booking.includes.floor_card')
+        @endforeach
         @endif
     </div>
 </div>

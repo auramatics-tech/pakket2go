@@ -63,5 +63,21 @@ return [
     'Twitter' => 'Twitter',
     'LinkedIn' => 'LinkedIn',
     'All rights reserved' => 'All rights reserved',
-    'Limited' => 'Limited'
+    'Limited' => 'Limited',
+    'Thank You' => 'Thank You',
+    'Your order has been sucessfully created' => 'Your order has been sucessfully created',
+    'Track my order'  => 'Track my order',
+    'Register Now' => 'Register Now',
+    'Create an account to continue' => 'Create an account to continue',
+    'Safe & Secure' => 'Safe & Secure',
+    'I agree to the' => 'I agree to the',
+    'Terms and Conditions' => 'Terms and Conditions',
+    'of Pakket2Go' => 'of Pakket2Go',
+    'Register' => 'Register',
+    'Already have an account'  => 'Already have an account? ',
+    'Sign In' => 'Sign In',
+    'Password' => 'Password',
+    'dont_account' => 'Don\'t have an account?',
+    'Join now' => 'Join now',
+
 ];

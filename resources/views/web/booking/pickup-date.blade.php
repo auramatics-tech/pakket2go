@@ -8,7 +8,7 @@
                 <img src="{{ asset('assets/svg/g_info.svg') }}" alt="info">
             </figure>
             <p class="mb-0 ms-2 primary-color ">
-                More info
+            {{ __('booking.More info') }}
             </p>
         </div>
     </div>
@@ -22,7 +22,7 @@
         <input type="hidden" name="step" value="{{ $current_step->id }}">
         <input type="hidden" name="pickup_date" id="pickup_date" value="{{ $booking->booking_data($parcel_details, 'pickup_date', 'date') }}">
         <div class="card_data mt-4">
-            <h6>Pick-up: Select a date</h6>
+            <h6>{{ __('booking.Select pickup date') }}</h6>
             <div class="row mt-4">
                 @php
                     $now = new DateTime();

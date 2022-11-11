@@ -65,7 +65,6 @@ class BookingController extends BaseController
      */
     public function booking(BookingRequest $request)
     {
-
         if ($request->ajax()) {
             $user_id = $request->user_id;
             $session_id = $request->session_id;
