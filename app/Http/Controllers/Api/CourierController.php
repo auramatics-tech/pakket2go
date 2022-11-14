@@ -224,4 +224,49 @@ class CourierController extends BaseController
 
         return $this->sendResponse($data, 'Earnings fetched successfully.');
     }
+
+    public function update_documents(Request $request)
+    {
+        if ($request->front_driving_license) {
+            $front_driving_license = "document_" . time() . ".png";
+            $storage_path = '/storage/uploads/user/' . Auth::id() . '/documents';
+            $path = public_path($storage_path) . '/' . $front_driving_license;
+            if (!File::exists($path)) {
+                File::makeDirectory($path . 'original', 0775, true, true);
+            }
+            Image::make(file_get_contents($request->front_driving_license))->save($path);
+            $front_driving_license = $storage_path . '/' . $front_driving_license;
+        }
+
+        if ($request->back_driving_license) {
+            $back_driving_license = "document_" . time() . ".png";
+            $storage_path = '/storage/uploads/user/' . Auth::id() . '/documents';
+            $path = public_path($storage_path) . '/' . $back_driving_license;
+            if (!File::exists($path)) {
+                File::makeDirectory($path . 'original', 0775, true, true);
+            }
+            Image::make(file_get_contents($request->back_driving_license))->save($path);
+            $back_driving_license = $storage_path . '/' . $back_driving_license;
+        }
+
+        if ($request->chamber_of_commerce) {
+            $chamber_of_commerce = "document_" . time() . ".png";
+            $storage_path = '/storage/uploads/user/' . Auth::id() . '/documents';
+            $path = public_path($storage_path) . '/' . $chamber_of_commerce;
+            if (!File::exists($path)) {
+                File::makeDirectory($path . 'original', 0775, true, true);
+            }
+            Image::make(file_get_contents($request->chamber_of_commerce))->save($path);
+            $chamber_of_commerce = $storage_path . '/' . $chamber_of_commerce;
+        }
+
+        $user = User::find(Auth::id());
+        $user->documents_verified = 0;
+        $user->front_driving_license = (isset($front_driving_license) && $front_driving_license) ?? asset($front_driving_license);
+        $user->back_driving_license = (isset($back_driving_license) && $back_driving_license) ?? asset($back_driving_license);
+        $user->chamber_of_commerce = (isset($chamber_of_commerce) && $chamber_of_commerce) ?? asset($chamber_of_commerce);
+        $user->save();
+
+        return $this->sendResponse($user, 'Documents uploaded successfully. We will review and get back');
+    }
 }

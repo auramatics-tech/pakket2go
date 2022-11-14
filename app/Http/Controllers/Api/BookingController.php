@@ -343,6 +343,8 @@ class BookingController extends BaseController
         $parcel_type['name'] = $parcel_options->name;
         $parcel_type['description'] = $parcel_options->description;
         $parcel_type['price'] = $parcel_options->price;
+        $parcel_type['quantity'] = $parcel_options->quantity;
+        $parcel_type['labelRequired'] = $parcel_options->price;
 
         $booking_details->booking_id = $booking->id;
         $booking_details->parcel_type = json_encode($parcel_type);
