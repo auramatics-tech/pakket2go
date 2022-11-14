@@ -73,5 +73,13 @@ return [
     'Limited'=> 'B.V.',
     'Thank You' => 'Bedankt',
     'Your order has been sucessfully created' => 'Uw account is succesvol aangemaakt.',
-    'Track my order' => 'Terug naar de homepagina'
+    'Track my order' => 'Terug naar de homepagina',
+    'Sign In' => 'Sign In',
+    'Password' => 'Password',
+    'dont_account' => 'Don\'t have an account?',
+    'Join now' => 'Join now',
+    'Safe & Secure' => 'Safe & Secure',
+    'Already have an account'  => 'Already have an account? ',
+    'Terms and Conditions' => 'Terms and Conditions',
+
 ];

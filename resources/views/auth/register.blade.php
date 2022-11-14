@@ -101,7 +101,7 @@
                                                 <p class="su_checkbox_text ">
                                                 {{ __('home.I agree to the') }} 
                                                     <a href="#" class="login_ancr orange-color ms-2"> {{ __('home.Terms and
-                                                        Conditions') }}</a>
+                                                      Conditions') }}</a>
                                                     {{ __('home.of Pakket2Go') }}
                                                 </p>
                                             </div>
@@ -109,10 +109,10 @@
                                     </div>
 
                                     <div class="text-center my-4">
-                                        <button class="su_Sign_In" type="submit"> {{ __('home.Register) }}</button>
+                                        <button class="su_Sign_In" type="submit"> {{ __('home.Register') }}</button>
                                     </div>
                                     <p class="su_Login"> {{ __('home.Already have an account') }} <a href="{{ route('login') }}"
-                                            class="su_login_red">Login</a></p>
+                                            class="su_login_red"> {{ __('home.Login') }} </a></p>
                                 </form>
                             </div>
                         </div>

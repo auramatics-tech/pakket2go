@@ -76,13 +76,13 @@ class UserController extends Controller
 
     public function booking_details(Request $request)
     {
+        
         $booking = Booking::where("user_id", Auth::id())->where("booking_code", $request->id)->first();
-
+        // echo "<pre>";print_r($booking);die;
         if (!isset($booking->id))
             return redirect()->route("dashboard")->with('error', 'Invalid booking code');
 
         $booking_details =  isset($booking->details) ? $booking->details : '';
-
         return view('web.user.order_detail', ['booking' => $booking, 'booking_details' => $booking_details, 'current_booking' => $this->current_booking]);
     }
 

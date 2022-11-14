@@ -139,8 +139,7 @@ Pakket2Go - Login
                                         <button class="su_sign_btn" type="submit">{{ __('home.Sign In') }}</button>
                                     </div>
                                     <div class="text-center su_margin_1366">
-                                        <p class="su_Join_now">{{ __('home.dont_account') }} <a href="{{ route('register') }}" class="su_Join_now_span">{{__('home.Join
-                                        now')}}</a></p>
+                                        <p class="su_Join_now">{{ __('home.dont_account') }} <a href="{{ route('register') }}" class="su_Join_now_span"> {{ __('home.Join now') }} </a></p>
                                     </div>
                                 </div>
                             </div>

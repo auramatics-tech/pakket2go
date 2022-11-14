@@ -78,6 +78,6 @@ return [
     'Sign In' => 'Sign In',
     'Password' => 'Password',
     'dont_account' => 'Don\'t have an account?',
-    'Join now' => 'Join now',
+    'Join now' => 'Join now'
 
 ];
