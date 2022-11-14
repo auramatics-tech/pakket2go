@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="content_total mt-4">
-            <span class="from orange-color">From &gt;&gt;</span>
+            <span class="from orange-color">{{ __('booking.From') }} &gt;&gt;</span>
             <p class="mt-3 from_address_p">
                 {{ isset($booking->address->pickup_address) ? $booking->address->pickup_address : '' }}</p>
             @if (isset($parcel_details->id) && $booking->booking_data($parcel_details, 'pickup_date', 'date'))

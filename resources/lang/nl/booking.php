@@ -17,5 +17,5 @@ return [
     'Parcel Details' => 'Parcel Details',
     'Pick Up Date' => 'Pick Up Date',
     'Extra Help' => 'Extra Help',
-    'Pick Up Floor' => 'Pick Up Floor'
+    'Pick Up Floor' => 'Pick Up Floor',
 ];
