@@ -97,6 +97,7 @@ trait BookingTrait
     protected function booking_data($booking)
     {
         $booking_details = isset($booking->details) ? $booking->details : '';
+        $booking->status = (int) $booking->status;
         $booking->booking_status = $booking->booking_status();
         $booking->address = $booking->address;
         $booking->parcel_type = ($booking_details->parcel_type) ? $this->decode_detail(json_decode($booking_details->parcel_type)) : new stdClass;
