@@ -118,7 +118,7 @@ class UserController extends BaseController
 
     public function my_bookings(Request $request)
     {
-        $bookings = Booking::where(function ($query) {
+        $bookings = Booking::select('bookings.*')->where(function ($query) {
             $query->where('user_id', Auth::id())->orwhere('courier_user_id', Auth::id());
         })
             ->when(isset($request->type) && $request->type, function ($query) use ($request) {

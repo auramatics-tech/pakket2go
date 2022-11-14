@@ -54,6 +54,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
         Route::get('/booking/invoice', [BookingController::class, 'invoice']);
 
         Route::group(['prefix' => 'courier'], function () {
+            Route::post('/update-documents', [CourierController::class, 'update_documents']);
             Route::get('/bookings/{status?}', [CourierController::class, 'bookings']);
             Route::post('/booking/{status}', [CourierController::class, 'update_booking']);
             Route::get('/earnings', [CourierController::class, 'earnings']);
