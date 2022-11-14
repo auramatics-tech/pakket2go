@@ -13,7 +13,7 @@
                 <img src="{{ asset('assets/svg/g_info.svg') }}" alt="info">
             </figure>
             <p class="mb-0 ms-2 primary-color ">
-                More info
+            {{ __('booking.More info') }}
             </p>
         </div>
     </div>
@@ -26,8 +26,8 @@
         <input type="hidden" id="value_{{ $current_step->id }}" name="type_id" value="{{ $booking->booking_data($parcel_details, 'parcel_type' ,'id') }}">
     </form>
     <div class="card_data mt-4">
-        <h6> Select your parcel type</h6>
-        <p class="mb-0 pl_des">Price varies in different type of parcel</p>
+        <h6> {{ __('booking.Select your parcel type') }}</h6>
+        <p class="mb-0 pl_des">{{ __('booking.Price varies in different type of parcel') }}</p>
         <div class="row mt-5">
             @if ($parcel_options)
                 @foreach ($parcel_options as $options)

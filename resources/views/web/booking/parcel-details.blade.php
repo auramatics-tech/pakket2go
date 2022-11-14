@@ -26,7 +26,7 @@
                 <img src="{{ asset('assets/svg/g_info.svg') }}" alt="info">
             </figure>
             <p class="mb-0 ms-2 primary-color ">
-                More info
+            {{ __('booking.More info') }}
             </p>
         </div>
     </div>
@@ -64,7 +64,7 @@
                         <img src="{{ asset('assets/svg/plus.svg') }}" alt="plus">
                     </figure>
                 </div>
-                <p class="mb-0 text-white ms-2">Add Items</p>
+                <p class="mb-0 text-white ms-2">  {{ __('booking.Add Items') }}</p>
             </button>
         </div>
     </div>

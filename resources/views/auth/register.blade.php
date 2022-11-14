@@ -25,10 +25,10 @@
                                 <img src="{{ asset('assets/svg/Pakket2go.svg') }}" alt="logo">
                             </figure>
                             <h6 class="su_Your_Best">
-                                Your Best Choice in Netherland
+                            {{ __('home.Your Best Choice in Netherland') }}
                             </h6>
                             <p class="su_easilest">
-                                The easilest and most affordable way to transport any parcel regarding size
+                            {{ __('home.The easilest and most affordable way to transport any parcel regarding size') }}
                             </p>
                             <div class="su_side_margin">
                                 <div class="d-flex align-items-center my-4">
@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Quick & Fast</p>
+                                        <p class="su_Quick_Fast">{{ __('home.Quick & Fast') }}</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center my-4">
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Safe & Secure</p>
+                                        <p class="su_Quick_Fast">{{ __('home.Safe & Secure') }}</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center my-4">
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">Hassle Free</p>
+                                        <p class="su_Quick_Fast">{{ __('home.Hassle Free') }}</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center my-4">
@@ -68,13 +68,10 @@
                                         </div>
                                     </div>
                                     <div class="flex_align_end">
-                                        <p class="su_Quick_Fast">24 / 7 Support</p>
+                                        <p class="su_Quick_Fast">{{ __('home.24/7 Support') }}</p>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
@@ -85,8 +82,8 @@
                         </div>
                         <div class="su_col_padding">
                             <div class="su_register_card mt-4">
-                                <h6 class="su_Register_Now">Register Now</h6>
-                                <p class="su_account_to_continue">Create an account to continue</p>
+                                <h6 class="su_Register_Now">{{ __('home.Register Now') }}</h6>
+                                <p class="su_account_to_continue">{{ __('home.Create an account to continue') }}</p>
                                 <form action="{{ route('register') }}" method="post">
                                     @csrf
                                     <div class="su_button_padding">
@@ -102,19 +99,19 @@
                                             </div>
                                             <div>
                                                 <p class="su_checkbox_text ">
-                                                    I agree to the
-                                                    <a href="#" class="login_ancr orange-color ms-2">Terms and
-                                                        Conditions</a>
-                                                    of Pakket2Go
+                                                {{ __('home.I agree to the') }} 
+                                                    <a href="#" class="login_ancr orange-color ms-2"> {{ __('home.Terms and
+                                                        Conditions') }}</a>
+                                                    {{ __('home.of Pakket2Go') }}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="text-center my-4">
-                                        <button class="su_Sign_In" type="submit">Register</button>
+                                        <button class="su_Sign_In" type="submit"> {{ __('home.Register) }}</button>
                                     </div>
-                                    <p class="su_Login">Already have an account? <a href="{{ route('login') }}"
+                                    <p class="su_Login"> {{ __('home.Already have an account') }} <a href="{{ route('login') }}"
                                             class="su_login_red">Login</a></p>
                                 </form>
                             </div>

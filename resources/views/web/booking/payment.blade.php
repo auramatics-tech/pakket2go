@@ -5,7 +5,7 @@
                 <img src="{{ asset('assets/svg/credit_card.svg') }}" alt="credit_card">
             </figure>
             <p class="mb-0 ms-3 primary-color ">
-                It’s really easy
+            {{ __('booking.It is really easy') }} 
             </p>
         </div>
         <div class="moreinfo">
@@ -13,7 +13,7 @@
                 <img src="{{ asset('assets/svg/g_info.svg') }}" alt="info">
             </figure>
             <p class="mb-0 ms-2 primary-color">
-                More info
+            {{ __('booking.More info') }}
             </p>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <input type="hidden" name="method" value="" id="method">
     </form>
     <div class="payment_card_data mt-4">
-        <h6 class="mb-0 ct_h6">Select your payment method</h6>
+        <h6 class="mb-0 ct_h6">   {{ __('booking.Select your payment method') }}</h6>
         <div class="row mt-3">
             @if (count($payment_methods))
                 @foreach ($payment_methods as $key =>  $payment_method)

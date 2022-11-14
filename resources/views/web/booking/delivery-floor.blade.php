@@ -5,7 +5,7 @@
                 <img src="{{ asset('assets/svg/group.svg') }}" alt="group">
             </figure>
             <p class="mb-0 ms-2 primary-color ">
-                Extra Help
+            {{ __('booking.Extra Help') }}
             </p>
         </div>
         <div class="moreinfo">
@@ -13,7 +13,7 @@
                 <img src="{{ asset('assets/svg/g_info.svg') }}" alt="info">
             </figure>
             <p class="mb-0 ms-2 primary-color ">
-                More info
+            {{ __('booking.More info') }}
             </p>
         </div>
     </div>
@@ -27,8 +27,8 @@
             value="{{ $booking->booking_data($parcel_details, 'pickup_floor', 'id') }}">
     </form>
     <div class="card_data mt-4">
-        <h6>Delivey: Where does everything go?</h6>
-        <p class="mb-0 pl_des">The damage insurance applies from door to door and not indoord.</p>
+        <h6> {{ __('booking.Delivery') }}</h6>
+        <p class="mb-0 pl_des">{{ __('booking.The damage insurance applies from door to door and not indoord') }}</p>
         @php
             $type = 'delivery_';
         @endphp
