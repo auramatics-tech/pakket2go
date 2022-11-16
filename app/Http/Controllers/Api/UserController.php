@@ -314,6 +314,14 @@ class UserController extends BaseController
         }
     }
 
+    public function my_profile(){
+        $user_data = Auth::user();
+        $success['id'] =  $user_data->id;
+        $success['user'] =  $this->user_data($user_data);
+
+        return $this->sendResponse($success, 'User updated successfully');
+    }
+
     protected function save_user_data($request)
     {
         $data = [

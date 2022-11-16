@@ -43,6 +43,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
     Route::post('/reset-password', [UserController::class, 'reset_password']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('/my-profile', [UserController::class, 'my_profile']);
         Route::post('/update-profile', [UserController::class, 'update_profile']);
         Route::post('/update-password', [UserController::class, 'update_password']);
         Route::get('/bookings', [UserController::class, 'my_bookings']);
