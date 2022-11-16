@@ -387,6 +387,7 @@ class UserController extends BaseController
 
         $user->isCompany = ($user->user_type != 'courier') ? 1 : 0;
         $user->companyname =  ($user->isCompany) ? $user->name : '';
+        $user->documents_verified  = ($user->documents_verified == 1) ? 1 : 0 ;
         $user->documentsUploaded = ($user->front_driving_license && $user->back_driving_license) ? 1 : 0;
         return $user;
     }
