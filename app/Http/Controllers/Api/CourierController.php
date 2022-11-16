@@ -275,11 +275,11 @@ class CourierController extends BaseController
         }
 
         $user->documents_verified = 0;
-        $user->documentsUploaded  = 1;
         $user->iban = $request->iban;
         $user->holder_name = $request->holder_name;
         $user->save();
 
+        $user->documentsUploaded  = 1;
         $user->front_driving_license= asset($user->front_driving_license);
         $user->back_driving_license= asset($user->back_driving_license);
         $user->chamber_of_commerce= asset($user->chamber_of_commerce);
