@@ -12,6 +12,7 @@ use App\Models\Booking;
 use App\Models\BookingTracking;
 use App\Models\CourierCanceledBookings;
 use App\Models\UserLocation;
+use App\Models\User;
 
 use Auth;
 use Image;
@@ -227,6 +228,17 @@ class CourierController extends BaseController
 
     public function update_documents(Request $request)
     {
+        $validator = \Validator::make($request->all(), [
+            'iban' => 'required',
+            'holder_name' => 'required',
+            'front_driving_license' => 'required',
+            'back_driving_license' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['result' => "", 'status' => false, 'message' => "Validation Error"], 200);
+        }
+
         if ($request->front_driving_license) {
             $front_driving_license = "document_" . time() . ".png";
             $storage_path = '/storage/uploads/user/' . Auth::id() . '/documents';
@@ -262,6 +274,8 @@ class CourierController extends BaseController
 
         $user = User::find(Auth::id());
         $user->documents_verified = 0;
+        $user->iban = $request->iban;
+        $user->holder_name = $request->holder_name;
         $user->front_driving_license = (isset($front_driving_license) && $front_driving_license) ?? asset($front_driving_license);
         $user->back_driving_license = (isset($back_driving_license) && $back_driving_license) ?? asset($back_driving_license);
         $user->chamber_of_commerce = (isset($chamber_of_commerce) && $chamber_of_commerce) ?? asset($chamber_of_commerce);

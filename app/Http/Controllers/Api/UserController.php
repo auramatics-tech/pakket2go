@@ -378,13 +378,15 @@ class UserController extends BaseController
             'user_type',
             'device_token',
             'documents_verified',
+            'front_driving_license',
+            'back_driving_license',
             DB::raw("(CONCAT('$url',profile_pic)) as profilepic")
         )
             ->find($user->id);
 
         $user->isCompany = ($user->user_type != 'courier') ? 1 : 0;
         $user->companyname =  ($user->isCompany) ? $user->name : '';
-
+        $user->documentsUploaded = ($user->front_driving_license && $user->back_driving_license) ? 1 : 0;
         return $user;
     }
 }
