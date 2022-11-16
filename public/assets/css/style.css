@@ -3265,3 +3265,9 @@ p.dis_content {
 .download_pdf_btn:hover{
     color: #FFFFFF;
 }
+
+/* pop up set start */
+.width_popup_detail{
+    max-width: 90%;
+}
+/* pop up set end */

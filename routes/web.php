@@ -73,6 +73,8 @@ Route::prefix('{locale?}')
                 Route::get('/my-deliveries', [UserController::class, 'my_deliveries'])->name('my_deliveries');
                 Route::get('/order-detail/{id}', [UserController::class, 'booking_details'])->name('booking.details');
                 Route::get('booking-invoice/{id}', [UserController::class, 'booking_invoice'])->name('booking.invoice');
+                Route::get('get-invoice-data/{id}', [UserController::class, 'get_invoice_data'])->name('get_invoice_data');
+                Route::get('new-invoice', [UserController::class, 'new_invoice'])->name('new_invoice');
             });
         });
     });

@@ -29,38 +29,39 @@ class UserController extends Controller
     {
         $status = ($request->status) ? $request->status : 'ready-to-pickup';
         if (Auth::user()->user_type == 'courier')
-            $bookings = Booking::when(isset($request->latlong) && $request->latlong, function ($query) use ($request) {
-                $latlng = explode(',', $request->latlong);
+            $bookings = Booking::all();
+            // when(isset($request->latlong) && $request->latlong, function ($query) use ($request) {
+            //     $latlng = explode(',', $request->latlong);
 
-                $query->select(
-                    'bookings.*',
-                    DB::raw('SQRT( POW(69.1 * (`pickup_lat` - ' . $latlng[0] . '), 2) + POW(69.1 * (' . $latlng[1] . ' - `pickup_lng`) * COS(`pickup_lat` / 57.3), 2)) AS distance')
-                )
-                    ->join('booking_address', 'booking_address.booking_id', '=', 'bookings.id');
-            }, function ($query) {
-                $user = User::find(Auth::id());
-                $lat = $user->last_location->latitude;
-                $lng = $user->last_location->longitude;
-                $query->select(
-                    'bookings.*',
-                    DB::raw('SQRT( POW(69.1 * (`pickup_lat` - ' . $lat . '), 2) + POW(69.1 * (' . $lng . ' - `pickup_lng`) * COS(`pickup_lat` / 57.3), 2)) AS distance')
-                )
-                    ->join('booking_address', 'booking_address.booking_id', '=', 'bookings.id');
-            })
-                ->when($status, function ($query) use ($status) {
-                    $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
-                        ->where(function ($q)  use ($status) {
-                            $q->where('booking_status.status_type', $status)->orwhere("booking_status.status", $status);
-                        });
-                })
-                ->whereNotIn('bookings.id', function ($query) {
-                    $query->select('booking_id')
-                        ->from("courier_canceled_bookings")
-                        ->where('user_id', Auth::id());
-                })
-                ->having("distance", "<=", 45)
-                ->whereNull("courier_user_id")
-                ->get();
+            //     $query->select(
+            //         'bookings.*',
+            //         DB::raw('SQRT( POW(69.1 * (`pickup_lat` - ' . $latlng[0] . '), 2) + POW(69.1 * (' . $latlng[1] . ' - `pickup_lng`) * COS(`pickup_lat` / 57.3), 2)) AS distance')
+            //     )
+            //         ->join('booking_address', 'booking_address.booking_id', '=', 'bookings.id');
+            // }, function ($query) {
+            //     $user = User::find(Auth::id());
+            //     $lat = $user->last_location->latitude;
+            //     $lng = $user->last_location->longitude;
+            //     $query->select(
+            //         'bookings.*',
+            //         DB::raw('SQRT( POW(69.1 * (`pickup_lat` - ' . $lat . '), 2) + POW(69.1 * (' . $lng . ' - `pickup_lng`) * COS(`pickup_lat` / 57.3), 2)) AS distance')
+            //     )
+            //         ->join('booking_address', 'booking_address.booking_id', '=', 'bookings.id');
+            // })
+            //     ->when($status, function ($query) use ($status) {
+            //         $query->join('booking_status', 'booking_status.id', '=', 'bookings.status')
+            //             ->where(function ($q)  use ($status) {
+            //                 $q->where('booking_status.status_type', $status)->orwhere("booking_status.status", $status);
+            //             });
+            //     })
+            //     ->whereNotIn('bookings.id', function ($query) {
+            //         $query->select('booking_id')
+            //             ->from("courier_canceled_bookings")
+            //             ->where('user_id', Auth::id());
+            //     })
+            //     ->having("distance", "<=", 45)
+            //     ->whereNull("courier_user_id")
+            //     ->get();
         else
             $bookings = Booking::where("user_id", Auth::id())->latest()->get();
 
@@ -97,5 +98,16 @@ class UserController extends Controller
 
         $pdf = Pdf::loadView('web.user.invoice', ['booking' => $booking, 'booking_details' => $booking_details]);
         return $pdf->download("$booking->booking_code.pdf");
+    }
+    public function get_bookin_detail(Request $request){
+
+        $html = view('web.user.booking_detail')->render();
+        return response($html);
+    }
+
+    public function new_invoice(){
+    //    return view ('web.user.new_invoice');
+    $pdf = Pdf::loadView('web.user.new_invoice');
+    return $pdf->download("booking_code.pdf");
     }
 }

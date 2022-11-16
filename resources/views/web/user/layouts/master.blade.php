@@ -162,5 +162,6 @@
         }, 300000);
     @endif
 </script>
+@yield('script')
 
 </html>
