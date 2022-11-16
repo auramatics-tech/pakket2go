@@ -319,7 +319,7 @@ class UserController extends BaseController
         $success['id'] =  $user_data->id;
         $success['user'] =  $this->user_data($user_data);
 
-        return $this->sendResponse($success, 'User updated successfully');
+        return $this->sendResponse($success, 'My profile successfully');
     }
 
     protected function save_user_data($request)
