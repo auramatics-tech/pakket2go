@@ -378,8 +378,9 @@ class UserController extends BaseController
             'user_type',
             'device_token',
             'documents_verified',
-            'front_driving_license',
-            'back_driving_license',
+            DB::raw("(CONCAT('$url',front_driving_license)) as front_driving_license"),
+            DB::raw("(CONCAT('$url',back_driving_license)) as back_driving_license"),
+            DB::raw("(CONCAT('$url',chamber_of_commerce)) as chamber_of_commerce"),
             DB::raw("(CONCAT('$url',profile_pic)) as profilepic")
         )
             ->find($user->id);
