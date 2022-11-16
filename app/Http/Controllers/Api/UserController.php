@@ -118,7 +118,7 @@ class UserController extends BaseController
 
     public function my_bookings(Request $request)
     {
-        $bookings = Booking::where(function ($query) {
+        $bookings = Booking::select('bookings.*')->where(function ($query) {
             $query->where('user_id', Auth::id())->orwhere('courier_user_id', Auth::id());
         })
             ->when(isset($request->type) && $request->type, function ($query) use ($request) {
@@ -314,6 +314,14 @@ class UserController extends BaseController
         }
     }
 
+    public function my_profile(){
+        $user_data = Auth::user();
+        $success['id'] =  $user_data->id;
+        $user =  $this->user_data($user_data);
+
+        return $this->sendResponse($user, 'My profile successfully');
+    }
+
     protected function save_user_data($request)
     {
         $data = [
@@ -378,13 +386,17 @@ class UserController extends BaseController
             'user_type',
             'device_token',
             'documents_verified',
+            DB::raw("(CONCAT('$url',front_driving_license)) as front_driving_license"),
+            DB::raw("(CONCAT('$url',back_driving_license)) as back_driving_license"),
+            DB::raw("(CONCAT('$url',chamber_of_commerce)) as chamber_of_commerce"),
             DB::raw("(CONCAT('$url',profile_pic)) as profilepic")
         )
             ->find($user->id);
 
         $user->isCompany = ($user->user_type != 'courier') ? 1 : 0;
         $user->companyname =  ($user->isCompany) ? $user->name : '';
-
+        $user->documents_verified  = ($user->documents_verified == 1) ? 1 : 0 ;
+        $user->documentsUploaded = ($user->front_driving_license && $user->back_driving_license) ? 1 : 0;
         return $user;
     }
 }

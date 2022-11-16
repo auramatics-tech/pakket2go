@@ -99,8 +99,7 @@ class Booking extends Model
             'phone_number_verified',
             'password',
             'user_type',
-            'device_token',
-            'documents_verified',
+            'device_token'
         );
     }
 }

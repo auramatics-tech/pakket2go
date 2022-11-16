@@ -29,34 +29,49 @@
             <tbody style="">
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #000000;">#31djh2jbn45 <span style="background: #EEF8F0;border: 1.24569px solid #D9D9D9;border-radius: 62.2845px;font-weight: 500;font-size: 17px;line-height: 26px;color: #000000;    margin-left: 10px;padding: 7px 15px;">Active</span></p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #000000;">{{ $booking->booking_code }}<span style="background: #EEF8F0;border: 1.24569px solid #D9D9D9;border-radius: 62.2845px;font-weight: 500;font-size: 17px;line-height: 26px;color: #000000;margin-left: 10px;padding: 7px 15px;">Ready to Pickup</span></p>   
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Small Package</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Distance ({{ $booking->address->distance }} Km)</p>
                     </th>
+                    @if (Auth::user()->user_type != 'courier')
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 20.00</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€
+                            {{ number_format($booking->distance_price, 2) }}
+                        </p>
                     </th>
+                    @endif
                 </tr>
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="margin: 0px;font-weight: 600;font-size: 17px;line-height: 26px;color: #FC4C00;">€ 30.00 </p>
+
+                        <p style="margin: 0px;font-weight: 600;font-size: 17px;line-height: 26px;color: #FC4C00;">€{{ Auth::user()->user_type == 'courier' && Auth::user()->id != $booking->id ? number_format($booking->courier_price, 2) : number_format($booking->final_price, 2) }}</p>
+
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">12.5 x 11 x 10 cm</p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">{{ $booking->booking_data($booking_details, 'parcel_type', 'name') }}</p>
                     </th>
+
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 0.00</p>
+                        @if (Auth::user()->user_type != 'courier')
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;"> €{{ $booking->booking_data($booking_details, 'parcel_type', 'price') }}
+                        </p>
+                        @endif
                     </th>
+
                 </tr>
                 <tr>
                     <th style="text-align: left;width:50%">
                     </th>
                     <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Extra person needed to carry </p>
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">{{ $booking->booking_data($booking_details, 'extra_help', 'name') }} </p>
                     </th>
                     <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
+                        @if (Auth::user()->user_type != 'courier')
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€
+                            {{ $booking->booking_data($booking_details, 'extra_help', 'price') }}
+                        </p>
+                        @endif
                     </th>
                 </tr>
             </tbody>
@@ -66,37 +81,12 @@
             <tbody style="">
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;color: #FC4C00;margin:0px;">From >> <span style="font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">20 Ranipukur Lane, PO 234, Noord-Holland</span> </p>
+                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;color: #FC4C00;margin:0px;">From >> <span style="font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;"> {{ $booking->address->pickup_address }}</span> </p>
                     </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Friday, 07 September 2022</p>
-                    </th>
-                    <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 0.00</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th style="text-align: left;width:50%">
-
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Ground Floor</p>
-                    </th>
-                    <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 0.00</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th style="text-align: left;width:50%">
-                        <!-- <img style="margin: 0px 10px;" src="http://localhost:8000/assets/svg/truck_svg.svg" alt="">
-                        <img style="margin: 0px 10px;" src="http://localhost:8000/assets/svg/person_with_order.svg" alt="">
-                        <img style="margin: 0px 10px;" src="http://localhost:8000/assets/svg/order_loading.svg" alt=""> -->
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Extra person needed to carry </p>
-                    </th>
-                    <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
+                    <th style="text-align:left;width:50%">
+                        @if ($booking->booking_data($booking_details, 'pickup_date', 'date'))
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;"> {{ date('l, d F Y', strtotime($booking->booking_data($booking_details, 'pickup_date', 'date'))) }}</p>
+                        @endif
                     </th>
                 </tr>
             </tbody>
@@ -106,24 +96,12 @@
             <tbody style="">
                 <tr>
                     <th style="text-align: left;width:50%">
-                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;color: #01B537;margin:0px;">To >> <span style="font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Mirja Bazar, PO 1234, Zuid-Holland</span> </p>
+                        <p style="font-weight: 600;font-size: 17px;line-height: 26px;color: #01B537;margin:0px;">To >> <span style="font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;"> {{ $booking->address->delivery_address }}</span> </p>
                     </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Sunday, 09 September 2022</p>
-                    </th>
-                    <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th style="text-align: left;width:50%">
-
-                    </th>
-                    <th style="text-align:left;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">2nd Floor</p>
-                    </th>
-                    <th style="text-align:right;width:25%">
-                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">€ 10.00</p>
+                    <th style="text-align:left;width:50%">
+                        @if ($booking->booking_data($booking_details, 'pickup_date', 'date'))
+                        <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">{{ date('l, d F Y', strtotime($booking->booking_data($booking_details, 'pickup_date', 'date'))) }}</p>
+                        @endif
                     </th>
                 </tr>
             </tbody>
@@ -137,7 +115,9 @@
                         <p style="margin: 0px;font-weight: 500;font-size: 17px;line-height: 26px;color: #313131;">Total Price</p>
                     </th>
                     <th style="text-align:right; width:25%">
-                        <p style="font-weight: 700;font-size: 17px;line-height: 26px;color: #FC4C00;margin:0px;">€ 40 .00</p>
+                        <p style="font-weight: 700;font-size: 17px;line-height: 26px;color: #FC4C00;margin:0px;">€
+                            {{ Auth::user()->user_type == 'courier' && Auth::user()->id != $booking->id ? number_format($booking->courier_price, 2) : number_format($booking->final_price, 2) }}
+                        </p>
                     </th>
                 </tr>
             </tbody>
@@ -184,21 +164,21 @@
         </table>
 
         <table style="width:100%;  margin:10px 0px;">
-        <tbody>
-            <tr>
-                 <th style="width:50%;text-align:left;" >
-                    <p style="font-weight: 400;font-size: 18.06px;line-height: 20px;color: #FFFFFF;margin:0px;">We connect customers and couriers. As experienced entrepreneurs with different expertise, we simplify the transport of goods for companies and couriers.</p>
-                </th>
-                <th style="width:50%;text-align:left;">
-                 <ul style="list-style-type:none;padding:0px;">
-                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Facebook</li>
-                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Instagram</li>
-                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Twitter</li>
-                    <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">LinkedIn</li>
-                 </ul>
-                </th>
-            </tr>
-        </tbody>
+            <tbody>
+                <tr>
+                    <th style="width:50%;text-align:left;">
+                        <p style="font-weight: 400;font-size: 18.06px;line-height: 20px;color: #FFFFFF;margin:0px;">We connect customers and couriers. As experienced entrepreneurs with different expertise, we simplify the transport of goods for companies and couriers.</p>
+                    </th>
+                    <th style="width:50%;text-align:left;">
+                        <ul style="list-style-type:none;padding:0px;">
+                            <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Facebook</li>
+                            <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Instagram</li>
+                            <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">Twitter</li>
+                            <li style="font-weight: 400;font-size: 18.0576px;line-height: 23px;color: #FFFFFF;margin:0px;">LinkedIn</li>
+                        </ul>
+                    </th>
+                </tr>
+            </tbody>
         </table>
 
         <table style="background: #01B537;border-radius: 20px;width: 100%;margin: auto;">

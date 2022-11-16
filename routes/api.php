@@ -43,6 +43,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
     Route::post('/reset-password', [UserController::class, 'reset_password']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('/my-profile', [UserController::class, 'my_profile']);
         Route::post('/update-profile', [UserController::class, 'update_profile']);
         Route::post('/update-password', [UserController::class, 'update_password']);
         Route::get('/bookings', [UserController::class, 'my_bookings']);
@@ -54,6 +55,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
         Route::get('/booking/invoice', [BookingController::class, 'invoice']);
 
         Route::group(['prefix' => 'courier'], function () {
+            Route::post('/update-documents', [CourierController::class, 'update_documents']);
             Route::get('/bookings/{status?}', [CourierController::class, 'bookings']);
             Route::post('/booking/{status}', [CourierController::class, 'update_booking']);
             Route::get('/earnings', [CourierController::class, 'earnings']);

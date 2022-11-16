@@ -12,6 +12,7 @@ use App\Models\Booking;
 use App\Models\BookingTracking;
 use App\Models\CourierCanceledBookings;
 use App\Models\UserLocation;
+use App\Models\User;
 
 use Auth;
 use Image;
@@ -223,5 +224,66 @@ class CourierController extends BaseController
         $data['totalearn'] = number_format($total_earnings);
 
         return $this->sendResponse($data, 'Earnings fetched successfully.');
+    }
+
+    public function update_documents(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'iban' => 'required',
+            'holder_name' => 'required',
+            'front_driving_license' => 'required',
+            'back_driving_license' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['result' => "", 'status' => false, 'message' => "Validation Error"], 200);
+        }
+
+        $user = User::find(Auth::id());
+
+        if ($request->front_driving_license) {
+            $front_driving_license = "document_" . time() . ".png";
+            $storage_path = '/storage/uploads/user/' . Auth::id() . '/documents';
+            $path = public_path($storage_path) . '/' . $front_driving_license;
+            if (!File::exists($path)) {
+                File::makeDirectory($path . 'original', 0775, true, true);
+            }
+            Image::make(file_get_contents($request->front_driving_license))->save($path);
+            $user->front_driving_license = $storage_path . '/' . $front_driving_license;
+        }
+
+        if ($request->back_driving_license) {
+            $back_driving_license = "document_" . time() . ".png";
+            $storage_path = '/storage/uploads/user/' . Auth::id() . '/documents';
+            $path = public_path($storage_path) . '/' . $back_driving_license;
+            if (!File::exists($path)) {
+                File::makeDirectory($path . 'original', 0775, true, true);
+            }
+            Image::make(file_get_contents($request->back_driving_license))->save($path);
+            $user->back_driving_license = $storage_path . '/' . $back_driving_license;
+        }
+
+        if ($request->chamber_of_commerce) {
+            $chamber_of_commerce = "document_" . time() . ".png";
+            $storage_path = '/storage/uploads/user/' . Auth::id() . '/documents';
+            $path = public_path($storage_path) . '/' . $chamber_of_commerce;
+            if (!File::exists($path)) {
+                File::makeDirectory($path . 'original', 0775, true, true);
+            }
+            Image::make(file_get_contents($request->chamber_of_commerce))->save($path);
+            $user->chamber_of_commerce = $storage_path . '/' . $chamber_of_commerce;
+        }
+
+        $user->documents_verified = 0;
+        $user->iban = $request->iban;
+        $user->holder_name = $request->holder_name;
+        $user->save();
+
+        $user->documentsUploaded  = 1;
+        $user->front_driving_license= asset($user->front_driving_license);
+        $user->back_driving_license= asset($user->back_driving_license);
+        $user->chamber_of_commerce= asset($user->chamber_of_commerce);
+
+        return $this->sendResponse($user, 'Documents uploaded successfully. We will review and get back');
     }
 }

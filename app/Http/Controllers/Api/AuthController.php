@@ -78,11 +78,45 @@ class AuthController extends BaseController
 
         $success['id'] =  $user->id;
         $success['token'] =  $user->createToken('pakket2go')->plainTextToken;
-        $success['user'] =  $user;
+        $success['user'] =  $this->user_data($user);
 
         return $this->sendResponse($success, 'Login successfull.');
     }
+    protected function user_data($user)
+    {
+        $url = url('/');
+        $user = User::select(
+            'id',
+            'name',
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number as mobile_number',
+            'country_code',
+            'status',
+            'street',
+            'house_no as housenumber',
+            'zipcode',
+            'city as cityname',
+            'kvk_no as kvknumber',
+            'phone_number_verified',
+            'password',
+            'user_type',
+            'device_token',
+            'documents_verified',
+            DB::raw("(CONCAT('$url',front_driving_license)) as front_driving_license"),
+            DB::raw("(CONCAT('$url',back_driving_license)) as back_driving_license"),
+            DB::raw("(CONCAT('$url',chamber_of_commerce)) as chamber_of_commerce"),
+            DB::raw("(CONCAT('$url',profile_pic)) as profilepic")
+        )
+            ->find($user->id);
 
+        $user->isCompany = ($user->user_type != 'courier') ? 1 : 0;
+        $user->companyname =  ($user->isCompany) ? $user->name : '';
+        $user->documents_verified  = ($user->documents_verified == 1) ? 1 : 0 ;
+        $user->documentsUploaded = ($user->front_driving_license && $user->back_driving_license) ? 1 : 0;
+        return $user;
+    }
     public function countries()
     {
         $countries = Countries::all();
