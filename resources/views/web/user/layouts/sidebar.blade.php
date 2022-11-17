@@ -76,7 +76,9 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="su_menu_title">
-                                    <span class="side_bar_text">Dashboard</span>
+                                    <span class="side_bar_text">
+                                    {{ __('user.Dashboard') }}    
+                                    </span>
                                 </span>
                             </span>
                         </a>
@@ -93,7 +95,9 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="su_menu_title">
-                                    <span class="side_bar_text">My Deliveries</span>
+                                    <span class="side_bar_text">
+                                    {{ __('user.My Deliveries') }}    
+                                    </span>
                                 </span>
                             </span>
                         </a>
@@ -110,13 +114,17 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="su_menu_title">
-                                    <span class="side_bar_text">All Chats</span>
+                                    <span class="side_bar_text">
+                                    {{ __('user.All Chats') }}    
+                                    </span>
                                 </span>
                             </span>
                         </a>
                     </div>
                     <hr class="dashboard_hr">
-                    <h5 class="su_About_Pakket2Go">About Pakket2Go</h5>
+                    <h5 class="su_About_Pakket2Go">
+                    {{ __('user.About Pakket2Go') }}     
+                    </h5>
                     <div class="su_padding_items">
                         <a href="{{ route('contact_us') }}" target="_blank">
                             <span class="">
@@ -128,7 +136,9 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="su_menu_title">
-                                    <span class="side_bar_text">Contact Us</span>
+                                    <span class="side_bar_text">
+                                    {{ __('user.Contact Us') }}
+                                    </span>
                                 </span>
                             </span>
                         </a>
@@ -144,7 +154,9 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="su_menu_title">
-                                    <span class="side_bar_text">Terms and Conditions</span>
+                                    <span class="side_bar_text">
+                                    {{ __('user.Terms and Conditions') }}
+                                    </span>
                                 </span>
                             </span>
                         </a>
@@ -160,7 +172,9 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="su_menu_title">
-                                    <span class="side_bar_text">Privacy Policy</span>
+                                    <span class="side_bar_text">
+                                    {{ __('user.Privacy Policy') }}
+                                    </span>
                                 </span>
                             </span>
                         </a>
@@ -176,7 +190,9 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="su_menu_title">
-                                    <span class="side_bar_text">Share App</span>
+                                    <span class="side_bar_text">
+                                    {{ __('user.Share App') }}
+                                    </span>
                                 </span>
                             </span>
                         </a>
@@ -199,7 +215,9 @@
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="su_menu_title ">
-                                        <span class="su_logout_red side_bar_text">Log-out</span>
+                                        <span class="su_logout_red side_bar_text">
+                                        {{ __('user.Log-out') }}
+                                        </span>
                                     </span>
                                 </span>
                             </button>

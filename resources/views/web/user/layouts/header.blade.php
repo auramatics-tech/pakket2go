@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center justify-content-between su_navbar_padding">
             <div class="d-flex align-items-center">
                 @if (Auth::user()->user_type == 'courier')
-                    <h2 class="su_navbar_heading">Want to deliver packages/products?</h2>
+                    <h2 class="su_navbar_heading"> {{ __('user.Want to deliver packages/products?') }}</h2>
                 @else
                     <h2 class="su_navbar_heading">Want to deliver your packages/products?</h2>
                     <a class="su_Book_Transport" href="{{ route('booking') }}">Book a Transport >></a>

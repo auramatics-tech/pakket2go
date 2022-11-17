@@ -6,10 +6,17 @@
         <div class="toolbar su_padding_toolbar" id="kt_toolbar">
             <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
                 <div class="su_cou_width_30">
-                    <h3 class="Track_orders">Order Details</h3>
+                    <h3 class="Track_orders">
+                    {{ __('user.Order Details') }}    
+                    </h3>
                 </div>
                 <div>
-                    <a class="download_pdf_btn" href="{{ route('booking.invoice', ['id' => $booking->booking_code]) }}">Download Invoice</a>
+                    <a class="download_pdf_btn" href="{{ route('booking.invoice', ['id' => $booking->booking_code]) }}">
+                    {{ __('user.Download Invoice') }}
+                    </a>
+                </div>
+                <div>
+                    <a href="{{route('new_invoice')}}">Download New Invoice</a>
                 </div>
             </div>
         </div>
@@ -117,7 +124,9 @@
                                             <tr class="su_display_grid_sm">
                                                 <td class="su_order_width_40">
                                                     <div class="su_flex align-items-basline">
-                                                        <div class="su_from_text su_margin_right_20 su_sm_ml">From >></div>
+                                                        <div class="su_from_text su_margin_right_20 su_sm_ml">
+                                                        {{ __('user.From >>') }}    
+                                                        </div>
                                                         <div class="su_order_details_text">
                                                             {{ $booking->address->pickup_address }}</div>
                                                     </div>
@@ -176,7 +185,9 @@
                                             <tr class="su_display_grid_sm">
                                                 <td class="su_order_width_40">
                                                     <div class="d-flex align-items-basline">
-                                                        <div class="su_to_text su_margin_right_20 su_sm_ml">To >></div>
+                                                        <div class="su_to_text su_margin_right_20 su_sm_ml">
+                                                        {{ __('user.To >>') }}     
+                                                        </div>
                                                         <div class="su_order_details_text">
                                                             {{ $booking->address->delivery_address }}
                                                         </div>
@@ -235,7 +246,8 @@
                                                     <div class="su_flex_column">
                                                         <div>
                                                             <div class="d-flex justify-content-between align_items-center">
-                                                                <div class="su_total_details su_margin_y_12">Total Price
+                                                                <div class="su_total_details su_margin_y_12">
+                                                                {{ __('user.Total Price') }}
                                                                 </div>
                                                                 <div class="su_total_details_price su_margin_y_12"><a
                                                                         href="javascript:void(0);">€

@@ -58,4 +58,7 @@ class HomeController extends Controller
         // return $pdf->download('invoice.pdf');
         return view('web.order_detail_invoice_pdf');
     }
+    public function upload_document(){
+        return view('web.upload_document');
+    }
 }

@@ -48,6 +48,7 @@ Route::prefix('{locale?}')
         Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
         Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+        Route::get('/upload-document', [HomeController::class, 'upload_document'])->name('upload_document');
 
 
         // Route::get('/dashboard-courier', [HomeController::class, 'dashboard_courier'])->name('dashboard_courier');
@@ -73,6 +74,9 @@ Route::prefix('{locale?}')
                 Route::get('/my-deliveries', [UserController::class, 'my_deliveries'])->name('my_deliveries');
                 Route::get('/order-detail/{id}', [UserController::class, 'booking_details'])->name('booking.details');
                 Route::get('booking-invoice/{id}', [UserController::class, 'booking_invoice'])->name('booking.invoice');
+                Route::get('get-invoice-data/{id}', [UserController::class, 'get_invoice_data'])->name('get_invoice_data');
+                Route::get('get-booking-detail', [UserController::class, 'get_booking_detail'])->name('get_booking_detail');
+                Route::get('new-invoice', [UserController::class, 'new_invoice'])->name('new_invoice');
             });
         });
     });
