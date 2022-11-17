@@ -41,6 +41,26 @@
                                 <p class="su_upload_Drag_para_green">Maximum file size 100 MB</p>
                             </div>
                         </div>
+                        <div class="su_upload_bg_light mt-4">
+                            <div class="d-lg-flex d-md-block d-flex">
+                                <div>
+                                    <div class="su_license_img">
+                                        <img src="{{ asset('assets/img/license.png') }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="ms-2">
+                                    <p class="su_license_details">Driver's license Front.jpg</p>
+                                    <p class="su_license_details">222 KB</p>
+                                </div>
+                                <div class="d-flex align-items-center ms-auto">
+                                    <div>
+                                        <a href="">
+                                    <img src="{{ asset('assets/svg/cross_icon.svg') }}" alt="">
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 su_upload_768_margin">
                         <div class="text-center">
@@ -55,6 +75,26 @@
                                 <p class="su_upload_Drag_or">or</p>
                                 <button class="su_upload_sm_btn">Broswe Files</button>
                                 <p class="su_upload_Drag_para_green">Maximum file size 100 MB</p>
+                            </div>
+                        </div>
+                        <div class="su_upload_bg_light mt-4">
+                            <div class="d-lg-flex d-md-block d-flex">
+                                <div>
+                                    <div class="su_license_img">
+                                        <img src="{{ asset('assets/img/license.png') }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="ms-2">
+                                    <p class="su_license_details">Driver's license Front.jpg</p>
+                                    <p class="su_license_details">222 KB</p>
+                                </div>
+                                <div class="d-flex align-items-center ms-auto">
+                                    <div>
+                                        <a href="">
+                                    <img src="{{ asset('assets/svg/cross_icon.svg') }}" alt="">
+                                    </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -73,62 +113,14 @@
                                 <p class="su_upload_Drag_para_green">Maximum file size 100 MB</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row my-4">
-                    <div class="col-lg-4 col-md-4 col-12 su_upload_768_margin">
-                        <div class="su_upload_bg_light">
-                            <div class="d-lg-flex d-md-block d-block">
-                                <div>
-                                    <div class="su_license_img">
-                                        <img src="{{ asset('assets/img/license.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="ms-2">
-                                    <p class="su_license_details">Driver's license Front.jpg</p>
-                                    <p class="su_license_details">222 KB</p>
-                                </div>
-                                <div class="d-flex align-items-center ms-auto">
-                                    <div>
-                                        <a href="">
-                                    <img src="{{ asset('assets/svg/cross_icon.svg') }}" alt="">
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12 su_upload_768_margin">
-                        <div class="su_upload_bg_light">
-                            <div class="d-lg-flex d-md-block d-block">
-                                <div>
-                                    <div class="su_license_img">
-                                        <img src="{{ asset('assets/img/license.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="ms-2">
-                                    <p class="su_license_details">Driver's license Front.jpg</p>
-                                    <p class="su_license_details">222 KB</p>
-                                </div>
-                                <div class="d-flex align-items-center ms-auto">
-                                    <div>
-                                        <a href="">
-                                    <img src="{{ asset('assets/svg/cross_icon.svg') }}" alt="">
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12 su_upload_768_margin">
-                        <div class="su_upload_bg_light">
+                        <div class="su_upload_bg_light mt-4">
                                 <div class="text-center">
                                     <p class="su_license_details">No File Chosen</p>
                                 </div>
                         </div>
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="text-center mt-4">
                     <button class="su_upload_button">Continue <span class="">>></span></button>
                 </div>
         </form>

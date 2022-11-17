@@ -1056,7 +1056,54 @@
  }
 
  @media only screen and (max-width: 480px) {
-
+    .su_upload_button {
+        padding: 5px 35px 8px 35px;
+        font-size: 15.3099px;
+        line-height: 23px;
+    }
+    .su_upload_sm_btn {
+        font-size: 11.1085px;
+        line-height: 17px;
+    }
+    .su_upload_para {
+        font-size: 17px;
+        line-height: 26px;
+    }
+    .su_upload_input {
+        font-size: 13.9394px;
+        line-height: 21px;
+    }
+    .su_upload_input::placeholder{
+        font-size: 13.9394px;
+        line-height: 21px;
+    }
+    .su_upload_label {
+        font-size: 13.9394px;
+        line-height: 21px;
+    }
+    .su_Upload_heading {
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 26px;
+    }
+    .su_license_img {
+        width: 90px;
+        height: 60px;
+    }
+    .su_license_details {
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .su_upload_Drag_para{
+        display: none;
+    }
+    .su_upload_Drag_or{
+        display: none;
+    }
+    .su_upload_sm_btn {
+        margin-top: 12px;
+    }
      /* sumit code start  */
      .su_upload_border {
         margin: 15px;
