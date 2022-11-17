@@ -99,7 +99,7 @@ class UserController extends Controller
         $pdf = Pdf::loadView('web.user.invoice', ['booking' => $booking, 'booking_details' => $booking_details]);
         return $pdf->download("$booking->booking_code.pdf");
     }
-    public function get_bookin_detail(Request $request){
+    public function get_booking_detail(Request $request){
 
         $html = view('web.user.booking_detail')->render();
         return response($html);

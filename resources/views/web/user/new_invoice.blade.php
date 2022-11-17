@@ -10,9 +10,9 @@
 
 <body>
     <section>
-        <!-- <div style="width: 300px;height: 70px;">
-            <img style="width:100%;height:100%;" src="{{ asset('assets/img/logo_black.png') }}" alt="">
-        </div> -->
+        <div style="width: 300px;height: 70px;">
+            <img style="width:100%;height:100%;" src="{{ public_path('assets/img/logo_black.png') }}" alt="">
+        </div>
     </section>
     <section>
         <h3 style="font-weight: 700;font-size: 22px;line-height: 22px;color: #25282B;margin: 10px 0px;">DELIVERY NOTE</h3>
@@ -53,7 +53,7 @@
                 </tr>
             </tbody>
         </table>
-        <table style="width:100%;border-collapse: collapse;margin: 25px 0px;">
+        <table style="width:100%;border-collapse: collapse;margin: 25px 0px;background-position: center;background-repeat: no-repeat;background-size: 40% 60%; background-image:url({{ public_path('assets/img/Pakket2go_img_bg.png') }}); ">
             <tbody>
                 <tr>
                     <th style="width:5%;text-align: center;padding: 10px 15px;background: #01B636;border-radius: 8px 0px 0px 8px">
@@ -196,7 +196,7 @@
             </tbody>
         </table>
         <h3 style="font-weight: 700;font-size: 22px;line-height: 25px;color: #25282B;">Payment details</h3>
-     
+
         <table style="width:100%;">
             <tbody>
                 <tr>
@@ -214,6 +214,9 @@
                     </td>
                     <td style="width:20%;"></td>
                     <td style="width:30%;text-align: right;padding: 4px 0px;">
+                        <div style="width:100px;height:50;margin:auto;">
+                            <img style="width:100%;height:100%;" src="{{ public_path('assets/img/sign_invoice.png') }}" alt="">
+                        </div>
                         <div style="color:#1E1D1F;font-weight: 500;font-size: 18px;line-height: 20px;text-align: center;border-top:#525252 solid 1px;">Robert Smith</div>
                         <div style="color:#7B7B7B;font-weight: 500;font-size: 18px;line-height: 20px;text-align: center;">(Manager)</div>
                     </td>
@@ -221,22 +224,37 @@
             </tbody>
         </table>
 
-        <table style="width:100%;margin: 20px 0px;">
+        <table style="width:100%;margin: 20px;">
             <tbody>
                 <tr>
                     <th style="width:33%;">
-                        <div style="font-weight: 500;font-size: 18px;line-height: 20px;color: #323541;margin-left: 12px;">
-                            +123 456 789 10
+                        <div style="display: flex;">
+                            <div style="width: 35px;height: 35px;position:absolute;">
+                                <img style="width: 100%;height:100%;" src="{{ public_path('assets/img/call_invoice2.png') }}" alt="">
+                            </div>
+                            <div style="font-weight: 500;font-size: 18px;line-height: 20px;color: #323541;margin-left: 40px;text-align:left;">
+                                +123 456 789 10
+                            </div>
                         </div>
                     </th>
                     <th style="width:33%;">
-                        <div style="font-weight: 500;font-size: 18px;line-height: 20px;color: #323541;margin-left: 12px;">
+                        <div style="display: flex;">
+                            <div style="width: 35px;height: 35px;position:absolute;">
+                                <img style="width: 100%;height:100%;" src="{{ public_path('assets/img/invoice_pakket.png') }}" alt="">
+                            </div>
+                            <div style="font-weight: 500;font-size: 18px;line-height: 20px;color: #323541;margin-left: 40px;text-align:left;">
                             info.pakket2go.com
+                            </div>
                         </div>
                     </th>
                     <th style="width:33%;">
-                        <div style="font-weight: 500;font-size: 18px;line-height: 20px;color: #323541;margin-left: 12px;">
+                        <div style="display: flex;">
+                            <div style="width: 35px;height: 35px;position:absolute;">
+                                <img style="width: 100%;height:100%;" src="{{ public_path('assets/img/location_invoice.png') }}" alt="">
+                            </div>
+                            <div style="font-weight: 500;font-size: 18px;line-height: 20px;color: #323541;margin-left: 40px;text-align:left;">
                             123 street adderss, City, Country
+                            </div>
                         </div>
                     </th>
                 </tr>

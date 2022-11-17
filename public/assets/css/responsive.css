@@ -764,6 +764,9 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
+    .su_upload_768_margin{
+        margin: 15px 0px;
+    }
     .su_flex_block_at_767{
         display: block;
      }
@@ -1055,6 +1058,10 @@
  @media only screen and (max-width: 480px) {
 
      /* sumit code start  */
+     .su_upload_border {
+        margin: 15px;
+        padding: 10px;
+    }
      .width_popup_detail {
         max-width: 100%;
     }

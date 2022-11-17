@@ -226,7 +226,7 @@
 <script>
     $(document).on('click', '.su_item_name_btn', function() {
         $.ajax({
-            url: "{{route('get_bookin_detail')}}",
+            url: "{{route('get_booking_detail')}}",
             method: "POST",
             data: {
                 id: $(this).attr('data-id'),
