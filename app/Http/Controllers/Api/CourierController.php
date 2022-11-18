@@ -91,9 +91,9 @@ class CourierController extends BaseController
                     if ($status == 'accepted')
                         $q->where('booking_status.status_type', 'ready-to-pickup');
                     elseif ($status == 'pickedup')
-                        $q->where("booking_status.status", 'Accepted');
+                        $q->where("booking_status.status_type", 'accepted');
                     elseif ($status == 'delivered')
-                        $q->where("booking_status.status", 'Pickedup');
+                        $q->where("booking_status.status_type", 'pickedup');
                 });
         })
             ->whereNotIn('bookings.id', function ($query) {
@@ -142,7 +142,7 @@ class CourierController extends BaseController
                 $canceled_bookings->booking_id = $request->booking_id;
                 $canceled_bookings->save();
             }
-
+            $this->booking_data($booking);
             return $this->sendResponse([$booking], 'Booked ' . $status . ' successfully');
         }
 
