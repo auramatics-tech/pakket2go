@@ -77,6 +77,8 @@ Route::prefix('{locale?}')
                 Route::get('get-invoice-data/{id}', [UserController::class, 'get_invoice_data'])->name('get_invoice_data');
                 Route::get('get-booking-detail', [UserController::class, 'get_booking_detail'])->name('get_booking_detail');
                 Route::get('new-invoice', [UserController::class, 'new_invoice'])->name('new_invoice');
+                Route::get('chat', [UserController::class, 'chat'])->name('chat');
+                Route::get('chat-detail', [UserController::class, 'chat_detail'])->name('chat_detail');
             });
         });
     });

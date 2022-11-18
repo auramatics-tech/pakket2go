@@ -110,4 +110,12 @@ class UserController extends Controller
     $pdf = Pdf::loadView('web.user.new_invoice');
     return $pdf->download("booking_code.pdf");
     }
+
+    public function chat(){
+        return view('web.user.chat');
+    }
+
+    public function chat_detail(){
+        return view('web.user.chat_detail');
+    }
 }
