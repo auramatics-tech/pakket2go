@@ -6,7 +6,9 @@
         <div id="" class="su_container_dashboard_chat">
             <div class="su_user_name_and_back d-flex align-items-center justify-content-between">
                 <div class="">
-                    <img src="{{ asset('assets/svg/back_svg.svg') }}" alt="">
+                    <a href="">
+                        <img src="{{ asset('assets/svg/back_svg.svg') }}" alt="">
+                    </a>
                 </div>
                 <div>
                     <div class="d-flex align-items-center">
@@ -47,46 +49,34 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center su_padding_msg_send_input">
-                        <div class="su_chat_width_10"><img class="su_img_height" src="{{ asset('assets/svg/add_options.svg') }}" alt=""></div>
-                        <div class="su_chat_width_80">
-                            <form action="">
-                                <input type="text" class="su_msg_send_input smile" placeholder="Type a message">
-                            </form>
-                        </div>
-                        <div class="su_chat_width_10"><img class="su_img_height" src="{{ asset('assets/svg/send_msg_svg.svg') }}" alt=""></div>
+                    <div class="su_chat_width_10"><img class="su_img_height2" src="{{ asset('assets/svg/add_options.svg') }}" alt=""></div>
+                    <div class="su_chat_width_80">
+                        <form action="">
+                            <input type="text" class="su_msg_send_input smile" placeholder="Type a message">
+                        </form>
                     </div>
+                    <div class="su_chat_width_10"><img class="su_img_height" src="{{ asset('assets/svg/send_msg_svg.svg') }}" alt=""></div>
+                </div>
             </div>
         </div>
         <div class="width_35">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <div>
-                    <a class="su_chat_filter" href="">Filter</a>
+            <div class="su_Shared_Contents">Shared Contents</div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-12 my-4">
+                    <div class="su_Shared_Contents_img">
+                        <img src="{{ asset('assets/img/Shared_Contents1.png') }}" alt="">
+                    </div>
                 </div>
-                <div>
-                    <a class="su_chat_Reset" href="">Reset</a>
+                <div class="col-lg-6 col-md-12 col-12 my-4">
+                    <div class="su_Shared_Contents_img">
+                        <img src="{{ asset('assets/img/Shared_Contents2.png') }}" alt="">
+                    </div>
                 </div>
-            </div>
-            <div>
-                <p class="su_filter_heading su_Sort_By">Sort By</p>
-                <a class="" href="javascript:;">
-                    <div class="su_filter_select my-4">Date (new - old)</div>
-                </a>
-                <a class="" href="javascript:;">
-                    <div class="su_filter_select my-4">Alphabetically (a-z)</div>
-                </a>
-                <a class="" href="javascript:;">
-                    <div class="su_filter_select my-4">Date (old - new)</div>
-                </a>
-                <a class="" href="javascript:;">
-                    <div class="su_filter_select my-4">Alphabetically (z-a)</div>
-                </a>
-                <p class="su_filter_heading su_Sort_By">Sort By</p>
-                <a class="" href="javascript:;">
-                    <div class="su_filter_select my-4">All</div>
-                </a>
-                <a class="" href="javascript:;">
-                    <div class="su_filter_select my-4">Unread</div>
-                </a>
+                <div class="col-lg-6 col-md-12 col-12 my-4">
+                    <div class="su_Shared_Contents_img">
+                        <img src="{{ asset('assets/img/Shared_Contents3.png') }}" alt="">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
