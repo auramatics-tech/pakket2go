@@ -138,9 +138,7 @@ class UserController extends BaseController
 
     public function booking_details(Request $request)
     {
-        $booking = Booking::where(function ($query) {
-            $query->where('user_id', Auth::id())->orwhere('courier_user_id', Auth::id());
-        })->where("id", $request->booking_id)->first();
+        $booking = Booking::where("id", $request->booking_id)->first();
         if (isset($booking->id)) {
             $this->booking_data($booking);
             return $this->sendResponse($booking, 'Booking details successfully');
@@ -163,7 +161,7 @@ class UserController extends BaseController
 
             $booking_data = $this->booking_data($booking);
 
-            return response()->json(['status' => true, 'message' => 'Booking canceled successfully', 'booking' => $booking_data]);
+            return $this->sendResponse($booking, 'Booked canceled successfully');
         }
 
 

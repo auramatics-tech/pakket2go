@@ -81,7 +81,7 @@ class CourierController extends BaseController
             // check if any other booking is pending for delivery
             $bookings = Booking::where('courier_user_id', Auth::id())->where('status', '<', 5)->count();
             if ($bookings) {
-                return $this->sendError('Please deliver current order first',[],  200);
+                return $this->sendError('Please deliver current order first', [],  200);
             }
         }
 
@@ -180,7 +180,7 @@ class CourierController extends BaseController
         }
 
         $last_location = UserLocation::where('user_id', Auth::id())->latest()->first();
-        if ($last_location->latitude == $request->lat && $last_location->longitude == $request->long) {
+        if (isset($last_location->latitude) && $last_location->latitude == $request->lat && isset($last_location->longitude) && $last_location->longitude == $request->long) {
             $location = $last_location;
         } else {
             $location = new UserLocation();
@@ -191,16 +191,20 @@ class CourierController extends BaseController
         $location->accuracy = $request->accuracy;
         $location->rotation = $request->rotation;
 
-        if (isset($request->booking_id) && $request->booking_id) {
-            $booking = Booking::where('id', $request->booking_id)->where("courier_user_id", Auth::id())->first();
+
+        // check if user is with any booking
+        $booking = Booking::where(function ($query) {
+            $query->where('status', 3)->orwhere('status', 4);
+        })->where("courier_user_id", Auth::id())->first();
+        if (isset($booking->id) && $booking->id) {
             if (!isset($booking->id)) {
                 return $this->sendResponse([], 'Invalid booking');
             }
-            $location->booking_id = $request->booking_id;
+            $location->booking_id = $booking->id;
         }
 
         $location->save();
-        return $this->sendResponse([], 'Location updated successfully.');
+        return $this->sendResponse([$location], 'Location updated successfully.');
     }
 
     public function earnings()
@@ -280,9 +284,9 @@ class CourierController extends BaseController
         $user->save();
 
         $user->documentsUploaded  = 1;
-        $user->front_driving_license= asset($user->front_driving_license);
-        $user->back_driving_license= asset($user->back_driving_license);
-        $user->chamber_of_commerce= asset($user->chamber_of_commerce);
+        $user->front_driving_license = asset($user->front_driving_license);
+        $user->back_driving_license = asset($user->back_driving_license);
+        $user->chamber_of_commerce = asset($user->chamber_of_commerce);
 
         return $this->sendResponse($user, 'Documents uploaded successfully. We will review and get back');
     }

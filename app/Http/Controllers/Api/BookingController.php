@@ -268,6 +268,7 @@ class BookingController extends BaseController
         $address->delivery_lat = (isset($request->delivery_lat) && $request->delivery_lat) ? $request->delivery_lat : $address->delivery_lat;
         $address->delivery_lng = (isset($request->delivery_lng) && $request->delivery_lng) ? $request->delivery_lng : $address->delivery_lng;
         $address->delivery_additinal_info = (isset($request->delivery_additinal_info) && $request->delivery_additinal_info) ? $request->delivery_additinal_info : $address->delivery_additinal_info;
+        $address->delivery_closing_time = (isset($request->delivery_closing_time) && $request->delivery_closing_time) ? $request->delivery_closing_time : $address->delivery_closing_time;
         $address->delivery_contact_name = (isset($request->delivery_contact_name) && $request->delivery_contact_name) ? $request->delivery_contact_name : $address->delivery_contact_name;
         $address->delivery_contact_number = (isset($request->delivery_contact_number) && $request->delivery_contact_number) ? $request->delivery_contact_number :  $address->delivery_contact_number;
 
@@ -348,8 +349,8 @@ class BookingController extends BaseController
         $parcel_type['name'] = $parcel_options->name;
         $parcel_type['description'] = $parcel_options->description;
         $parcel_type['price'] = $parcel_options->price;
-        $parcel_type['quantity'] = $parcel_options->quantity;
-        $parcel_type['labelRequired'] = $parcel_options->labelRequired;
+        $parcel_type['quantity'] = $request->quantity;
+        $parcel_type['labelRequired'] = $request->labelRequired;
 
         $booking_details->booking_id = $booking->id;
         $booking_details->parcel_type = json_encode($parcel_type);
