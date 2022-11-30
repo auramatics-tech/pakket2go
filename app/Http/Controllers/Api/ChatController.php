@@ -33,10 +33,10 @@ class ChatController extends BaseController
             'type',
             DB::raw("(CASE when type ='1' THEN `message` ELSE CONCAT('$url',message) END) as message"),
             'chats.created_at',
-            'receiver.first_name as receiver_firstname',
-            'receiver.last_name as receiver_lastname',
-            'sender.first_name as sender_firstname',
-            'sender.last_name as sender_lastname'
+            DB::raw("(CASE when receiver.user_type = 'private' THEN receiver.`name` ELSE CONCAT(receiver.first_name,receiver.last_name) END) as receiver_name"),
+            DB::raw("(CONCAT('$url',receiver.profile_pic)) as receiver_img"),
+            DB::raw("(CASE when sender.user_type = 'private' THEN sender.`name` ELSE CONCAT(sender.first_name,sender.last_name) END) as sender_name"),
+            DB::raw("(CONCAT('$url',sender.profile_pic)) as sender_img"),
 
         )
             ->leftJoin('users as receiver', 'chats.receiver_id', '=', 'receiver.id')
@@ -83,6 +83,7 @@ class ChatController extends BaseController
         }
 
         $url = url('/');
+        $result['status'] = (int)$booking->status;
         $result['booking_status'] = $booking->booking_status();
         $result['conversation'] = Chat::select(
             'booking_id',
@@ -91,10 +92,10 @@ class ChatController extends BaseController
             'type',
             DB::raw("(CASE when type ='1' THEN `message` ELSE CONCAT('$url',message) END) as message"),
             'chats.created_at',
-            'receiver.first_name as receiver_firstname',
-            'receiver.last_name as receiver_lastname',
-            'sender.first_name as sender_firstname',
-            'sender.last_name as sender_lastname'
+            DB::raw("(CASE when receiver.user_type = 'private' THEN receiver.`name` ELSE CONCAT(receiver.first_name,receiver.last_name) END) as receiver_name"),
+            DB::raw("(CONCAT('$url',receiver.profile_pic)) as receiver_img"),
+            DB::raw("(CASE when sender.user_type = 'private' THEN sender.`name` ELSE CONCAT(sender.first_name,sender.last_name) END) as sender_name"),
+            DB::raw("(CONCAT('$url',sender.profile_pic)) as sender_img"),
         )
             ->leftJoin('users as receiver', 'chats.receiver_id', '=', 'receiver.id')
             ->leftJoin('users as sender', 'chats.sender_id', '=', 'sender.id')

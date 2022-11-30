@@ -81,7 +81,7 @@ class CourierController extends BaseController
             // check if any other booking is pending for delivery
             $bookings = Booking::where('courier_user_id', Auth::id())->where('status', '<', 5)->count();
             if ($bookings) {
-                return $this->sendError([], 'Please deliver current order first', 200);
+                return $this->sendError('Please deliver current order first',[],  200);
             }
         }
 
@@ -143,7 +143,7 @@ class CourierController extends BaseController
                 $canceled_bookings->save();
             }
             $this->booking_data($booking);
-            return $this->sendResponse([$booking], 'Booked ' . $status . ' successfully');
+            return $this->sendResponse($booking, 'Booked ' . $status . ' successfully');
         }
 
         return $this->sendResponse([], 'Booking doesn\'t exists or ' . $status . ' already, Please try with another booking');

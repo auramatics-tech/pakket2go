@@ -14,6 +14,7 @@ use App\Models\BookingStep;
 use App\Models\BookingDetails;
 use App\Models\ParcelOption;
 use App\Models\BookingFeedback;
+use App\Models\Measurement;
 
 use App\Http\Requests\BookingRequest;
 use App\Http\Traits\BookingTrait;
@@ -24,6 +25,7 @@ use App;
 use File;
 use Image;
 use Validator;
+use DB;
 
 use Mollie\Laravel\Facades\Mollie;
 
@@ -56,7 +58,10 @@ class BookingController extends BaseController
             }
         }
 
-        return response()->json(['status' => true, 'message' => 'Parcel options retrieved', 'parcel_options' => $parcel_options]);
+        $url = asset('assets/svg/');
+        $measurements = Measurement::select('measurements.id', 'measurements.measurement', DB::raw("(CONCAT('$url/',image)) as image"),'length','width','height')->get();
+
+        return response()->json(['status' => true, 'message' => 'Parcel options retrieved', 'parcel_options' => $parcel_options, 'measurements' => $measurements]);
     }
 
     /**
