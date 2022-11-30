@@ -1,5 +1,4 @@
 @extends('web.user.layouts.master')
-
 @section('content')
 <div class="d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -13,10 +12,11 @@
                 <div>
                     <div class="d-flex align-items-center">
                         <div class="su_img_user_main">
-                            <img src="{{ asset('assets/img/user_img.png') }}" alt="">
+                            <img src="{{isset($result['conversation'][0]->sender_profile_pic)?asset($result['conversation'][0]->sender_profile_pic):asset('assets/img/user_img.png')}}" alt="">
+                          
                         </div>
                         <div class="su_user_name_topic">
-                            Ridikamiana
+                           {{$result['conversation'][0]->receiver_firstname}} {{$result['conversation'][0]->receiver_lastname}}
                         </div>
                     </div>
                 </div>
@@ -24,35 +24,42 @@
             </div>
             <div class="">
                 <div class="su_detail_page_bg su_padding_chat_section">
-                    <p class="su_day_name_date">Today</p>
-                    <div class="su_chat_right">
-                        <div class="su_msg">Hi! Good morning Good morning Good morning Good morning Good morning!</div>
+                @if(count($result))
+                @foreach($result['conversation'] as $chating)
+                    <p class="su_day_name_date">{{$chating->created_at->diffForHumans()}}</p>
+                    @if($chating->sender_id == Auth::id())
+                    <div class=" su_chat_right">
+                        <div class="su_msg">@if($chating->type == 1){{$chating->message}} @else <img src="{{ asset($chating->message) }}" alt=""> @endif</div>
                         <div class="d-flex justify-content-end my-4 align-items-center">
-                            <p class="su_msg_time">11:20 PM</p>
+                            <p class="su_msg_time">{{date('h:i A',strtotime($chating->created_at))}}</p>
                             <img src="{{ asset('assets/svg/seen_msg.svg') }}" alt="">
                             <img src="{{ asset('assets/svg/rec_svg.svg') }}" alt="">
                             <img src="{{ asset('assets/svg/send_svg.svg') }}" alt="">
                         </div>
                     </div>
+                    @else
                     <div class="su_chat_left">
                         <div class="d-flex">
                             <div class="su_user_msg_send_img">
-                                <img src="{{ asset('assets/img/user_img.png') }}" alt="">
+                                <img src="{{isset($result['conversation'][0]->sender_profile_pic)?asset($result['conversation'][0]->sender_profile_pic):asset('assets/img/user_img.png')}}" alt="">
                             </div>
                             <div class="su_chat_width">
-                                <div class="su_msg_receive">Hi! Good morning Good morning Good morning Good morning!</div>
+                                <div class="su_msg_receive">@if($chating->type == 1){{$chating->message}} @else <img src="{{ asset($chating->message) }}" alt=""> @endif</div>
                                 <div class="d-flex justify-content-start my-4">
-                                    <p class="su_msg_time">11:20 PM</p>
+                                    <p class="su_msg_time">{{date('h:i A',strtotime($chating->created_at))}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
+                @endforeach
+                @endif
                 </div>
-                <div class="d-flex align-items-center su_padding_msg_send_input">
+                <div class="d-flex align-items-center su_padding_msg_send_input type_messege">
                     <div class="su_chat_width_10"><img class="su_img_height2" src="{{ asset('assets/svg/add_options.svg') }}" alt=""></div>
                     <div class="su_chat_width_80">
                         <form action="">
-                            <input type="text" class="su_msg_send_input smile" placeholder="Type a message">
+                            <input type="text" name="" class="su_msg_send_input smile" placeholder="Type a message">
                         </form>
                     </div>
                     <div class="su_chat_width_10"><img class="su_img_height" src="{{ asset('assets/svg/send_msg_svg.svg') }}" alt=""></div>
@@ -74,9 +81,9 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-12 my-4">
                     <div class="su_Shared_Contents_img">
-                        <img src="{{ asset('assets/img/Shared_Contents3.png') }}" alt="">
+                        <img src="{{ asset('assets/img/Shared_Contents3.png') }}" alt="">         
                     </div>
-                </div>
+                </div>        
             </div>
         </div>
     </div>

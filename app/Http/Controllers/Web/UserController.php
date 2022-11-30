@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Booking;
-
 use Auth;
 use Pdf;
 use DB;
@@ -100,7 +99,6 @@ class UserController extends Controller
         return $pdf->download("$booking->booking_code.pdf");
     }
     public function get_booking_detail(Request $request){
-
         $html = view('web.user.booking_detail')->render();
         return response($html);
     }
@@ -110,12 +108,6 @@ class UserController extends Controller
     $pdf = Pdf::loadView('web.user.new_invoice');
     return $pdf->download("booking_code.pdf");
     }
-
-    public function chat(){
-        return view('web.user.chat');
-    }
-
-    public function chat_detail(){
-        return view('web.user.chat_detail');
-    }
+ 
+   
 }

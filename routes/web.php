@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\BookingController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Web\ChatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,7 +49,7 @@ Route::prefix('{locale?}')
         Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
         Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
-        Route::get('/upload-document', [HomeController::class, 'upload_document'])->name('upload_document');
+        Route::get('/upload-document', [HomeController::class, 'upload_document'])->name('upload_document');  
 
 
         // Route::get('/dashboard-courier', [HomeController::class, 'dashboard_courier'])->name('dashboard_courier');
@@ -68,7 +69,6 @@ Route::prefix('{locale?}')
 
             Route::get('otp', [AuthenticatedSessionController::class, 'otp'])
                 ->name('otp');
-
             Route::middleware(['verified_phone'])->group(function () {
                 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
                 Route::get('/my-deliveries', [UserController::class, 'my_deliveries'])->name('my_deliveries');
@@ -77,8 +77,8 @@ Route::prefix('{locale?}')
                 Route::get('get-invoice-data/{id}', [UserController::class, 'get_invoice_data'])->name('get_invoice_data');
                 Route::get('get-booking-detail', [UserController::class, 'get_booking_detail'])->name('get_booking_detail');
                 Route::get('new-invoice', [UserController::class, 'new_invoice'])->name('new_invoice');
-                Route::get('chat', [UserController::class, 'chat'])->name('chat');
-                Route::get('chat-detail', [UserController::class, 'chat_detail'])->name('chat_detail');
+                Route::get('chat', [ChatController::class, 'chat'])->name('chat');
+                Route::get('/chat-detail/{id}', [ChatController::class, 'chat_detail'])->name('chat_detail');
             });
         });
     });
