@@ -764,6 +764,15 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 767px) {
+    .width_35{
+        display: none;
+    }
+    .su_chat_filter_icon{
+        display: block;
+    }
+    .su_width_lg_100{
+        width: 80%;
+    }
     .su_upload_768_margin{
         margin: 15px 0px;
     }
@@ -1056,6 +1065,78 @@
  }
 
  @media only screen and (max-width: 480px) {
+    .su_msg_time {
+        font-size: 14px;
+    }
+    .su_msg_receive {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 12px;
+    }
+    .su_msg {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 12px;
+    }
+    .su_day_name_date {
+        font-size: 15px;
+        padding: 15px 0px;
+    }
+    .su_user_name_and_back {
+        padding: 12px 12px;
+    }
+    .su_user_name_topic {
+        font-size: 16px;
+    }
+    .su_chat_width_80 {
+        width: 75%;
+    }
+    .su_img_height {
+        width: 30px;
+        height: 30px;
+    }
+    .su_padding_msg_send_input {
+        padding: 10px 10px;
+        justify-content: space-between;
+    }
+    .su_user_msg_send_img{
+        display: none;
+    }
+    .su_padding_chat_section {
+        padding: 0px 10px;
+    }
+    .su_chat_right {
+        width: 80%;
+    }
+    .su_chat_left {
+        width: 85%;
+    }
+    .su_Sort_By {
+        font-size: 16px;
+    }
+    .su_filter_heading {
+        margin: 15px 0px;
+    }
+    .su_chat_Reset {
+        font-size: 18px;
+    }
+    .su_chat_filter {
+        font-size: 20px;
+    }
+    .su_chat_seen {
+        font-size: 12.6336px;
+    }
+    .su_chat_user_name {
+        font-size: 15px;
+    }
+    .su_chat_user_chat{
+        width: 213px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14.087px;
+    line-height: 21px;
+    }
     .su_upload_button {
         padding: 5px 35px 8px 35px;
         font-size: 15.3099px;
@@ -1661,6 +1742,7 @@
  }
 
  @media only screen and (max-width: 452px){
+
     .su_item_name_btn_close {
         margin-left: 0px;
         margin-top: 10px;
@@ -1681,6 +1763,9 @@
  }
 
  @media only screen and (max-width: 425px) {
+    .su_chat_user_chat{
+        width: 170px;
+    }
     .su_vdo_bg {
         background-size: 395px 340px;
     }
@@ -1783,6 +1868,9 @@
  }
 
  @media screen and (max-width: 350px) {
+    .su_chat_user_chat {
+        width: 145px;
+    }
     .su_navbar_heading {
         width: 95px;
     }
@@ -1794,6 +1882,9 @@
  /* sumit code end  */
 
  @media only screen and (max-width: 340px){
+    .su_chat_user_chat {
+        width: 120px;
+    }
     .su_width_40 {
         width: 35%;
     }
