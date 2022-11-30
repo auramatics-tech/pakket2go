@@ -31,7 +31,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
     Route::get('/get-{type}', 'DashboardController@getTermservice');
 
     Route::group(['prefix' => 'booking'], function () {
-        Route::get('/clear-booking', [BookingController::class, 'clear_booking']);
+        Route::get('/clear-booking', [BookingController::class, 'clear_booking']); 
         Route::get('/steps', [BookingController::class, 'steps']);
         Route::post('/', [BookingController::class, 'booking']);
     });
@@ -44,8 +44,8 @@ Route::group(['prefix' => '/{lang}/'], function () {
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/my-profile', [UserController::class, 'my_profile']);
-        Route::post('/update-profile', [UserController::class, 'update_profile']);
-        Route::post('/update-password', [UserController::class, 'update_password']);
+        Route::post('/update-profile', [UserController::class, 'update_profile']); 
+        Route::post('/update-password', [UserController::class, 'update_password']); 
         Route::get('/bookings', [UserController::class, 'my_bookings']);
         Route::get('/booking-details', [UserController::class, 'booking_details']);
         Route::post('/cancel-booking', [UserController::class, 'cancel_booking']);
@@ -62,12 +62,10 @@ Route::group(['prefix' => '/{lang}/'], function () {
             Route::get('/last-location', [CourierController::class, 'last_location']);
             Route::post('/update-location', [CourierController::class, 'update_location']);
         });
-
         Route::post("contact-us", [UserController::class, 'contact_us']);
 
         // Chat api's
         Route::group(['prefix' => 'chat'], function () {
-
             Route::get('/allchats', [ChatController::class, 'all_chats']);
             Route::match(['get', 'post'], '/conversation', [ChatController::class, 'conversation']);
         });

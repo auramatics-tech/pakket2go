@@ -146,7 +146,7 @@
                     lat: position.coords.latitude,
                     long: position.coords.longitude,
                     accuracy: position.coords.accuracy,
-                    booking_id: "{{ $current_booking }}"
+                    booking_id: "{{ isset($current_booking) ? $current_booking : '' }}"
                 },
                 success: function() {}
             })
