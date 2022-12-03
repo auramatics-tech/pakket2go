@@ -6,6 +6,7 @@ use App\Models\BookingDetails;
 use App\Models\BookingStep;
 use App\Models\UserLocation;
 use App\Models\SiteSetting;
+use App\Models\BookingFeedback;
 use Auth;
 
 use App;
@@ -103,10 +104,12 @@ trait BookingTrait
         $booking->parcel_type = ($booking_details->parcel_type) ? $this->decode_detail(json_decode($booking_details->parcel_type)) : new stdClass;
         $booking->parcel_details =  ($booking_details->parcel_details && $booking_details->parcel_details != '[]') ? json_decode($booking_details->parcel_details) : [];
         $booking->pickup_date =  ($booking_details->pickup_date && $booking_details->pickup_date != '[]') ? json_decode($booking_details->pickup_date) : new stdClass;
-        $booking->extra_help =  ($booking_details->extra_help && $booking_details->extra_help != '[]') ? json_decode($booking_details->extra_help) : new stdClass;
+        $booking->extra_help =  ($booking_details->extra_help && $booking_details->extra_help != '[]') ? $this->decode_detail(json_decode($booking_details->extra_help)) : new stdClass;
         $booking->pickup_floor =  ($booking_details->pickup_floor && $booking_details->pickup_floor != '[]') ? $this->decode_detail(json_decode($booking_details->pickup_floor)) : new stdClass;
         $booking->delivery_floor =  ($booking_details->delivery_floor && $booking_details->delivery_floor != '[]') ? $this->decode_detail(json_decode($booking_details->delivery_floor)) : new stdClass;
         $booking->courier_details = $booking->courier_details;
+        $booking->invoice_url = url('booking-invoice/' . $booking->id);
+        $booking->feedbacks = isset(auth('sanctum')->user()->id) ? BookingFeedback::where('booking_id',$booking->id)->where('user_id',auth('sanctum')->user()->id)->orderby('id','desc')->first() : new stdclass;
         unset($booking->details);
 
         return $booking;

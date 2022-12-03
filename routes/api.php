@@ -41,13 +41,13 @@ Route::group(['prefix' => '/{lang}/'], function () {
     Route::get("nearbyriders", [UserController::class, 'nearbyriders']);
 
     Route::post('/reset-password', [UserController::class, 'reset_password']);
+    Route::get('/booking-details', [UserController::class, 'booking_details']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/my-profile', [UserController::class, 'my_profile']);
         Route::post('/update-profile', [UserController::class, 'update_profile']);
         Route::post('/update-password', [UserController::class, 'update_password']); 
         Route::get('/bookings', [UserController::class, 'my_bookings']);
-        Route::get('/booking-details', [UserController::class, 'booking_details']);
         Route::post('/cancel-booking', [UserController::class, 'cancel_booking']);
         Route::get('/last-location', [BookingController::class, 'last_location']);
 

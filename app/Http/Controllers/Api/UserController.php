@@ -138,12 +138,12 @@ class UserController extends BaseController
 
     public function booking_details(Request $request)
     {
-        $booking = Booking::where('user_id', Auth::id())->where("id", $request->booking_id)->first();
+        $booking = Booking::where("id", $request->booking_id)->first();
         if (isset($booking->id)) {
             $this->booking_data($booking);
             return $this->sendResponse($booking, 'Booking details successfully');
         } else {
-            return $this->sendResponse([], 'Booking not found');
+            return $this->sendError('Booking not found', [], 200);
         }
     }
 
@@ -161,7 +161,7 @@ class UserController extends BaseController
 
             $booking_data = $this->booking_data($booking);
 
-            return response()->json(['status' => true, 'message' => 'Booking canceled successfully', 'booking' => $booking_data]);
+            return $this->sendResponse($booking, 'Booked canceled successfully');
         }
 
 
@@ -314,7 +314,8 @@ class UserController extends BaseController
         }
     }
 
-    public function my_profile(){
+    public function my_profile()
+    {
         $user_data = Auth::user();
         $success['id'] =  $user_data->id;
         $user =  $this->user_data($user_data);
@@ -395,7 +396,7 @@ class UserController extends BaseController
 
         $user->isCompany = ($user->user_type != 'courier') ? 1 : 0;
         $user->companyname =  ($user->isCompany) ? $user->name : '';
-        $user->documents_verified  = ($user->documents_verified == 1) ? 1 : 0 ;
+        $user->documents_verified  = ($user->documents_verified == 1) ? 1 : 0;
         $user->documentsUploaded = ($user->front_driving_license && $user->back_driving_license) ? 1 : 0;
         return $user;
     }

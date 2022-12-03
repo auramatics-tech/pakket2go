@@ -72,7 +72,6 @@ class Booking extends Model
             $data['name'] = isset($parcel_type->name) ? json_decode($parcel_type->name)->{App::getLocale()} : '';
             $data['description'] = isset($parcel_type->description) ? json_decode($parcel_type->description)->{App::getLocale()} : '';
             $data['price'] = isset($parcel_type->price) ? number_format($parcel_type->price, 2) : 0;
-
             return isset($data[$return]) ? $data[$return] : 0;
         }
     }
