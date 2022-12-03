@@ -13,6 +13,8 @@ use Image;
 use File;
 use DB;
 
+use function PHPSTORM_META\type;
+
 class ChatController extends Controller
 {
   
@@ -78,8 +80,10 @@ class ChatController extends Controller
             ->where(['booking_id' => $booking->id])
             ->latest()
             ->get();
-        //  echo "<pre>";print_r($result);die;
-        return view('web.user.chat_detail',compact('result'));
+            $shared_content = Chat::where('booking_id',$request->id)->where('type', 2 )->get();
+        //  echo "<pre>";print_r($shared_content);die;
+        return view('web.user.chat_detail',compact('result','shared_content'));
     }
+
  
 }

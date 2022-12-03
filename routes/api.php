@@ -26,7 +26,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
 
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/check-phone-number', [UserController::class, 'check_phone_number']);
-    Route::post('/register', [UserController::class, 'register']);
+    Route::post('/register', [UserController::class, 'register']);   
     // Type => terms, privacy, appversion
     Route::get('/get-{type}', 'DashboardController@getTermservice');
 
@@ -44,7 +44,7 @@ Route::group(['prefix' => '/{lang}/'], function () {
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/my-profile', [UserController::class, 'my_profile']);
-        Route::post('/update-profile', [UserController::class, 'update_profile']); 
+        Route::post('/update-profile', [UserController::class, 'update_profile']);
         Route::post('/update-password', [UserController::class, 'update_password']); 
         Route::get('/bookings', [UserController::class, 'my_bookings']);
         Route::get('/booking-details', [UserController::class, 'booking_details']);

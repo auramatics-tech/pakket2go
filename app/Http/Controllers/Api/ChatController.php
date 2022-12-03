@@ -9,7 +9,6 @@ use App\Http\Traits\NotificationTrait;
 use App\Models\Booking;
 use App\Models\Chat;
 use App\Models\User;
-
 use Auth;
 use Validator;
 use Image;
@@ -37,7 +36,6 @@ class ChatController extends BaseController
             'receiver.last_name as receiver_lastname',
             'sender.first_name as sender_firstname',
             'sender.last_name as sender_lastname'
-
         )
             ->leftJoin('users as receiver', 'chats.receiver_id', '=', 'receiver.id')
             ->leftJoin('users as sender', 'chats.sender_id', '=', 'sender.id')
@@ -58,6 +56,7 @@ class ChatController extends BaseController
 
     public function conversation(Request $request)
     {
+        // echo "<pre>";print_r($request->all());die;
         $validator = Validator::make($request->all(), [
             'booking_id' => 'required'
         ]);
@@ -108,6 +107,7 @@ class ChatController extends BaseController
 
     protected function update_conversation($request, $booking)
     {
+        // echo "<pre>";print_r($request->all());die;
         $validator = Validator::make($request->all(), [
             'message' => 'required_without:image'
         ]);
@@ -116,7 +116,6 @@ class ChatController extends BaseController
             $errors = $validator->errors();
             return $this->sendError($errors->first(), [], 200);
         }
-
         $conversation = new Chat();
         $conversation->booking_id = $booking->id;
         $conversation->sender_id = Auth::id();
@@ -138,7 +137,6 @@ class ChatController extends BaseController
             $conversation->type = 2;
             $conversation->save();
         }
-
         $receiver = User::find($conversation->receiver_id);
         // Send push notification
         if ($receiver->device_token)

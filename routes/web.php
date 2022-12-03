@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\BookingController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Web\ChatController;
+use App\Http\Controllers\Api\ChatController as ApiChatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,9 +68,9 @@ Route::prefix('{locale?}')
 
         Route::middleware(['auth'])->group(function () {
 
-            Route::get('otp', [AuthenticatedSessionController::class, 'otp'])
+                Route::get('otp', [AuthenticatedSessionController::class, 'otp'])
                 ->name('otp');
-            Route::middleware(['verified_phone'])->group(function () {
+                Route::middleware(['verified_phone'])->group(function () {
                 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
                 Route::get('/my-deliveries', [UserController::class, 'my_deliveries'])->name('my_deliveries');
                 Route::get('/order-detail/{id}', [UserController::class, 'booking_details'])->name('booking.details');
@@ -79,10 +80,11 @@ Route::prefix('{locale?}')
                 Route::get('new-invoice', [UserController::class, 'new_invoice'])->name('new_invoice');
                 Route::get('chat', [ChatController::class, 'chat'])->name('chat');
                 Route::get('/chat-detail/{id}', [ChatController::class, 'chat_detail'])->name('chat_detail');
+                Route::get('/send-messege', [ChatController::class,'send_messege'])->name('send_messege');
+                Route::post('/update-conversation',[ApiChatController::class,'conversation'])->name('update_conversation');
             });
         });
     });
-
 Route::post('/mollie/payment', [BookingController::class, 'payment_webhook'])->name('webhooks.mollie');
 Route::get('/mollie/payment', [BookingController::class, 'payment_webhook']);
 
