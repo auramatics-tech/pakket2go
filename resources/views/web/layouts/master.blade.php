@@ -60,19 +60,25 @@
 </head>
 
 <body>
-    @if ((Route::is('booking') || Route::is('booking.*')))
-    @if(!Route::is('upload_document'))
-        @include('web.booking.layouts.header')
-        @include('web.booking.layouts.steps')
+    @if (Route::is('booking') || Route::is('booking.*'))
+        @if (!Route::is('upload_document'))
+            @include('web.booking.layouts.header')
+            @include('web.booking.layouts.steps')
+        @elseif (!Route::is('login') && !Route::is('register') && !Route::is('otp'))
+            @include('web.layouts.header')
+        @endif
     @elseif (!Route::is('login') && !Route::is('register') && !Route::is('otp'))
         @include('web.layouts.header')
     @endif
-    @endif
     @yield('content')
-    @if(!Route::is('upload_document'))
-    @if (!Route::is('booking') && !Route::is('booking.*') && !Route::is('login') && !Route::is('register') && !Route::is('otp'))
-        @include('web.layouts.footer')
-    @endif
+    @if (!Route::is('upload_document'))
+        @if (!Route::is('booking') &&
+            !Route::is('booking.*') &&
+            !Route::is('login') &&
+            !Route::is('register') &&
+            !Route::is('otp'))
+            @include('web.layouts.footer')
+        @endif
     @endif
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>

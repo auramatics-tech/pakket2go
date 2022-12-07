@@ -89,3 +89,4 @@ Route::post('/mollie/payment', [BookingController::class, 'payment_webhook'])->n
 Route::get('/mollie/payment', [BookingController::class, 'payment_webhook']);
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
