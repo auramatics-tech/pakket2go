@@ -9,7 +9,6 @@ use App\Http\Traits\NotificationTrait;
 use App\Models\Booking;
 use App\Models\Chat;
 use App\Models\User;
-
 use Auth;
 use Validator;
 use Image;
@@ -33,6 +32,10 @@ class ChatController extends BaseController
             'type',
             DB::raw("(CASE when type ='1' THEN `message` ELSE CONCAT('$url',message) END) as message"),
             'chats.created_at',
+            'receiver.first_name as receiver_firstname',
+            'receiver.last_name as receiver_lastname',
+            'sender.first_name as sender_firstname',
+            'sender.last_name as sender_lastname',
             DB::raw("(CASE when receiver.user_type = 'private' THEN receiver.`name` ELSE CONCAT(receiver.first_name,receiver.last_name) END) as receiver_name"),
             DB::raw("(CONCAT('$url',receiver.profile_pic)) as receiver_img"),
             DB::raw("(CASE when sender.user_type = 'private' THEN sender.`name` ELSE CONCAT(sender.first_name,sender.last_name) END) as sender_name"),
@@ -58,6 +61,7 @@ class ChatController extends BaseController
 
     public function conversation(Request $request)
     {
+        // echo "<pre>";print_r($request->all());die;
         $validator = Validator::make($request->all(), [
             'booking_id' => 'required'
         ]);
@@ -109,6 +113,7 @@ class ChatController extends BaseController
 
     protected function update_conversation($request, $booking)
     {
+        // echo "<pre>";print_r($request->all());die;
         $validator = Validator::make($request->all(), [
             'message' => 'required_without:image'
         ]);
@@ -117,7 +122,6 @@ class ChatController extends BaseController
             $errors = $validator->errors();
             return $this->sendError($errors->first(), [], 200);
         }
-
         $conversation = new Chat();
         $conversation->booking_id = $booking->id;
         $conversation->sender_id = Auth::id();
@@ -139,7 +143,6 @@ class ChatController extends BaseController
             $conversation->type = 2;
             $conversation->save();
         }
-
         $receiver = User::find($conversation->receiver_id);
         // Send push notification
         if ($receiver->device_token)
