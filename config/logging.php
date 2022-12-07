@@ -114,6 +114,7 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
         'notification' => [
+            'driver' => 'daily',
             'path' => storage_path('logs/notification.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,

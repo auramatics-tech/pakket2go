@@ -36,7 +36,8 @@ class User extends Authenticatable
         'otp_sent_at',
         'otp_result',
         'phone_number_verified',
-        'status'
+        'status',
+        'device_token'
     ];
 
     /**

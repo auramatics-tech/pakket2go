@@ -98,9 +98,21 @@ trait BookingTrait
     protected function booking_data($booking)
     {
         $booking_details = isset($booking->details) ? $booking->details : '';
-        $booking->status = (int) $booking->status;
-        $booking->booking_status = $booking->booking_status();
+        // check if logged in user is courier and cancelled the booking
+        if (isset(auth('sanctum')->user()->user_type) && auth('sanctum')->user()->user_type == 'courier') {
+            if($booking->courier_status){
+                $booking->status = 7;
+                $booking->booking_status = 'Courier Cancelled';
+            }else{
+                $booking->status = (int) $booking->status;
+                $booking->booking_status = $booking->booking_status();
+            }
+        }else{
+            $booking->status = (int) $booking->status;
+            $booking->booking_status = $booking->booking_status();
+        }
         $booking->address = $booking->address;
+
         $booking->parcel_type = ($booking_details->parcel_type) ? $this->decode_detail(json_decode($booking_details->parcel_type)) : new stdClass;
         $booking->parcel_details =  ($booking_details->parcel_details && $booking_details->parcel_details != '[]') ? json_decode($booking_details->parcel_details) : [];
         $booking->pickup_date =  ($booking_details->pickup_date && $booking_details->pickup_date != '[]') ? json_decode($booking_details->pickup_date) : new stdClass;
@@ -109,7 +121,7 @@ trait BookingTrait
         $booking->delivery_floor =  ($booking_details->delivery_floor && $booking_details->delivery_floor != '[]') ? $this->decode_detail(json_decode($booking_details->delivery_floor)) : new stdClass;
         $booking->courier_details = $booking->courier_details;
         $booking->invoice_url = url('booking-invoice/' . $booking->id);
-        $booking->feedbacks = isset(auth('sanctum')->user()->id) ? BookingFeedback::where('booking_id',$booking->id)->where('user_id',auth('sanctum')->user()->id)->orderby('id','desc')->first() : new stdclass;
+        $booking->feedbacks = isset(auth('sanctum')->user()->id) ? BookingFeedback::where('booking_id', $booking->id)->where('user_id', auth('sanctum')->user()->id)->orderby('id', 'desc')->first() : new stdclass;
         unset($booking->details);
 
         return $booking;
@@ -128,10 +140,13 @@ trait BookingTrait
 
     protected function last_location_info($request)
     {
-        $last_location = UserLocation::when($request->booking_id, function ($query) use ($request) {
+        $last_location = UserLocation::select('user_locations.*')->when($request->booking_id, function ($query) use ($request) {
             $query->where("booking_id", $request->booking_id);
         })
-            ->where("user_id", Auth::id())
+            ->join('bookings', 'bookings.id', '=', 'user_locations.booking_id')
+            ->where(function ($query) {
+                $query->where("bookings.user_id", Auth::id())->orwhere("bookings.courier_user_id", Auth::id());
+            })
             ->latest()
             ->first();
 

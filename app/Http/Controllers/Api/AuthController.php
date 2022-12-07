@@ -10,9 +10,11 @@ use Hash;
 use DB;
 
 use App\Models\User;
+use App\Http\Traits\NotificationTrait;
 
 class AuthController extends BaseController
 {
+    use NotificationTrait;
     /**
      * Handle an incoming login request.
      *
@@ -23,6 +25,7 @@ class AuthController extends BaseController
      */
     public function login(Request $request)
     {
+        
         $rules = [
             'phone_number' => ['required'],
             'password' => ['required']
@@ -31,7 +34,7 @@ class AuthController extends BaseController
 
         if ($credentials->fails()) {
             $errors = $credentials->messages();
-            return $this->sendError('Missing required fields', $errors, 401);
+            return $this->sendError('Missing required fields', $errors, 403);
         } else {
             $country_code = $request->country_code;
             $phone_number = $request->phone_number;
@@ -61,18 +64,20 @@ class AuthController extends BaseController
                 ->where('phone_number', $phone_number)->where('country_code', $country_code)->where('status', 1)->first();
 
             if (isset($user->id) && !$user->phone_number_verified) {
-                return $this->sendError('Phone number not verified', [], 401);
+                return $this->sendError('Phone number not verified', [], 403);
             }
             if (!$user || !Hash::check($password, $user->password)) {
-                return $this->sendError('Invalid login details', [], 401);
+                return $this->sendError('Invalid login details', [], 403);
             }
         }
-
+        $user->device_token = $request->device_token;
+        $user->save();
         // Revoke all tokens...
         $user->tokens()->delete();
 
-        $user->device_token = $request->device_token;
-        $user->save();
+
+        // $this->sendPushNotification($user->device_token, 'You received new message', 'chat', 1);
+
         $user->isCompany = ($user->user_type == 'courier') ? 1 : 0;
         $user->companyname =  ($user->isCompany) ? $user->name : '';
 

@@ -151,7 +151,7 @@ class UserController extends BaseController
     {
         $booking = Booking::where('user_id', Auth::id())->where("id", $request->booking_id)->first();
         if (isset($booking->id)) {
-            $booking->status = $request->status;
+            $booking->status = 6;
             $booking->save();
 
             // refund in case of payment done
@@ -165,7 +165,7 @@ class UserController extends BaseController
         }
 
 
-        return response()->json(['status' => true, 'message' => 'Booking not found']);
+        return $this->sendError('Booking not found', [], 200);
     }
 
     protected function rules($user_type)

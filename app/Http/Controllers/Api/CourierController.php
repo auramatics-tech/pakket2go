@@ -146,7 +146,7 @@ class CourierController extends BaseController
             return $this->sendResponse($booking, 'Booked ' . $status . ' successfully');
         }
 
-        return $this->sendResponse([], 'Booking doesn\'t exists or ' . $status . ' already, Please try with another booking');
+        return $this->sendError('Booking doesn\'t exists or ' . $status . ' already, Please try with another booking',[],403);
     }
 
     protected function save_tracking($booking, $status, $signature)
@@ -197,9 +197,6 @@ class CourierController extends BaseController
             $query->where('status', 3)->orwhere('status', 4);
         })->where("courier_user_id", Auth::id())->first();
         if (isset($booking->id) && $booking->id) {
-            if (!isset($booking->id)) {
-                return $this->sendResponse([], 'Invalid booking');
-            }
             $location->booking_id = $booking->id;
         }
 
@@ -209,7 +206,7 @@ class CourierController extends BaseController
 
     public function earnings()
     {
-        $bookings = Booking::where('courier_user_id', Auth::id())
+        $bookings = Booking::select('bookings.*')->where('courier_user_id', Auth::id())
             ->join('booking_tracking', 'booking_tracking.booking_id', '=', 'bookings.id')
             ->whereNotNull("delivered_time")
             ->get();

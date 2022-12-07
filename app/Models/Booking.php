@@ -101,4 +101,8 @@ class Booking extends Model
             'device_token'
         );
     }
+
+    public function courier_status(){
+        return $this->hasOne(CourierCanceledBookings::class);
+    }
 }

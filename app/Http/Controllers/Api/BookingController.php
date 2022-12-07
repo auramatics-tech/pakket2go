@@ -59,7 +59,7 @@ class BookingController extends BaseController
         }
 
         $url = asset('assets/svg/');
-        $measurements = Measurement::select('measurements.id', 'measurements.measurement', DB::raw("(CONCAT('$url/',image)) as image"),'length','width','height')->get();
+        $measurements = Measurement::select('measurements.id', 'measurements.measurement', DB::raw("(CONCAT('$url/',image)) as image"), 'length', 'width', 'height')->get();
 
         return response()->json(['status' => true, 'message' => 'Parcel options retrieved', 'parcel_options' => $parcel_options, 'measurements' => $measurements]);
     }
@@ -116,6 +116,9 @@ class BookingController extends BaseController
                 $booking->session_id = $session_id;
                 $booking->save();
                 $booking->address_id = $this->saveAddress($request, $booking);
+                if (!$booking->address_id) {
+                    return $this->sendError('Please check address', [], 401);
+                }
                 $booking->save();
                 $this->parcelType($request, $booking);
                 $this->calcualte_distance_price($request, $booking);
@@ -161,6 +164,9 @@ class BookingController extends BaseController
                 }
                 $booking->user_id = $user_id;
                 $booking->address_id = $this->saveAddress($request, $booking);
+                if (!$booking->address_id) {
+                    return $this->sendError('Please check address', [], 401);
+                }
                 $booking->save();
                 break;
             case 10:
@@ -169,6 +175,9 @@ class BookingController extends BaseController
                 }
                 $booking->user_id = $user_id;
                 $booking->address_id = $this->saveAddress($request, $booking);
+                if (!$booking->address_id) {
+                    return $this->sendError('Please check address', [], 401);
+                }
                 $booking->save();
                 if (isset(auth('sanctum')->user()->id) && auth('sanctum')->user()->user_type == 'business') {
                     $booking->status = 2;
@@ -254,7 +263,7 @@ class BookingController extends BaseController
         $address->pickup_locality = (isset($request->pickup_locality) && $request->pickup_locality) ? $request->pickup_locality : $address->pickup_locality;
         $address->pickup_lat = (isset($request->pickup_lat) && $request->pickup_lat) ? $request->pickup_lat : $address->pickup_lat;
         $address->pickup_lng = (isset($request->pickup_lng) && $request->pickup_lng) ? $request->pickup_lng : $address->pickup_lng;
-        $address->pickup_additinal_info = (isset($request->pickup_additinal_info) && $request->pickup_additinal_info) ? $request->pickup_additinal_info : $address->pickup_additinal_info;
+        $address->pickup_additional_info = (isset($request->pickup_additional_info) && $request->pickup_additional_info) ? $request->pickup_additional_info : $address->pickup_additional_info;
         $address->pickup_closing_time = (isset($request->pickup_closing_time) && $request->pickup_closing_time) ? $request->pickup_closing_time : $address->pickup_closing_time;
         $address->pickup_contact_name = (isset($request->pickup_contact_name) && $request->pickup_contact_name) ? $request->pickup_contact_name : $address->pickup_contact_name;
         $address->pickup_contact_number = (isset($request->pickup_contact_number) && $request->pickup_contact_number) ? $request->pickup_contact_number :  $address->pickup_contact_number;
@@ -267,25 +276,63 @@ class BookingController extends BaseController
         $address->delivery_locality = (isset($request->delivery_locality) && $request->delivery_locality) ? $request->delivery_locality : $address->delivery_locality;
         $address->delivery_lat = (isset($request->delivery_lat) && $request->delivery_lat) ? $request->delivery_lat : $address->delivery_lat;
         $address->delivery_lng = (isset($request->delivery_lng) && $request->delivery_lng) ? $request->delivery_lng : $address->delivery_lng;
-        $address->delivery_additinal_info = (isset($request->delivery_additinal_info) && $request->delivery_additinal_info) ? $request->delivery_additinal_info : $address->delivery_additinal_info;
+        $address->delivery_additional_info = (isset($request->delivery_additional_info) && $request->delivery_additional_info) ? $request->delivery_additional_info : $address->delivery_additional_info;
         $address->delivery_closing_time = (isset($request->delivery_closing_time) && $request->delivery_closing_time) ? $request->delivery_closing_time : $address->delivery_closing_time;
         $address->delivery_contact_name = (isset($request->delivery_contact_name) && $request->delivery_contact_name) ? $request->delivery_contact_name : $address->delivery_contact_name;
         $address->delivery_contact_number = (isset($request->delivery_contact_number) && $request->delivery_contact_number) ? $request->delivery_contact_number :  $address->delivery_contact_number;
 
-        if ($request->step == 1) {
-            $direction_data = $this->direction_image($request, $booking);
+        if ($request->step == 9) {
+            $pickup_address = $address->pickup_house_no . ', ' . $address->pickup_street . ', ' . $address->pickup_locality . ', ' . $address->pickup_postcode;
+            $latest_lat_lng = $this->get_lat_lng($pickup_address);
+            if(isset($latest_lat_lng['lat']) && isset($latest_lat_lng['lng'])){
+                $address->pickup_lat = $latest_lat_lng['lat'];
+                $address->pickup_lng = $latest_lat_lng['lng'];
+            }
+        }
+
+        
+        if ($request->step == 10) {
+            $delivery_address = $address->delivery_house_no . ', ' . $address->delivery_street . ', ' . $address->delivery_locality . ', ' . $address->delivery_postcode;
+            $latest_lat_lng = $this->get_lat_lng($delivery_address);
+            if(isset($latest_lat_lng['lat']) && isset($latest_lat_lng['lng'])){
+                $address->delivery_lat = $latest_lat_lng['lat'];
+                $address->delivery_lng = $latest_lat_lng['lng'];
+            }
+        }
+
+        if ($request->step == 1 || $request->step == 9 || $request->step == 10) {
+            $direction_data = $this->direction_image($request, $booking, "400x400", $address);
             $address->distance = (isset($request->distance) && $request->distance) ? $request->distance :  $direction_data['total_distance'];
             $address->direction_image = $direction_data['direction_image'];
         }
+
+        if ($address->distance == 0) {
+            return false;
+        }
+
         $address->save();
 
         return $address->id;
     }
 
-    protected function direction_image($request, $booking, $size = "400x400")
+    protected function get_lat_lng($booking_address)
     {
-        $origin = "$request->pickup_lat,$request->pickup_lng";
-        $destination = "$request->delivery_lat,$request->delivery_lng";
+        $routes = Http::get(env('GOOGLE_MAPS_API') . "geocode/json?address=$booking_address&key=" . env('GOOGLE_SITE_KEY'));
+
+        $lat_lng = $routes->json();
+        $data = array();
+        if (isset($lat_lng['results'][0]['geometry']['location']['lat'])) {
+            $data['lat'] = $lat_lng['results'][0]['geometry']['location']['lat'];
+            $data['lng'] = $lat_lng['results'][0]['geometry']['location']['lng'];
+        }
+
+        return $data;
+    }
+
+    protected function direction_image($request, $booking, $size = "400x400", $address)
+    {
+        $origin = "$address->pickup_lat,$address->pickup_lng";
+        $destination = "$address->delivery_lat,$address->delivery_lng";
         $waypoints = array(
             $origin,
             $destination
@@ -396,7 +443,7 @@ class BookingController extends BaseController
                 $data[$key]['width'] = $request->width[$key];
                 $data[$key]['height'] = $request->height[$key];
                 $data[$key]['length'] = $request->length[$key];
-                $data[$key]['pricing'] = $pricing;
+                $data[$key]['pricing'] = round($pricing, 2);
             }
         }
         $booking_details->parcel_details = json_encode($data);
